@@ -1,0 +1,7 @@
+#!/bin/bash
+
+find /cygdrive/c/Users/Stan\ Angeloff/.vim/* -maxdepth 0 -type d -exec rm -Rfv {} \;
+find /home/stan/.vim/* -maxdepth 0 -type d -exec cp -Rfv {} /cygdrive/c/Users/Stan\ Angeloff/.vim/ \;
+
+cp -fv /home/stan/.vimrc /cygdrive/c/Users/Stan\ Angeloff/
+

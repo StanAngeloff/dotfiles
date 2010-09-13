@@ -1,0 +1,15 @@
+*.swp
+.gem
+.gemrc
+.gitk
+.npmrc
+.rnd
+.ssh
+.subversion
+.vim/bundle
+.vim/.netrwhist
+.viminfo
+.zcompdump
+.zsh/history
+installs
+

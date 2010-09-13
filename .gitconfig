@@ -1,0 +1,21 @@
+[gui]
+	fontui = -family \"Segoe UI\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family Consolas -size 13 -weight normal -slant roman -underline 0 -overstrike 0
+	commitmsgwidth = 78
+	spellingdictionary = none
+	encoding = utf-8
+[user]
+	name = Stan Angeloff
+	email = TODO:e-mail address
+[core]
+	editor = vim
+	autocrlf = false
+    filemode = false
+[github]
+	user = StanAngeloff
+	token = TODO:API token
+[diff]
+	tool = kdiff3
+[merge]
+	tool = kdiff3
+
