@@ -10,6 +10,8 @@ HISTFILE="$ZSH/history"
 
 PATH=/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Program\ Files\ \(x86\)/Java/jdk1.6.0_20/bin:/cygdrive/c/Program\ Files\ \(x86\)/WinAnt/bin
 
+export TERM=xterm-256color
+
 export NODE_PATH="/home/stan/.coffee_libraries:$NODE_PATH"
 export EDITOR=vim
 
