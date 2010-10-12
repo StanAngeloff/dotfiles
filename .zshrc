@@ -8,7 +8,7 @@ HISTSIZE=1024
 SAVEHIST=$HISTSIZE
 HISTFILE="$ZSH/history"
 
-PATH=/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Program\ Files\ \(x86\)/Java/jdk1.6.0_20/bin:/cygdrive/c/Program\ Files\ \(x86\)/WinAnt/bin
+PATH=/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Program\ Files\ \(x86\)/Java/jdk1.6.0_20/bin:/cygdrive/c/Program\ Files\ \(x86\)/WinAnt/bin:/cygdrive/c/Program\ Files\ \(x86\)/Git/bin
 
 export TERM=xterm-256color
 
