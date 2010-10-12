@@ -20,22 +20,31 @@ call pathogen#runtime_append_all_bundles()
 set enc=utf-8
 set ff=unix
 
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
 if v:progname =~? "gvim"
   set guifont=Consolas:h13:cDEFAULT
 
   " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
   let &guioptions = substitute(&guioptions, "t", "", "g")
 
-  " In many terminal emulators the mouse works just fine, thus enable it.
-  if has('mouse')
-    set mouse=a
-  endif
 
   " Maximize on start-up
   au GUIEnter * simalt ~x
 
   " Use .viminfo instead of _viminfo
   set viminfo+=n~/.viminfo
+endif
+
+" Mode-dependent cursor in MinTTY
+if v:progname =~? "vim"
+  let &t_ti.="\e[1 q"
+  let &t_SI.="\e[5 q"
+  let &t_EI.="\e[1 q"
+  let &t_te.="\e[0 q"
 endif
 
 set history=32  " keep ~500 lines of command line history
@@ -99,6 +108,7 @@ set backspace=2
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set nowrap
 
 set spell  " Turn on spell check
 
