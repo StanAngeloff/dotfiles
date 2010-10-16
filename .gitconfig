@@ -6,14 +6,12 @@
 	encoding = utf-8
 [user]
 	name = Stan Angeloff
-	email = TODO:e-mail address
 [core]
-	editor = vim
+	editor = gvim
 	autocrlf = false
     filemode = false
 [github]
 	user = StanAngeloff
-	token = TODO:API token
 [diff]
 	tool = kdiff3
 [merge]

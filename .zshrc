@@ -25,7 +25,10 @@ autoload colors; colors;
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export PROMPT="%{$fg[green]%}(%n)%{$reset_color%} %{$fg[yellow]%}[%1~]%{$reset_color%} %# "
 
-alias ssh_bg='TODO:ssh command'
+
+if [ ! -f /usr/local/bin/gvim ]; then
+    alias gvim=vim
+fi
 
 typeset -Ag FX FG BG
 
