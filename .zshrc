@@ -26,6 +26,9 @@ export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export PROMPT="%{$fg[green]%}(%n)%{$reset_color%} %{$fg[yellow]%}[%1~]%{$reset_color%} %# "
 
 
+# Load RVM into the shell session
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
 if [ ! -f /usr/local/bin/gvim ]; then
     alias gvim=vim
 fi
