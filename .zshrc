@@ -8,11 +8,14 @@ HISTSIZE=1024
 SAVEHIST=$HISTSIZE
 HISTFILE="$ZSH/history"
 
-PATH=/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Program\ Files\ \(x86\)/Java/jdk1.6.0_20/bin:/cygdrive/c/Program\ Files\ \(x86\)/WinAnt/bin:/cygdrive/c/Program\ Files\ \(x86\)/Git/bin
+if [[ "`uname -n`" == "PSP-STAN" ]]
+then
+    PATH=/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Program\ Files\ \(x86\)/Java/jdk1.6.0_20/bin:/cygdrive/c/Program\ Files\ \(x86\)/WinAnt/bin:/cygdrive/c/Program\ Files\ \(x86\)/Git/bin
+    export NODE_PATH="/home/stan/.coffee_libraries:$NODE_PATH"
+fi
 
 export TERM=xterm-256color
 
-export NODE_PATH="/home/stan/.coffee_libraries:$NODE_PATH"
 export EDITOR=vim
 
 export GREP_OPTIONS='--color=auto'
