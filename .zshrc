@@ -213,9 +213,9 @@ source ~/.zsh/jump_shell_driver
 alias ju=jump
 
 function title {
-  if [[ ($TERM =~ "^screen") ]]; then
+  if [[ "$TERM" == screen* ]]; then
     print -nR $'\ek'$*$'\e\\'
-  elif [[ ($TERM =~ "^xterm") ]] || [[ ($TERM == "rxvt") ]]; then
+  elif [[ "$TERM" == xterm* ]] || [[ "$TERM" == "rxvt" ]]; then
     print -nR $'\033]0;'$*$'\a'
   fi
 }
