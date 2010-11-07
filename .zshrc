@@ -8,15 +8,18 @@ HISTSIZE=1024
 SAVEHIST=$HISTSIZE
 HISTFILE="$ZSH/history"
 
-if [[ "`uname -n`" == "PSP-STAN" ]]
-then
-    PATH=/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Program\ Files\ \(x86\)/Java/jdk1.6.0_20/bin:/cygdrive/c/Program\ Files\ \(x86\)/WinAnt/bin:/cygdrive/c/Program\ Files\ \(x86\)/Git/bin
-    export NODE_PATH="/home/stan/.coffee_libraries:$NODE_PATH"
+if [[ "`uname -n`" == "PSP-STAN" ]]; then
+  PATH=/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Program\ Files\ \(x86\)/Java/jdk1.6.0_20/bin:/cygdrive/c/Program\ Files\ \(x86\)/WinAnt/bin:/cygdrive/c/Program\ Files\ \(x86\)/Git/bin
+  export NODE_PATH="/home/stan/.coffee_libraries:$NODE_PATH"
 fi
 
-export TERM=xterm-256color
+if [ -z "$TERM" ] || [[ "$TERM" == "xterm" ]]; then
+  export TERM=xterm-256color
+fi
 
-export EDITOR=vim
+if [ -z "$EDITOR" ]; then
+  export EDITOR=vim
+fi
 
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
@@ -25,11 +28,14 @@ export PAGER=less
 export LC_CTYPE=en_US.UTF-8
 
 autoload colors; colors;
+
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export PROMPT="%{$fg[green]%}(%n)%{$reset_color%} %{$fg[yellow]%}[%1~]%{$reset_color%} %# "
 
 
-# Load RVM into the shell session
+alias '?'='screen -ls'
+alias '!'='screen -r'
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 if [ ! -f /usr/local/bin/gvim ]; then
@@ -39,17 +45,17 @@ fi
 typeset -Ag FX FG BG
 
 FX=(
-    reset     "%{[00m%}"
-    bold      "%{[01m%}" no-bold      "%{[22m%}"
-    italic    "%{[03m%}" no-italic    "%{[23m%}"
-    underline "%{[04m%}" no-underline "%{[24m%}"
-    blink     "%{[05m%}" no-blink     "%{[25m%}"
-    reverse   "%{[07m%}" no-reverse   "%{[27m%}"
+  reset     "%{[00m%}"
+  bold      "%{[01m%}" no-bold      "%{[22m%}"
+  italic    "%{[03m%}" no-italic    "%{[23m%}"
+  underline "%{[04m%}" no-underline "%{[24m%}"
+  blink     "%{[05m%}" no-blink     "%{[25m%}"
+  reverse   "%{[07m%}" no-reverse   "%{[27m%}"
 )
 
 for color in {000..255}; do
-    FG[$color]="%{[38;5;${color}m%}"
-    BG[$color]="%{[48;5;${color}m%}"
+  FG[$color]="%{[38;5;${color}m%}"
+  BG[$color]="%{[48;5;${color}m%}"
 done
 
 setopt prompt_subst
@@ -58,11 +64,47 @@ alias ll='ls -hal --color=tty'
 alias pu='pushd'
 alias po='popd'
 alias .='pwd'
+alias ..='cd ..'
 alias ...='cd ../..'
 alias -- -='cd -'
+alias cd..='cd ..'
+alias cd...='cd ../..'
+alias cd....='cd ../../..'
+alias cd.....='cd ../../../..'
+alias cd/='cd /'
+
+alias 1='cd -'
+alias 2='cd +2'
+alias 3='cd +3'
+alias 4='cd +4'
+alias 5='cd +5'
+alias 6='cd +6'
+alias 7='cd +7'
+alias 8='cd +8'
+alias 9='cd +9'
+
+cd () {
+  if   [[ "x$*" == "x..." ]]; then
+    cd ../..
+  elif [[ "x$*" == "x...." ]]; then
+    cd ../../..
+  elif [[ "x$*" == "x....." ]]; then
+    cd ../../..
+  elif [[ "x$*" == "x......" ]]; then
+    cd ../../../..
+  else
+    builtin cd "$@"
+  fi
+}
+
+alias md='mkdir -p'
+alias rd=rmdir
+
+alias d='dirs -v'
 
 autoload -U compinit
 compinit -i
+zmodload -i zsh/complist
 
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
@@ -119,42 +161,6 @@ setopt long_list_jobs
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
-alias ..='cd ..'
-alias cd..='cd ..'
-alias cd...='cd ../..'
-alias cd....='cd ../../..'
-alias cd.....='cd ../../../..'
-alias cd/='cd /'
-
-alias 1='cd -'
-alias 2='cd +2'
-alias 3='cd +3'
-alias 4='cd +4'
-alias 5='cd +5'
-alias 6='cd +6'
-alias 7='cd +7'
-alias 8='cd +8'
-alias 9='cd +9'
-
-cd () {
-  if   [[ "x$*" == "x..." ]]; then
-    cd ../..
-  elif [[ "x$*" == "x...." ]]; then
-    cd ../../..
-  elif [[ "x$*" == "x....." ]]; then
-    cd ../../..
-  elif [[ "x$*" == "x......" ]]; then
-    cd ../../../..
-  else
-    builtin cd "$@"
-  fi
-}
-
-alias md='mkdir -p'
-alias rd=rmdir
-
-alias d='dirs -v'
-
 bindkey -e
 
 bindkey "\e[1~"   beginning-of-line
@@ -206,3 +212,20 @@ bindkey "^[m"     copy-prev-shell-word
 source ~/.zsh/jump_shell_driver
 alias ju=jump
 
+function title {
+  if [[ ($TERM =~ "^screen") ]]; then
+    print -nR $'\ek'$*$'\e\\'
+  elif [[ ($TERM =~ "^xterm") ]] || [[ ($TERM == "rxvt") ]]; then
+    print -nR $'\033]0;'$*$'\a'
+  fi
+}
+
+function precmd {
+  title zsh "$PWD"
+}
+
+function preexec {
+  emulate -L zsh
+  local -a cmd; cmd=(${(z)1})
+  title $cmd[1]:t "$cmd[2,-1]"
+}
