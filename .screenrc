@@ -4,7 +4,6 @@ defnonblock       on
 defsilence        on
 defutf8           on
 startup_message   off
-utf8              on
 vbell             off
 
 term              screen-256color
@@ -12,16 +11,16 @@ term              screen-256color
 defscrollback     10240
 hardcopydir       $HOME/.screen
 hardcopy_append   on
-shell             zsh
+shell             -/bin/zsh
 silencewait       15
 
 hardstatus alwayslastline '%{gk}(%H)%{w}  %{y}[%= %?%-Lw%?%{+u}%n*%f %t%?(%u)%?%{-u}%?%+Lw%? %=]%{w}  %l  %c'
 
 sorendition       gb 
-activity          "%C -> %n%f %t activity!"
-bell_msg          "Bell in window %n"
-pow_detach_msg    "BYE"
-vbell_msg         " *beep* "
+activity          '%C -> %n%f %t activity!'
+bell_msg          'Bell in window %n'
+pow_detach_msg    'BYE'
+vbell_msg         ' *beep* '
 
 bind j focus down
 bind k focus up
@@ -29,13 +28,13 @@ bind k focus up
 bind + resize +1
 bind - resize -1
 
-bind " " select 0
+bind ' ' select 0
 
 bind @ windowlist -m
 
-windowlist title  "Num Title"
-windowlist string "%3n %t"
+windowlist title  'Num Title'
+windowlist string '%3n %t'
 
-windowlist title  "Flag Num Title"
-windowlist string "%f%04= %3n %t"
+windowlist title  'Flag Num Title'
+windowlist string '%f%04= %3n %t'
 
