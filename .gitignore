@@ -7,7 +7,9 @@
 .rnd
 .ssh
 .subversion
+.vim/backup
 .vim/bundle
+.vim/undo
 .vim/.netrwhist
 .viminfo
 .zcompdump

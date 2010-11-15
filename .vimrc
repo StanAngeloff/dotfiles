@@ -41,8 +41,9 @@ set nu!    " Enable line numbers
 
 set guioptions-=T  " Hide the top toolbar
 
-set nobackup
-set directory=.,$TEMP
+set backup
+set backupdir=$HOME/.vim/backup
+set directory=$TEMP,.
 
 let mapleader = ","
 
@@ -61,6 +62,7 @@ set visualbell
 set ttyfast
 set laststatus=2
 set undofile
+set undodir=$HOME/.vim/undo
 set formatoptions=qrn1
 
 nnoremap j gj
