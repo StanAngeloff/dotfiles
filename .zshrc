@@ -9,7 +9,7 @@ SAVEHIST=$HISTSIZE
 HISTFILE="$ZSH/history"
 
 if [[ "`uname -n`" == "PSP-STAN" ]]; then
-  PATH=/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Program\ Files\ \(x86\)/Java/jdk1.6.0_20/bin:/cygdrive/c/Program\ Files\ \(x86\)/WinAnt/bin:/cygdrive/c/Program\ Files\ \(x86\)/Git/bin
+  export PATH=/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Program\ Files\ \(x86\)/Java/jdk1.6.0_20/bin:/cygdrive/c/Program\ Files\ \(x86\)/WinAnt/bin:/cygdrive/c/Program\ Files\ \(x86\)/Git/bin:/cygdrive/c/bin/tools/graphviz/2.27/bin
   export NODE_PATH="/home/stan/.coffee_libraries:$NODE_PATH"
 fi
 
@@ -19,6 +19,9 @@ fi
 
 if [ -z "$EDITOR" ]; then
   export EDITOR=vim
+fi
+if [ -z "$PAGER" ]; then
+  export PAGER=less
 fi
 
 export GREP_OPTIONS='--color=auto'
@@ -115,9 +118,9 @@ zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
-if [ -f ~/.ssh/known_hosts ]; then
+if [ -f "$HOME/.ssh/known_hosts" ]; then
   zstyle ':completion:*' hosts $( sed 's/[, ].*$//' $HOME/.ssh/known_hosts )
-  zstyle ':completion:*:*:(ssh|scp):*:*' hosts `sed 's/^\([^ ,]*\).*$/\1/' ~/.ssh/known_hosts`
+  zstyle ':completion:*:*:(ssh|scp):*:*' hosts `sed 's/^\([^ ,]*\).*$/\1/' $HOME/.ssh/known_hosts`
 fi
 
 zstyle ':completion:*' use-cache on
@@ -209,8 +212,43 @@ bindkey ' '       magic-space
 
 bindkey "^[m"     copy-prev-shell-word
 
-source ~/.zsh/jump_shell_driver
-alias ju=jump
+ZSH_BOOKMARKS="$HOME/.zsh/cdbookmarks"
+
+if [[ -f "$ZSH_BOOKMARKS" ]]; then
+  function cdb_edit() {
+    $EDITOR "$ZSH_BOOKMARKS"
+  }
+
+  function cdb() {
+    local index
+    local entry
+    index=0
+    for entry in $(echo "$1" | tr '/' '\n'); do
+      if [[ $index == "0" ]]; then
+        local CD
+        CD=$(egrep "^$entry\\s" "$ZSH_BOOKMARKS" | sed "s#^$entry\\s\+##")
+        if [ -z "$CD" ]; then
+          echo "$0: no such bookmark: $entry"
+          break
+        else
+          cd "$CD"
+        fi
+      else
+        cd "$entry"
+        if [ "$?" -ne "0" ]; then
+          break
+        fi
+      fi
+      let "index++"
+    done
+  }
+
+  function _cdb() {
+    reply=(`cat "$ZSH_BOOKMARKS" | sed -e 's#^\(.*\)\s.*$#\1#g'`)
+  }
+
+  compctl -K _cdb cdb
+fi
 
 function title {
   if [[ "$TERM" == screen* ]]; then

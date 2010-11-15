@@ -17,3 +17,5 @@
 [merge]
 	tool = kdiff3
 
+[alias]
+	graph = !sh -c 'git log --graph --pretty=oneline --abbrev-commit --decorate --color | less -FRS' -

@@ -2,6 +2,7 @@
 .gem
 .gemrc
 .gitk
+.lesshst
 .npmrc
 .rnd
 .ssh
@@ -11,5 +12,6 @@
 .viminfo
 .zcompdump
 .zsh/history
+.zsh/cdbookmarks
 installs
 
