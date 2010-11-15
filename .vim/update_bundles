@@ -15,6 +15,7 @@ git_bundles = [
   "git://github.com/tsaleh/vim-supertab.git",
   "git://github.com/tsaleh/vim-tcomment.git",
   "git://github.com/leshill/vim-json.git",
+  "git://github.com/mexpolk/vim-taglist.git",
 ]
 
 vim_org_scripts = [
@@ -47,4 +48,3 @@ vim_org_scripts.each do |name, script_id, script_type|
     file << open("http://www.vim.org/scripts/download_script.php?src_id=#{script_id}").read
   end
 end
-

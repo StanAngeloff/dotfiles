@@ -68,6 +68,23 @@ set formatoptions=qrn1
 nnoremap j gj
 nnoremap k gk
 
+if has('unix')
+  let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+  let Tlist_Inc_Winwidth = 0
+else
+  let Tlist_Ctags_Cmd = 'c:\\bin\\tools\\ctags\\5.8\\ctags.exe'
+  let Tlist_Inc_Winwidth = 1
+endif
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_Process_File_Always = 1
+
+nmap <silent> <F7> :NERDTreeToggle<CR>
+nmap <silent> <F8> :TlistToggle<CR>
+
+" For PHP code, enable some fancy options
+let php_sql_query=1
+let php_htmlInStrings=1
+
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
