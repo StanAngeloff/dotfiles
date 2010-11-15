@@ -2,33 +2,28 @@
 
 umask 022
 
-ZSH=~/.zsh
+ZSH="$HOME/.zsh"
+HISTFILE="$ZSH/history"
 
 HISTSIZE=1024
 SAVEHIST=$HISTSIZE
-HISTFILE="$ZSH/history"
-
-if [[ "`uname -n`" == "PSP-STAN" ]]; then
-  export PATH=/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Program\ Files\ \(x86\)/Java/jdk1.6.0_20/bin:/cygdrive/c/Program\ Files\ \(x86\)/WinAnt/bin:/cygdrive/c/Program\ Files\ \(x86\)/Git/bin:/cygdrive/c/bin/tools/graphviz/2.27/bin
-  export NODE_PATH="/home/stan/.coffee_libraries:$NODE_PATH"
-fi
 
 if [ -z "$TERM" ] || [[ "$TERM" == "xterm" ]]; then
   export TERM=xterm-256color
 fi
 
-if [ -z "$EDITOR" ]; then
-  export EDITOR=vim
-fi
-if [ -z "$PAGER" ]; then
-  export PAGER=less
-fi
+export EDITOR=vim
+export PAGER=less
+export LANG=en_GB.UTF-8
+export LC_ALL=en_GB.UTF-8
 
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
-export PAGER=less
-export LC_CTYPE=en_US.UTF-8
+if [[ "`uname -n`" == "PSP-STAN" ]]; then
+  export PATH=/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Program\ Files\ \(x86\)/Java/jdk1.6.0_20/bin:/cygdrive/c/Program\ Files\ \(x86\)/WinAnt/bin:/cygdrive/c/Program\ Files\ \(x86\)/Git/bin:/cygdrive/c/bin/tools/graphviz/2.27/bin
+  export NODE_PATH="/home/stan/.coffee_libraries:$NODE_PATH"
+fi
 
 autoload colors; colors;
 
@@ -251,7 +246,7 @@ if [[ -f "$ZSH_BOOKMARKS" ]]; then
 fi
 
 function title {
-  if [[ "$TERM" == screen* ]]; then
+  if [[ "$TERM" == screen* ]] || [[ "$ALTTERM" == screen* ]]; then
     print -nR $'\ek'$*$'\e\\'
   elif [[ "$TERM" == xterm* ]] || [[ "$TERM" == "rxvt" ]]; then
     print -nR $'\033]0;'$*$'\a'

@@ -1,12 +1,16 @@
 altscreen         on
 autodetach        on
+defbce            on
 defnonblock       on
 defsilence        on
 defutf8           on
 startup_message   off
 vbell             off
 
-term              screen-256color
+term              xterm-256color
+attrcolor         b ".I"
+
+setenv            ALTTERM 'screen'
 
 defscrollback     10240
 hardcopydir       $HOME/.screen
