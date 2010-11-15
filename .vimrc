@@ -71,8 +71,8 @@ if has('mouse')
   set mouse=a
 endif
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
+" Switch syntax highlighting on, when the terminal has colors.
+" Switch on highlighting the last used search pattern too.
 if &t_Co > 2 || has("gui_running")
   syntax      on
   colorscheme vividchalk
@@ -80,16 +80,15 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 
   set guifont=Consolas:h13:cDEFAULT
+  
+  set guioptions-=t  " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
+  set guioptions+=b  " Enable the horizontal scrollbar
 
-  " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-  let &guioptions = substitute(&guioptions, "t", "", "g")
-
-  " Maximize on start-up
-  au GUIEnter * simalt ~x
+  au GUIEnter * simalt ~x  " Maximize on start-up
 endif
 
 " Mode-dependent cursor in MinTTY
-if v:progname =~? "vim"
+if &term =~ "xterm\\|xterm-256color"
   let &t_ti.="\e[1 q"
   let &t_SI.="\e[5 q"
   let &t_EI.="\e[1 q"
