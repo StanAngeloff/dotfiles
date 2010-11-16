@@ -83,6 +83,8 @@ let Tlist_GainFocus_On_ToggleOpen=1
 let Tlist_Auto_Highlight_Tag=1
 let Tlist_Exit_OnlyWindow=1
 
+let tlist_php_settings='php;c:class;d:constant;f:function'
+
 nmap <silent> <F11> :TlistToggle<CR>
 nmap <silent> <F12> :NERDTreeToggle<CR>
 
