@@ -120,9 +120,6 @@ endif
 if &t_Co > 2 || has("gui_running")
   syntax      on
   colorscheme zend55
-  if ! has('unix')
-    set cursorline!
-  endif
 
   set hlsearch
 
