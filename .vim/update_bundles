@@ -22,6 +22,7 @@ git_bundles = [
 vim_org_scripts = [
   ["IndexedSearch", "7062",  "plugin"],
   ["gist",          "12732", "plugin"],
+  ["grep",          "7645",  "plugin"],
 ]
 
 vim_org_archives = [

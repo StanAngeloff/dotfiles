@@ -72,6 +72,13 @@ set formatoptions=qrn1
 nnoremap j gj
 nnoremap k gk
 
+let Tlist_Process_File_Always=1
+let Tlist_GainFocus_On_ToggleOpen=1
+let Tlist_Auto_Highlight_Tag=1
+let Tlist_Exit_OnlyWindow=1
+
+let tlist_php_settings='php;c:class;d:constant;f:function'
+
 if has('unix')
   let Tlist_Ctags_Cmd='/usr/bin/ctags'
   let Tlist_Inc_Winwidth=0
@@ -79,12 +86,23 @@ else
   let Tlist_Ctags_Cmd='c:\\bin\\tools\\ctags\\5.8\\ctags.exe'
   let Tlist_Inc_Winwidth=1
 endif
-let Tlist_Process_File_Always=1
-let Tlist_GainFocus_On_ToggleOpen=1
-let Tlist_Auto_Highlight_Tag=1
-let Tlist_Exit_OnlyWindow=1
 
-let tlist_php_settings='php;c:class;d:constant;f:function'
+let Grep_Skip_Dirs = 'RCS CVS SCCS .git .svn'
+
+if ! has('unix')
+  let Grep_Path = 'c:\bin\cygwin\bin\grep.exe'
+  let Fgrep_Path = 'c:\bin\cygwin\bin\fgrep.exe'
+  let Egrep_Path = 'c:\bin\cygwin\bin\egrep.exe'
+  let Agrep_Path = 'c:\bin\cygwin\bin\agrep.exe'
+  let Grep_Find_Path = 'c:\bin\cygwin\bin\find.exe'
+  let Grep_Xargs_Path = 'c:\bin\cygwin\bin\xargs.exe'
+  let Grep_Cygwin_Find = 1 
+  let Grep_Shell_Escape_Char = '\'
+  let Grep_Shell_Quote_Char = "'"
+  let Grep_Null_Device = '/dev/null'
+endif
+
+nmap <silent> <F3>  :Grep<CR>
 
 nmap <silent> <F11> :TlistToggle<CR>
 nmap <silent> <F12> :NERDTreeToggle<CR>
@@ -109,7 +127,7 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 
   set guifont=Consolas:h13:cDEFAULT
-  
+
   set guioptions-=t  " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
   set guioptions+=b  " Enable the horizontal scrollbar
 
