@@ -23,8 +23,13 @@ vim_org_scripts = [
   ["gist",          "12732", "plugin"],
 ]
 
+vim_org_archives = [
+  ["php", "http://www.vim.org/scripts/download_script.php?src_id=12772", "syntax"],
+]
+
 require 'fileutils'
 require 'open-uri'
+require 'tempfile'
 
 bundles_dir = File.join(File.dirname(__FILE__), "bundle")
 
@@ -47,4 +52,16 @@ vim_org_scripts.each do |name, script_id, script_type|
   File.open(local_file, "w") do |file|
     file << open("http://www.vim.org/scripts/download_script.php?src_id=#{script_id}").read
   end
+end
+
+vim_org_archives.each do |name, download_url, script_type|
+  puts "  Downloading #{name}"
+  download_file = Tempfile.new(name)
+  File.open(download_file.path, "w") do |file|
+    file << open(download_url).read
+  end
+  local_file = File.join(name, script_type)
+  FileUtils.mkdir_p(local_file)
+  `tar zxf "#{download_file.path}" -C "#{local_file}"`
+  File.delete(download_file.path)
 end
