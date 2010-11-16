@@ -34,7 +34,7 @@ set expandtab
 set nowrap
 set autoindent
 
-set spell  " Turn on spell check
+set nospell  " Turn off spell check by default
 
 set scrolloff=3
 set nu!    " Enable line numbers
@@ -45,7 +45,7 @@ set backup
 set backupdir=$HOME/.vim/backup
 set directory=$TEMP,.
 
-let mapleader = ","
+let mapleader=","
 
 nnoremap / /\v
 vnoremap / /\v
@@ -54,6 +54,9 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>q gqip
 nnoremap <leader>v V`]
+
+" Toggle spell-checking
+map <silent> <F1> :set nospell!<CR>:set nospell?<CR>
 
 " EXPERIMENTAL
 set wildmenu
@@ -69,17 +72,19 @@ nnoremap j gj
 nnoremap k gk
 
 if has('unix')
-  let Tlist_Ctags_Cmd = '/usr/bin/ctags'
-  let Tlist_Inc_Winwidth = 0
+  let Tlist_Ctags_Cmd='/usr/bin/ctags'
+  let Tlist_Inc_Winwidth=0
 else
-  let Tlist_Ctags_Cmd = 'c:\\bin\\tools\\ctags\\5.8\\ctags.exe'
-  let Tlist_Inc_Winwidth = 1
+  let Tlist_Ctags_Cmd='c:\\bin\\tools\\ctags\\5.8\\ctags.exe'
+  let Tlist_Inc_Winwidth=1
 endif
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_Process_File_Always = 1
+let Tlist_Process_File_Always=1
+let Tlist_GainFocus_On_ToggleOpen=1
+let Tlist_Auto_Highlight_Tag=1
+let Tlist_Exit_OnlyWindow=1
 
-nmap <silent> <F7> :NERDTreeToggle<CR>
-nmap <silent> <F8> :TlistToggle<CR>
+nmap <silent> <F11> :TlistToggle<CR>
+nmap <silent> <F12> :NERDTreeToggle<CR>
 
 " For PHP code, enable some fancy options
 let php_sql_query=1
