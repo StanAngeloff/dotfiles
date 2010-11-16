@@ -1,14 +1,15 @@
-" Windows compatibility
-set runtimepath+=~/.vim
-set viminfo+=n~/.viminfo
-
 " Make vim behave in a more useful way (the default) than the vi-compatible manner
 set nocompatible
+
+set runtimepath+=~/.vim
 
 " Pathogen is a simple library for manipulating comma delimited path options
 filetype off
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+
+" Windows compatibility
+set viminfo+=n~/.viminfo
 
 " Enable 256-color terminal
 set t_Co=256
@@ -89,7 +90,6 @@ nmap <silent> <F11> :TlistToggle<CR>
 nmap <silent> <F12> :NERDTreeToggle<CR>
 
 " For PHP code, enable some fancy options
-let php_sql_query=1
 let php_htmlInStrings=1
 
 " In many terminal emulators the mouse works just fine, thus enable it.
@@ -101,7 +101,10 @@ endif
 " Switch on highlighting the last used search pattern too.
 if &t_Co > 2 || has("gui_running")
   syntax      on
-  colorscheme vividchalk
+  colorscheme zend55
+  if ! has('unix')
+    set cursorline!
+  endif
 
   set hlsearch
 

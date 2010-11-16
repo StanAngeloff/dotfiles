@@ -1,7 +1,16 @@
 #!/bin/bash
 
-find /cygdrive/c/Users/Stan\ Angeloff/.vim/* -maxdepth 0 -type d -exec rm -Rfv {} \;
-find /home/stan/.vim/* -maxdepth 0 -type d -exec cp -Rfv {} /cygdrive/c/Users/Stan\ Angeloff/.vim/ \;
+for vim_path in 'autoload' 'bundle'; do
+  if [ -d "/cygdrive/c/Users/Stan Angeloff/.vim/$vim_path" ]; then
+    rm -Rf "/cygdrive/c/Users/Stan Angeloff/.vim/$vim_path"
+  fi
+  mkdir -p "/cygdrive/c/Users/Stan Angeloff/.vim/$vim_path"
+  cp -Rf "/home/stan/.vim/$vim_path" "/cygdrive/c/Users/Stan Angeloff/.vim/"
+done
 
-cp -fv /home/stan/.vimrc /cygdrive/c/Users/Stan\ Angeloff/
+for vim_path in 'backup' 'undo'; do
+  mkdir -p "/cygdrive/c/Users/Stan Angeloff/.vim/$vim_path"
+done
+
+cp -f /home/stan/.vimrc /cygdrive/c/Users/Stan\ Angeloff/
 
