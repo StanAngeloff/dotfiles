@@ -8,6 +8,7 @@ startup_message   off
 vbell             off
 
 term              xterm-256color
+termcapinfo       xterm* ti@:te@
 attrcolor         b ".I"
 
 setenv            ALTTERM 'screen'
