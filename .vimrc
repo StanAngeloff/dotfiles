@@ -26,7 +26,6 @@ set showmode
 set incsearch   " do incremental searching
 set ignorecase
 set smartcase
-set showmatch
 
 set backspace=indent,eol,start
 set tabstop=4
@@ -106,6 +105,14 @@ nmap <silent> <F3>  :Grep<CR>
 
 nmap <silent> <F11> :TlistToggle<CR>
 nmap <silent> <F12> :NERDTreeToggle<CR>
+
+" Tab navigation like Firefox
+nmap <C-S-tab> :tabprevious<CR>
+nmap <C-tab>   :tabnext<CR>
+imap <C-S-tab> <Esc>:tabprevious<CR>i
+imap <C-tab>   <Esc>:tabnext<CR>i
+map  <C-S-tab> :tabprevious<CR>
+map  <C-tab>   :tabnext<CR>
 
 " For PHP code, enable some fancy options
 let php_htmlInStrings=1
