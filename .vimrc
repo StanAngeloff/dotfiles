@@ -114,6 +114,9 @@ imap <C-tab>   <Esc>:tabnext<CR>i
 map  <C-S-tab> :tabprevious<CR>
 map  <C-tab>   :tabnext<CR>
 
+" Exiting INSERT mode
+inoremap jj <Esc>
+
 " For PHP code, enable some fancy options
 let php_htmlInStrings=1
 
@@ -134,6 +137,9 @@ if &t_Co > 2 || has("gui_running")
 
   set guioptions-=t  " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
   set guioptions+=b  " Enable the horizontal scrollbar
+
+  set guioptions-=m  " Hide the menubar and use F10 to toggle it on/off
+  nnoremap <F10> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 
   au GUIEnter * simalt ~x  " Maximize on start-up
 endif
