@@ -106,16 +106,20 @@ nmap <silent> <F3>  :Grep<CR>
 nmap <silent> <F11> :TlistToggle<CR>
 nmap <silent> <F12> :NERDTreeToggle<CR>
 
-" Tab navigation like Firefox
-nmap <C-S-tab> :tabprevious<CR>
-nmap <C-tab>   :tabnext<CR>
-imap <C-S-tab> <Esc>:tabprevious<CR>i
-imap <C-tab>   <Esc>:tabnext<CR>i
-map  <C-S-tab> :tabprevious<CR>
-map  <C-tab>   :tabnext<CR>
+" Tab handling and Firefox-like navigation
+nmap <C-S-tab>  :tabprevious<CR>
+nmap <C-tab>    :tabnext<CR>
+imap <C-S-tab>  <Esc>:tabprevious<CR>i
+imap <C-tab>    <Esc>:tabnext<CR>i
+map  <C-S-tab>  :tabprevious<CR>
+map  <C-tab>    :tabnext<CR>
 
-" Exiting INSERT mode
-inoremap jj <Esc>
+map  <leader>tn :tabnew %<cr>
+map  <leader>tc :tabclose<cr>
+map  <leader>tm :tabmove
+
+" Exit INSERT mode
+imap jj <Esc>
 
 " HARDCORE
 inoremap  <Up>     <NOP>
