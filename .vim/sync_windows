@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for vim_path in 'autoload' 'bundle' 'ftplugin'; do
+for vim_path in 'after' 'autoload' 'bundle'; do
   if [ -d "/cygdrive/c/Users/Stan Angeloff/.vim/$vim_path" ]; then
     rm -Rf "/cygdrive/c/Users/Stan Angeloff/.vim/$vim_path"
   fi
