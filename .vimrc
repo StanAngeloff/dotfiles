@@ -114,7 +114,7 @@ imap <C-tab>    <Esc>:tabnext<CR>i
 map  <C-S-tab>  :tabprevious<CR>
 map  <C-tab>    :tabnext<CR>
 
-map  <leader>tn :tabnew %<cr>
+map  <leader>tn :tabnew<cr>
 map  <leader>tc :tabclose<cr>
 map  <leader>tm :tabmove
 
