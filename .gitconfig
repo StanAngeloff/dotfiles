@@ -10,6 +10,15 @@
 	editor = gvim
 	autocrlf = false
     filemode = false
+[color]
+    branch = always
+    diff = always
+    grep = always
+    interactive = always
+    pager = true
+    showbranch = always
+    status = always
+    ui = always
 [github]
 	user = StanAngeloff
 [diff]
@@ -18,4 +27,4 @@
 	tool = kdiff3
 
 [alias]
-	graph = !sh -c 'git log --graph --pretty=oneline --abbrev-commit --decorate --color | less -FRS' -
+	graph = log --graph --pretty=oneline --abbrev-commit --decorate
