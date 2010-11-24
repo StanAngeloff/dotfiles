@@ -16,8 +16,7 @@ set t_Co=256
 
 " Make sure we use UTF-8 and Unix line-endings
 set encoding=utf-8
-set enc=utf-8
-set ff=unix
+set fileformats=unix,mac,dos
 
 set history=32  " keep ~500 lines of command line history
 set ruler       " show the cursor position all the time
