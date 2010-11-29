@@ -2,7 +2,7 @@ altscreen         on
 autodetach        on
 defbce            on
 defnonblock       on
-defsilence        on
+defsilence        off
 defutf8           on
 startup_message   off
 vbell             off
