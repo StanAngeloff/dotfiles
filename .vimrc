@@ -109,12 +109,16 @@ nmap <silent> <F11> :TlistToggle<CR>
 nmap <silent> <F12> :NERDTreeToggle<CR>
 
 " Tab handling and Firefox-like navigation
-nmap <C-S-tab>  :tabprevious<CR>
-nmap <C-tab>    :tabnext<CR>
-imap <C-S-tab>  <Esc>:tabprevious<CR>i
-imap <C-tab>    <Esc>:tabnext<CR>i
-map  <C-S-tab>  :tabprevious<CR>
-map  <C-tab>    :tabnext<CR>
+nmap <C-tab>   :tabnext<CR>
+map  <C-tab>   :tabnext<CR>
+nmap <C-S-tab> :tabprevious<CR>
+map  <C-S-tab> :tabprevious<CR>
+
+" Terminal handling of [Ctrl+][Shift+]Tab
+nmap <Esc>[1;5I :tabnext<CR>
+map  <Esc>[1;5I :tabnext<CR>
+nmap <Esc>[1;6I :tabprevious<CR>
+map  <Esc>[1;6I :tabprevious<CR>
 
 nmap <leader>tn :tabnew<CR>
 nmap <leader>tc :tabclose<CR>
