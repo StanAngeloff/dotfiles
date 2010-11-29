@@ -103,6 +103,10 @@ nmap <leader>v V`]
 " Toggle spell-checking
 map <silent> <F1> :set nospell!<CR>:set nospell?<CR>
 
+nmap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
 nmap <silent> <F3>  :Grep<CR>
 
 nmap <silent> <F11> :TlistToggle<CR>
