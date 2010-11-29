@@ -27,8 +27,8 @@ set ignorecase
 set smartcase
 
 set backspace=indent,eol,start
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set nowrap
 set autoindent
@@ -43,6 +43,8 @@ set guioptions-=T  " Hide the top toolbar
 set backup
 set backupdir=$HOME/.vim/backup
 set directory=$TEMP,.
+set undofile
+set undodir=$HOME/.vim/undo
 
 let mapleader="\\"
 
@@ -51,8 +53,6 @@ set wildmode=list:longest,full
 set visualbell
 set ttyfast
 set laststatus=2
-set undofile
-set undodir=$HOME/.vim/undo
 set formatoptions=qrn1
 
 " For PHP code, enable some fancy options
@@ -84,6 +84,8 @@ else
   let Grep_Shell_Escape_Char = '\'
   let Grep_Shell_Quote_Char = "'"
   let Grep_Null_Device = '/dev/null'
+
+  let g:ackprg='c:\bin\cygwin\bin\perl.exe c:\bin\cygwin\usr\local\bin\ack -H --nocolor --nogroup --column'
 endif
 
 nmap j gj
