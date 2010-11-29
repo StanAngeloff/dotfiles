@@ -22,7 +22,7 @@ export GREP_COLOR='1;32'
 
 if [[ "`uname -n`" == "PSP-STAN" ]]; then
   export PATH=/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Program\ Files\ \(x86\)/Java/jdk1.6.0_20/bin:/cygdrive/c/Program\ Files\ \(x86\)/WinAnt/bin:/cygdrive/c/Program\ Files\ \(x86\)/Git/bin:/cygdrive/c/bin/tools/graphviz/2.27/bin
-  export NODE_PATH="/home/stan/.coffee_libraries:$NODE_PATH"
+  export NODE_PATH="/home/stan/.coffee_libraries:/usr/local/lib/node:$NODE_PATH"
 fi
 
 autoload colors; colors;
