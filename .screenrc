@@ -17,6 +17,7 @@ defscrollback     10240
 hardcopydir       $HOME/.screen
 hardcopy_append   on
 shell             -/bin/zsh
+silence           off
 silencewait       15
 
 hardstatus alwayslastline '%{gk}(%H)%{w}  %{y}[%= %?%-Lw%?%{+u}%n*%f %t%?(%u)%?%{-u}%?%+Lw%? %=]%{w}  %l  %c'
