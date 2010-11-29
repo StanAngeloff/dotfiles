@@ -34,3 +34,4 @@ ForegroundColour=192,192,192
 BackgroundColour=0,0,0
 CursorColour=255,255,255
 BoldAsColour=0
+SwitchShortcuts=0
