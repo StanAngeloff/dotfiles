@@ -38,6 +38,8 @@ bind ' ' select 0
 
 bind @ windowlist -m
 
+bindkey "[Z" next
+
 windowlist title  'Num Title'
 windowlist string '%3n %t'
 
