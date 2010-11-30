@@ -9,6 +9,7 @@ git_bundles = [
   "git://github.com/msanders/snipmate.vim.git",
   "git://github.com/Raimondi/delimitMate.git",
   "git://github.com/scrooloose/nerdtree.git",
+  "git://github.com/StanAngeloff/vim-zend55.git",
   "git://github.com/tpope/vim-fugitive.git",
   "git://github.com/tpope/vim-git.git",
   "git://github.com/tpope/vim-haml.git",
@@ -19,7 +20,6 @@ git_bundles = [
   "git://github.com/tsaleh/vim-align.git",
   "git://github.com/tsaleh/vim-supertab.git",
   "git://github.com/tsaleh/vim-tcomment.git",
-  "git://github.com/StanAngeloff/vim-zend55.git",
 ]
 
 vim_org_scripts = [
@@ -32,12 +32,15 @@ vim_org_archives = [
   ["php", "http://www.vim.org/scripts/download_script.php?src_id=12772", "syntax"],
 ]
 
+zip_archives = [
+  ["vim-session", "http://peterodding.com/code/vim/downloads/session"],
+]
+
 require 'fileutils'
 require 'open-uri'
 require 'tempfile'
 
 bundles_dir = File.join(File.dirname(__FILE__), "bundle")
-
 FileUtils.cd(bundles_dir)
 
 puts "Trashing everything (lookout!)"
@@ -68,5 +71,16 @@ vim_org_archives.each do |name, download_url, script_type|
   local_file = File.join(name, script_type)
   FileUtils.mkdir_p(local_file)
   `tar zxf "#{download_file.path}" -C "#{local_file}"`
+  File.delete(download_file.path)
+end
+
+zip_archives.each do |name, download_url|
+  puts "  Downloading #{name}"
+  download_file = Tempfile.new(name)
+  File.open(download_file.path, "w") do |file|
+    file << open(download_url).read
+  end
+  FileUtils.mkdir_p(name)
+  `unzip "#{download_file.path}" -d "#{name}"`
   File.delete(download_file.path)
 end

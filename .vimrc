@@ -60,8 +60,12 @@ set formatoptions=qrn1
 
 " Session Handling
 set sessionoptions=blank,buffers,curdir,folds,tabpages,slash,unix
-map <leader>ss :mksession! ~/.vim/.session<CR>
-map <leader>sr :source     ~/.vim/.session<CR>
+
+let g:session_autosave=0
+let g:session_autoload=0
+
+map <leader>ss :SaveSession user<CR>
+map <leader>sr :OpenSession user<CR>
 
 " For PHP code, enable some fancy options
 let php_htmlInStrings=1
