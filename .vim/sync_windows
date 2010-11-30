@@ -8,6 +8,8 @@ for vim_path in 'autoload' 'bundle'; do
   cp -Rf "/home/stan/.vim/$vim_path" "/cygdrive/c/Users/Stan Angeloff/.vim/"
 done
 
+rm -Rf /cygdrive/c/Users/Stan Angeloff/.vim/bundle/commant-t
+
 for vim_path in 'backup' 'undo'; do
   mkdir -p "/cygdrive/c/Users/Stan Angeloff/.vim/$vim_path"
 done

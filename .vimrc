@@ -64,8 +64,8 @@ set sessionoptions=blank,buffers,curdir,folds,tabpages,slash,unix
 let g:session_autosave=0
 let g:session_autoload=0
 
-map <leader>ss :SaveSession user<CR>
-map <leader>sr :OpenSession user<CR>
+" Ignore rules for Vim and plug-ins, e.g., Command+T
+set wildignore+=.git,.svn,CVS,.sass-cache
 
 " For PHP code, enable some fancy options
 let php_htmlInStrings=1
@@ -103,6 +103,9 @@ else
   let g:ackprg='c:\bin\cygwin\bin\perl.exe c:\bin\cygwin\usr\local\bin\ack -H --nocolor --nogroup --column'
 endif
 
+let g:CommandTMaxFiles=64000
+let g:CommandTMaxDepth=24
+
 nmap j gj
 nmap k gk
 
@@ -110,6 +113,11 @@ map  / /\v
 nmap / /\v
 vmap / /\v
 nmap <leader><space> :noh<cr>
+
+map <leader>ss :SaveSession user<CR>
+map <leader>sr :OpenSession user<CR>
+
+nmap <silent> <leader>o :CommandT<CR>
 
 nmap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nmap <leader>q gqip
