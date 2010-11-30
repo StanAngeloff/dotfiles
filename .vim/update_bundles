@@ -7,7 +7,6 @@ git_bundles = [
   "git://github.com/leshill/vim-json.git",
   "git://github.com/mileszs/ack.vim.git",
   "git://github.com/msanders/snipmate.vim.git",
-  "git://github.com/Raimondi/delimitMate.git",
   "git://github.com/scrooloose/nerdtree.git",
   "git://github.com/StanAngeloff/vim-zend55.git",
   "git://github.com/tpope/vim-fugitive.git",
