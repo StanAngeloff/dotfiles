@@ -1,4 +1,5 @@
 *.swp
+.aliases
 .cpan
 .gem
 .gemrc
@@ -17,4 +18,3 @@
 .zsh/history
 .zsh/cdbookmarks
 installs
-
