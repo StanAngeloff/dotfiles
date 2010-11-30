@@ -9,10 +9,14 @@
 .rnd
 .ssh
 .subversion
-.vim/backup
-.vim/bundle
-.vim/undo
+.vim/backup/*
+!.vim/backup/.gitempty
+.vim/bundle/*
+!.vim/bundle/.gitempty
+.vim/undo/*
+!.vim/undo/.gitempty
 .vim/.netrwhist
+.vim/.session
 .viminfo
 .zcompdump
 .zsh/history
