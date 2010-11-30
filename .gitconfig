@@ -6,25 +6,26 @@
 	encoding = utf-8
 [user]
 	name = Stan Angeloff
+	email = <email>
 [core]
-	editor = gvim
+	editor = vim
 	autocrlf = false
-    filemode = false
+	filemode = false
 [color]
-    branch = always
-    diff = always
-    grep = always
-    interactive = always
-    pager = true
-    showbranch = always
-    status = always
-    ui = always
+	branch = always
+	diff = always
+	grep = always
+	interactive = always
+	pager = true
+	showbranch = always
+	status = always
+	ui = always
 [github]
 	user = StanAngeloff
+	token = <token>
 [diff]
 	tool = kdiff3
 [merge]
 	tool = kdiff3
-
 [alias]
 	graph = log --graph --pretty=oneline --abbrev-commit --decorate

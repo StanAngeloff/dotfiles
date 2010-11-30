@@ -30,7 +30,6 @@ autoload colors; colors;
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export PROMPT="%{$fg[green]%}(%n)%{$reset_color%} %{$fg[yellow]%}[%1~]%{$reset_color%} %# "
 
-
 alias '?'='screen -ls'
 alias '!'='screen -dR'
 
