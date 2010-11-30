@@ -218,4 +218,14 @@ if has('autocmd')
 
   " Turn off beep sounds
   autocmd VimEnter * set vb t_vb=
+
+  " Filetype specific settings
+  autocmd FileType css    set shiftwidth=2
+  autocmd FileType css    set tabstop=2
+
+  autocmd FileType scss   set shiftwidth=2
+  autocmd FileType scss   set tabstop=2
+
+  autocmd FileType coffee set shiftwidth=2
+  autocmd FileType coffee set tabstop=2
 endif
