@@ -32,7 +32,7 @@ export PROMPT="%{$fg[green]%}(%n)%{$reset_color%} %{$fg[yellow]%}[%1~]%{$reset_c
 
 
 alias '?'='screen -ls'
-alias '!'='screen -r'
+alias '!'='screen -dR'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
