@@ -78,7 +78,7 @@ let Tlist_Exit_OnlyWindow=1
 
 let tlist_php_settings='php;c:class;d:constant;f:function'
 
-let Grep_Skip_Dirs = 'RCS CVS SCCS .git .svn'
+let Grep_Skip_Dirs = '.git .svn CVS .sass-cache'
 
 if has('unix')
   let Tlist_Ctags_Cmd='/usr/bin/ctags'
@@ -157,6 +157,9 @@ if has('unix')
 else
   imap <leader>iu <C-R>=substitute(system('c:\bin\cygwin\bin\bash.exe --norc -c "date +%s"'), '\n', '', 'g')<CR>
 endif
+
+" Abbreviations
+iabbrev </ </<C-X><C-O>
 
 " Exit INSERT mode
 imap jj <Esc>
