@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for vim_path in 'after' 'autoload' 'bundle'; do
+for vim_path in 'autoload' 'bundle'; do
   if [ -d "/cygdrive/c/Users/Stan Angeloff/.vim/$vim_path" ]; then
     rm -Rf "/cygdrive/c/Users/Stan Angeloff/.vim/$vim_path"
   fi
@@ -13,4 +13,3 @@ for vim_path in 'backup' 'undo'; do
 done
 
 cp -f /home/stan/.vimrc /cygdrive/c/Users/Stan\ Angeloff/
-
