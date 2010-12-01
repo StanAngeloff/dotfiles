@@ -39,7 +39,7 @@ set nospell        " Turn off spell checking by default
 set scrolloff=3
 set nu!            " Enable line numbers
 
-set guioptions-=T  " Hide the top toolbar
+set guioptions=grL " Grey menu items, RHS scrollbar and LHS if split
 
 " Keep backups of files in case we mess up
 set backup
@@ -63,6 +63,7 @@ set sessionoptions=blank,buffers,curdir,folds,tabpages,slash,unix
 
 let g:session_autosave=0
 let g:session_autoload=0
+let g:session_directory='~/.vim/sessions'
 
 " Ignore rules for Vim and plug-ins, e.g., Command+T
 set wildignore+=.git,.svn,CVS,.sass-cache
@@ -200,10 +201,7 @@ if &t_Co > 2 || has("gui_running")
 
   set guifont=Consolas:h13:cDEFAULT
 
-  set guioptions-=t  " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-  set guioptions+=b  " Enable the horizontal scrollbar
-
-  set guioptions-=m  " Hide the menubar and use F10 to toggle it on/off
+  " Toggle menubar visibility
   nmap <F10> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 
   au GUIEnter * simalt ~x  " Maximize on start-up
