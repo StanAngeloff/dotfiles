@@ -75,6 +75,7 @@ let g:shell_mappings_enabled=0
 
 " Easytags
 let g:easytags_file='~/.vim/tags'
+let g:easytags_on_cursorhold=0  " Wastes too much CPU
 set tags=./.tags;,~/.vim/tags
 
 " Taglist options
