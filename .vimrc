@@ -70,8 +70,15 @@ set wildignore+=.git,.svn,CVS,.sass-cache
 " For PHP code, enable some fancy options
 let php_htmlInStrings=1
 
+" Disable <F11> mappings in shell.vim
+let g:shell_mappings_enabled=0
+
+" Easytags
+let g:easytags_file='~/.vim/tags'
+set tags=./.tags;,~/.vim/tags
+
 " Taglist options
-let Tlist_Process_File_Always=1
+let Tlist_Process_File_Always=0
 let Tlist_GainFocus_On_ToggleOpen=1
 let Tlist_Auto_Highlight_Tag=1
 let Tlist_Exit_OnlyWindow=1
@@ -81,9 +88,11 @@ let tlist_php_settings='php;c:class;d:constant;f:function'
 let Grep_Skip_Dirs = '.git .svn CVS .sass-cache'
 
 if has('unix')
+  let g:easytags_cmd='/usr/bin/ctags'
   let Tlist_Ctags_Cmd='/usr/bin/ctags'
   let Tlist_Inc_Winwidth=0
 else
+  let g:easytags_cmd='c:\\bin\\tools\\ctags\\5.8\\ctags.exe'
   let Tlist_Ctags_Cmd='c:\\bin\\tools\\ctags\\5.8\\ctags.exe'
   let Tlist_Inc_Winwidth=1
 

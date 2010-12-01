@@ -13,10 +13,12 @@
 !.vim/backup/.gitempty
 .vim/bundle/*
 !.vim/bundle/.gitempty
-.vim/sessions
+.vim/sessions/*
+!.vim/sessions/.gitempty
 .vim/undo/*
 !.vim/undo/.gitempty
 .vim/.netrwhist
+.vim/tags
 .viminfo
 .zcompdump
 .zsh/history

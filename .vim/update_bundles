@@ -34,6 +34,8 @@ vim_org_archives = [
 
 zip_archives = [
   ["vim-session", "http://peterodding.com/code/vim/downloads/session"],
+  ["shell",       "http://peterodding.com/code/vim/downloads/shell"],
+  ["shell",       "http://peterodding.com/code/vim/downloads/easytags"],
 ]
 
 require 'fileutils'
@@ -84,6 +86,6 @@ zip_archives.each do |name, download_url|
     file << open(download_url).read
   end
   FileUtils.mkdir_p(name)
-  `unzip "#{download_file.path}" -d "#{name}"`
+  `unzip -o "#{download_file.path}" -d "#{name}"`
   File.delete(download_file.path)
 end
