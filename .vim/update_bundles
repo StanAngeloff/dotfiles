@@ -34,8 +34,7 @@ vim_org_archives = [
 
 zip_archives = [
   ["vim-session", "http://peterodding.com/code/vim/downloads/session"],
-  ["shell",       "http://peterodding.com/code/vim/downloads/shell"],
-  ["shell",       "http://peterodding.com/code/vim/downloads/easytags"],
+  ["easytags",    "http://peterodding.com/code/vim/downloads/easytags"],
 ]
 
 require 'fileutils'

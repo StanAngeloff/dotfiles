@@ -10,7 +10,7 @@ done
 
 rm -Rf /cygdrive/c/Users/Stan Angeloff/.vim/bundle/commant-t
 
-for vim_path in 'backup' 'undo'; do
+for vim_path in 'backup' 'sessions' 'undo'; do
   mkdir -p "/cygdrive/c/Users/Stan Angeloff/.vim/$vim_path"
 done
 

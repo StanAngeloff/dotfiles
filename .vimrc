@@ -92,8 +92,8 @@ if has('unix')
   let Tlist_Ctags_Cmd='/usr/bin/ctags'
   let Tlist_Inc_Winwidth=0
 else
-  let g:easytags_cmd='c:\\bin\\tools\\ctags\\5.8\\ctags.exe'
-  let Tlist_Ctags_Cmd='c:\\bin\\tools\\ctags\\5.8\\ctags.exe'
+  let g:easytags_cmd='c:\bin\tools\ctags\5.8\ctags.exe'
+  let Tlist_Ctags_Cmd='c:\bin\tools\ctags\5.8\ctags.exe'
   let Tlist_Inc_Winwidth=1
 
   " On Windows we map to the Cygwin utilities"
