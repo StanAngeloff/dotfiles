@@ -19,7 +19,10 @@ set t_Co=256
 set encoding=utf-8
 set fileformats=unix,mac,dos
 
-set history=32
+set history=1024
+set undolevels=2048
+set hidden         " Don't dispose buffers, hide them
+
 set ruler          " Show the cursor position all the time
 set showcmd        " Display incomplete commands
 set showmode
@@ -39,6 +42,15 @@ set nospell        " Turn off spell checking by default
 set scrolloff=3
 set nu!            " Enable line numbers
 
+set ttyfast
+set lazyredraw     " Do not redraw while running macros (much faster)
+
+set wildmenu
+set wildmode=list:longest,full
+set visualbell
+set laststatus=2
+set formatoptions=qrn1
+
 set guioptions=grL " Grey menu items, RHS scrollbar and LHS if split
 
 " Keep backups of files in case we mess up
@@ -50,13 +62,6 @@ set undofile
 set undodir=$HOME/.vim/undo
 
 let mapleader="\\"
-
-set wildmenu
-set wildmode=list:longest,full
-set visualbell
-set ttyfast
-set laststatus=2
-set formatoptions=qrn1
 
 " Session Handling
 set sessionoptions=blank,buffers,curdir,folds,tabpages,slash,unix
@@ -123,14 +128,16 @@ nmap k gk
 map  / /\v
 nmap / /\v
 vmap / /\v
-nmap <leader><space> :noh<cr>
+nmap <silent> <leader><Space> :noh<CR>
 
 map <leader>ss :SaveSession user<CR>
 map <leader>sr :OpenSession user<CR>
 
 nmap <silent> <leader>o :CommandT<CR>
 
-nmap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+" Clean trailing whitespace
+nmap <silent> <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
+
 nmap <leader>q gqip
 nmap <leader>v V`]
 
