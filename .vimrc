@@ -252,10 +252,13 @@ if has('autocmd')
   " Filetype specific settings
   autocmd FileType css    set shiftwidth=2
   autocmd FileType css    set tabstop=2
+  autocmd FileType css    set expandtab
 
   autocmd FileType scss   set shiftwidth=2
   autocmd FileType scss   set tabstop=2
+  autocmd FileType scss   set expandtab
 
   autocmd FileType coffee set shiftwidth=2
   autocmd FileType coffee set tabstop=2
+  autocmd FileType coffee set expandtab
 endif
