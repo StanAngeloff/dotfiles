@@ -53,6 +53,8 @@ set formatoptions=qrn1
 
 set guioptions=grL " Grey menu items, RHS scrollbar and LHS if split
 
+set colorcolumn=78
+
 " Keep backups of files in case we mess up
 set backup
 set backupdir=$HOME/.vim/backup
