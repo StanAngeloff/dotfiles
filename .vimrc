@@ -36,6 +36,7 @@ set shiftwidth=4
 set expandtab
 set nowrap
 set autoindent
+set clipboard+=unnamed
 
 set nospell        " Turn off spell checking by default
 
