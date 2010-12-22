@@ -7,6 +7,7 @@ git_bundles = [
   "git://github.com/leshill/vim-json.git",
   "git://github.com/mileszs/ack.vim.git",
   "git://github.com/msanders/snipmate.vim.git",
+  "git://github.com/samsonw/vim-task.git",
   "git://github.com/scrooloose/nerdtree.git",
   "git://github.com/StanAngeloff/vim-zend55.git",
   "git://github.com/tpope/vim-fugitive.git",
@@ -50,7 +51,7 @@ git_bundles.each do |url|
   if File.exists?(dir)
     puts "  Updating #{url} in #{dir}"
     FileUtils.cd(dir)
-    `git pull`
+    `git pull --force --verbose`
     FileUtils.cd(bundles_dir)
   else
     puts "  Unpacking #{url} into #{dir}"

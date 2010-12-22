@@ -151,6 +151,10 @@ map <silent> <F1> :set nospell!<CR>:set nospell?<CR>
 nmap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 
+" Toggle task status (vim-task)
+imap <silent> <buffer> <leader>m <ESC>:call Toggle_task_status()<CR>i
+nmap <silent> <buffer> <leader>m      :call Toggle_task_status()<CR>
+
 nmap <silent> <F3>  :Grep<CR>
 
 nmap <silent> <F11> :TlistToggle<CR>
