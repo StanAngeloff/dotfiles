@@ -28,4 +28,4 @@
 [merge]
 	tool = kdiff3
 [alias]
-	graph = log --graph --pretty=oneline --abbrev-commit --decorate
+    graph = !sh -c 'git log --graph --pretty=oneline --abbrev-commit --decorate --color | less -FRS'
