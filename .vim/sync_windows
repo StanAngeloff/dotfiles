@@ -1,17 +1,37 @@
 #!/bin/bash
 
-for vim_path in 'autoload' 'bundle'; do
-  if [ -d "/cygdrive/c/Users/Stan Angeloff/.vim/$vim_path" ]; then
-    rm -Rf "/cygdrive/c/Users/Stan Angeloff/.vim/$vim_path"
+echo "[BACKUP ] Command-T"
+mkdir -p ~/.vim/backup/command-t/
+mv -f '/cygdrive/c/Users/Stan Angeloff/.vim/bundle/command-t/ruby/command-t/ext'* ~/.vim/backup/command-t/
+
+echo "[BACKUP ] Shell"
+mkdir -p ~/.vim/backup/shell/
+mv -f '/cygdrive/c/Users/Stan Angeloff/.vim/bundle/shell/autoload/xolox/'*.dll ~/.vim/backup/shell/
+
+for rm_path in 'autoload' 'bundle'; do
+  if [ -d "/cygdrive/c/Users/Stan Angeloff/.vim/$rm_path" ]; then
+    echo "[REMOVE ] .vim/$rm_path"
+    rm -Rf "/cygdrive/c/Users/Stan Angeloff/.vim/$rm_path"
   fi
-  mkdir -p "/cygdrive/c/Users/Stan Angeloff/.vim/$vim_path"
-  cp -Rf "/home/stan/.vim/$vim_path" "/cygdrive/c/Users/Stan Angeloff/.vim/"
+  echo "[COPY   ] .vim/$rm_path/*"
+  mkdir -p "/cygdrive/c/Users/Stan Angeloff/.vim/$rm_path"
+  cp -Rf "/home/stan/.vim/$rm_path" "/cygdrive/c/Users/Stan Angeloff/.vim/"
 done
 
-rm -Rf /cygdrive/c/Users/Stan Angeloff/.vim/bundle/commant-t
+echo "[RESTORE] Shell"
+mv -f ~/.vim/backup/shell/* '/cygdrive/c/Users/Stan Angeloff/.vim/bundle/shell/autoload/xolox/'  
+rm -Rf ~/.vim/backup/shell
 
-for vim_path in 'backup' 'sessions' 'undo'; do
-  mkdir -p "/cygdrive/c/Users/Stan Angeloff/.vim/$vim_path"
+echo "[RESTORE] Command-T"
+mv -f ~/.vim/backup/command-t/* '/cygdrive/c/Users/Stan Angeloff/.vim/bundle/command-t/ruby/command-t/'  
+rm -Rf ~/.vim/backup/command-t
+
+for mk_path in 'backup' 'sessions' 'undo'; do
+  echo "[CREATE ] .vim/$mk_path"
+  mkdir -p "/cygdrive/c/Users/Stan Angeloff/.vim/$mk_path"
 done
 
+echo "[COPY   ] .vimrc"
 cp -f /home/stan/.vimrc /cygdrive/c/Users/Stan\ Angeloff/
+
+echo "Done."
