@@ -37,7 +37,6 @@ set expandtab
 set nowrap
 set autoindent
 set clipboard+=unnamed
-set iskeyword-=_   " _ is a valid word delimiter
 
 set nospell        " Turn off spell checking by default
 
