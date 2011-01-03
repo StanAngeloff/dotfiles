@@ -188,6 +188,7 @@ iabbrev </ </<C-X><C-O>
 
 " Exit INSERT mode
 imap jj <Esc>
+imap kk <Esc>
 
 " HARDCORE
 imap  <Up>     <NOP>
