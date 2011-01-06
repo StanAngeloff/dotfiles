@@ -20,6 +20,9 @@ export LC_ALL=en_GB.UTF-8
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
+# Drupal support for ack-grep
+export ACK_OPTIONS=--type-set=php=.php,.php3,.php4,.php5,.module,.inc,.install
+
 if [[ "`uname -n`" == "PSP-STAN" ]] && [[ "`uname -o`" == "Cygwin" ]]; then
   export PATH=/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Program\ Files\ \(x86\)/Java/jdk1.6.0_20/bin:/cygdrive/c/Program\ Files\ \(x86\)/WinAnt/bin:/cygdrive/c/Program\ Files\ \(x86\)/Git/bin:/cygdrive/c/bin/tools/graphviz/2.27/bin
   export NODE_PATH="/home/stan/.coffee_libraries:/usr/local/lib/node:$NODE_PATH"
