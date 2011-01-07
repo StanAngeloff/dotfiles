@@ -214,6 +214,12 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
   set cursorline! " Highlight line under cursor
 
+  " Highlight trailing whitespace in red
+  if has('autocmd')
+    highlight                  ExtraWhitespace ctermbg=red guibg=red
+    autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
+  endif
+
   set guifont=Consolas:h13:cDEFAULT
 
   " Toggle menubar visibility
