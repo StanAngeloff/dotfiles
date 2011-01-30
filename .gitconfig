@@ -11,6 +11,8 @@
 	editor = vim
 	autocrlf = false
 	filemode = false
+[branch]
+	autosetuprebase = always
 [color]
 	branch = always
 	diff = always
