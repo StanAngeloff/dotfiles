@@ -176,6 +176,11 @@ nmap <leader>tn :tabnew<CR>
 nmap <leader>tc :tabclose<CR>
 nmap <leader>tm :tabmove
 
+" Quickly adjust the tab/shift width
+nmap <leader>w2 :set tabstop=2<CR>:set shiftwidth=2<CR>
+nmap <leader>w4 :set tabstop=4<CR>:set shiftwidth=4<CR>
+nmap <leader>w8 :set tabstop=8<CR>:set shiftwidth=8<CR>
+
 " Snippets
 if has('unix')
   imap <leader>iu <C-R>=substitute(system('bash --norc -c "date +%s"'), '\n', '', 'g')<CR>
