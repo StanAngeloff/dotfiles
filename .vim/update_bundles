@@ -23,6 +23,7 @@ git_bundles = [
   "git://github.com/tpope/vim-unimpaired.git",
   "git://github.com/tsaleh/vim-supertab.git",
   "git://github.com/tsaleh/vim-tcomment.git",
+  "git://github.com/vim-scripts/Conque-Shell.git",
   "git://git.wincent.com/command-t.git",
 ]
 

@@ -125,6 +125,9 @@ endif
 let g:CommandTMaxFiles=64000
 let g:CommandTMaxDepth=24
 
+let g:ConqueTerm_TERM='xterm-256'
+let g:ConqueTerm_CloseOnEnd=1
+
 nmap j gj
 nmap k gk
 
@@ -186,6 +189,7 @@ if has('unix')
   imap <leader>iu <C-R>=substitute(system('bash --norc -c "date +%s"'), '\n', '', 'g')<CR>
 else
   imap <leader>iu <C-R>=substitute(system('c:\bin\cygwin\bin\bash.exe --norc -c "date +%s"'), '\n', '', 'g')<CR>
+  nmap <leader>tw :ConqueTermTab c:\bin\cygwin\bin\zsh.exe --login<CR>
 endif
 
 " Abbreviations
