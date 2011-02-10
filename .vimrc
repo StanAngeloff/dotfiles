@@ -127,6 +127,7 @@ let g:CommandTMaxDepth=24
 
 let g:ConqueTerm_TERM='xterm-256'
 let g:ConqueTerm_CloseOnEnd=1
+let g:ConqueTerm_PromptRegex='^(\w\+)\s*\[[0-9A-Za-z_./\~,:-]\+\]\s*[\~\%\$\#]'
 
 nmap j gj
 nmap k gk
