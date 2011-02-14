@@ -40,7 +40,7 @@ set clipboard+=unnamed
 
 set nospell        " Turn off spell checking by default
 
-set scrolloff=3
+set scrolloff=8    " Scroll when 8 lines from edge of screen
 set nu!            " Enable line numbers
 
 set ttyfast
@@ -95,7 +95,7 @@ let Tlist_Exit_OnlyWindow=1
 
 let tlist_php_settings='php;c:class;d:constant;f:function'
 
-let Grep_Skip_Dirs = '.git .svn CVS .sass-cache'
+let Grep_Skip_Dirs='.git .svn CVS .sass-cache'
 
 if has('unix')
   let g:easytags_cmd='/usr/bin/ctags'
@@ -120,6 +120,9 @@ else
 
   " Ack for grepping, on Windows this runs under the Perl interpreter
   let g:ackprg='c:\bin\cygwin\bin\perl.exe c:\bin\cygwin\usr\local\bin\ack -H --nocolor --nogroup --column'
+
+  " Git executable on Windows
+  let g:fugitive_git_executable='C:/PROGRA~2/Git/bin/git.exe'
 endif
 
 let g:CommandTMaxFiles=64000
@@ -128,6 +131,35 @@ let g:CommandTMaxDepth=24
 let g:ConqueTerm_TERM='xterm-256'
 let g:ConqueTerm_CloseOnEnd=1
 let g:ConqueTerm_PromptRegex='^(\w\+)\s*\[[0-9A-Za-z_./\~,:-]\+\]\s*[\~\%\$\#]'
+
+if has('statusline')
+  set statusline=                   " Clear the statusline, allow for rearranging parts
+  set statusline+=%f                " Path to the file, as typed or relative to current directory
+  set statusline+=%#errormsg#       " Change color
+  set statusline+=%{&ff!='unix'?'['.&ff.']':''}   " Display a warning if fileformat isn't unix
+  set statusline+=%*                " Reset color to normal statusline color
+  set statusline+=%#errormsg#       " Change color
+  set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}   " Display a warning if file encoding isn't utf-8
+  set statusline+=%*                " Reset color to normal statusline color
+  set statusline+=\ %y              " Filetype
+  set statusline+=%([%R%M]%)        " Read-only (RO), modified (+) and unmodifiable (-) flags between braces
+  set statusline+=%#StatusLineNC#%{&ff=='unix'?'':&ff.'\ format'}%* " Shows '!' if file format is not platform default
+  set statusline+=%{'~'[&pm=='']}   " Shows a '~' if in patchmode
+  set statusline+=\ %{fugitive#statusline()}  " Show Git info, via fugitive.git
+  set statusline+=%#error#          " Change color
+  set statusline+=%{&paste?'[paste]':''}      " Display a warning if &paste is set
+  set statusline+=%*                " Reset color to normal statusline color
+  set statusline+=%=                " Right-align following items
+  set statusline+=#%n               " Buffer number
+  set statusline+=\ %l/%L,          " Current line number/total number of lines,
+  set statusline+=%c                " Column number
+  set statusline+=%V                " -{virtual column number} (not displayed if equal to 'c')
+  set statusline+=\ %p%%            " Percentage of lines through the file%
+  set statusline+=\                 " Trailing space
+  if has('title')
+    set titlestring=%t%(\ [%R%M]%)
+  endif
+endif
 
 nmap j gj
 nmap k gk
@@ -163,12 +195,6 @@ nmap <silent> <F3>  :Grep<CR>
 
 nmap <silent> <F11> :TlistToggle<CR>
 nmap <silent> <F12> :NERDTreeToggle<CR>
-
-" Tab handling and Firefox-like navigation
-nmap <C-tab>   :tabnext<CR>
-map  <C-tab>   :tabnext<CR>
-nmap <C-S-tab> :tabprevious<CR>
-map  <C-S-tab> :tabprevious<CR>
 
 " Terminal handling of [Ctrl+][Shift+]Tab
 nmap <Esc>[1;5I :tabnext<CR>
