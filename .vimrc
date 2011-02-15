@@ -77,7 +77,9 @@ let g:session_directory='~/.vim/sessions'
 set wildignore+=.git,.svn,CVS,.sass-cache
 
 " For PHP code, enable some fancy options
+let php_sql_query=0
 let php_htmlInStrings=1
+let php_asp_tags=0
 
 " Disable <F11> mappings in shell.vim
 let g:shell_mappings_enabled=0
@@ -196,14 +198,7 @@ nmap <silent> <F3>  :Grep<CR>
 nmap <silent> <F11> :TlistToggle<CR>
 nmap <silent> <F12> :NERDTreeToggle<CR>
 
-" Terminal handling of [Ctrl+][Shift+]Tab
-nmap <Esc>[1;5I :tabnext<CR>
-map  <Esc>[1;5I :tabnext<CR>
-nmap <Esc>[1;6I :tabprevious<CR>
-map  <Esc>[1;6I :tabprevious<CR>
-
 nmap <leader>tn :tabnew<CR>
-nmap <leader>tc :tabclose<CR>
 nmap <leader>tm :tabmove
 
 " Quickly adjust the tab/shift width
