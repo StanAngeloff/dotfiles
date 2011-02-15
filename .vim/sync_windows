@@ -6,7 +6,7 @@ mv -f '/cygdrive/c/Users/Stan Angeloff/.vim/bundle/command-t/ruby/command-t/ext'
 
 echo '[BACKUP ] Shell'
 mkdir -p ~/.vim/backup/shell/
-mv -f '/cygdrive/c/Users/Stan Angeloff/.vim/bundle/shell/autoload/xolox/'*.dll ~/.vim/backup/shell/
+mv -f '/cygdrive/c/Users/Stan Angeloff/.vim/bundle/shell.vim--Odding/autoload/xolox/'*.dll ~/.vim/backup/shell/
 
 for rm_path in 'autoload' 'bundle' 'indent' 'record' 'syntax'; do
   if [ -d "/cygdrive/c/Users/Stan Angeloff/.vim/$rm_path" ]; then
@@ -19,7 +19,7 @@ for rm_path in 'autoload' 'bundle' 'indent' 'record' 'syntax'; do
 done
 
 echo '[RESTORE] Shell'
-mv -f ~/.vim/backup/shell/* '/cygdrive/c/Users/Stan Angeloff/.vim/bundle/shell/autoload/xolox/'
+mv -f ~/.vim/backup/shell/* '/cygdrive/c/Users/Stan Angeloff/.vim/bundle/shell.vim--Odding/autoload/xolox/'
 rm -Rf ~/.vim/backup/shell
 
 echo '[RESTORE] Command-T'

@@ -17,7 +17,6 @@ git_bundles = [
   'git://github.com/samsonw/vim-task.git',
   'git://github.com/scrooloose/nerdcommenter.git',
   'git://github.com/scrooloose/nerdtree.git',
-  'git://github.com/spf13/PIV.git',
   'git://github.com/StanAngeloff/vim-zend55.git',
   'git://github.com/tpope/vim-fugitive.git',
   'git://github.com/tpope/vim-git.git',
@@ -32,6 +31,10 @@ git_bundles = [
   'git://github.com/vim-scripts/Gist.vim.git',
   'git://github.com/vim-scripts/grep.vim.git',
   'git://github.com/vim-scripts/IndexedSearch.git',
+  'git://github.com/vim-scripts/php.vim--Garvin.git',
+  'git://github.com/vim-scripts/phpcomplete.vim.git',
+  'git://github.com/vim-scripts/phpfolding.vim.git',
+  'git://github.com/vim-scripts/PHP-correct-Indenting.git',
   'git://github.com/vim-scripts/session.vim--Odding.git',
   'git://github.com/vim-scripts/shell.vim--Odding.git',
   'git://git.wincent.com/command-t.git'
