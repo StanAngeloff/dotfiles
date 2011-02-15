@@ -214,9 +214,6 @@ else
   nmap <leader>tc :ConqueTermTab c:\bin\cygwin\bin\zsh.exe --login<CR>
 endif
 
-" Abbreviations
-iabbrev </ </<C-X><C-O><BS>
-
 " Exit INSERT mode
 imap jj <Esc>
 imap kk <Esc>
