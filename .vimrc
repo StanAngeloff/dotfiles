@@ -211,11 +211,11 @@ if has('unix')
   imap <leader>iu <C-R>=substitute(system('bash --norc -c "date +%s"'), '\n', '', 'g')<CR>
 else
   imap <leader>iu <C-R>=substitute(system('c:\bin\cygwin\bin\bash.exe --norc -c "date +%s"'), '\n', '', 'g')<CR>
-  nmap <leader>tw :ConqueTermTab c:\bin\cygwin\bin\zsh.exe --login<CR>
+  nmap <leader>tc :ConqueTermTab c:\bin\cygwin\bin\zsh.exe --login<CR>
 endif
 
 " Abbreviations
-iabbrev </ </<C-X><C-O>
+iabbrev </ </<C-X><C-O><BS>
 
 " Exit INSERT mode
 imap jj <Esc>
@@ -293,17 +293,4 @@ if has('autocmd')
 
   " Turn off beep sounds
   autocmd VimEnter * set vb t_vb=
-
-  " Filetype specific settings
-  autocmd FileType css    set shiftwidth=2
-  autocmd FileType css    set tabstop=2
-  autocmd FileType css    set expandtab
-
-  autocmd FileType scss   set shiftwidth=2
-  autocmd FileType scss   set tabstop=2
-  autocmd FileType scss   set expandtab
-
-  autocmd FileType coffee set shiftwidth=2
-  autocmd FileType coffee set tabstop=2
-  autocmd FileType coffee set expandtab
 endif

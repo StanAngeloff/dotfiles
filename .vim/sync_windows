@@ -8,7 +8,7 @@ echo '[BACKUP ] Shell'
 mkdir -p ~/.vim/backup/shell/
 mv -f '/cygdrive/c/Users/Stan Angeloff/.vim/bundle/shell.vim--Odding/autoload/xolox/'*.dll ~/.vim/backup/shell/
 
-for rm_path in 'autoload' 'bundle' 'indent' 'record' 'syntax'; do
+for rm_path in 'after' 'autoload' 'bundle' 'indent' 'record' 'syntax'; do
   if [ -d "/cygdrive/c/Users/Stan Angeloff/.vim/$rm_path" ]; then
     echo "[REMOVE ] .vim/$rm_path"
     rm -Rf "/cygdrive/c/Users/Stan Angeloff/.vim/$rm_path"
