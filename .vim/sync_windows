@@ -2,36 +2,36 @@
 
 echo '[BACKUP ] Command-T'
 mkdir -p ~/.vim/backup/command-t/
-mv -f '/cygdrive/c/Users/Stan Angeloff/.vim/bundle/command-t/ruby/command-t/ext'* ~/.vim/backup/command-t/
+mv -f '/cygdrive/c/Users/Stan Angeloff/vimfiles/bundle/command-t/ruby/command-t/ext'* ~/.vim/backup/command-t/
 
 echo '[BACKUP ] Shell'
 mkdir -p ~/.vim/backup/shell/
-mv -f '/cygdrive/c/Users/Stan Angeloff/.vim/bundle/shell.vim--Odding/autoload/xolox/'*.dll ~/.vim/backup/shell/
+mv -f '/cygdrive/c/Users/Stan Angeloff/vimfiles/bundle/shell.vim--Odding/autoload/xolox/'*.dll ~/.vim/backup/shell/
 
 for rm_path in 'after' 'autoload' 'bundle' 'indent' 'record' 'snippets' 'syntax'; do
-  if [ -d "/cygdrive/c/Users/Stan Angeloff/.vim/$rm_path" ]; then
-    echo "[REMOVE ] .vim/$rm_path"
-    rm -Rf "/cygdrive/c/Users/Stan Angeloff/.vim/$rm_path"
+  if [ -d "/cygdrive/c/Users/Stan Angeloff/vimfiles/$rm_path" ]; then
+    echo "[REMOVE ] vimfiles/$rm_path"
+    rm -Rf "/cygdrive/c/Users/Stan Angeloff/vimfiles/$rm_path"
   fi
-  echo "[COPY   ] .vim/$rm_path/*"
-  mkdir -p "/cygdrive/c/Users/Stan Angeloff/.vim/$rm_path"
-  cp -Rf "/home/stan/.vim/$rm_path" '/cygdrive/c/Users/Stan Angeloff/.vim/'
+  echo "[COPY   ] vimfiles/$rm_path/*"
+  mkdir -p "/cygdrive/c/Users/Stan Angeloff/vimfiles/$rm_path"
+  cp -Rf "/home/stan/.vim/$rm_path" '/cygdrive/c/Users/Stan Angeloff/vimfiles/'
 done
 
 echo '[RESTORE] Shell'
-mv -f ~/.vim/backup/shell/* '/cygdrive/c/Users/Stan Angeloff/.vim/bundle/shell.vim--Odding/autoload/xolox/'
+mv -f ~/.vim/backup/shell/* '/cygdrive/c/Users/Stan Angeloff/vimfiles/bundle/shell.vim--Odding/autoload/xolox/'
 rm -Rf ~/.vim/backup/shell
 
 echo '[RESTORE] Command-T'
-mv -f ~/.vim/backup/command-t/* '/cygdrive/c/Users/Stan Angeloff/.vim/bundle/command-t/ruby/command-t/'
+mv -f ~/.vim/backup/command-t/* '/cygdrive/c/Users/Stan Angeloff/vimfiles/bundle/command-t/ruby/command-t/'
 rm -Rf ~/.vim/backup/command-t
 
 for mk_path in 'backup' 'sessions' 'undo'; do
-  echo "[CREATE ] .vim/$mk_path"
-  mkdir -p "/cygdrive/c/Users/Stan Angeloff/.vim/$mk_path"
+  echo "[CREATE ] vimfiles/$mk_path"
+  mkdir -p "/cygdrive/c/Users/Stan Angeloff/vimfiles/$mk_path"
 done
 
 echo '[COPY   ] .vimrc'
-cp -f /home/stan/.vimrc /cygdrive/c/Users/Stan\ Angeloff/
+cp -f /home/stan/.vimrc '/cygdrive/c/Users/Stan Angeloff/_vimrc'
 
 echo 'Done.'

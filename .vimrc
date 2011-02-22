@@ -1,16 +1,10 @@
 " Make Vim behave in a more useful way (the default) than the vi-compatible manner
 set nocompatible
 
-" Windows compatibility (default is vimfiles)
-set runtimepath+=~/.vim
-
 " Pathogen for managing plug-in bundles
 filetype off
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
-
-" Windows compatibility (default is _viminfo)
-set viminfo+=n~/.viminfo
 
 " Enable 256-color terminal
 set t_Co=256
@@ -58,11 +52,9 @@ set colorcolumn=78
 
 " Keep backups of files in case we mess up
 set backup
-set backupdir=$HOME/.vim/backup
 set directory=$TEMP,.
 " Keep undo files for cross-session edits
 set undofile
-set undodir=$HOME/.vim/undo
 
 let mapleader="\\"
 
@@ -71,7 +63,6 @@ set sessionoptions=blank,buffers,curdir,folds,tabpages,slash,unix
 
 let g:session_autosave=0
 let g:session_autoload=0
-let g:session_directory='~/.vim/sessions'
 
 " Ignore rules for Vim and plug-ins, e.g., Command+T
 set wildignore+=.git,.svn,CVS,.sass-cache
@@ -85,9 +76,7 @@ let php_asp_tags=0
 let g:shell_mappings_enabled=0
 
 " Easytags
-let g:easytags_file='~/.vim/tags'
 let g:easytags_on_cursorhold=0  " Wastes too much CPU
-set tags=./.tags;,~/.vim/tags
 
 " Taglist options
 let Tlist_Process_File_Always=0
@@ -100,11 +89,25 @@ let tlist_php_settings='php;c:class;d:constant;f:function'
 let Grep_Skip_Dirs='.git .svn CVS .sass-cache'
 
 if has('unix')
+  set backupdir=$HOME/.vim/backup
+  set undodir=$HOME/.vim/undo
+
+  let g:session_directory='~/.vim/sessions'
   let g:easytags_cmd='/usr/bin/ctags'
+  let g:easytags_file='~/.vim/tags'
+  set tags=./.tags;,~/.vim/tags
+
   let Tlist_Ctags_Cmd='/usr/bin/ctags'
   let Tlist_Inc_Winwidth=0
 else
+  set backupdir=$HOME/vimfiles/backup
+  set undodir=$HOME/vimfiles/undo
+
+  let g:session_directory='~/vimfiles/sessions'
   let g:easytags_cmd='c:\bin\tools\ctags\5.8\ctags.exe'
+  let g:easytags_file='~/vimfiles/tags'
+  set tags=./.tags;,~/vimfiles/tags
+
   let Tlist_Ctags_Cmd='c:\bin\tools\ctags\5.8\ctags.exe'
   let Tlist_Inc_Winwidth=1
 
