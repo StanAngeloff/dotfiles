@@ -278,6 +278,8 @@ if has('autocmd')
     \   exe "normal! g`\"" |
     \ endif
   augroup END
+  " Attempt to detect indentation for the buffer
+  autocmd BufReadPost * :DetectIndent
 
   " Turn on auto-complete for supported file types
   autocmd FileType python     set omnifunc=pythoncomplete#Complete

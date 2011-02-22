@@ -3,6 +3,7 @@
 require 'fileutils'
 
 git_bundles = [
+  'git://github.com/ciaranm/detectindent.git',
   'git://github.com/godlygeek/csapprox.git',
   'git://github.com/godlygeek/tabular.git',
   'git://github.com/mexpolk/vim-taglist.git',
