@@ -18,6 +18,7 @@ git_bundles = [
   'git://github.com/samsonw/vim-task.git',
   'git://github.com/scrooloose/nerdcommenter.git',
   'git://github.com/scrooloose/nerdtree.git',
+  'git://github.com/scrooloose/syntastic.git',
   'git://github.com/StanAngeloff/vim-zend55.git',
   'git://github.com/tpope/vim-fugitive.git',
   'git://github.com/tpope/vim-git.git',

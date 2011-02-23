@@ -182,6 +182,9 @@ nmap <silent> <leader>o :CommandT<CR>
 " Clean trailing whitespace
 nmap <silent> <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
+" Check for syntax errors
+nmap <silent> <leader>E :SyntasticEnable<CR>:w<CR>:SyntasticDisable<CR>:Errors<CR><C-W>w
+
 nmap <leader>q gqip
 nmap <leader>v V`]
 
@@ -270,17 +273,22 @@ endif
 if has('autocmd')
   " Enable file type detection.
   filetype plugin indent on
+
+  " Disable syntax checking for all files by default
+  autocmd BufRead * :SyntasticDisable
+
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
-  au!
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-  " When editing a file, always jump to the last known cursor position.
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
+    au!
+    " For all text files set 'textwidth' to 78 characters.
+    autocmd FileType text setlocal textwidth=78
+    " When editing a file, always jump to the last known cursor position.
+    autocmd BufReadPost *
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
   augroup END
+
   " Attempt to detect indentation for the buffer
   autocmd BufReadPost * :DetectIndent
 
