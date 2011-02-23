@@ -23,11 +23,6 @@ export GREP_COLOR='1;32'
 # Drupal support for ack-grep
 export ACK_OPTIONS=--type-set=php=.php,.php3,.php4,.php5,.module,.inc,.install
 
-if [[ "`uname -n`" == "PSP-STAN" ]] && [[ "`uname -o`" == "Cygwin" ]]; then
-  export PATH=/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Program\ Files\ \(x86\)/Java/jdk1.6.0_20/bin:/cygdrive/c/Program\ Files\ \(x86\)/WinAnt/bin:/cygdrive/c/Program\ Files\ \(x86\)/Git/bin:/cygdrive/c/bin/tools/graphviz/2.27/bin
-  export NODE_PATH="/home/stan/.coffee_libraries:/usr/local/lib/node:$NODE_PATH"
-fi
-
 autoload colors; colors;
 
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
@@ -37,6 +32,9 @@ export PROMPT="%{$fg[green]%}(%n)%{$reset_color%} %{$fg[yellow]%}[%1~]%{$reset_c
 
 alias '?'='screen -ls'
 alias '!'='screen -dR'
+
+LOCALRC=$( echo ".localrc_`uname -n`_`uname -o`" | tr '[A-Z]' '[a-z]' )
+[[ -s "$HOME/$LOCALRC" ]] && source "$HOME/$LOCALRC"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
