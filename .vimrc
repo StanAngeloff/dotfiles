@@ -128,6 +128,9 @@ else
 
   " Git executable on Windows
   let g:fugitive_git_executable='C:/PROGRA~2/Git/bin/git.exe'
+
+  " Ruby complains if we don't set the path and re-runs ruby.vim
+  let g:ruby_path = ':C:\bin\tools\ruby\1.8.7\bin'
 endif
 
 let g:CommandTMaxFiles=64000
@@ -136,6 +139,10 @@ let g:CommandTMaxDepth=24
 let g:ConqueTerm_TERM='xterm-256'
 let g:ConqueTerm_CloseOnEnd=1
 let g:ConqueTerm_PromptRegex='^(\w\+)\s*\[[0-9A-Za-z_./\~,:-]\+\]\s*[\~\%\$\#]'
+
+" When the correct value for 'expandtab' cannot be determined, it will revert
+" to the default value below.
+let g:detectindent_preferred_expandtab = 1
 
 if has('statusline')
   set statusline=                   " Clear the statusline, allow for rearranging parts
@@ -194,6 +201,8 @@ map <silent> <F1> :set nospell!<CR>:set nospell?<CR>
 " Toggle paste-mode
 nmap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
+
+nnoremap <silent> <F5> :GundoToggle<CR>
 
 " Toggle task status (vim-task)
 imap <silent> <buffer> <leader>m <ESC>:call Toggle_task_status()<CR>i
@@ -254,7 +263,7 @@ if &t_Co > 2 || has("gui_running")
     autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
   endif
 
-  set guifont=Consolas:h13:cDEFAULT
+  set guifont=Consolas:h14:cDEFAULT
 
   " Toggle menubar visibility
   nmap <F10> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
