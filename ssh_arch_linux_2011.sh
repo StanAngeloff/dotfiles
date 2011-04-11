@@ -7,4 +7,4 @@ else
   read -e -p 'IP: ' IP
 fi
 
-/usr/bin/ssh $IP
+/usr/bin/ssh -X $IP

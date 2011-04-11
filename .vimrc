@@ -37,8 +37,8 @@ set nospell        " Turn off spell checking by default
 set scrolloff=8    " Scroll when 8 lines from edge of screen
 set nu!            " Enable line numbers
 
-set ttyfast
 set lazyredraw     " Do not redraw while running macros (much faster)
+set ttyfast
 
 set wildmenu
 set wildmode=list:longest,full
@@ -52,7 +52,6 @@ set colorcolumn=78
 
 " Keep backups of files in case we mess up
 set backup
-set directory=$TEMP,.
 " Keep undo files for cross-session edits
 set undofile
 
@@ -91,6 +90,7 @@ let Grep_Skip_Dirs='.git .svn CVS .sass-cache'
 if has('unix')
   set backupdir=$HOME/.vim/backup
   set undodir=$HOME/.vim/undo
+  set directory=$TEMP,.
 
   let g:session_directory='~/.vim/sessions'
   let g:easytags_cmd='/usr/bin/ctags'
@@ -102,6 +102,7 @@ if has('unix')
 else
   set backupdir=$HOME/vimfiles/backup
   set undodir=$HOME/vimfiles/undo
+  set directory=$TEMP,$HOME/vimfiles/swap
 
   let g:session_directory='~/vimfiles/sessions'
   let g:easytags_cmd='c:\bin\tools\ctags\5.8\ctags.exe'
