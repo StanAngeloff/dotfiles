@@ -26,8 +26,8 @@
 	user = StanAngeloff
 	token = <token>
 [diff]
-	tool = kdiff3
+	tool = vimdiff
 [merge]
-	tool = kdiff3
+	tool = vimdiff
 [alias]
     graph = !sh -c 'git log --graph --pretty=oneline --abbrev-commit --decorate --color | less -FRS'
