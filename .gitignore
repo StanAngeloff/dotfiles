@@ -8,6 +8,7 @@
 .lesshst
 .npmrc
 .rnd
+.rvm
 .ssh
 .subversion
 .vim/backup/*
