@@ -1,6 +1,11 @@
 " Make Vim behave in a more useful way (the default) than the vi-compatible manner
 set nocompatible
 
+" For PHP code, enable some fancy options
+let php_sql_query=0
+let php_htmlInStrings=1
+let php_asp_tags=0
+
 " Pathogen for managing plug-in bundles
 filetype off
 call pathogen#helptags()
@@ -65,11 +70,6 @@ let g:session_autoload=0
 
 " Ignore rules for Vim and plug-ins, e.g., Command+T
 set wildignore+=.git,.svn,CVS,.sass-cache
-
-" For PHP code, enable some fancy options
-let php_sql_query=0
-let php_htmlInStrings=1
-let php_asp_tags=0
 
 " Disable <F11> mappings in shell.vim
 let g:shell_mappings_enabled=0
@@ -140,6 +140,10 @@ let g:CommandTMaxDepth=24
 let g:ConqueTerm_TERM='xterm-256'
 let g:ConqueTerm_CloseOnEnd=1
 let g:ConqueTerm_PromptRegex='^(\w\+)\s*\[[0-9A-Za-z_./\~,:-]\+\]\s*[\~\%\$\#]'
+
+let NERDTreeChDirMode=1
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
 
 " When the correct value for 'expandtab' cannot be determined, it will revert
 " to the default value below.

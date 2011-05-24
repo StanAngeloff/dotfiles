@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir -p                            '/cygdrive/c/Users/Stan Angeloff/.zsh'
-cp -f '/home/stan/.aliases'         '/cygdrive/c/Users/Stan Angeloff/'
-cp -f '/home/stan/.zshrc'           '/cygdrive/c/Users/Stan Angeloff/'
-cp -f '/home/stan/.zsh/cdbookmarks' '/cygdrive/c/Users/Stan Angeloff/.zsh/'
+mkdir -pv                            '/cygdrive/c/Users/Stan Angeloff/.zsh'
+cp -fv '/home/stan/.aliases'         '/cygdrive/c/Users/Stan Angeloff/'
+cp -fv '/home/stan/.zshrc'           '/cygdrive/c/Users/Stan Angeloff/'
+cp -fv '/home/stan/.zsh/cdbookmarks' '/cygdrive/c/Users/Stan Angeloff/.zsh/'

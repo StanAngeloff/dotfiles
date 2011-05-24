@@ -16,7 +16,7 @@ setenv            ALTTERM 'screen'
 defscrollback     10240
 hardcopydir       $HOME/.screen
 hardcopy_append   on
-shell             -/bin/zsh
+shell             -$SHELL
 silence           off
 silencewait       15
 
