@@ -41,7 +41,12 @@
 .thumbnails
 .thunderbird
 .vagrant
-.vim
+.vim/backup/*
+!.vim/backup/.gitempty
+.vim/bundle/*
+!.vim/bundle/.gitempty
+.vim/undo/*
+!.vim/undo/.gitempty
 .viminfo
 .VirtualBox
 .xscreen*

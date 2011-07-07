@@ -32,3 +32,12 @@ echo "$INSTALL_VALUES" > "$INSTALL_PATH"
 for file in $TEMPLATES; do
   eval "$SED_SCRIPT" -i "$file"
 done
+
+VUNDLE_PATH="$HOME/.vim/bundle/vundle"
+if [ -d "$VUNDLE_PATH" ]; then
+  cd "$VUNDLE_PATH" && git fetch --all && git reset --hard origin/master
+else
+  git clone http://github.com/gmarik/vundle.git "$VUNDLE_PATH"
+fi
+
+echo -e "\nDone."
