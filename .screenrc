@@ -38,11 +38,10 @@ bind ' ' select 0
 
 bind @ windowlist -m
 
-bindkey "[Z" next
+bindkey "	" next
 
 windowlist title  'Num Title'
 windowlist string '%3n %t'
 
 windowlist title  'Flag Num Title'
 windowlist string '%f%04= %3n %t'
-

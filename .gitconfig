@@ -1,33 +1,19 @@
-[gui]
-	fontui = -family \"Segoe UI\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
-	fontdiff = -family Consolas -size 13 -weight normal -slant roman -underline 0 -overstrike 0
-	commitmsgwidth = 78
-	spellingdictionary = none
-	encoding = utf-8
 [user]
-	name = Stan Angeloff
-	email = <email>
+	name = ${name}
+	email = ${email}
+[github]
+	user = ${username}
+	token = ${token}
+[gui]
+	fontui = -family \"DejaVu Sans\" -size 8 -weight bold -slant roman -underline 0 -overstrike 0
+	fontdiff = -family Inconsolata -size 13 -weight normal -slant roman -underline 0 -overstrike 0
+	commitmsgwidth = 78
+	encoding = utf-8
 [core]
 	editor = vim
-	autocrlf = false
-	filemode = false
 [branch]
 	autosetuprebase = always
-[color]
-	branch = always
-	diff = always
-	grep = always
-	interactive = always
-	pager = true
-	showbranch = always
-	status = always
-	ui = always
-[github]
-	user = StanAngeloff
-	token = <token>
 [diff]
 	tool = vimdiff
 [merge]
 	tool = vimdiff
-[alias]
-    graph = !sh -c 'git log --graph --pretty=oneline --abbrev-commit --decorate --color | less -FRS'

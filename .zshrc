@@ -1,47 +1,47 @@
 #!/bin/zsh
 
+# umask sets an environment variable which automatically sets file permissions on newly created files.
 umask 022
 
+# Set Zsh home directory and history file location.
+# We want these out of the way an in their separate directory.
 ZSH="$HOME/.zsh"
 HISTFILE="$ZSH/history"
 
+# Configure history size
 HISTSIZE=1024
 SAVEHIST=$HISTSIZE
 
-if [ -z "$TERM" ] || [[ "$TERM" == "xterm" ]]; then
-  export TERM=xterm-256color
-fi
+# Turn on 256-colour terminal support.
+[ -z "$TERM" ] || [[ "$TERM" == "xterm" ]] && export TERM=xterm-256color
 
+# Configure preferred applications.
 export EDITOR=vim
 export PAGER=less
-export LANG=en_GB.UTF-8
-export LC_ALL=en_GB.UTF-8
 
+# Configure preferred language option.
+export LANG="en_GB.UTF-8"
+export LANGUAGE="en_GB:en_US:en"
+export LC_MESSAGES="en_GB.UTF-8"
+
+# Configure applications, e.g., grep, ack, etc.
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
-# Drupal support for ack-grep
-export ACK_OPTIONS=--type-set=php=.php,.php3,.php4,.php5,.module,.inc,.install
+export ACK_OPTIONS=--type-set=php=.php,.php3,.php4,.php5,.module,.inc,.install # PHP support for ack-grep
 
+# Enable colour terminal and prompt.
 autoload colors; colors;
 
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
-export PROMPT="%{$fg[green]%}(%n)%{$reset_color%} %{$fg[yellow]%}[%1~]%{$reset_color%} %# "
+export PROMPT="%{$fg[green]%}(%m)%{$reset_color%} %{$fg[yellow]%}[%1~]%{$reset_color%} %# " # format is (machine-name) [cwd] %
 
+# Use a separate file to configure command aliases.
 [[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
-alias '?'='screen -ls'
-alias '!'='screen -dR'
-
-LOCALRC=$( echo ".localrc_`uname -n`_`uname -o`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
-[[ -s "$HOME/$LOCALRC" ]] && source "$HOME/$LOCALRC"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-if [ ! -f /usr/local/bin/gvim ]; then
-    alias gvim=vim
-fi
-
+# -g allows operations on parameters without making them local.
+# -A Associative array. Each name will converted to an associate array. If a variable already exists, the current value will become index 0.
+# FX FG BG make using 256 colors in zsh less painful.
 typeset -Ag FX FG BG
 
 FX=(
@@ -58,50 +58,10 @@ for color in {000..255}; do
   BG[$color]="%{[48;5;${color}m%}"
 done
 
+# Allow variable substitution to take place in the prompt.
 setopt prompt_subst
 
-alias ll='ls -hal --color=tty'
-alias pu='pushd'
-alias po='popd'
-alias .='pwd'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias -- -='cd -'
-alias cd..='cd ..'
-alias cd...='cd ../..'
-alias cd....='cd ../../..'
-alias cd.....='cd ../../../..'
-alias cd/='cd /'
-
-alias 1='cd -'
-alias 2='cd +2'
-alias 3='cd +3'
-alias 4='cd +4'
-alias 5='cd +5'
-alias 6='cd +6'
-alias 7='cd +7'
-alias 8='cd +8'
-alias 9='cd +9'
-
-cd () {
-  if   [[ "x$*" == "x..." ]]; then
-    cd ../..
-  elif [[ "x$*" == "x...." ]]; then
-    cd ../../..
-  elif [[ "x$*" == "x....." ]]; then
-    cd ../../..
-  elif [[ "x$*" == "x......" ]]; then
-    cd ../../../..
-  else
-    builtin cd "$@"
-  fi
-}
-
-alias md='mkdir -p'
-alias rd=rmdir
-
-alias d='dirs -v'
-
+# Configure the auto-completion system.
 autoload -U compinit
 compinit -i
 zmodload -i zsh/complist
@@ -115,17 +75,11 @@ zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
-if [ -f "$HOME/.ssh/known_hosts" ]; then
-  zstyle ':completion:*' hosts $( sed 's/[, ].*$//' $HOME/.ssh/known_hosts )
-  zstyle ':completion:*:*:(ssh|scp):*:*' hosts `sed 's/^\([^ ,]*\).*$/\1/' $HOME/.ssh/known_hosts`
-fi
-
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
-
+# Enable advanced prompt and themes.
 autoload -U promptinit
 promptinit
 
+# Options, options, options...
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_verify
@@ -158,9 +112,11 @@ setopt pushd_ignore_dups
 
 setopt long_list_jobs
 
+# Automatically quote meta-characters like question marks, quotes and ampersands during typing or pasting.
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
+# Install proper key bindings for Home, PgDn, PgUp, etc.
 bindkey -e
 
 bindkey "\e[1~"   beginning-of-line
@@ -209,44 +165,10 @@ bindkey ' '       magic-space
 
 bindkey "^[m"     copy-prev-shell-word
 
-ZSH_BOOKMARKS="$HOME/.zsh/cdbookmarks"
+# Add bookmarks to Zsh
+[[ -s "$HOME/.zshbookmarks" ]] && source "$HOME/.zshbookmarks"
 
-if [[ -f "$ZSH_BOOKMARKS" ]]; then
-  function cdb_edit() {
-    $EDITOR "$ZSH_BOOKMARKS"
-  }
-
-  function cdb() {
-    local index
-    local entry
-    index=0
-    for entry in $(echo "$1" | tr '/' '\n'); do
-      if [[ $index == "0" ]]; then
-        local CD
-        CD=$(egrep "^$entry\\s" "$ZSH_BOOKMARKS" | sed "s#^$entry\\s\+##")
-        if [ -z "$CD" ]; then
-          echo "$0: no such bookmark: $entry"
-          break
-        else
-          cd "$CD"
-        fi
-      else
-        cd "$entry"
-        if [ "$?" -ne "0" ]; then
-          break
-        fi
-      fi
-      let "index++"
-    done
-  }
-
-  function _cdb() {
-    reply=(`cat "$ZSH_BOOKMARKS" | sed -e 's#^\(.*\)\s.*$#\1#g'`)
-  }
-
-  compctl -K _cdb cdb
-fi
-
+# Fancy terminal title
 function title {
   if [[ "$TERM" == screen* ]] || [[ "$ALTTERM" == screen* ]]; then
     print -nR $'\ek'$*$'\e\\'
@@ -265,6 +187,12 @@ function preexec {
   title $cmd[1]:t "$cmd[2,-1]"
 }
 
-function cdm() {
-  md $1 && cd $1
-}
+# set PATH so it includes user's private bin if it exists.
+[ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
+
+# This loads RVM into a shell session.
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# Source machine-specific local configuration file.
+LOCALRC=$( echo ".localrc_`uname -n`_`uname -o`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
+[[ -s "$HOME/$LOCALRC" ]] && source "$HOME/$LOCALRC"
