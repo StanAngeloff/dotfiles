@@ -17,6 +17,7 @@
 .gtk-*
 .ICEauthority
 .icons
+.install_values
 .lesshst
 .libreoffice
 .local

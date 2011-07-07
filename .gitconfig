@@ -1,0 +1,19 @@
+[user]
+	name = ${name}
+	email = ${email}
+[github]
+	user = ${username}
+	token = ${token}
+[gui]
+	fontui = -family \"DejaVu Sans\" -size 8 -weight bold -slant roman -underline 0 -overstrike 0
+	fontdiff = -family Inconsolata -size 13 -weight normal -slant roman -underline 0 -overstrike 0
+	commitmsgwidth = 78
+	encoding = utf-8
+[core]
+	editor = vim
+[branch]
+	autosetuprebase = always
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
