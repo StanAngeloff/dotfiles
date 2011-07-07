@@ -40,4 +40,6 @@ else
   git clone http://github.com/gmarik/vundle.git "$VUNDLE_PATH"
 fi
 
+vim -c BundleInstall -c q
+
 echo -e "\nDone."
