@@ -1,1 +1,0 @@
-export DISPLAY=$(echo $SSH_CLIENT | cut -d' ' -f1):0

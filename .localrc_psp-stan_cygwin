@@ -1,2 +1,0 @@
-export PATH=/usr/local/bin:/usr/bin:/bin:/cygdrive/c/Program\ Files\ \(x86\)/Java/jdk1.6.0_20/bin:/cygdrive/c/Program\ Files\ \(x86\)/WinAnt/bin:/cygdrive/c/Program\ Files\ \(x86\)/Git/bin:/cygdrive/c/bin/tools/graphviz/2.27/bin:/cygdrive/c/bin/tools/qt/4.7.2/bin
-export NODE_PATH="/usr/local/lib/node:$NODE_PATH"
