@@ -191,7 +191,7 @@ function preexec {
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
 
 # This loads RVM into a shell session.
-[[ -s "/home/stan/.rvm/scripts/rvm" ]] && source "/home/stan/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # Source machine-specific local configuration file.
 LOCALRC=$( echo ".localrc_`uname -n`_`uname -o`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
