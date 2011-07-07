@@ -21,7 +21,7 @@
 .install_values
 .lesshst
 .libreoffice
-.local
+.local*
 .macromedia
 .minecraft
 .mozilla
