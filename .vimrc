@@ -254,6 +254,8 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'mexpolk/vim-taglist'
 
 Bundle 'mileszs/ack.vim'
+nmap <LocalLeader># "ayiw:Ack <C-r>a<CR>
+vmap <LocalLeader># "ay:Ack <C-r>a<CR>
 
 Bundle 'msanders/snipmate.vim'
 
@@ -346,3 +348,5 @@ let g:CommandTMaxFiles=64000
 let g:CommandTMaxDepth=24
 " Start fuzzy match.
 nmap <silent> <leader>o :CommandT<CR>
+
+Bundle "gmarik/vim-visual-star-search.git"
