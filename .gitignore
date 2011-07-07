@@ -47,6 +47,8 @@
 .xscreen*
 .xsession*
 .zcompdump
+.zsh/*
+!.zsh/.gitempty
 bin
 Desktop
 Documents

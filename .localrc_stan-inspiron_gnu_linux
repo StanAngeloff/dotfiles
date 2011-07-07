@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+alias ssh_bg='ssh -p 8022 sangeloff@psp-bulgaria.com'
+
+alias ssh_qnap='ssh -p 8322 admin@psp-bulgaria.com'
+
+alias ssh_rs1='ssh sangeloff@psp-hosting.co.uk'
+alias ssh_rs2='ssh sangeloff@psp-group.co.uk'
+alias ssh_rs3='ssh sangeloff@psp.eu.com'
+alias ssh_rs4='ssh -p 8022 sangeloff@83.138.166.72'
