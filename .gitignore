@@ -45,6 +45,8 @@
 !.vim/backup/.gitempty
 .vim/bundle/*
 !.vim/bundle/.gitempty
+.vim/sessions/*
+!.vim/sessions/.gitempty
 .vim/undo/*
 !.vim/undo/.gitempty
 .viminfo

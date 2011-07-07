@@ -1,10 +1,15 @@
 " Make Vim behave in a more useful way (the default) than the vi-compatible manner.
 set nocompatible
 
+" Pathogen, manage your runtimepath.
+filetype off
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
+
 " Enable 256-colour terminal, switch syntax on and select a theme.
 set t_Co=256
 syntax on
-colorscheme zend55
+colorscheme vim-zend55
 
 " Use UTF-8 and Unix line-endings for new files.
 set encoding=utf-8
@@ -28,7 +33,7 @@ set shiftwidth=2               " Default tab size.
 set expandtab                  " Expand tab into spaces.
 set nowrap                     " Don't wrap long lines.
 set autoindent                 " Auto-indent new lines.
-set timeoutlen=250             " Time to wait after ESC (default causes an annoying delay).
+set timeoutlen=325             " Time to wait after ESC (default causes an annoying delay).
 set clipboard+=unnamed         " Yank to clipboard.
 
 set modeline
@@ -104,6 +109,15 @@ if has('mouse')
   set mouse=a
 endif
 
+" Configure taglist window.
+let Tlist_Process_File_Always=0
+let Tlist_GainFocus_On_ToggleOpen=1
+let Tlist_Auto_Highlight_Tag=1
+let Tlist_Exit_OnlyWindow=1
+let Tlist_Ctags_Cmd='ctags'
+let Tlist_Inc_Winwidth=0
+let tlist_php_settings='php;c:class;d:constant;f:function'
+
 let mapleader="\\"
 
 " Keyboard bindings.
@@ -146,6 +160,9 @@ map <silent> <F1> :set nospell!<CR>:set nospell?<CR>
 nmap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 
+" Toggle taglist window.
+nmap <silent> <F11> :TlistToggle<CR>
+
 " Adjust the tab/shift width keyboard bindings.
 nmap <leader>w2 :set tabstop=2<CR>:set shiftwidth=2<CR>
 nmap <leader>w4 :set tabstop=4<CR>:set shiftwidth=4<CR>
@@ -154,11 +171,6 @@ nmap <leader>w8 :set tabstop=8<CR>:set shiftwidth=8<CR>
 " Snippets keyboard bindings.
 " Unix timestamp
 imap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
-
-" Pathogen, manage your runtimepath.
-filetype off
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
 
 if has("gui_running")
   set guifont=Inconsolata\ Medium\ 13
@@ -214,3 +226,123 @@ endif
 " Vundle, the plug-in manager for Vim.
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+
+Bundle 'StanAngeloff/vim-zend55'
+
+Bundle 'ciaranm/detectindent'
+" When the correct value for 'expandtab' cannot be determined, it will revert to the default value below.
+let g:detectindent_preferred_expandtab=1
+if has('autocmd')
+  " Attempt to detect indentation for the buffer
+  autocmd BufReadPost * :DetectIndent
+endif
+
+Bundle 'godlygeek/csapprox'
+
+Bundle 'godlygeek/tabular'
+
+Bundle 'gregsexton/gitv'
+
+Bundle 'juvenn/mustache.vim'
+
+Bundle 'kchmck/vim-coffee-script'
+
+Bundle 'leshill/vim-json'
+
+Bundle 'mattn/zencoding-vim'
+
+Bundle 'mexpolk/vim-taglist'
+
+Bundle 'mileszs/ack.vim'
+
+Bundle 'msanders/snipmate.vim'
+
+Bundle 'othree/html5.vim'
+
+Bundle 'pangloss/vim-javascript'
+
+Bundle 'samsonw/vim-task'
+" Toggle task status on current line.
+imap <silent> <buffer> <leader>m <ESC>:call Toggle_task_status()<CR>i
+nmap <silent> <buffer> <leader>m      :call Toggle_task_status()<CR>
+
+Bundle 'scrooloose/nerdcommenter'
+
+Bundle 'scrooloose/nerdtree'
+let NERDTreeChDirMode=1
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
+" Toggle NERD tree.
+nmap <silent> <F12> :NERDTreeToggle<CR>
+
+Bundle 'scrooloose/syntastic'
+" Check for syntax errors.
+nmap <silent> <leader>E :SyntasticEnable<CR>:w<CR>:SyntasticDisable<CR>:Errors<CR><C-W>w
+if has('autocmd')
+  " Disable syntax checking for all files by default.
+  autocmd BufRead * :SyntasticDisable
+endif
+
+Bundle 'sjl/gundo.vim'
+" Toggle Gundo undo tree.
+nmap <silent> <F5> :GundoToggle<CR>
+
+Bundle 'tpope/vim-fugitive'
+
+Bundle 'tpope/vim-git'
+
+Bundle 'tpope/vim-haml'
+
+Bundle 'tpope/vim-markdown'
+
+Bundle 'tpope/vim-repeat'
+
+Bundle 'tpope/vim-surround'
+
+Bundle 'tpope/vim-unimpaired'
+
+Bundle 'tsaleh/vim-supertab'
+
+Bundle 'vim-scripts/Conque-Shell'
+let g:ConqueTerm_TERM='xterm-256'
+let g:ConqueTerm_CloseOnEnd=1
+let g:ConqueTerm_PromptRegex='^(\w\+)\s*\[[0-9A-Za-z_./\~,:-]\+\]\s*[\~\%\$\#]'
+
+Bundle 'easytags.vim'
+let g:easytags_on_cursorhold=0  " Wastes too much CPU
+let g:easytags_cmd='ctags'
+let g:easytags_file='~/.vim/tags'
+
+Bundle 'Gist.vim'
+
+Bundle 'grep.vim'
+let Grep_Skip_Dirs='.git .svn CVS .sass-cache'
+nmap <silent> <F3> :Grep<CR>
+
+Bundle 'IndexedSearch'
+
+Bundle 'php.vim--Garvin'
+Bundle 'phpcomplete.vim'
+Bundle 'phpfolding.vim'
+Bundle 'PHP-correct-Indenting'
+" For PHP code, disable fancy options.
+let php_sql_query=0
+let php_htmlInStrings=1
+let php_asp_tags=0
+
+Bundle 'session.vim--Odding'
+let g:session_autosave=0
+let g:session_autoload=0
+let g:session_directory='~/.vim/sessions'
+map <leader>ss :SaveSession user<CR>
+map <leader>sr :OpenSession user<CR>
+
+Bundle 'shell.vim--Odding'
+" Disable <F11> mappings.
+let g:shell_mappings_enabled=0
+
+Bundle 'git://git.wincent.com/command-t.git'
+let g:CommandTMaxFiles=64000
+let g:CommandTMaxDepth=24
+" Start fuzzy match.
+nmap <silent> <leader>o :CommandT<CR>
