@@ -173,7 +173,7 @@ nmap <leader>w8 :set tabstop=8<CR>:set shiftwidth=8<CR>
 imap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 
 if has("gui_running")
-  set guifont=Inconsolata\ Medium\ 13
+  set guifont=Inconsolata\ Medium\ 14
 endif
 
 " Mode-dependent cursor for gnome-terminal.
