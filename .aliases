@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+alias g='git'
+
 alias '?'='screen -ls'
 alias '!'='screen -dR'
 

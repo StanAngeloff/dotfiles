@@ -9,6 +9,7 @@
 	fontdiff = -family Inconsolata -size 13 -weight normal -slant roman -underline 0 -overstrike 0
 	commitmsgwidth = 78
 	encoding = utf-8
+	diffcontext = 4
 [core]
 	editor = vim
 [branch]
@@ -17,3 +18,13 @@
 	tool = vimdiff
 [merge]
 	tool = vimdiff
+[cola]
+	fontdiff = Inconsolata,11,-1,5,50,0,0,0,0,0
+[alias]
+	c  = commit -m
+	ci = commit
+	ca = commit --amend
+	s  = status
+	l  = log --all --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
+	eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+	au = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
