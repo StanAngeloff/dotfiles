@@ -65,7 +65,7 @@ set backupdir=$HOME/.vim/backup
 set undofile " Keep undo files for cross-session edits.
 set undodir=$HOME/.vim/undo
 
-set directory=$TEMP,. " Store swap files in /tmp if possible.
+set directory=/tmp,. " Store swap files in /tmp if possible.
 
 set wildignore+=.git,.svn,CVS,.sass-cache " Ignore rules for Vim and plug-ins.
 
