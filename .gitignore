@@ -2,7 +2,9 @@
 .bash*
 .cache
 .compiz
+.cola
 .config
+.dbshell
 .dbus
 .dmrc
 .dropbox
@@ -10,6 +12,7 @@
 .esd_auth
 .filezilla
 .fontconfig
+Games
 .gconf*
 .gem
 .gitk
@@ -17,6 +20,8 @@
 .gnupg
 .gstreamer*
 .gtk-*
+.java
+.kde
 .ICEauthority
 .icons
 .install_values
@@ -29,8 +34,10 @@
 .mozilla
 .mplayer
 .mysql*
+.NERDTreeBookmarks
 .nvidia-*
 .npm
+.pearrc
 .pki
 .PlayOnLinux
 .profile
