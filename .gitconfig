@@ -10,6 +10,7 @@
 	commitmsgwidth = 78
 	encoding = utf-8
 	diffcontext = 4
+	historybrowser = giggle
 [core]
 	editor = vim
 [branch]
@@ -19,12 +20,21 @@
 [merge]
 	tool = vimdiff
 [cola]
-	fontdiff = Inconsolata,11,-1,5,50,0,0,0,0,0
+	fontdiff = Inconsolata,12,-1,5,50,0,0,0,0,0
+	tabwidth = 4
 [alias]
 	c  = commit -m
 	ci = commit
 	ca = commit --amend
 	s  = status
-	l  = log --all --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
+	l  = log       --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
+	la = log --all --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
 	eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
 	au = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+	f  = flow
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 0x0+0+0
+	history-view-vpane-position = 466
+	file-view-vpane-position = 700
+	main-window-view = HistoryView
