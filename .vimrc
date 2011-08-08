@@ -350,3 +350,6 @@ let g:CommandTMaxDepth=24
 nmap <silent> <leader>o :CommandT<CR>
 
 Bundle "gmarik/vim-visual-star-search.git"
+
+Bundle 'ManPageView'
+let g:manpageview_pgm_php='pman'
