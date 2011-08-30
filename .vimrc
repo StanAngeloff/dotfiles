@@ -168,6 +168,9 @@ nmap <leader>w2 :set tabstop=2<CR>:set shiftwidth=2<CR>
 nmap <leader>w4 :set tabstop=4<CR>:set shiftwidth=4<CR>
 nmap <leader>w8 :set tabstop=8<CR>:set shiftwidth=8<CR>
 
+" Evaluate block as expression
+vmap <C-A> "ac<C-R>=<C-R>a<CR><Esc>vbo
+
 " Snippets keyboard bindings.
 " Unix timestamp
 imap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
