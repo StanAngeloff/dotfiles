@@ -15,12 +15,14 @@
 Games
 .gconf*
 .gem
+.gimp*
 .gitk
 .gnome2
 .gnupg
 .gstreamer*
 .gtk-*
 .java
+.juicer
 .kde
 .ICEauthority
 .icons
@@ -50,6 +52,7 @@ Games
 .ssh
 .subversion
 .sudo*
+.teamviewer*
 .thumbnails
 .thunderbird
 .vagrant
@@ -79,5 +82,6 @@ Pictures
 Public
 Templates
 Videos
-*.swp
 *.lock
+*.swp
+*.tmp
