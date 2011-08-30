@@ -259,8 +259,8 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'mexpolk/vim-taglist'
 
 Bundle 'mileszs/ack.vim'
-nmap <LocalLeader># "ayiw:Ack <C-r>a<CR>
-vmap <LocalLeader># "ay:Ack <C-r>a<CR>
+nmap <leader># "ayiw:Ack <C-R>a<CR>
+vmap <leader># "ay:Ack <C-R>a<CR>
 
 Bundle 'msanders/snipmate.vim'
 
