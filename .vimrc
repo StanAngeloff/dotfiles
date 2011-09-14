@@ -369,7 +369,7 @@ let g:CommandTMaxDepth=24
 " Start fuzzy match.
 nmap <silent> <leader>o :CommandT<CR>
 
-Bundle "gmarik/vim-visual-star-search.git"
+Bundle 'thinca/vim-visualstar'
 
 Bundle 'ManPageView'
 let g:manpageview_pgm_php='pman'
