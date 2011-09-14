@@ -263,7 +263,11 @@ Bundle 'kchmck/vim-coffee-script'
 
 Bundle 'leshill/vim-json'
 
-Bundle 'mattn/zencoding-vim'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Use default arguments and indent with two spaces
+let g:sparkupArgs='--no-last-newline --indent-spaces=2'
+" Disable default <C-N> which doesn't work well with supertab
+let g:sparkupNextMapping='<C-;>'
 
 Bundle 'mexpolk/vim-taglist'
 
