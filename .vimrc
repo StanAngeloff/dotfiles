@@ -266,6 +266,8 @@ nmap <leader># "ayiw:Ack <C-R>a<CR>
 vmap <leader># "ay:Ack <C-R>a<CR>
 
 Bundle 'msanders/snipmate.vim'
+" Don't load snipmate's default snippets, use ours instead
+let snippets_dir='$HOME/.vim/snippets/'
 
 Bundle 'othree/html5.vim'
 
