@@ -372,3 +372,5 @@ Bundle 'thinca/vim-visualstar'
 
 Bundle 'ManPageView'
 let g:manpageview_pgm_php='pman'
+
+Bundle 'ZoomWin'
