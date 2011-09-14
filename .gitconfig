@@ -31,7 +31,7 @@
 	la = log --all --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
 	eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
 	au = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
-	sf = !sh -c 'git show --pretty="format:" --name-only $@ | grep -v "^$" | uniq | sort' -
+	sf = !sh -c 'git show --pretty="format:" --name-only $@ | grep -v "^$" | sort -u' -
 	f  = flow
 [giggle]
 	main-window-maximized = true
