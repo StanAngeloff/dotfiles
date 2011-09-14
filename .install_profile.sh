@@ -42,4 +42,6 @@ fi
 
 vim -c BundleInstall -c q
 
+( mkdir -p ~/.vim/ftdetect && cd ~/.vim/ftdetect && ln -sf ../bundle/vim-task/ftdetect/task.vim task.vim )
+
 echo -e "\nDone."
