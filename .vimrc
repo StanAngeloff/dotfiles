@@ -171,6 +171,12 @@ nmap <leader>w8 :set tabstop=8<CR>:set shiftwidth=8<CR>
 " Evaluate block as expression
 vmap <C-A> "ac<C-R>=<C-R>a<CR><Esc>vbo
 
+" Make Control-direction switch between windows (like C-W h, etc.)
+nmap <silent> <C-K> :wincmd k<CR>
+nmap <silent> <C-J> :wincmd j<CR>
+nmap <silent> <C-H> :wincmd h<CR>
+nmap <silent> <C-L> :wincmd l<CR>
+
 " Snippets keyboard bindings.
 " Unix timestamp
 imap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
