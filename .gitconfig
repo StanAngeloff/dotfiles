@@ -23,16 +23,23 @@
 	fontdiff = Inconsolata,12,-1,5,50,0,0,0,0,0
 	tabwidth = 4
 [alias]
-	c  = commit -m
-	ci = commit
-	ca = commit --amend
-	s  = status
-	l  = log       --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
-	la = log --all --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
-	eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
 	au = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
-	sf = !sh -c 'git show --pretty="format:" --name-only $@ | grep -v "^$" | sort -u' -
+	b  = branch
+	br = branch -r
+	c  = commit
+	ca = commit --amend
+	cm = commit -m
+	co = checkout
+	eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
 	f  = flow
+	ff = flow feature
+	fh = flow hotfix
+	fi = flow init
+	fr = flow release
+	l  = log       --graph --tags --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
+	la = log --all --graph --tags --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
+	s  = status -sb
+	sf = !sh -c 'git show --pretty="format:" --name-only $@ | grep -v "^$" | sort -u' -
 [giggle]
 	main-window-maximized = true
 	main-window-geometry = 0x0+0+0
