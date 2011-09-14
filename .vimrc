@@ -247,7 +247,7 @@ Bundle 'ciaranm/detectindent'
 " When the correct value for 'expandtab' cannot be determined, it will revert to the default value below.
 let g:detectindent_preferred_expandtab=1
 if has('autocmd')
-  " Attempt to detect indentation for the buffer
+  " Attempt to detect indentation for the buffer.
   autocmd BufReadPost * :DetectIndent
 endif
 
@@ -264,9 +264,9 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'leshill/vim-json'
 
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Use default arguments and indent with two spaces
+" Use default arguments and indent with two spaces.
 let g:sparkupArgs='--no-last-newline --indent-spaces=2'
-" Disable default <C-N> which doesn't work well with supertab
+" Disable default <C-N> which doesn't work well with supertab.
 let g:sparkupNextMapping='<C-;>'
 
 Bundle 'mexpolk/vim-taglist'
@@ -276,7 +276,7 @@ nmap <leader># "ayiw:Ack <C-R>a<CR>
 vmap <leader># "ay:Ack <C-R>a<CR>
 
 Bundle 'msanders/snipmate.vim'
-" Don't load snipmate's default snippets, use ours instead
+" Don't load snipmate's default snippets, use ours instead.
 let snippets_dir='$HOME/.vim/snippets/'
 
 Bundle 'othree/html5.vim'
@@ -347,10 +347,9 @@ Bundle 'php.vim--Garvin'
 Bundle 'phpcomplete.vim'
 Bundle 'phpfolding.vim'
 Bundle '2072/PHP-Indenting-for-VIm'
-" For PHP code, disable fancy options.
-let php_sql_query=0
+" For PHP code, enable fancy options and better syntax sync.
 let php_htmlInStrings=1
-let php_asp_tags=0
+let php_sync_method=0
 
 Bundle 'session.vim--Odding'
 let g:session_autosave=0
