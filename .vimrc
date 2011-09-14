@@ -346,7 +346,7 @@ Bundle 'IndexedSearch'
 Bundle 'php.vim--Garvin'
 Bundle 'phpcomplete.vim'
 Bundle 'phpfolding.vim'
-Bundle 'PHP-correct-Indenting'
+Bundle '2072/PHP-Indenting-for-VIm'
 " For PHP code, disable fancy options.
 let php_sql_query=0
 let php_htmlInStrings=1
