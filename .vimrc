@@ -326,8 +326,9 @@ let g:ConqueTerm_PromptRegex='^(\w\+)\s*\[[0-9A-Za-z_./\~,:-]\+\]\s*[\~\%\$\#]'
 
 Bundle 'easytags.vim'
 let g:easytags_on_cursorhold=0  " Wastes too much CPU
-let g:easytags_cmd='ctags'
+let g:easytags_dynamic_files=2  " Always use local .tags file
 let g:easytags_file='~/.vim/tags'
+let g:easytags_include_members=1
 
 Bundle 'Gist.vim'
 
