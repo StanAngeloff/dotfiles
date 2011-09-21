@@ -109,15 +109,6 @@ if has('mouse')
   set mouse=a
 endif
 
-" Configure taglist window.
-let Tlist_Process_File_Always=0
-let Tlist_GainFocus_On_ToggleOpen=1
-let Tlist_Auto_Highlight_Tag=1
-let Tlist_Exit_OnlyWindow=1
-let Tlist_Ctags_Cmd='ctags'
-let Tlist_Inc_Winwidth=0
-let tlist_php_settings='php;c:class;d:constant;f:function'
-
 let mapleader="\\"
 
 " Keyboard bindings.
@@ -159,9 +150,6 @@ map <silent> <F1> :set nospell!<CR>:set nospell?<CR>
 " Toggle paste-mode keyboard binding.
 nmap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
-
-" Toggle taglist window.
-nmap <silent> <F11> :TlistToggle<CR>
 
 " Adjust the tab/shift width keyboard bindings.
 nmap <leader>w2 :set tabstop=2<CR>:set shiftwidth=2<CR>
@@ -269,7 +257,13 @@ let g:sparkupArgs='--no-last-newline --indent-spaces=2'
 " Disable default <C-N> which doesn't work well with supertab.
 let g:sparkupNextMapping='<C-;>'
 
-Bundle 'mexpolk/vim-taglist'
+Bundle 'majutsushi/tagbar'
+let g:tagbar_autoclose=1
+let g:tagbar_autofocus=1
+let g:tagbar_compact=1
+let g:tagbar_autoshowtag=1
+" Toggle tag list window.
+nmap <silent> <F11> :TagbarToggle<CR>
 
 Bundle 'mileszs/ack.vim'
 nmap <leader># "ayiw:Ack <C-R>a<CR>
