@@ -1,0 +1,5 @@
+-f
+-
+--format=2
+--excmd=pattern
+--fields=nksaSmt
