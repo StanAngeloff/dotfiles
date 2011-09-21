@@ -279,8 +279,8 @@ Bundle 'pangloss/vim-javascript'
 
 Bundle 'samsonw/vim-task'
 " Toggle task status on current line.
-imap <silent> <buffer> <leader>m <ESC>:call Toggle_task_status()<CR>i
-nmap <silent> <buffer> <leader>m      :call Toggle_task_status()<CR>
+imap <silent> <leader>m <ESC>:call Toggle_task_status()<CR>a
+nmap <silent> <leader>m      :call Toggle_task_status()<CR>
 
 Bundle 'scrooloose/nerdcommenter'
 
