@@ -23,6 +23,7 @@
 	fontdiff = Inconsolata,12,-1,5,50,0,0,0,0,0
 	tabwidth = 4
 [alias]
+	a  = add
 	au = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
 	b  = branch
 	br = branch -r
