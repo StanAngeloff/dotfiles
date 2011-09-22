@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+export GEM_HOME=~/.gem
+export PATH="$HOME/.gem/bin:$PATH"
