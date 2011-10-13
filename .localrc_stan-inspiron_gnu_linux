@@ -1,4 +1,4 @@
 #!/bin/zsh
 
 export GEM_HOME=~/.gem
-export PATH="$HOME/.gem/bin:$PATH"
+export PATH="$HOME/.gem/bin:$HOME/bin/android-sdk-linux_x86/tools:$PATH"
