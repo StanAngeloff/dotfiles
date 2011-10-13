@@ -112,62 +112,62 @@ endif
 let mapleader="\\"
 
 " Keyboard bindings.
-nmap j gj
-nmap k gk
+nnoremap j gj
+nnoremap k gk
 
-map  / /\v
-nmap / /\v
-vmap / /\v
+noremap  / /\v
+nnoremap / /\v
+vnoremap / /\v
 
-imap jj <Esc>
-imap kk <Esc>
+inoremap jj <Esc>
+inoremap kk <Esc>
 
-imap <Up>    <NOP>
-map  <Up>    <NOP>
-imap <Down>  <NOP>
-map  <Down>  <NOP>
-imap <Left>  <NOP>
-map  <Left>  <NOP>
-imap <Right> <NOP>
-map  <Right> <NOP>
+inoremap <Up>    <NOP>
+noremap  <Up>    <NOP>
+inoremap <Down>  <NOP>
+noremap  <Down>  <NOP>
+inoremap <Left>  <NOP>
+noremap  <Left>  <NOP>
+inoremap <Right> <NOP>
+noremap  <Right> <NOP>
 
 " Tab keyboard bindings.
-nmap <leader>tn :tabnew<CR>
-nmap <leader>tm :tabmove
+nnoremap <leader>tn :tabnew<CR>
+nnoremap <leader>tm :tabmove
 
 " Reformat a paragraph in NORMAL mode.
-nmap <leader>q gqip
+nnoremap <leader>q gqip
 " Restore last visual selection in LINE mode.
-nmap <leader>v V`]
+nnoremap <leader>v V`]
 
 " Clean trailing whitespace keyboard bindings.
-nmap <silent> <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
+nnoremap <silent> <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 " Turn off active highlighting keyboard bindings.
-nmap <silent> <leader><Space> :noh<CR>
+nnoremap <silent> <leader><Space> :noh<CR>
 
 " Toggle spell-checking keyboard binding.
-map <silent> <F1> :set nospell!<CR>:set nospell?<CR>
+noremap <silent> <F1> :set nospell!<CR>:set nospell?<CR>
 " Toggle paste-mode keyboard binding.
-nmap <F2> :set invpaste paste?<CR>
+nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 
 " Adjust the tab/shift width keyboard bindings.
-nmap <leader>w2 :set tabstop=2<CR>:set shiftwidth=2<CR>
-nmap <leader>w4 :set tabstop=4<CR>:set shiftwidth=4<CR>
-nmap <leader>w8 :set tabstop=8<CR>:set shiftwidth=8<CR>
+nnoremap <leader>w2 :set tabstop=2<CR>:set shiftwidth=2<CR>
+nnoremap <leader>w4 :set tabstop=4<CR>:set shiftwidth=4<CR>
+nnoremap <leader>w8 :set tabstop=8<CR>:set shiftwidth=8<CR>
 
 " Evaluate block as expression
-vmap <C-A> "ac<C-R>=<C-R>a<CR><Esc>vbo
+vnoremap <C-A> "ac<C-R>=<C-R>a<CR><Esc>vbo
 
 " Make Control-direction switch between windows (like C-W h, etc.)
-nmap <silent> <C-K> :wincmd k<CR>
-nmap <silent> <C-J> :wincmd j<CR>
-nmap <silent> <C-H> :wincmd h<CR>
-nmap <silent> <C-L> :wincmd l<CR>
+nnoremap <silent> <C-K> :wincmd k<CR>
+nnoremap <silent> <C-J> :wincmd j<CR>
+nnoremap <silent> <C-H> :wincmd h<CR>
+nnoremap <silent> <C-L> :wincmd l<CR>
 
 " Snippets keyboard bindings.
 " Unix timestamp
-imap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
+inoremap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 
 if has("gui_running")
   set guifont=Inconsolata\ Medium\ 14
@@ -263,11 +263,11 @@ let g:tagbar_autofocus=1
 let g:tagbar_compact=1
 let g:tagbar_autoshowtag=1
 " Toggle tag list window.
-nmap <silent> <F11> :TagbarToggle<CR>
+nnoremap <silent> <F11> :TagbarToggle<CR>
 
 Bundle 'mileszs/ack.vim'
-nmap <leader># "ayiw:Ack <C-R>a<CR>
-vmap <leader># "ay:Ack <C-R>a<CR>
+nnoremap <leader># "ayiw:Ack <C-R>a<CR>
+vnoremap <leader># "ay:Ack <C-R>a<CR>
 
 Bundle 'msanders/snipmate.vim'
 " Don't load snipmate's default snippets, use ours instead.
@@ -279,8 +279,8 @@ Bundle 'pangloss/vim-javascript'
 
 Bundle 'samsonw/vim-task'
 " Toggle task status on current line.
-imap <silent> <leader>m <ESC>:call Toggle_task_status()<CR>a
-nmap <silent> <leader>m      :call Toggle_task_status()<CR>
+inoremap <silent> <leader>m <ESC>:call Toggle_task_status()<CR>a
+nnoremap <silent> <leader>m      :call Toggle_task_status()<CR>
 
 Bundle 'scrooloose/nerdcommenter'
 
@@ -289,11 +289,11 @@ let NERDTreeChDirMode=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 " Toggle NERD tree.
-nmap <silent> <F12> :NERDTreeToggle<CR>
+nnoremap <silent> <F12> :NERDTreeToggle<CR>
 
 Bundle 'scrooloose/syntastic'
 " Check for syntax errors.
-nmap <silent> <leader>E :SyntasticEnable<CR>:w<CR>:SyntasticDisable<CR>:Errors<CR><C-W>w
+nnoremap <silent> <leader>E :SyntasticEnable<CR>:w<CR>:SyntasticDisable<CR>:Errors<CR><C-W>w
 if has('autocmd')
   " Disable syntax checking for all files by default.
   autocmd BufRead * :SyntasticDisable
@@ -301,7 +301,7 @@ endif
 
 Bundle 'sjl/gundo.vim'
 " Toggle Gundo undo tree.
-nmap <silent> <F5> :GundoToggle<CR>
+nnoremap <silent> <F5> :GundoToggle<CR>
 
 Bundle 'tpope/vim-fugitive'
 
@@ -334,7 +334,7 @@ Bundle 'Gist.vim'
 
 Bundle 'grep.vim'
 let Grep_Skip_Dirs='.git .svn CVS .sass-cache'
-nmap <silent> <F3> :Grep<CR>
+nnoremap <silent> <F3> :Grep<CR>
 
 Bundle 'IndexedSearch'
 
@@ -350,8 +350,8 @@ Bundle 'session.vim--Odding'
 let g:session_autosave=0
 let g:session_autoload=0
 let g:session_directory='~/.vim/sessions'
-map <leader>ss :SaveSession user<CR>
-map <leader>sr :OpenSession user<CR>
+noremap <leader>ss :SaveSession user<CR>
+noremap <leader>sr :OpenSession user<CR>
 
 Bundle 'shell.vim--Odding'
 " Disable <F11> mappings.
@@ -361,7 +361,7 @@ Bundle 'git://git.wincent.com/command-t.git'
 let g:CommandTMaxFiles=64000
 let g:CommandTMaxDepth=24
 " Start fuzzy match.
-nmap <silent> <leader>o :CommandT<CR>
+nnoremap <silent> <leader>o :CommandT<CR>
 
 Bundle 'thinca/vim-visualstar'
 
@@ -369,4 +369,4 @@ Bundle 'ManPageView'
 let g:manpageview_pgm_php='pman'
 
 Bundle 'ZoomWin'
-nmap <C-W>o <Plug>ZoomWin
+nnoremap <C-W>o <Plug>ZoomWin
