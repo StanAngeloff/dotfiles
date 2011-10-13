@@ -37,7 +37,7 @@
 	fh = flow hotfix
 	fi = flow init
 	fr = flow release
-	l  = log       --graph --tags --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
+	l  = log       --graph        --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
 	la = log --all --graph --tags --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
 	s  = status -sb
 	sf = !sh -c 'git show --pretty="format:" --name-only $@ | grep -v "^$" | sort -u' -
