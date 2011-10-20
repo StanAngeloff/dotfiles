@@ -1,7 +1,9 @@
 .adobe
+.android
+.backups
 .bash*
 .cache
-.compiz
+.compiz*
 .cola
 .config
 .dbshell
@@ -17,7 +19,7 @@ Games
 .gem
 .gimp*
 .gitk
-.gnome2
+.gnome2*
 .gnupg
 .gstreamer*
 .gtk-*
@@ -47,6 +49,7 @@ Games
 .putty
 .python*
 .recently-used
+.rpmdb
 .rvm*
 .Skype
 .ssh
@@ -54,7 +57,7 @@ Games
 .sudo*
 .teamviewer*
 .thumbnails
-.thunderbird
+.thunderbird*
 .vagrant
 .vim/backup/*
 !.vim/backup/.gitempty
