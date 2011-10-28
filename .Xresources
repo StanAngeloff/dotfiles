@@ -6,6 +6,7 @@ URxvt.inheritPixmap: false
 URxvt.fading: 0
 URxvt.background: rgba:0000/0000/0000/efef
 URxvt.foreground: 15
+URxvt.tabbed.autohide:  1
 URxvt.tabbed.tabbar-fg: 244
 URxvt.tabbed.tabbar-bg: 232
 URxvt.tabbed.tab-fg:    247
