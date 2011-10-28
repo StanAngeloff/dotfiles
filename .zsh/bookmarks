@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-ZSH_BOOKMARKS="$HOME/.zsh/cdbookmarks"
+ZSH_BOOKMARKS="$HOME/.zsh/.bookmarks.list"
 
 if [[ -f "$ZSH_BOOKMARKS" ]]; then
   function cdb_edit() {

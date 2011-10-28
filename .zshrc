@@ -166,7 +166,7 @@ bindkey ' '       magic-space
 bindkey "^[m"     copy-prev-shell-word
 
 # Add bookmarks to Zsh
-[[ -s "$HOME/.zshbookmarks" ]] && source "$HOME/.zshbookmarks"
+[[ -s "$HOME/.zsh/bookmarks" ]] && source "$HOME/.zsh/bookmarks"
 
 # Fancy terminal title
 function title {
