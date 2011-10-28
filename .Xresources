@@ -1,6 +1,7 @@
 URxvt.scrollBar: off
 URxvt.saveLines: 102400
 URxvt.depth: 32
+URxvt.iconFile: /usr/share/icons/Humanity/apps/128/utilities-terminal.svg
 
 URxvt.inheritPixmap: false
 URxvt.fading: 0
