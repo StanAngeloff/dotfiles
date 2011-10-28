@@ -174,17 +174,11 @@ if has("gui_running")
 endif
 
 " Mode-dependent cursor for gnome-terminal.
-if &term =~ "xterm\\|xterm-256color"
-  if has("autocmd") && executable('gconftool-2')
-    au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-    au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-    au VimLeave    * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-  else
-    :silent !echo -ne "\033]12;white\007"
-    let &t_SI = "\033]12;steelblue\007"
-    let &t_EI = "\033]12;white\007"
-    autocmd VimLeave * :!echo -ne "\033]12;white\007"
-  endif
+if &term =~ "xterm\\|xterm-256color\\|rxvt-unicode-256color"
+  :silent !echo -ne "\033]12;white\007"
+  let &t_SI = "\033]12;steelblue\007"
+  let &t_EI = "\033]12;white\007"
+  autocmd VimLeave * :!echo -ne "\033]12;white\007"
 endif
 
 " Enable file type detection.

@@ -172,7 +172,7 @@ bindkey "^[m"     copy-prev-shell-word
 function title {
   if [[ "$TERM" == screen* ]] || [[ "$ALTTERM" == screen* ]]; then
     print -nR $'\ek'$*$'\e\\'
-  elif [[ "$TERM" == xterm* ]] || [[ "$TERM" == "rxvt" ]]; then
+  elif [[ "$TERM" == xterm* ]] || [[ "$TERM" == rxvt* ]]; then
     print -nR $'\033]0;'$*$'\a'
   fi
 }

@@ -1,0 +1,46 @@
+URxvt.scrollBar: off
+URxvt.saveLines: 102400
+URxvt.depth: 32
+
+URxvt.inheritPixmap: false
+URxvt.background: rgba:0000/0000/0000/efef
+URxvt.foreground: 15
+URxvt.tabbed.tabbar-fg: 244
+URxvt.tabbed.tabbar-bg: 232
+URxvt.tabbed.tab-fg:    247
+URxvt.tabbed.tab-bg:    235
+
+URxvt.font: xft:inconsolata:pixelsize=16:antialias=true:hinting=true
+URxvt.boldFont: xft:inconsolata:bold:pixelsize=16:antialias=true:hinting=true
+
+URxvt.perl-lib: /home/stan/.URxvt/lib
+URxvt.perl-ext-common: default,matcher,clipboard,tabbed,keyboard-select
+
+URxvt.copyCommand:  xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.keysym.Control-Shift-c: perl:clipboard:copy
+URxvt.keysym.Control-Shift-v: perl:clipboard:paste
+
+URxvt.keysym.Control-Shift-b: perl:keyboard-select:activate
+
+URxvt.keysym.Control-Up:      \033[1;5A
+URxvt.keysym.Control-Down:    \033[1;5B
+URxvt.keysym.Control-Left:    \033[1;5D
+URxvt.keysym.Control-Right:   \033[1;5C
+
+# URxvt.color0:  #000000
+# URxvt.color1:  #A80000
+# URxvt.color2:  #00A800
+# URxvt.color3:  #A85400
+# URxvt.color4:  #0000A8
+# URxvt.color5:  #A800A8
+# URxvt.color6:  #00A8A8
+# URxvt.color7:  #A8A8A8
+# URxvt.color8:  #545054
+# URxvt.color9:  #F85450
+# URxvt.color10: #50FC50
+# URxvt.color11: #F2FC50
+# URxvt.color12: #5054F8
+# URxvt.color13: #F854F8
+# URxvt.color14: #50FCF8
+# URxvt.color15: #F8FCF8

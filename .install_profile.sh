@@ -33,6 +33,8 @@ for file in $TEMPLATES; do
   eval "$SED_SCRIPT" -i "$file"
 done
 
+git submodule update --init --recusrive
+
 VUNDLE_PATH="$HOME/.vim/bundle/vundle"
 if [ -d "$VUNDLE_PATH" ]; then
   cd "$VUNDLE_PATH" && git fetch --all && git reset --hard origin/master
