@@ -10,20 +10,42 @@ URxvt.tabbed.tabbar-bg: 232
 URxvt.tabbed.tab-fg:    247
 URxvt.tabbed.tab-bg:    235
 
-URxvt.font: xft:inconsolata:pixelsize=16:antialias=true:hinting=true
-URxvt.boldFont: xft:inconsolata:bold:pixelsize=16:antialias=true:hinting=true
+URxvt.font: xft:inconsolata:size=12:antialias=true:hinting=true
+URxvt.boldFont: xft:inconsolata:bold:size=12:antialias=true:hinting=true
+URxvt.letterSpace: -0.5
 
-URxvt.perl-lib: ${HOME}/.URxvt/lib
-URxvt.perl-ext-common: default,matcher,clipboard,tabbed,keyboard-select
+URxvt.perl-lib: ${HOME}/.URxvt/perls:${HOME}/.URxvt/tabbedex
+URxvt.perl-ext-common: default,matcher,clipboard,keyboard-select,tabbedex
 
 URxvt.copyCommand:  xclip -i -selection clipboard
 URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.keysym.Control-c: \003
+URxvt.keysym.Control-v: \026
 URxvt.keysym.Control-Shift-c: perl:clipboard:copy
 URxvt.keysym.Control-Shift-v: perl:clipboard:paste
 
 URxvt.keysym.Control-Shift-b: perl:keyboard-select:activate
 
-URxvt.keysym.Control-Up:      \033[1;5A
-URxvt.keysym.Control-Down:    \033[1;5B
-URxvt.keysym.Control-Left:    \033[1;5D
-URxvt.keysym.Control-Right:   \033[1;5C
+URxvt.keysym.Control-Up:        \033[1;5A
+URxvt.keysym.Control-Down:      \033[1;5B
+URxvt.keysym.Control-Left:      \033[1;5D
+URxvt.keysym.Control-Right:     \033[1;5C
+URxvt.keysym.Control-Page_Up:   \033[5;5~
+URxvt.keysym.Control-Page_Down: \033[6;5~
+
+URxvt.color0:  #000000
+URxvt.color1:  #cd0000
+URxvt.color2:  #00cd00
+URxvt.color3:  #cdcd00
+URxvt.color4:  #1e90ff
+URxvt.color5:  #cd00cd
+URxvt.color6:  #00cdcd
+URxvt.color7:  #e5e5e5
+URxvt.color8:  #4c4c4c
+URxvt.color9:  #ff0000
+URxvt.color10: #00ff00
+URxvt.color11: #ffff00
+URxvt.color12: #4682b4
+URxvt.color13: #ff00ff
+URxvt.color14: #00ffff
+URxvt.color15: #ffffff

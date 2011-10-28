@@ -33,12 +33,20 @@ for file in $TEMPLATES; do
   eval "$SED_SCRIPT" -i "$file"
 done
 
-URXVT_LIB_PATH="$HOME/.URxvt/lib"
-if [ -d "$URXVT_LIB_PATH" ]; then
-  cd "$URXVT_LIB_PATH" && git fetch --all && git reset --hard origin/master
-else
-  git clone git://github.com/muennich/urxvt-perls.git "$URXVT_LIB_PATH"
-fi
+URXVT_LIB_PATH="$HOME/.URxvt"
+URXVT_LIBS=(
+  'git://github.com/muennich/urxvt-perls.git'
+  'git://github.com/stepb/urxvt-tabbedex.git'
+)
+for (( i = 0 ; i < ${#URXVT_LIBS[@]} ; i += 1 )); do
+  LIB_URI="${URXVT_LIBS[$i]}"
+  LIB_BASENAME="$(basename "$LIB_URI" | sed  -e 's/^urxvt-//' -e 's/.git$//')"
+  if [ -d "$URXVT_LIB_PATH/$LIB_BASENAME" ]; then
+   cd "$URXVT_LIB_PATH/$LIB_BASENAME" && git fetch --all && git reset --hard origin/master
+  else
+    git clone "$LIB_URI" "$URXVT_LIB_PATH/$LIB_BASENAME"
+  fi
+done
 
 sed -e 's#${HOME}#'"$HOME"'#g' -i "$HOME/.Xresources"
 
