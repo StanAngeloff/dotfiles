@@ -49,9 +49,9 @@ for (( i = 0 ; i < ${#URXVT_LIBS[@]} ; i += 1 )); do
   fi
 done
 
-sed -e 's#${HOME}#'"$HOME"'#g' -i "$HOME/.Xdefaults"
+sed -e 's#${HOME}#'"$HOME"'#g' -i "$HOME/.Xresources"
 
-xrdb -merge "$HOME/.Xdefaults"
+xrdb -merge "$HOME/.Xresources"
 
 curl -o "$HOME/.vim/autoload/pathogen.vim" 'https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim'
 
