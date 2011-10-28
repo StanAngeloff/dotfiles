@@ -34,7 +34,7 @@ URxvt.keysym.Control-Page_Up:   \033[5;5~
 URxvt.keysym.Control-Page_Down: \033[6;5~
 
 URxvt.perl-lib: ${HOME}/.URxvt/perls:${HOME}/.URxvt/tabbedex:${HOME}/.URxvt/vimfiles/urxvt
-URxvt.perl-ext-common: default,matcher,clipboard,tabbedex,vim-scrollback
+URxvt.perl-ext-common: default,matcher,clipboard,tabbedex,vim-scrollback,-searchable-scrollback
 
 URxvt.copyCommand:  xclip -i -selection clipboard
 URxvt.pasteCommand: xclip -o -selection clipboard
