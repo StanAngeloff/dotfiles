@@ -58,7 +58,8 @@ Games
 .teamviewer*
 .thumbnails
 .thunderbird*
-.URxvt/lib
+.URxvt/*
+!.URxvt/.gitempty
 .vagrant
 .vim/backup/*
 !.vim/backup/.gitempty
