@@ -24,6 +24,7 @@ URxvt.keysym.Shift-Right:       \033[1;2C
 URxvt.keysym.Shift-Left:        \033[1;2D
 URxvt.keysym.Control-b:         \002
 URxvt.keysym.Control-c:         \003
+URxvt.keysym.Control-r:         \022
 URxvt.keysym.Control-v:         \026
 URxvt.keysym.Control-Up:        \033[1;5A
 URxvt.keysym.Control-Down:      \033[1;5B
