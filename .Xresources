@@ -1,3 +1,7 @@
+URxvt.urgentOnBell: on
+URxvt.visualBell: on
+URxvt.iso14755: off
+URxvt.iso14755_52: off
 URxvt.scrollBar: off
 URxvt.saveLines: 102400
 URxvt.depth: 32
