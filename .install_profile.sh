@@ -33,7 +33,14 @@ for file in $TEMPLATES; do
   eval "$SED_SCRIPT" -i "$file"
 done
 
-git submodule update --init --recusrive
+URXVT_LIB_PATH="$HOME/.URxvt/lib"
+if [ -d "$URXVT_LIB_PATH" ]; then
+  cd "$URXVT_LIB_PATH" && git fetch --all && git reset --hard origin/master
+else
+  git clone http://github.com/gmarik/vundle.git "$URXVT_LIB_PATH"
+fi
+
+sed -e 's#${HOME}#'"$HOME"'#g' -i "$HOME/.Xresources"
 
 VUNDLE_PATH="$HOME/.vim/bundle/vundle"
 if [ -d "$VUNDLE_PATH" ]; then

@@ -13,7 +13,7 @@ URxvt.tabbed.tab-bg:    235
 URxvt.font: xft:inconsolata:pixelsize=16:antialias=true:hinting=true
 URxvt.boldFont: xft:inconsolata:bold:pixelsize=16:antialias=true:hinting=true
 
-URxvt.perl-lib: /home/stan/.URxvt/lib
+URxvt.perl-lib: ${HOME}/.URxvt/lib
 URxvt.perl-ext-common: default,matcher,clipboard,tabbed,keyboard-select
 
 URxvt.copyCommand:  xclip -i -selection clipboard
