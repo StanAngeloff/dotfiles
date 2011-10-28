@@ -37,6 +37,7 @@ URXVT_LIB_PATH="$HOME/.URxvt"
 URXVT_LIBS=(
   'git://github.com/muennich/urxvt-perls.git'
   'git://github.com/stepb/urxvt-tabbedex.git'
+  'git://github.com/ervandew/vimfiles.git'
 )
 for (( i = 0 ; i < ${#URXVT_LIBS[@]} ; i += 1 )); do
   LIB_URI="${URXVT_LIBS[$i]}"
@@ -48,9 +49,9 @@ for (( i = 0 ; i < ${#URXVT_LIBS[@]} ; i += 1 )); do
   fi
 done
 
-sed -e 's#${HOME}#'"$HOME"'#g' -i "$HOME/.Xresources"
+sed -e 's#${HOME}#'"$HOME"'#g' -i "$HOME/.Xdefaults"
 
-xrdb -merge "$HOME/.Xresources"
+xrdb -merge "$HOME/.Xdefaults"
 
 VUNDLE_PATH="$HOME/.vim/bundle/vundle"
 if [ -d "$VUNDLE_PATH" ]; then

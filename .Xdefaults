@@ -33,19 +33,20 @@ URxvt.keysym.Control-Right:     \033[1;5C
 URxvt.keysym.Control-Page_Up:   \033[5;5~
 URxvt.keysym.Control-Page_Down: \033[6;5~
 
-URxvt.perl-lib: /home/stan/.URxvt/perls:/home/stan/.URxvt/tabbedex
-URxvt.perl-ext-common: default,matcher,clipboard,keyboard-select,tabbedex
+URxvt.perl-lib: ${HOME}/.URxvt/perls:${HOME}/.URxvt/tabbedex:${HOME}/.URxvt/vimfiles/urxvt
+URxvt.perl-ext-common: default,matcher,clipboard,tabbedex,vim-scrollback
 
 URxvt.copyCommand:  xclip -i -selection clipboard
 URxvt.pasteCommand: xclip -o -selection clipboard
 URxvt.keysym.Control-Shift-C: perl:clipboard:copy
 URxvt.keysym.Control-Shift-V: perl:clipboard:paste
 
-URxvt.keysym.Control-Shift-B: perl:keyboard-select:activate
-
 URxvt.keysym.Control-Shift-T:     perl:tabbedex:new_tab
 URxvt.keysym.Control-Shift-Left:  perl:tabbedex:prev_tab
 URxvt.keysym.Control-Shift-Right: perl:tabbedex:next_tab
+
+URxvt.vim-scrollback:       Control-Shift-question
+URxvt.vim-scrollback-paste: Control-Shift-B
 
 URxvt.color0:  #000000
 URxvt.color1:  #cd0000
