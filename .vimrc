@@ -171,14 +171,14 @@ inoremap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 
 if has("gui_running")
   set guifont=Inconsolata\ Medium\ 14
-endif
-
-" Mode-dependent cursor for gnome-terminal.
-if &term =~ "xterm\\|xterm-256color\\|rxvt-unicode-256color"
-  :silent !echo -ne "\033]12;white\007"
-  let &t_SI = "\033]12;steelblue\007"
-  let &t_EI = "\033]12;white\007"
-  autocmd VimLeave * :!echo -ne "\033]12;white\007"
+else
+  " Mode-dependent cursor for gnome-terminal.
+  if &term =~ "xterm\\|xterm-256color\\|rxvt-unicode-256color"
+    :silent !echo -ne "\033]12;white\007"
+    let &t_SI = "\033]12;steelblue\007"
+    let &t_EI = "\033]12;white\007"
+    autocmd VimLeave * :!echo -ne "\033]12;white\007"
+  endif
 endif
 
 " Enable file type detection.
