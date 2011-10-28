@@ -3,12 +3,15 @@ URxvt.saveLines: 102400
 URxvt.depth: 32
 
 URxvt.inheritPixmap: false
+URxvt.fading: 0
 URxvt.background: rgba:0000/0000/0000/efef
 URxvt.foreground: 15
 URxvt.tabbed.tabbar-fg: 244
 URxvt.tabbed.tabbar-bg: 232
 URxvt.tabbed.tab-fg:    247
 URxvt.tabbed.tab-bg:    235
+URxvt.tabbed.title-fg:  247
+URxvt.tabbed.title-bg:  232
 
 URxvt.font: xft:inconsolata:size=12:antialias=true:hinting=true
 URxvt.boldFont: xft:inconsolata:bold:size=12:antialias=true:hinting=true
