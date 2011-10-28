@@ -53,6 +53,8 @@ sed -e 's#${HOME}#'"$HOME"'#g' -i "$HOME/.Xdefaults"
 
 xrdb -merge "$HOME/.Xdefaults"
 
+curl -o "$HOME/.vim/autoload/pathogen.vim" 'https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim'
+
 VUNDLE_PATH="$HOME/.vim/bundle/vundle"
 if [ -d "$VUNDLE_PATH" ]; then
   cd "$VUNDLE_PATH" && git fetch --all && git reset --hard origin/master
