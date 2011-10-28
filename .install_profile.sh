@@ -37,16 +37,18 @@ URXVT_LIB_PATH="$HOME/.URxvt/lib"
 if [ -d "$URXVT_LIB_PATH" ]; then
   cd "$URXVT_LIB_PATH" && git fetch --all && git reset --hard origin/master
 else
-  git clone http://github.com/gmarik/vundle.git "$URXVT_LIB_PATH"
+  git clone git://github.com/muennich/urxvt-perls.git "$URXVT_LIB_PATH"
 fi
 
 sed -e 's#${HOME}#'"$HOME"'#g' -i "$HOME/.Xresources"
+
+xrdb -merge "$HOME/.Xresources"
 
 VUNDLE_PATH="$HOME/.vim/bundle/vundle"
 if [ -d "$VUNDLE_PATH" ]; then
   cd "$VUNDLE_PATH" && git fetch --all && git reset --hard origin/master
 else
-  git clone http://github.com/gmarik/vundle.git "$VUNDLE_PATH"
+  git clone git://github.com/gmarik/vundle.git "$VUNDLE_PATH"
 fi
 
 vim -c BundleInstall -c q
