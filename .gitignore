@@ -77,7 +77,7 @@ Games
 .xsession*
 .zcompdump
 .zsh/*
-!.zsh/.gitempty
+!.zsh/bookmarks
 bin
 Desktop
 Documents
