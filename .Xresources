@@ -1,5 +1,5 @@
 URxvt.urgentOnBell: on
-URxvt.visualBell: on
+URxvt.visualBell: off
 URxvt.iso14755: off
 URxvt.iso14755_52: off
 URxvt.scrollBar: off
