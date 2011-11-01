@@ -61,6 +61,8 @@ Games
 .URxvt/*
 !.URxvt/.gitempty
 .vagrant
+.vim/autoload/*
+!.vim/autoload/.gitempty
 .vim/backup/*
 !.vim/backup/.gitempty
 .vim/bundle/*
