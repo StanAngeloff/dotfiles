@@ -1,4 +1,4 @@
-URxvt.urgentOnBell: on
+URxvt.urgentOnBell: off
 URxvt.visualBell: off
 URxvt.iso14755: off
 URxvt.iso14755_52: off
