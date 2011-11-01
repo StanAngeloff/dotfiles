@@ -2,10 +2,14 @@ URxvt.urgentOnBell: off
 URxvt.visualBell: off
 URxvt.iso14755: off
 URxvt.iso14755_52: off
-URxvt.scrollBar: off
-URxvt.saveLines: 102400
 URxvt.depth: 32
 URxvt.iconFile: /usr/share/icons/Humanity/apps/128/utilities-terminal.svg
+
+URxvt.scrollBar: off
+URxvt.saveLines: 102400
+URxvt.scrollTtyOutput:   false
+URxvt.scrollWithBuffer:  true
+URxvt.scrollTtyKeypress: true
 
 URxvt.inheritPixmap: false
 URxvt.fading: 0
