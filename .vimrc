@@ -223,6 +223,9 @@ endif
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+" Make broken SSL happy again
+let $GIT_SSL_NO_VERIFY='true'
+
 Bundle 'StanAngeloff/vim-zend55'
 
 Bundle 'ciaranm/detectindent'
