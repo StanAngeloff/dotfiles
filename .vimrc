@@ -54,7 +54,7 @@ set noerrorbells               " Disable more annoying noise.
 set laststatus=2               " Always display a status line.
 set formatoptions=qrn1         " Format comments, numbered-lists, one-letter words.
 
-set guioptions=grL             " Grey menu items, RHS scrollbar and LHS if in a split.
+set guioptions=                " No GUI.
 set hlsearch                   " Highlight the last used search pattern.
 set cursorline!                " Highlight line under cursor.
 
