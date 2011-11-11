@@ -41,6 +41,8 @@
 	la = log --all --graph --tags --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
 	s  = status -sb
 	sf = !sh -c 'git show --pretty="format:" --name-only $@ | grep -v "^$" | sort -u' -
+	sl = stash list
+	sp = stash pop
 [giggle]
 	main-window-maximized = true
 	main-window-geometry = 0x0+0+0
