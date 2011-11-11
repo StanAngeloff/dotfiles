@@ -362,7 +362,7 @@ nnoremap <silent> <leader>o :CommandT<CR>
 
 Bundle 'thinca/vim-visualstar'
 
-Bundle 'ManPageView'
+Bundle 'StanAngeloff/ManPageView'
 let g:manpageview_pgm_php='pman'
 
 Bundle 'ZoomWin'
