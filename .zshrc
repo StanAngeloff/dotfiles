@@ -9,7 +9,7 @@ ZSH="$HOME/.zsh"
 HISTFILE="$ZSH/history"
 
 # Configure history size
-HISTSIZE=1024
+HISTSIZE=40960
 SAVEHIST=$HISTSIZE
 
 # Turn on 256-colour terminal support.
