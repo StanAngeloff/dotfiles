@@ -196,3 +196,8 @@ function preexec {
 # Source machine-specific local configuration file.
 LOCALRC=$( echo ".localrc_`uname -n`_`uname -o`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
 [[ -s "$HOME/$LOCALRC" ]] && source "$HOME/$LOCALRC"
+
+# Enable Ctrl-X-e to edit command line in $EDITOR.
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
