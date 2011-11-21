@@ -335,7 +335,7 @@ nnoremap <silent> <F3> :Grep<CR>
 
 Bundle 'IndexedSearch'
 
-Bundle 'php.vim--Garvin'
+Bundle 'StanAngeloff/php.vim'
 Bundle 'phpcomplete.vim'
 Bundle 'phpfolding.vim'
 Bundle '2072/PHP-Indenting-for-VIm'
