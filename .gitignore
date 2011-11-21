@@ -60,7 +60,7 @@ Games
 .thunderbird*
 .URxvt/*
 !.URxvt/.gitempty
-.vagrant
+.vagrant*
 .vim/autoload/*
 !.vim/autoload/.gitempty
 .vim/backup/*
