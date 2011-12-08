@@ -366,3 +366,9 @@ let g:manpageview_pgm_php='pman'
 
 Bundle 'ZoomWin'
 nnoremap <C-W>o <Plug>ZoomWin
+
+Bundle 'skammer/vim-css-color'
+let g:cssColorVimDoNotMessMyUpdatetime = 1
+if has('autocmd')
+  autocmd FileType sass,scss,stylus syn cluster sassCssAttributes add=@cssColors
+endif
