@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+alias :q='exit'
+
 alias g='git'
 
 alias '?'='screen -ls'
