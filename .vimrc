@@ -177,7 +177,9 @@ else
     :silent !echo -ne "\033]12;white\007"
     let &t_SI = "\033]12;steelblue\007"
     let &t_EI = "\033]12;white\007"
-    autocmd VimLeave * :!echo -ne "\033]12;white\007"
+    if has('autocmd')
+      autocmd VimLeave * :!echo -ne "\033]12;white\007"
+    endif
   endif
 endif
 
