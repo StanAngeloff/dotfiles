@@ -33,6 +33,7 @@
 	co = checkout
 	eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
 	f  = flow
+	fa = fetch --all
 	ff = flow feature
 	fh = flow hotfix
 	fi = flow init
