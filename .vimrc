@@ -143,7 +143,7 @@ nnoremap <leader>v V`]
 " Clean trailing whitespace keyboard bindings.
 nnoremap <silent> <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 " Turn off active highlighting keyboard bindings.
-nnoremap <silent> <leader><Space> :noh<CR>
+nnoremap <silent> <leader><Space> :noh<CR>:sign unplace *<CR>
 
 " Toggle spell-checking keyboard binding.
 noremap <silent> <F1> :set nospell!<CR>:set nospell?<CR>
@@ -289,12 +289,9 @@ let NERDTreeDirArrows=1
 nnoremap <silent> <F12> :NERDTreeToggle<CR>
 
 Bundle 'scrooloose/syntastic'
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
 " Check for syntax errors.
-nnoremap <silent> <leader>E :SyntasticEnable<CR>:w<CR>:SyntasticDisable<CR>:Errors<CR><C-W>w
-if has('autocmd')
-  " Disable syntax checking for all files by default.
-  autocmd BufRead * :SyntasticDisable
-endif
+nnoremap <silent> <leader>E :w<CR>:sign unplace *<CR>:SyntasticCheck<CR>
 
 Bundle 'sjl/gundo.vim'
 " Toggle Gundo undo tree.
