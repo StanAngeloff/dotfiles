@@ -11,6 +11,8 @@
 	encoding = utf-8
 	diffcontext = 4
 	historybrowser = giggle
+[color]
+	ui = auto
 [core]
 	editor = vim
 [branch]
