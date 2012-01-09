@@ -303,7 +303,7 @@ Bundle 'tpope/vim-fugitive'
 
 Bundle 'tpope/vim-git'
 
-Bundle 'tpope/vim-haml'
+Bundle 'chriseppstein/vim-haml'
 
 Bundle 'tpope/vim-markdown'
 
