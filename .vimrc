@@ -378,3 +378,5 @@ endif
 Bundle 'tpope/vim-speeddating'
 
 Bundle 'tpope/vim-abolish'
+
+Bundle 'sickill/vim-pasta'
