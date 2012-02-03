@@ -1,5 +1,6 @@
 *
 !.aliases
+!.cleanup_profile.sh
 !.ctags
 !.gemrc
 !.gitconfig
