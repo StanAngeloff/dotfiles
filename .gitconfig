@@ -48,9 +48,5 @@
 	sf = !sh -c 'git show --pretty="format:" --name-only $@ | grep -v "^$" | sort -u' -
 	sl = stash list
 	sp = stash pop
-[giggle]
-	main-window-maximized = true
-	main-window-geometry = 0x0+0+0
-	history-view-vpane-position = 466
-	file-view-vpane-position = 700
-	main-window-view = HistoryView
+	su = submodule update --init --recursive
+
