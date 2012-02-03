@@ -15,12 +15,14 @@
 	ui = auto
 [core]
 	editor = vim
-[branch]
-	autosetuprebase = always
 [diff]
 	tool = vimdiff
+[diff "image"]
+	command = simple-imagediff
 [merge]
 	tool = vimdiff
+[branch]
+	autosetuprebase = always
 [cola]
 	fontdiff = Inconsolata,12,-1,5,50,0,0,0,0,0
 	tabwidth = 4
