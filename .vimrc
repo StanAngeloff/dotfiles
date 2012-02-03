@@ -157,7 +157,7 @@ nnoremap <leader>w4 :set tabstop=4<CR>:set shiftwidth=4<CR>
 nnoremap <leader>w8 :set tabstop=8<CR>:set shiftwidth=8<CR>
 
 " Evaluate block as expression
-vnoremap <C-A> "ac<C-R>=<C-R>a<CR><Esc>vbo
+vnoremap <C-R> "ac<C-R>=<C-R>a<CR><Esc>vbo
 
 " Make Control-direction switch between windows (like C-W h, etc.)
 nnoremap <silent> <C-K> :wincmd k<CR>
