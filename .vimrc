@@ -364,7 +364,7 @@ let g:ctrlp_max_depth=24
 Bundle 'thinca/vim-visualstar'
 
 Bundle 'StanAngeloff/ManPageView'
-let g:manpageview_pgm_php='pman'
+let g:manpageview_pgm_php="$HOME/bin/pman"
 
 Bundle 'ZoomWin'
 nnoremap <C-W>o <Plug>ZoomWin
