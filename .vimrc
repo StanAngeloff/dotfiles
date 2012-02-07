@@ -386,3 +386,6 @@ Bundle 'sickill/vim-pasta'
 
 Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
+
+Bundle 'Lokaltog/vim-easymotion'
+let g:EasyMotion_leader_key = ';'
