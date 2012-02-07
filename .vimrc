@@ -173,7 +173,7 @@ inoremap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 nnoremap <C-Enter> <C-w><C-]><C-w>T
 
 if has("gui_running")
-  set guifont=Inconsolata\ Medium\ 14
+  set guifont=Inconsolata\ for\ Powerline\ Medium\ 14
 else
   " Mode-dependent cursor for gnome-terminal.
   if &term =~ "xterm\\|xterm-256color\\|rxvt-unicode-256color"
@@ -383,3 +383,6 @@ Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-abolish'
 
 Bundle 'sickill/vim-pasta'
+
+Bundle 'Lokaltog/vim-powerline'
+let g:Powerline_symbols = 'fancy'
