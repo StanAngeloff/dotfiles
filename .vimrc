@@ -386,6 +386,48 @@ Bundle 'sickill/vim-pasta'
 
 Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
+let g:Powerline_colorscheme = 'zend55'
+let g:Powerline_cache_enabled = 0
+let g:Powerline#Colorschemes#zend55#colorscheme = Pl#Colorscheme#Init([
+  \ Pl#Colorscheme#HiSegment(['SPLIT'],                               Pl#Hi#Create(Pl#Hi#Cterm(  0, 234)        ), { 'N': Pl#Hi#Create(Pl#Hi#Cterm(  0, 234)        ), 'i': Pl#Hi#Create(Pl#Hi#Cterm(  0, 234)        ), } ),
+  \ Pl#Colorscheme#HiSegment(['mode_indicator'],                      Pl#Hi#Create(Pl#Hi#Cterm(250, 238)        ), {                                                   'i': Pl#Hi#Create(Pl#Hi#Cterm(250, 238)        ), 'v': Pl#Hi#Create(Pl#Hi#Cterm(250, 238)        ), 'r': Pl#Hi#Create(Pl#Hi#Cterm(250, 238)        ), 's': Pl#Hi#Create(Pl#Hi#Cterm(250, 238)        ) } ),
+  \ Pl#Colorscheme#HiSegment(['branch',
+  \                           'scrollpercent',
+  \                           'raw',
+  \                           'filesize']     ,                       Pl#Hi#Create(Pl#Hi#Cterm(250, 236)        ), { 'N': Pl#Hi#Create(Pl#Hi#Cterm(250, 236)        ), 'i': Pl#Hi#Create(Pl#Hi#Cterm(250, 236)        ), } ),
+  \ Pl#Colorscheme#HiSegment(['fileinfo',
+  \                           'filename'],                            Pl#Hi#Create(Pl#Hi#Cterm(250, 236)        ), { 'N': Pl#Hi#Create(Pl#Hi#Cterm(250, 236)        ), 'i': Pl#Hi#Create(Pl#Hi#Cterm(250, 236)        ), } ),
+  \ Pl#Colorscheme#HiSegment(['static_str'],                          Pl#Hi#Create(Pl#Hi#Cterm(250, 236)        ), { 'N': Pl#Hi#Create(Pl#Hi#Cterm(250, 235)        ), 'i': Pl#Hi#Create(Pl#Hi#Cterm(250, 236)        ), } ),
+  \ Pl#Colorscheme#HiSegment(['fileinfo.flags'],                      Pl#Hi#Create(Pl#Hi#Cterm(196     )        ), { 'N': Pl#Hi#Create(Pl#Hi#Cterm(196     )        ), 'i': Pl#Hi#Create(Pl#Hi#Cterm(196     )        ), } ),
+  \ Pl#Colorscheme#HiSegment(['current_function',
+  \                           'fileformat',
+  \                           'fileencoding',
+  \                           'pwd',
+  \                           'filetype',
+  \                           'rvm:string',
+  \                           'rvm:statusline',
+  \                           'virtualenv:statusline',
+  \                           'charcode'],                            Pl#Hi#Create(Pl#Hi#Cterm(250, 234)        ), {                                                   'i': Pl#Hi#Create(Pl#Hi#Cterm(250, 234)        ), } ),
+  \ Pl#Colorscheme#HiSegment(['lineinfo'],                            Pl#Hi#Create(Pl#Hi#Cterm(250, 238)        ), { 'N': Pl#Hi#Create(Pl#Hi#Cterm(250, 238)        ), 'i': Pl#Hi#Create(Pl#Hi#Cterm(250, 238)        ), } ),
+  \ Pl#Colorscheme#HiSegment(['errors'],                              Pl#Hi#Create(Pl#Hi#Cterm(196, 234), 'bold'), {                                                   'i': Pl#Hi#Create(Pl#Hi#Cterm(196, 234), 'bold'), } ),
+  \ Pl#Colorscheme#HiSegment(['lineinfo.line.tot'],                   Pl#Hi#Create(Pl#Hi#Cterm(250, 238)        ), { 'N': Pl#Hi#Create(Pl#Hi#Cterm(250, 238)        ), 'i': Pl#Hi#Create(Pl#Hi#Cterm(250, 238)        ), } ),
+  \
+  \ Pl#Colorscheme#HiSegment(['gundo:static_str.name',
+  \                           'command_t:static_str.name',
+  \                           'lustyexplorer:static_str.name',
+  \                           'minibufexplorer.static_str.name'],     Pl#Hi#Create(Pl#Hi#Cterm(231, 124), 'bold'), { 'N': Pl#Hi#Create(Pl#Hi#Cterm(160,  52), 'bold'), } ),
+  \ Pl#Colorscheme#HiSegment(['gundo:static_str.buffer',
+  \                           'command_t:raw.line',
+  \                           'lustyexplorer:static_str.buffer'],     Pl#Hi#Create(Pl#Hi#Cterm(231,  88)        ), { 'N': Pl#Hi#Create(Pl#Hi#Cterm(160,  52)        ), } ),
+  \ Pl#Colorscheme#HiSegment(['gundo:SPLIT',
+  \                           'command_t:SPLIT',
+  \                           'lustyexplorer:SPLIT',
+  \                           'minibufexplorer:SPLIT'],               Pl#Hi#Create(Pl#Hi#Cterm(  0,  88)        ), { 'N': Pl#Hi#Create(Pl#Hi#Cterm(  0,  52)        ), } ),
+  \
+  \ Pl#Colorscheme#HiSegment(['tagbar:static_str.name'],              Pl#Hi#Create(Pl#Hi#Cterm(231,  70), 'bold'), { 'N': Pl#Hi#Create(Pl#Hi#Cterm( 70,  22), 'bold'), } ),
+  \ Pl#Colorscheme#HiSegment(['tagbar:static_str.buffer'],            Pl#Hi#Create(Pl#Hi#Cterm(148,  28)        ), { 'N': Pl#Hi#Create(Pl#Hi#Cterm( 70,  22)        ), } ),
+  \ Pl#Colorscheme#HiSegment(['tagbar:SPLIT'],                        Pl#Hi#Create(Pl#Hi#Cterm(  0,  28)        ), { 'N': Pl#Hi#Create(Pl#Hi#Cterm(  0,  22)        ), } ),
+\ ])
 
 Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = ';'
