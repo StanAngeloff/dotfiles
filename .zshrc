@@ -73,7 +73,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':completion:*' cache-path $ZSH/cache
 
 # Enable advanced prompt and themes.
 autoload -U promptinit
@@ -166,7 +166,7 @@ bindkey ' '       magic-space
 bindkey "^[m"     copy-prev-shell-word
 
 # Add bookmarks to Zsh
-[[ -s "$HOME/.zsh/bookmarks" ]] && source "$HOME/.zsh/bookmarks"
+[[ -s "$ZSH/bookmarks" ]] && source "$ZSH/bookmarks"
 
 # Fancy terminal title
 function title {
