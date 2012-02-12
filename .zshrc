@@ -177,6 +177,10 @@ function title {
   fi
 }
 
+function chpwd {
+  echo "$( pwd -P )" > "$ZSH/.last_directory"
+}
+
 function precmd {
   title zsh "$PWD"
 }
@@ -201,3 +205,14 @@ LOCALRC=$( echo ".localrc_`uname -n`_`uname -o`" | tr '[A-Z]' '[a-z]' | tr '/' '
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
+
+# Restore last working directory if there is another Zsh instance running.
+if [ -f "$ZSH/.last_directory" ]; then
+  if [ $( ps a | grep '[z]sh' | wc -l ) -gt 1 ]; then
+    ZSH_LAST_DIRECTORY="$( cat "$ZSH/.last_directory" )"
+    [[ -d "$ZSH_LAST_DIRECTORY" ]] && cd "$ZSH_LAST_DIRECTORY"
+    unset ZSH_LAST_DIRECTORY
+  else
+    rm "$ZSH/.last_directory"
+  fi
+fi
