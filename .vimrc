@@ -431,3 +431,5 @@ let g:Powerline#Colorschemes#zend55#colorscheme = Pl#Colorscheme#Init([
 
 Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = ';'
+
+Bundle 'nono/vim-handlebars'
