@@ -152,9 +152,9 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 
 " Adjust the tab/shift width keyboard bindings.
-nnoremap <leader>w2 :set tabstop=2<CR>:set shiftwidth=2<CR>
-nnoremap <leader>w4 :set tabstop=4<CR>:set shiftwidth=4<CR>
-nnoremap <leader>w8 :set tabstop=8<CR>:set shiftwidth=8<CR>
+nnoremap <leader>w2 :setlocal tabstop=2<CR>:setlocal shiftwidth=2<CR>
+nnoremap <leader>w4 :setlocal tabstop=4<CR>:setlocal shiftwidth=4<CR>
+nnoremap <leader>w8 :setlocal tabstop=8<CR>:setlocal shiftwidth=8<CR>
 
 " Evaluate block as expression
 vnoremap <C-R> "ac<C-R>=<C-R>a<CR><Esc>vbo
