@@ -13,3 +13,10 @@
 !.Xresources
 !.zsh/bookmarks
 !.zshrc
+
+# Vim: vim-powerline colour schemes in ~/.vim/autoload/Powerline/Colorschemes/file.vim
+!.vim/
+!.vim/autoload/
+!.vim/autoload/*/
+!.vim/autoload/*/*/
+!.vim/autoload/*/*/*.vim
