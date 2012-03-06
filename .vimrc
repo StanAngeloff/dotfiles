@@ -433,3 +433,5 @@ Bundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = ';'
 
 Bundle 'nono/vim-handlebars'
+
+Bundle 'groenewege/vim-less'
