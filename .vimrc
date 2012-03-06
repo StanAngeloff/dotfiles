@@ -169,6 +169,9 @@ nnoremap <silent> <C-L> :wincmd l<CR>
 " Unix timestamp
 inoremap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 
+" Copy entire buffer to unnamed (clipboard) register.
+nnoremap <leader>= mmggVG"+y`m
+
 " Open tag under cursor in a new tab
 nnoremap <C-Enter> <C-w><C-]><C-w>T
 
