@@ -1,6 +1,6 @@
 call Pl#Hi#Allocate({
-  \ 'black'          : 0,
-  \ 'white'          : 15,
+  \ 'black'          : 16,
+  \ 'white'          : 231,
   \
   \ 'darkestred'     : 52,
   \ 'darkred'        : 88,
