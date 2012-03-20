@@ -54,6 +54,7 @@ sed -e 's#${HOME}#'"$HOME"'#g' -i "$HOME/.Xresources"
 xrdb -merge "$HOME/.Xresources"
 
 curl -o "$HOME/.vim/autoload/pathogen.vim" 'https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim'
+curl -o "$HOME/.vim/after/syntax/css.vim" 'https://raw.github.com/kight/CSS3-syntax-file-for-vim/master/css.vim'
 
 VUNDLE_PATH="$HOME/.vim/bundle/vundle"
 if [ -d "$VUNDLE_PATH" ]; then
