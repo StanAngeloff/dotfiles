@@ -364,6 +364,7 @@ let g:shell_mappings_enabled=0
 
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_map='<leader>o'
+let g:ctrlp_cmd = 'CtrlPCurWD'
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_max_height=20
 let g:ctrlp_highlight_match=[1, 'Search']
