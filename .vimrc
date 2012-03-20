@@ -134,6 +134,7 @@ noremap  <Right> <NOP>
 " Tab keyboard bindings.
 nnoremap <leader>tn :tabnew<CR>
 nnoremap <leader>tm :tabmove
+nnoremap <leader>te :tabedit 
 
 " Reformat a paragraph in NORMAL mode.
 nnoremap <leader>q gqip
