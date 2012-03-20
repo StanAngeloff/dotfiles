@@ -167,8 +167,10 @@ nnoremap <silent> <C-H> :wincmd h<CR>
 nnoremap <silent> <C-L> :wincmd l<CR>
 
 " Snippets keyboard bindings.
-" Unix timestamp
+" Unix timestamp.
 inoremap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
+" Close HTML/XML tag.
+inoremap <leader>/ </<C-X><C-O>
 
 " Copy entire buffer to unnamed (clipboard) register.
 nnoremap <leader>= mmggVG"+y`m
