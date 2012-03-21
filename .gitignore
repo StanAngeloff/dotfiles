@@ -20,10 +20,3 @@
 !.vim/autoload/*/
 !.vim/autoload/*/*/
 !.vim/autoload/*/*/*.vim
-
-# Vim: CSS3-syntax-file-for-vim syntax in ~/.vim/after/syntax/css.vim
-!.vim/
-!.vim/after/
-!.vim/after/syntax/
-!.vim/after/syntax/*/
-!.vim/after/syntax/*/*.vim
