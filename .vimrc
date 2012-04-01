@@ -131,6 +131,11 @@ noremap  <Left>  <NOP>
 inoremap <Right> <NOP>
 noremap  <Right> <NOP>
 
+" Start a new Undo group before undoing changes in INSERT mode.
+" Undos can be re-done using 'u' in NORMAL mode.
+inoremap <C-U> <C-G>u<C-U>
+inoremap <C-W> <C-G>u<C-W>
+
 " Tab keyboard bindings.
 nnoremap <leader>tn :tabnew<CR>
 nnoremap <leader>tm :tabmove
