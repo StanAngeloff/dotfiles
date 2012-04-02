@@ -139,7 +139,7 @@ inoremap <C-W> <C-G>u<C-W>
 " Tab keyboard bindings.
 nnoremap <leader>tn :tabnew<CR>
 nnoremap <leader>tm :tabmove
-nnoremap <leader>te :tabedit
+nnoremap <leader>te :tabedit 
 
 " Reformat a paragraph in NORMAL mode.
 nnoremap <leader>q gqip
