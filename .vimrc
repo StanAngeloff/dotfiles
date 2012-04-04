@@ -341,7 +341,7 @@ let g:easytags_include_members=1
 Bundle 'Gist.vim'
 
 Bundle 'grep.vim'
-let Grep_Skip_Dirs='.git .svn CVS .sass-cache'
+let Grep_Skip_Dirs='.git .hg .svn .sass-cache'
 nnoremap <silent> <F3> :Grep<CR>
 
 Bundle 'IndexedSearch'
