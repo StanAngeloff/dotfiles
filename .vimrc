@@ -332,11 +332,6 @@ Bundle 'tpope/vim-unimpaired'
 
 Bundle 'tsaleh/vim-supertab'
 
-Bundle 'vim-scripts/Conque-Shell'
-let g:ConqueTerm_TERM='xterm-256'
-let g:ConqueTerm_CloseOnEnd=1
-let g:ConqueTerm_PromptRegex='^(\w\+)\s*\[[0-9A-Za-z_./\~,:-]\+\]\s*[\~\%\$\#]'
-
 Bundle 'easytags.vim'
 let g:easytags_on_cursorhold=0  " Wastes too much CPU
 let g:easytags_dynamic_files=2  " Always use local .tags file
