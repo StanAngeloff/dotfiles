@@ -353,7 +353,6 @@ Bundle 'phpfolding.vim'
 Bundle '2072/PHP-Indenting-for-VIm'
 " For PHP code, enable fancy options and better syntax sync.
 let php_htmlInStrings=1
-let php_sync_method=0
 
 Bundle 'session.vim--Odding'
 let g:session_autosave=0
