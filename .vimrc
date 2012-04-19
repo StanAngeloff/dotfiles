@@ -6,8 +6,11 @@ filetype off
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
-" Enable 256-colour terminal, switch syntax on and select a theme.
-set t_Co=256
+" Enable 256-colour terminal if no GUI.
+if !has("gui_running")
+  set t_Co=256
+end
+" Switch syntax on and select a theme.
 syntax on
 colorscheme vim-zend55
 
