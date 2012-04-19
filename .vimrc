@@ -392,9 +392,6 @@ Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme = 'zend55'
 
-Bundle 'Lokaltog/vim-easymotion'
-let g:EasyMotion_leader_key = ';'
-
 Bundle 'nono/vim-handlebars'
 
 Bundle 'groenewege/vim-less'
