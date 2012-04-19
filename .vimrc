@@ -304,6 +304,7 @@ Bundle 'scrooloose/nerdtree'
 let NERDTreeChDirMode=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
+let NERDTreeIgnore=['\~$', '\.pyc$', '^.sass-cache$']
 " Toggle NERD tree.
 nnoremap <silent> <F12> :NERDTreeToggle<CR>
 
