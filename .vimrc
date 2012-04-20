@@ -400,3 +400,14 @@ Bundle 'nono/vim-handlebars'
 Bundle 'groenewege/vim-less'
 
 Bundle 'kight/CSS3-syntax-file-for-vim'
+
+Bundle 'dbext.vim'
+" Type and credentials of database most often connected to.
+let g:dbext_default_type = 'MYSQL'
+let g:dbext_default_user = 'root'
+let g:dbext_default_passwd = ''
+let g:dbext_default_always_prompt_for_variables = 1
+" Controls how many SQL statements should be stored within the history.
+let g:dbext_default_history_size = 1024
+
+Bundle 'SQLComplete.vim'
