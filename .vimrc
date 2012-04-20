@@ -113,6 +113,9 @@ if has('mouse')
   set mousehide " Hide mouse after chars typed
 endif
 
+" Syntax highlight shell scripts as per POSIX, not the original Bourne shell which very few use.
+let g:is_posix = 1
+
 let mapleader="\\"
 
 " Keyboard bindings.
