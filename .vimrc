@@ -414,3 +414,5 @@ let g:dbext_default_always_prompt_for_variables = 1
 let g:dbext_default_history_size = 1024 " Controls how many SQL statements should be stored within the history.
 
 Bundle 'SQLComplete.vim'
+
+Bundle 'bogado/file-line'
