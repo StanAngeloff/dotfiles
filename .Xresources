@@ -25,8 +25,8 @@ URxvt.tabbed.tab-bg:    235
 URxvt.tabbed.title-fg:  247
 URxvt.tabbed.title-bg:  232
 
-URxvt.font: xft:inconsolata for powerline:pixelsize=16.5:antialias=true:hinting=true
-URxvt.boldFont: xft:inconsolata for powerline:bold:pixelsize=16.5:antialias=true:hinting=true
+URxvt.font: xft:inconsolata for powerline:pixelsize=18:antialias=true:hinting=true
+URxvt.boldFont: xft:inconsolata for powerline:bold:pixelsize=18:antialias=true:hinting=true
 URxvt.letterSpace: -1
 
 URxvt.keysym.Shift-Up:          \033[1;2A
