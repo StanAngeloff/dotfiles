@@ -190,7 +190,14 @@ inoremap <leader>/ </<C-X><C-O>
 " Copy entire buffer to unnamed (clipboard) register.
 nnoremap <leader>= mmggVG"+y`m
 
-" Open tag under cursor in a new tab
+" Align commands.
+nnoremap <leader>a= :Tabularize /=<CR>
+vnoremap <leader>a= m[om]:Tabularize /=<CR>`]V`[
+
+nnoremap <leader>a> :Tabularize /=><CR>
+vnoremap <leader>a> m[om]:Tabularize /=><CR>`]V`[
+
+" Open tag under cursor in a new tab.
 nnoremap <C-Enter> <C-w><C-]><C-w>T
 
 if has("gui_running")
