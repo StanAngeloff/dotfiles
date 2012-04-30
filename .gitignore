@@ -10,14 +10,19 @@
 !.install_profile.sh
 !.localrc_stan-inspiron_gnu_linux
 !.screenrc
+!.vim/
 !.vimrc
 !.Xresources
 !.zsh/bookmarks
 !.zshrc
 
 # Vim: vim-powerline colour schemes in ~/.vim/autoload/Powerline/Colorschemes/file.vim
-!.vim/
 !.vim/autoload/
 !.vim/autoload/*/
 !.vim/autoload/*/*/
 !.vim/autoload/*/*/*.vim
+
+# Vim: vim-powerline colour schemes in ~/.vim/autoload/Powerline/Colorschemes/file.vim
+!.vim/snippets/
+!.vim/snippets/*/
+!.vim/snippets/*/*.snippet
