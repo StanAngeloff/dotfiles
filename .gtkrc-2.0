@@ -1,0 +1,4 @@
+style "vim-dead-area" {
+  bg[NORMAL] = "#000000"
+}
+widget "vim-main-window.*GtkForm" style "vim-dead-area"
