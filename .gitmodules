@@ -1,0 +1,12 @@
+[submodule ".urxvt/ext/tabbedex"]
+	path = .urxvt/ext/tabbedex
+	url = git://github.com/stepb/urxvt-tabbedex.git
+[submodule ".urxvt/ext/perls"]
+	path = .urxvt/ext/perls
+	url = git://github.com/muennich/urxvt-perls.git
+[submodule ".vim/autoload/pathogen"]
+	path = .vim/autoload/pathogen
+	url = git://github.com/tpope/vim-pathogen.git
+[submodule ".vim/bundle/vundle"]
+	path = .vim/bundle/vundle
+	url = git://github.com/gmarik/vundle.git

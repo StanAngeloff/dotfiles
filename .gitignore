@@ -6,18 +6,24 @@
 !.gemrc
 !.gitconfig
 !.gitignore
+!.gitmodules
 !.gtkrc-2.0
 !.install_profile.sh
 !.localrc_stan-inspiron_gnu_linux
 !.screenrc
+!.urxvt/
+!.urxvt/ext/
 !.vim/
 !.vimrc
 !.Xresources
 !.zsh/bookmarks
 !.zshrc
 
-# Vim: vim-powerline colour schemes in ~/.vim/autoload/Powerline/Colorschemes/file.vim
+# Vim: pathogen.vim as a symlink.
 !.vim/autoload/
+!.vim/autoload/pathogen.vim
+
+# Vim: vim-powerline colour schemes in ~/.vim/autoload/Powerline/Colorschemes/file.vim
 !.vim/autoload/*/
 !.vim/autoload/*/*/
 !.vim/autoload/*/*/*.vim

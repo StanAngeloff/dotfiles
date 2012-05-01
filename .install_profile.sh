@@ -1,18 +1,22 @@
 #!/bin/bash
 
-VALUES=(
-  name 'Name'
-  email 'E-mail address'
-  username 'Github name'
-  token 'Github token'
+VALUES=(                    \
+  name     'Name'           \
+  email    'E-mail address' \
+  username 'Github name'    \
+  token    'Github token'   \
 )
-TEMPLATES=( .gitconfig )
+TEMPLATED=(   \
+  .gitconfig  \
+  .Xresources \
+)
 
 INSTALL_PATH="$HOME/.install_values"
 INSTALL_VALUES=''
 
 SED_SCRIPT='sed '
 
+# Load previous install values so we could offer defaults.
 [ -f "$INSTALL_PATH" ] && source "$INSTALL_PATH"
 
 for (( i = 0 ; i < ${#VALUES[@]} ; i += 2 )); do
@@ -27,43 +31,21 @@ for (( i = 0 ; i < ${#VALUES[@]} ; i += 2 )); do
   SED_SCRIPT="$SED_SCRIPT -e 's/''$PREVIOUS'' # \${$NAME}\|\${$NAME}/'""'${!VALUE}'""' # \${$NAME}/g'"
 done
 
+# Store install values for next time.
 echo "$INSTALL_VALUES" > "$INSTALL_PATH"
 
-for file in $TEMPLATES; do
-  eval "$SED_SCRIPT" -i "$file"
+SED_SCRIPT="$SED_SCRIPT -e 's#\\\${HOME}#'"$HOME"'#g'"
+
+for file in "${TEMPLATED[@]}"; do
+  eval "$SED_SCRIPT" -i "$HOME/$file"
 done
 
-URXVT_LIB_PATH="$HOME/.URxvt"
-URXVT_LIBS=(
-  'git://github.com/muennich/urxvt-perls.git'
-  'git://github.com/stepb/urxvt-tabbedex.git'
-  'git://github.com/ervandew/vimfiles.git'
-)
-for (( i = 0 ; i < ${#URXVT_LIBS[@]} ; i += 1 )); do
-  LIB_URI="${URXVT_LIBS[$i]}"
-  LIB_BASENAME="$(basename "$LIB_URI" | sed  -e 's/^urxvt-//' -e 's/.git$//')"
-  if [ -d "$URXVT_LIB_PATH/$LIB_BASENAME" ]; then
-   cd "$URXVT_LIB_PATH/$LIB_BASENAME" && git fetch --all && git reset --hard origin/master
-  else
-    git clone "$LIB_URI" "$URXVT_LIB_PATH/$LIB_BASENAME"
-  fi
-done
+( cd "$HOME" && git submodule update --init --recursive )
 
-sed -e 's#${HOME}#'"$HOME"'#g' -i "$HOME/.Xresources"
-
-xrdb -merge "$HOME/.Xresources"
-
-curl -o "$HOME/.vim/autoload/pathogen.vim" 'https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim'
-
-VUNDLE_PATH="$HOME/.vim/bundle/vundle"
-if [ -d "$VUNDLE_PATH" ]; then
-  cd "$VUNDLE_PATH" && git fetch --all && git reset --hard origin/master
-else
-  git clone git://github.com/gmarik/vundle.git "$VUNDLE_PATH"
+if which xrdb >/dev/null; then
+  xrdb -merge "$HOME/.Xresources"
 fi
 
-vim -c BundleInstall -c q
-
-( mkdir -p ~/.vim/ftdetect && cd ~/.vim/ftdetect && ln -sf ../bundle/vim-task/ftdetect/task.vim task.vim )
+vim -c 'BundleInstall' -c 'qa!'
 
 echo -e "\nDone."
