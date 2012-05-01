@@ -332,7 +332,7 @@ nnoremap <silent> <leader>E :w<CR>:sign unplace *<CR>:SyntasticCheck<CR>
 
 Bundle 'sjl/gundo.vim'
 " Toggle Gundo undo tree.
-nnoremap <silent> <F5> :GundoToggle<CR>
+nnoremap <silent> <F6> :GundoToggle<CR>
 
 Bundle 'tpope/vim-fugitive'
 
