@@ -151,6 +151,9 @@ nnoremap <leader>tn :tabnew<CR>
 nnoremap <leader>tm :tabmove
 nnoremap <leader>te :tabedit 
 
+nnoremap <silent> <C-J> gt
+nnoremap <silent> <C-K> gT
+
 " Reformat a paragraph in NORMAL mode.
 nnoremap <leader>q gqip
 " Restore last visual selection in LINE mode.
@@ -176,10 +179,10 @@ nnoremap <leader>w8 :setlocal tabstop=8<CR>:setlocal shiftwidth=8<CR>
 vnoremap <C-R> "ac<C-R>=<C-R>a<CR><Esc>vbo
 
 " Make Control-direction switch between windows (like C-W h, etc.)
-nnoremap <silent> <C-K> :wincmd k<CR>
-nnoremap <silent> <C-J> :wincmd j<CR>
-nnoremap <silent> <C-H> :wincmd h<CR>
-nnoremap <silent> <C-L> :wincmd l<CR>
+nnoremap <silent> gk :wincmd k<CR>
+nnoremap <silent> gj :wincmd j<CR>
+nnoremap <silent> gh :wincmd h<CR>
+nnoremap <silent> gl :wincmd l<CR>
 
 " Snippets keyboard bindings.
 " Unix timestamp.
@@ -325,6 +328,8 @@ let NERDTreeChDirMode=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeIgnore=['\~$', '\.pyc$', '^.sass-cache$']
+let NERDTreeMapJumpNextSibling=''
+let NERDTreeMapJumpPrevSibling=''
 " Toggle NERD tree.
 nnoremap <silent> <F12>     :NERDTreeToggle<CR>
 nnoremap <silent> <leader>f :NERDTreeMirror<CR>:NERDTreeFind<CR>
