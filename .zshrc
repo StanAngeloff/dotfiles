@@ -180,6 +180,9 @@ function chpwd {
 
 function precmd {
   title zsh "$PWD"
+  if declare -f _z > /dev/null; then
+    _z --add "$( pwd -P )"
+  fi
 }
 
 function preexec {
@@ -213,3 +216,9 @@ if [ -f "$ZSH/.last_directory" ]; then
     rm "$ZSH/.last_directory"
   fi
 fi
+
+# Load Z script for accessing the most frecent directories.
+if [[ -s "$ZSH/scripts/z/z.sh" ]]; then
+  source "$ZSH/scripts/z/z.sh"
+fi
+
