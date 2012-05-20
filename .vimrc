@@ -387,13 +387,16 @@ Bundle 'shell.vim--Odding'
 let g:shell_mappings_enabled=0
 
 Bundle 'kien/ctrlp.vim'
-let g:ctrlp_map='<leader>o'
-let g:ctrlp_cmd = 'CtrlPCurWD'
+let g:ctrlp_map=''
+let g:ctrlp_cmd='CtrlPCurWD'
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_max_height=20
 let g:ctrlp_highlight_match=[1, 'Search']
 let g:ctrlp_max_files=64000
 let g:ctrlp_max_depth=24
+
+nnoremap <silent> <leader>o :<C-U>CtrlPCurWD<CR>
+nnoremap <silent> <leader>b :<C-U>CtrlPBufTag<CR>
 
 Bundle 'thinca/vim-visualstar'
 
