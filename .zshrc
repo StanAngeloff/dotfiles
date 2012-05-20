@@ -165,9 +165,6 @@ bindkey ' '       magic-space
 
 bindkey "^[m"     copy-prev-shell-word
 
-# Add bookmarks to Zsh
-[[ -s "$ZSH/bookmarks" ]] && source "$ZSH/bookmarks"
-
 # Fancy terminal title
 function title {
   if [[ "$TERM" == screen* ]] || [[ "$ALTTERM" == screen* ]]; then
