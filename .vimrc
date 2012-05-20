@@ -233,7 +233,7 @@ if has('autocmd')
       \ endif
   augroup END
 
-  " Turn on auto-complete for supported file types
+  " Turn on auto-complete for supported file types.
   autocmd FileType python     set omnifunc=pythoncomplete#Complete
   autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
@@ -242,7 +242,7 @@ if has('autocmd')
   autocmd FileType php        set omnifunc=phpcomplete#CompletePHP
   autocmd FileType c          set omnifunc=ccomplete#Complete
 
-  " Turn off beep sounds
+  " Turn off beep sounds.
   autocmd VimEnter * set vb t_vb=
 
   " Highlight trailing whitespace in red.
