@@ -455,3 +455,5 @@ Bundle 'SQLComplete.vim'
 Bundle 'bogado/file-line'
 
 Bundle 'tpope/vim-eunuch'
+
+Bundle 'nerdtree-ack'
