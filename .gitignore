@@ -19,6 +19,11 @@
 !.zsh/
 !.zshrc
 
+# Vim: after/ scripts, e.g., for CSS3 support in HTML/SCSS.
+!.vim/after/
+!.vim/after/syntax/
+!.vim/after/syntax/*.vim
+
 # Vim: pathogen.vim as a symlink.
 !.vim/autoload/
 !.vim/autoload/pathogen.vim

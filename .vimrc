@@ -440,7 +440,7 @@ Bundle 'nono/vim-handlebars'
 
 Bundle 'groenewege/vim-less'
 
-Bundle 'kight/CSS3-syntax-file-for-vim'
+Bundle 'hail2u/vim-css3-syntax'
 
 Bundle 'dbext.vim'
 " Type and credentials of most often connected to database.
