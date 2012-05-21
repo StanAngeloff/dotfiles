@@ -453,3 +453,5 @@ let g:dbext_default_history_size = 1024 " Controls how many SQL statements shoul
 Bundle 'SQLComplete.vim'
 
 Bundle 'bogado/file-line'
+
+Bundle 'tpope/vim-eunuch'
