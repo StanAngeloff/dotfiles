@@ -138,6 +138,9 @@ noremap  <Left>  <NOP>
 inoremap <Right> <NOP>
 noremap  <Right> <NOP>
 
+" Q for 'Q'uit, 'Ex' mode has received zero use.
+nnoremap <silent> Q ZZ
+
 " Start a new Undo group before undoing changes in INSERT mode.
 " Undos can be re-done using 'u' in NORMAL mode.
 inoremap <C-U> <C-G>u<C-U>
