@@ -13,6 +13,7 @@ end
 " Switch syntax on and select a theme.
 syntax on
 colorscheme vim-zend55
+set synmaxcol=512
 
 " Use UTF-8 and Unix line-endings for new files.
 set encoding=utf-8
