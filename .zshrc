@@ -217,8 +217,7 @@ if [ -f "$ZSH/.last_directory" ]; then
   fi
 fi
 
-# Load Z script for accessing the most frecent directories.
-if [[ -s "$ZSH/scripts/z/z.sh" ]]; then
-  source "$ZSH/scripts/z/z.sh"
-fi
-
+# Load all Zsh scripts in no particular order.
+for __script in "$ZSH/scripts/"**/*.sh; do
+  source "$__script"
+done
