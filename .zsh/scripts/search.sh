@@ -14,7 +14,7 @@ function search() {
     search_path="$1"
     shift
   else
-    echo 'Usage: '"$0"' PATTERN "*.MASK" PATH'
+    echo 'Usage: '"$0"' PATTERN PATH [OPTIONS...]'
     return
   fi
 
