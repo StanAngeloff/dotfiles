@@ -2,20 +2,32 @@ function search() {
   local search_locale
   local search_query
   local search_path
+  local search_args
+  local method
   local temporary
 
-  if [ $# -eq 1 ]; then
-    search_query="$1"
-    search_path="."
+  if [ $# -lt 1 ]; then
+    echo 'Usage: '"$0"' PATTERN PATH [OPTIONS...]'
+    return 1
+  fi
+
+  # Query always comes first.
+  search_query="$1"
+  shift
+
+  # If any of the following arguments starts with a '+' or '-',
+  # it is considered an include/exclude extension.
+  while [[ "${1:0:1}" == '+' ]] || [[ "${1:0:1}" == '-' ]]; do
+    if  [[ "${1:0:1}" == '+' ]]; then method='include' fi
+    if  [[ "${1:0:1}" == '-' ]]; then method='exclude' fi
+    search_args="$search_args --$method='*.${1:1}'"
     shift
-  elif [ $# -gt 1 ]; then
-    search_query="$1"
-    shift
+  done
+
+  # Directory (path) to search always comes last.
+  if [ $# -gt 0 ]; then
     search_path="$1"
     shift
-  else
-    echo 'Usage: '"$0"' PATTERN PATH [OPTIONS...]'
-    return
   fi
 
   # > Using LC_CTYPE=POSIX instead of UTF-8 speeds up my grep by a factor of 27.
@@ -40,6 +52,7 @@ function search() {
     --exclude-dir='.hg'         \
     --exclude-dir='.svn'        \
     --exclude-dir='.sass-cache' \
+    "$search_args"              \
     "\$@"                       \
     "\$search_query"            \
     "\${search_path:-.}"        \
