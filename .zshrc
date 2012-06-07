@@ -33,8 +33,12 @@ export ACK_OPTIONS=--type-set=php=.php,.php3,.php4,.php5,.module,.inc,.install #
 # Enable colour terminal and prompt.
 autoload colors; colors;
 
+function _prompt_type() {
+  if [ $UID -eq 0 ]; then echo '#'; else echo '$'; fi
+}
+
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
-export PROMPT="%{$fg[green]%}(%m)%{$reset_color%} %{$fg[yellow]%}[%1~]%{$reset_color%} %# " # format is (machine-name) [cwd] %
+export PROMPT="%{%F{250}%}%n@%{%f%}%{%F{green}%}%m:%{%f%}%{%F{yellow}%}%(!.%1~.%~)%{%f%}%{%F{250}%}$(_prompt_type)%{%f%} " # format is 'login-name@machine-name:cwd %'
 
 # Use a separate file to configure command aliases.
 [[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
