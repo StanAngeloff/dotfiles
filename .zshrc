@@ -174,6 +174,10 @@ bindkey ' '       magic-space
 
 bindkey "^[m"     copy-prev-shell-word
 
+function chpwd {
+  echo "$( pwd -P )" > "$ZSH/.last_directory"
+}
+
 # Fancy terminal title
 function _terminal_title {
   if [[ "$TERM" == screen* ]] || [[ "$ALTTERM" == screen* ]]; then
@@ -229,7 +233,7 @@ if [ -f "$ZSH/.last_directory" ]; then
     [[ -d "$ZSH_LAST_DIRECTORY" ]] && cd "$ZSH_LAST_DIRECTORY"
     unset ZSH_LAST_DIRECTORY
   else
-    rm "$ZSH/.last_directory"
+    rm -f "$ZSH/.last_directory" 2>&1 1>/dev/null
   fi
 fi
 
