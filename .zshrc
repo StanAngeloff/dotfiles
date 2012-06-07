@@ -175,30 +175,32 @@ bindkey ' '       magic-space
 bindkey "^[m"     copy-prev-shell-word
 
 # Fancy terminal title
-function title {
+function _terminal_title {
   if [[ "$TERM" == screen* ]] || [[ "$ALTTERM" == screen* ]]; then
-    print -nR $'\ek'$*$'\e\\'
+    print -Pn "\ek$1:q\e\\" # Set `screen` hardstatus.
   elif [[ "$TERM" == xterm* ]] || [[ "$TERM" == rxvt* ]]; then
-    print -nR $'\033]0;'$*$'\a'
+    print -Pn "\e]2;$2:q\a" # Set window name.
+    print -Pn "\e]1;$1:q\a" # Set icon (=tab) name (will override window name on broken terminal).
   fi
 }
 
-function chpwd {
-  echo "$( pwd -P )" > "$ZSH/.last_directory"
-}
-
-function precmd {
-  title zsh "$PWD"
+function _before_directory_change {
+  _terminal_title "%15<..<%~%<<" "%n@%m: %~"
   if declare -f _z > /dev/null; then
     _z --add "$( pwd -P )"
   fi
 }
 
-function preexec {
+function _before_command_execute {
   emulate -L zsh
-  local -a cmd; cmd=(${(z)1})
-  title $cmd[1]:t "$cmd[2,-1]"
+  setopt extended_glob
+  local CMD=${1[(wr)^(*=*|sudo|ssh|-*)]} # Command name only, or if this is `sudo` or `ssh`, the next command.
+  _terminal_title "$CMD" "%100>...>$2%<<"
 }
+
+autoload -U add-zsh-hook
+add-zsh-hook precmd  _before_directory_change
+add-zsh-hook preexec _before_command_execute
 
 # set PATH so it includes user's private bin if it exists.
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
