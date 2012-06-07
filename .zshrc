@@ -38,7 +38,7 @@ function _prompt_type() {
 }
 
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
-export PROMPT="%{%F{250}%}%n@%{%f%}%{%F{green}%}%m:%{%f%}%{%F{yellow}%}%(!.%1~.%~)%{%f%}%{%F{250}%}$(_prompt_type)%{%f%} " # format is 'login-name@machine-name:cwd %'
+export PROMPT="${fg[cyan]%}%n@%{$reset_color%}%{$fg[green]%}%m:%{$reset_color%}%{$fg[yellow]%}%(!.%1~.%~)%{$reset_color%}%{$fg[white]%}$(_prompt_type)%{$reset_color%} " # format is 'login-name@machine-name:cwd %'
 
 # Use a separate file to configure command aliases.
 [[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
