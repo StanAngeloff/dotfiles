@@ -198,9 +198,14 @@ function _before_command_execute {
   _terminal_title "$CMD" "%100>...>$2%<<"
 }
 
-autoload -U add-zsh-hook
-add-zsh-hook precmd  _before_directory_change
-add-zsh-hook preexec _before_command_execute
+# For compatibility with Zsh 4.3, use functions instead of `add-zsh-hook`.
+function precmd {
+  _before_directory_change "$@"
+}
+
+function preexec {
+  _before_command_execute "$@"
+}
 
 # set PATH so it includes user's private bin if it exists.
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
