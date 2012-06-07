@@ -2,3 +2,4 @@
 
 export GEM_HOME=~/.gem
 export PATH="$HOME/.gem/bin:$HOME/bin/android-sdk-linux_x86/tools:$PATH"
+export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
