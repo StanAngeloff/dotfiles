@@ -12,9 +12,8 @@ alias rd=rmdir
 alias pu='pushd'
 alias po='popd'
 
-# `screen` operations for starting and attaching to a session.
-alias '!'='screen -dR'
-alias '?'='screen -ls'
+# `tmux` operations for starting and attaching to a session.
+alias '!'='tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -s default'
 
 # Directory listing.
 alias ll='ls -hal --color=tty'

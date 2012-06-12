@@ -461,3 +461,7 @@ Bundle 'bogado/file-line'
 Bundle 'tpope/vim-eunuch'
 
 Bundle 'nerdtree-ack'
+
+Bundle 'zaiste/tmux.vim'
+
+Bundle 'benmills/vimux'

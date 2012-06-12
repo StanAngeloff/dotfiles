@@ -10,7 +10,7 @@
 !.gtkrc-2.0
 !.install_profile.sh
 !.localrc_stan-inspiron_gnu_linux
-!.screenrc
+!.tmux.conf
 !.urxvt/
 !.urxvt/ext/
 !.vim/

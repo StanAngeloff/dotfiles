@@ -180,9 +180,7 @@ function chpwd {
 
 # Fancy terminal title
 function _terminal_title {
-  if [[ "$TERM" == screen* ]] || [[ "$ALTTERM" == screen* ]]; then
-    print -Pn "\ek$1:q\e\\" # Set `screen` hardstatus.
-  elif [[ "$TERM" == xterm* ]] || [[ "$TERM" == rxvt* ]]; then
+  if [[ "$TERM" == xterm* ]] || [[ "$TERM" == rxvt* ]]; then
     print -Pn "\e]2;$2:q\a" # Set window name.
     print -Pn "\e]1;$1:q\a" # Set icon (=tab) name (will override window name on broken terminal).
   fi
