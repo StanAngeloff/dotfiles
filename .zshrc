@@ -212,9 +212,6 @@ function preexec {
 # set PATH so it includes user's private bin if it exists.
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
 
-# This loads RVM into a shell session.
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 # Source machine-specific local configuration file.
 LOCALRC=$( echo ".localrc_`uname -n`_`uname -o`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
 [[ -s "$HOME/$LOCALRC" ]] && source "$HOME/$LOCALRC"
