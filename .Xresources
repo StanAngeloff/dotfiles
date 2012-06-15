@@ -6,6 +6,7 @@ URxvt.depth: 32
 URxvt.iconFile: /usr/share/icons/Humanity/apps/128/utilities-terminal.svg
 
 URxvt.internalBorder: 0
+URxvt.externalBorder: 0
 
 URxvt.scrollBar: off
 URxvt.saveLines: 102400
