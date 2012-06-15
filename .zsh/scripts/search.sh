@@ -48,6 +48,7 @@ function search() {
     --color=always              \
     --line-number               \
     --binary-file=without-match \
+        --exclude='.tags'       \
     --exclude-dir='.git'        \
     --exclude-dir='.hg'         \
     --exclude-dir='.svn'        \
