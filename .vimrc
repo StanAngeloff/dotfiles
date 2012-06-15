@@ -465,3 +465,5 @@ Bundle 'nerdtree-ack'
 Bundle 'zaiste/tmux.vim'
 
 Bundle 'benmills/vimux'
+
+Bundle 'jesseschalken/list-text-object'
