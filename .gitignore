@@ -19,6 +19,10 @@
 !.zsh/
 !.zshrc
 
+# Vim: Vundle
+!.vim/bundle/
+!.vim/bundle/vundle
+
 # Vim: after/ scripts, e.g., for CSS3 support in HTML/SCSS.
 !.vim/after/
 !.vim/after/syntax/
