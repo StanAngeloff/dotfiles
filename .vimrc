@@ -294,11 +294,11 @@ Bundle 'kchmck/vim-coffee-script'
 
 Bundle 'leshill/vim-json'
 
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Use default arguments and indent with two spaces.
-let g:sparkupArgs='--no-last-newline --indent-spaces=2'
-" Disable default <C-N> which doesn't work well with supertab.
-let g:sparkupNextMapping='<C-;>'
+Bundle 'mattn/zencoding-vim'
+" Leading key for expanding or balance tag, or for all.
+let g:user_zen_leader_key = '<leader>z'
+" Change global indent size to 2 spaces.
+let g:user_zen_settings = { 'indentation': '  ' }
 
 Bundle 'majutsushi/tagbar'
 let g:tagbar_autoclose=1
