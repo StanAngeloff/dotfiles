@@ -57,5 +57,6 @@ function search() {
     "\$@"                       \
     "\$search_query"            \
     "\${search_path:-.}"        \
-    2>/dev/null
+    2>/dev/null                 \
+  | less -iRS
 }
