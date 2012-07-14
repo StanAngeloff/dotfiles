@@ -56,13 +56,14 @@ set wildmode=list:longest,full " Include possible matches from these groups.
 set novisualbell               " Disable annoying sounds and use visual feedback instead.
 set noerrorbells               " Disable more annoying noise.
 set laststatus=2               " Always display a status line.
-set formatoptions=qrn1         " Format comments, numbered-lists, one-letter words.
+set formatoptions=qrn1lo       " Format comments, numbered-lists, one-letter words.
 
 set guioptions=                " No GUI.
 set hlsearch                   " Highlight the last used search pattern.
 set cursorline!                " Highlight line under cursor.
 
 set colorcolumn=78             " Gutter position.
+set textwidth=78
 
 set listchars=tab:→\ ,eol:§    " Display a placeholder character for tabs and newlines.
 
