@@ -64,6 +64,8 @@ set cursorline!                " Highlight line under cursor.
 
 set colorcolumn=78             " Gutter position.
 
+set listchars=tab:→\ ,eol:§    " Display a placeholder character for tabs and newlines.
+
 set backup   " Keep backups of files in case we mess up.
 set backupdir=$HOME/.vim/backup
 set undofile " Keep undo files for cross-session edits.
@@ -141,6 +143,9 @@ noremap  <Right> <NOP>
 
 " Q for 'Q'uit, 'Ex' mode has received zero use.
 nnoremap <silent> Q ZZ
+
+" Toggle display of placeholder characters for tabs and newlines.
+nnoremap <F9> :set list!<CR>
 
 " Start a new Undo group before undoing changes in INSERT mode.
 " Undos can be re-done using 'u' in NORMAL mode.
