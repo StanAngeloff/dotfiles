@@ -313,10 +313,6 @@ let g:tagbar_autoshowtag=1
 " Toggle tag list window.
 nnoremap <silent> <F11> :TagbarToggle<CR>
 
-Bundle 'mileszs/ack.vim'
-nnoremap <leader># "ayiw:Ack <C-R>a<CR>
-vnoremap <leader># "ay:Ack <C-R>a<CR>
-
 Bundle 'msanders/snipmate.vim'
 " Don't load snipmate's default snippets, use ours instead.
 let snippets_dir='$HOME/.vim/snippets/'
@@ -374,12 +370,6 @@ let g:easytags_dynamic_files=2  " Always use local .tags file
 let g:easytags_file='~/.vim/tags'
 let g:easytags_include_members=1
 
-Bundle 'Gist.vim'
-
-Bundle 'grep.vim'
-let Grep_Skip_Dirs='.git .hg .svn .sass-cache'
-nnoremap <silent> <F3> :Grep<CR>
-
 Bundle 'IndexedSearch'
 
 Bundle 'StanAngeloff/php.vim'
@@ -416,9 +406,6 @@ Bundle 'thinca/vim-visualstar'
 
 Bundle 'StanAngeloff/ManPageView'
 let g:manpageview_pgm_php="$HOME/bin/pman"
-
-Bundle 'ZoomWin'
-nnoremap <C-W>o <Plug>ZoomWin
 
 Bundle 'tpope/vim-speeddating'
 
@@ -464,8 +451,6 @@ Bundle 'SQLComplete.vim'
 Bundle 'bogado/file-line'
 
 Bundle 'tpope/vim-eunuch'
-
-Bundle 'nerdtree-ack'
 
 Bundle 'zaiste/tmux.vim'
 
