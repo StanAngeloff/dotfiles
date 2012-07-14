@@ -8,5 +8,5 @@ TARGETS=(     \
 )
 
 for directory in "${TARGETS[@]}"; do
-  find "$directory" -mtime +$PURGE_DAYS -exec rm -f '{}' \;
+  find "$directory" -mtime +$PURGE_DAYS \! -name '.*' -exec rm -f '{}' \;
 done
