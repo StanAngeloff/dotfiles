@@ -224,20 +224,19 @@ else
   endif
 endif
 
+set foldmethod=marker
+set viewdir=$HOME/.vim/view
+set viewoptions=cursor,folds,slash,unix
+
 " Enable file type detection.
 filetype plugin indent on
 
 if has('autocmd')
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
+  " Auto-save and load views for existing files. See 'viewoptions'.
+  augroup session
     au!
-    " For all text files set 'textwidth' to 78 characters.
-    autocmd FileType text setlocal textwidth=78
-    " When editing a file, always jump to the last known cursor position.
-    autocmd BufReadPost *
-      \ if line("'\"") > 1 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
+    autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' |           mkview | endif
+    autocmd BufRead      * if expand('%') != '' && &buftype !~ 'nofile' | silent! loadview | endif
   augroup END
 
   " Turn on auto-complete for supported file types.
