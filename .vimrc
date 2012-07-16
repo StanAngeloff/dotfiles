@@ -45,7 +45,7 @@ set modelines=5    " Default numbers of lines to read for modeline instructions.
 
 set nospell        " Turn off spell checking by default
 
-set scrolloff=120  " Scroll when 80 lines from edge of screen. Bigger numbers work better with ':help rnu'.
+set scrolloff=120  " Scroll when lots of lines from edge of screen. Bigger numbers work better with ':help rnu'.
 set rnu!           " Show the line number relative to the line with the cursor in front of each line.
 
 set lazyredraw     " Do not redraw while running macros (much faster).
