@@ -157,7 +157,7 @@ inoremap <C-W> <C-G>u<C-W>
 inoremap <C-R> <C-G>u<C-R>
 
 " Insert a semicolon at the end of the line in INSERT mode.
-inoremap <C-L> <Esc>mmg_a;<Esc>`ma
+inoremap <leader>; <Esc>mmg_a;<Esc>`ma
 
 " Tab keyboard bindings.
 nnoremap <leader>tn :tabnew<CR>
