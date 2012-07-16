@@ -339,9 +339,8 @@ let NERDTreeDirArrows=1
 let NERDTreeIgnore=['\~$', '\.pyc$', '^.sass-cache$']
 let NERDTreeMapJumpNextSibling=''
 let NERDTreeMapJumpPrevSibling=''
-" Toggle NERD tree.
-nnoremap <silent> <F12>     :NERDTreeToggle<CR>
-nnoremap <silent> <leader>f :NERDTreeMirror<CR>:NERDTreeFind<CR>
+
+nnoremap <silent> <F12> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 
 Bundle 'scrooloose/syntastic'
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
