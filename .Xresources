@@ -9,7 +9,7 @@ URxvt.internalBorder: 0
 URxvt.externalBorder: 0
 
 URxvt.scrollBar: off
-URxvt.saveLines: 102400
+URxvt.saveLines: 1024
 URxvt.scrollTtyOutput:   false
 URxvt.scrollWithBuffer:  true
 URxvt.scrollTtyKeypress: true
