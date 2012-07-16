@@ -342,7 +342,7 @@ nnoremap <silent> <leader>f :NERDTreeMirror<CR>:NERDTreeFind<CR>
 Bundle 'scrooloose/syntastic'
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
 " Check for syntax errors.
-nnoremap <silent> <leader>E :w<CR>:sign unplace *<CR>:SyntasticCheck<CR>
+nnoremap <silent> <F5> :w<CR>:sign unplace *<CR>:SyntasticCheck<CR>
 
 Bundle 'sjl/gundo.vim'
 " Toggle Gundo undo tree.
