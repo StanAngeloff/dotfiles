@@ -2,6 +2,7 @@ URxvt.urgentOnBell: off
 URxvt.visualBell: off
 URxvt.iso14755: off
 URxvt.iso14755_52: off
+URxvt.meta8: true
 URxvt.depth: 32
 URxvt.iconFile: /usr/share/icons/Humanity/apps/128/utilities-terminal.svg
 
