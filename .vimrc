@@ -211,6 +211,9 @@ vnoremap <leader>a= m[om]:Tabularize /=<CR>`]V`[
 nnoremap <leader>a> :Tabularize /=><CR>
 vnoremap <leader>a> m[om]:Tabularize /=><CR>`]V`[
 
+nnoremap <leader>a: :Tabularize /:\zs/l0l1<CR>
+vnoremap <leader>a: m[om]:Tabularize /:\zs/l0l1<CR>`]V`[
+
 " Open tag under cursor in a new tab.
 nnoremap <leader>] <C-w><C-]><C-w>T
 
