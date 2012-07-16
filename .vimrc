@@ -153,6 +153,9 @@ nnoremap <F9> :set list!<CR>
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
 
+" Start a new Undo group before pasting in INSERT mode.
+inoremap <C-R> <C-G>u<C-R>
+
 " Insert a semicolon at the end of the line in INSERT mode.
 inoremap <C-L> <Esc>mmg_a;<Esc>`ma
 
