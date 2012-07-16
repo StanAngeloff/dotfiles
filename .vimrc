@@ -212,7 +212,7 @@ nnoremap <leader>a> :Tabularize /=><CR>
 vnoremap <leader>a> m[om]:Tabularize /=><CR>`]V`[
 
 " Open tag under cursor in a new tab.
-nnoremap <C-Enter> <C-w><C-]><C-w>T
+nnoremap <leader>] <C-w><C-]><C-w>T
 
 " Write using `sudo` in COMMAND mode if the file is read-only.
 cnoremap w!! w !sudo tee % >/dev/null
