@@ -10,6 +10,7 @@
 !.gtkrc-2.0
 !.install_profile.sh
 !.localrc_stan-inspiron_gnu_linux
+!.rbenv
 !.tmux.conf
 !.urxvt/
 !.urxvt/ext/
@@ -18,6 +19,10 @@
 !.Xresources
 !.zsh/
 !.zshrc
+
+# rbenv
+!.rbenv-plugins
+!.rbenv-plugins/ruby-build
 
 # Vim: Vundle
 !.vim/bundle/

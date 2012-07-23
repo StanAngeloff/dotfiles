@@ -13,3 +13,9 @@
 [submodule ".zsh/scripts/z"]
 	path = .zsh/scripts/z
 	url = git://github.com/rupa/z.git
+[submodule ".rbenv"]
+	path = .rbenv
+	url = git://github.com/sstephenson/rbenv.git
+[submodule ".rbenv-plugins/ruby-build"]
+	path = .rbenv-plugins/ruby-build
+	url = git://github.com/sstephenson/ruby-build.git

@@ -209,8 +209,10 @@ function preexec {
   _before_command_execute "$@"
 }
 
-# set PATH so it includes user's private bin if it exists.
-[ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
+# Expand PATH and include User's private binaries and rbenv, if installed.
+for __path in "$HOME/bin" "$HOME/.rbenv/bin"; do
+  [ -d "$__path" ] && export PATH="$__path:$PATH"
+done
 
 # Source machine-specific local configuration file.
 LOCALRC=$( echo ".localrc_`uname -n`_`uname -o`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
@@ -231,6 +233,21 @@ if [ -f "$ZSH/.last_directory" ]; then
     rm -f "$ZSH/.last_directory" 2>&1 1>/dev/null
   fi
 fi
+
+# Extend rbenv with plug-ins from non-standard locations.
+for __path in "$HOME/.rbenv-plugins/"; do
+  if [ -d "$__path" ]; then
+    for __script in "$__path"*/bin(N); do
+      export PATH="$__script:$PATH"
+    done
+    for __script in "$__path"*/etc/rbenv.d(N); do
+      export RBENV_HOOK_PATH="$__script:$RBENV_HOOK_PATH"
+    done
+  fi
+done
+
+# Add rbenv to shell for shims and auto-completion.
+which rbenv >/dev/null && eval "$( rbenv init - )"
 
 # Load all Zsh scripts in no particular order.
 for __script in "$ZSH/scripts/"**/*.sh; do
