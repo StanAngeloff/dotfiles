@@ -2,8 +2,8 @@
 -
 --format=2
 --excmd=pattern
---exclude="\.svn"
 --exclude="\.git"
+--exclude="\.hg"
+--exclude="\.svn"
 --exclude="\.sass-cache"
---exclude="CVS"
 --fields=nksaSmt
