@@ -1,4 +1,5 @@
 *
+!bin
 !.aliases
 !.cleanup_profile.sh
 !.ctags
@@ -19,6 +20,9 @@
 !.Xresources
 !.zsh/
 !.zshrc
+
+# Scripts
+!bin/*
 
 # rbenv
 !.rbenv-plugins
