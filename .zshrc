@@ -125,6 +125,11 @@ setopt long_list_jobs
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
+# Enable Ctrl-X-e to edit command line in $EDITOR.
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+
 # Install proper key bindings for Home, PgDn, PgUp, etc.
 bindkey -e
 
@@ -214,26 +219,6 @@ for __path in "$HOME/bin" "$HOME/.rbenv/bin"; do
   [ -d "$__path" ] && export PATH="$__path:$PATH"
 done
 
-# Source machine-specific local configuration file.
-LOCALRC=$( echo ".localrc_`uname -n`_`uname -o`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
-[[ -s "$HOME/$LOCALRC" ]] && source "$HOME/$LOCALRC"
-
-# Enable Ctrl-X-e to edit command line in $EDITOR.
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey '^xe' edit-command-line
-
-# Restore last working directory if there is another Zsh instance running.
-if [ -f "$ZSH/.last_directory" ]; then
-  if [ $( ps a | grep '[z]sh' | wc -l ) -gt 1 ]; then
-    ZSH_LAST_DIRECTORY="$( cat "$ZSH/.last_directory" )"
-    [[ -d "$ZSH_LAST_DIRECTORY" ]] && cd "$ZSH_LAST_DIRECTORY"
-    unset ZSH_LAST_DIRECTORY
-  else
-    rm -f "$ZSH/.last_directory" 2>&1 1>/dev/null
-  fi
-fi
-
 # Extend rbenv with plug-ins from non-standard locations.
 for __path in "$HOME/.rbenv-plugins/"; do
   if [ -d "$__path" ]; then
@@ -247,9 +232,24 @@ for __path in "$HOME/.rbenv-plugins/"; do
 done
 
 # Add rbenv to shell for shims and auto-completion.
-which rbenv >/dev/null && eval "$( rbenv init - )"
+which rbenv 1>/dev/null 2>&1 && eval "$( rbenv init - )"
 
 # Load all Zsh scripts in no particular order.
-for __script in "$ZSH/scripts/"**/*.sh; do
+for __script in "$ZSH/scripts/"**/*.sh(N); do
   source "$__script"
 done
+
+# Restore last working directory if there is another Zsh instance running.
+if [ -f "$ZSH/.last_directory" ]; then
+  if [ $( ps a | grep '[z]sh' | wc -l ) -gt 1 ]; then
+    ZSH_LAST_DIRECTORY="$( cat "$ZSH/.last_directory" )"
+    [ -d "$ZSH_LAST_DIRECTORY" ] && cd "$ZSH_LAST_DIRECTORY"
+    unset ZSH_LAST_DIRECTORY
+  else
+    rm -f "$ZSH/.last_directory" 2>&1 1>/dev/null
+  fi
+fi
+
+# Source machine-specific local configuration file.
+LOCALRC=$( echo ".localrc_`uname -n`_`uname -o`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
+[ -s "$HOME/$LOCALRC" ] && source "$HOME/$LOCALRC"
