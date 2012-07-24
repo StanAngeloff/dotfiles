@@ -26,7 +26,7 @@
 
 # rbenv
 !.rbenv-plugins
-!.rbenv-plugins/ruby-build
+!.rbenv-plugins/*
 
 # Vim: Vundle
 !.vim/bundle/

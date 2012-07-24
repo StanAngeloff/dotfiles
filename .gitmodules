@@ -19,3 +19,6 @@
 [submodule ".rbenv-plugins/ruby-build"]
 	path = .rbenv-plugins/ruby-build
 	url = git://github.com/sstephenson/ruby-build.git
+[submodule ".rbenv-plugins/rbenv-gemset"]
+	path = .rbenv-plugins/rbenv-gemset
+	url = git://github.com/jamis/rbenv-gemset.git
