@@ -3,8 +3,8 @@
 VALUES=(                    \
   name     'Name'           \
   email    'E-mail address' \
-  username 'Github name'    \
-  token    'Github token'   \
+  username 'GitHub name'    \
+  token    'GitHub token'   \
 )
 TEMPLATED=(   \
   .gitconfig  \
@@ -42,7 +42,7 @@ done
 
 ( cd "$HOME" && git submodule update --init --recursive )
 
-if which xrdb >/dev/null; then
+if which xrdb 1>/dev/null 2>&1; then
   xrdb -merge "$HOME/.Xresources"
 fi
 
