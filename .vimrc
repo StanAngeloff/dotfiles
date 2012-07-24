@@ -46,7 +46,7 @@ set modelines=5    " Default numbers of lines to read for modeline instructions.
 set nospell        " Turn off spell checking by default
 
 set scrolloff=120  " Scroll when lots of lines from edge of screen. Bigger numbers work better with ':help rnu'.
-set rnu!           " Show the line number relative to the line with the cursor in front of each line.
+set rnu            " Show the line number relative to the line with the cursor in front of each line.
 
 set lazyredraw     " Do not redraw while running macros (much faster).
 set ttyfast        " Enable fast-terminal.
@@ -69,6 +69,7 @@ set listchars=tab:→\ ,eol:§    " Display a placeholder character for tabs and
 
 set backup   " Keep backups of files in case we mess up.
 set backupdir=$HOME/.vim/backup
+
 set undofile " Keep undo files for cross-session edits.
 set undodir=$HOME/.vim/undo
 
@@ -78,7 +79,7 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/* " Ignore rules for Vim
 
 set sessionoptions=blank,buffers,curdir,folds,tabpages,slash,unix " Session Handling.
 
-set tags=./.tags;,~/.vim/tags " tags can be stored in cwd and globally.
+set tags=./.tags;,~/.vim/tags " Tags can be stored in working directory or globally.
 
 if has('statusline')
   set statusline=                   " Clear the statusline, allow for rearranging parts.
@@ -156,10 +157,7 @@ inoremap <C-W> <C-G>u<C-W>
 " Start a new Undo group before pasting in INSERT mode.
 inoremap <C-R> <C-G>u<C-R>
 
-" Insert a semicolon at the end of the line in INSERT mode.
-inoremap <leader>; <Esc>mmg_a;<Esc>`ma
-
-" Tab keyboard bindings.
+" Quick tab creation and navigation.
 nnoremap <leader>tn :tabnew<CR>
 nnoremap <leader>tm :tabmove
 nnoremap <leader>te :tabedit 
@@ -169,12 +167,12 @@ nnoremap <silent> <C-K> gT
 
 " Reformat a paragraph in NORMAL mode.
 nnoremap <leader>q gqip
-" Restore last visual selection in LINE mode.
+" Restore last visual selection in VISUAL mode.
 nnoremap <leader>v V`]
 
-" Clean trailing whitespace keyboard bindings.
+" Erase trailing whitespace keyboard binding.
 nnoremap <silent> <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
-" Turn off active highlighting keyboard bindings.
+" Turn off active highlighting keyboard binding.
 nnoremap <silent> <leader><Space> :noh<CR>:sign unplace *<CR>
 
 " Toggle spell-checking keyboard binding.
@@ -201,7 +199,7 @@ nnoremap <silent> gl :wincmd l<CR>
 " Unix timestamp.
 inoremap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 
-" Copy entire buffer to unnamed (clipboard) register.
+" Copy entire buffer to X clipboard.
 nnoremap <leader>= mmggVG"+y`m
 
 " Align commands.
@@ -234,7 +232,10 @@ else
   endif
 endif
 
+" Preferred fold method is marker, e.g., manual.
 set foldmethod=marker
+
+" View settings to preserve for buffers.
 set viewdir=$HOME/.vim/view
 set viewoptions=cursor,folds,slash,unix
 
@@ -266,9 +267,9 @@ if has('autocmd')
   autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
 
   " Recognise additional types.
-  au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru} set ft=ruby
-  au BufRead,BufNewFile {*.md,*.mkd,*.markdown}                     set ft=markdown
-  au BufRead,BufNewFile {COMMIT_EDITMSG}                            set ft=gitcommit
+  au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,*.rake,config.ru} set ft=ruby
+  au BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
+  au BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
 
   " Sass variables.
   au BufRead,BufNewFile {*.sass,*.scss} setlocal iskeyword+=$,-
@@ -281,7 +282,11 @@ call vundle#rc()
 " Make broken SSL happy again
 let $GIT_SSL_NO_VERIFY='true'
 
+" ---------------------------------------------------------------------------
+
 Bundle 'StanAngeloff/vim-zend55'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'ciaranm/detectindent'
 " When the correct value for 'expandtab' cannot be determined, it will revert to the default value below.
@@ -291,23 +296,39 @@ if has('autocmd')
   autocmd BufReadPost * :DetectIndent
 endif
 
+" ---------------------------------------------------------------------------
+
 Bundle 'godlygeek/csapprox'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'godlygeek/tabular'
 
+" ---------------------------------------------------------------------------
+
 Bundle 'gregsexton/gitv'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'juvenn/mustache.vim'
 
+" ---------------------------------------------------------------------------
+
 Bundle 'kchmck/vim-coffee-script'
 
+" ---------------------------------------------------------------------------
+
 Bundle 'leshill/vim-json'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'mattn/zencoding-vim'
 " Leading key for expanding or balance tag, or for all.
 let g:user_zen_leader_key = '<leader>z'
 " Change global indent size to 2 spaces.
 let g:user_zen_settings = { 'indentation': '  ' }
+
+" ---------------------------------------------------------------------------
 
 Bundle 'majutsushi/tagbar'
 let g:tagbar_autoclose=1
@@ -317,20 +338,32 @@ let g:tagbar_autoshowtag=1
 " Toggle tag list window.
 nnoremap <silent> <F11> :TagbarToggle<CR>
 
+" ---------------------------------------------------------------------------
+
 Bundle 'msanders/snipmate.vim'
 " Don't load snipmate's default snippets, use ours instead.
 let snippets_dir='$HOME/.vim/snippets/'
 
+" ---------------------------------------------------------------------------
+
 Bundle 'othree/html5.vim'
 
+" ---------------------------------------------------------------------------
+
 Bundle 'pangloss/vim-javascript'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'samsonw/vim-task'
 " Toggle task status on current line.
 inoremap <silent> <leader>m <ESC>:call Toggle_task_status()<CR>a
 nnoremap <silent> <leader>m      :call Toggle_task_status()<CR>
 
+" ---------------------------------------------------------------------------
+
 Bundle 'scrooloose/nerdcommenter'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'scrooloose/nerdtree'
 let NERDTreeChDirMode=1
@@ -342,38 +375,67 @@ let NERDTreeMapJumpPrevSibling=''
 
 nnoremap <silent> <F12> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 
+" ---------------------------------------------------------------------------
+
 Bundle 'scrooloose/syntastic'
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
 " Check for syntax errors.
 nnoremap <silent> <F5> :w<CR>:sign unplace *<CR>:SyntasticCheck<CR>
+
+" ---------------------------------------------------------------------------
 
 Bundle 'sjl/gundo.vim'
 " Toggle Gundo undo tree.
 nnoremap <silent> <F6> :GundoToggle<CR>
 
+" ---------------------------------------------------------------------------
+
 Bundle 'tpope/vim-fugitive'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'tpope/vim-git'
 
+" ---------------------------------------------------------------------------
+
 Bundle 'tpope/vim-haml'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'tpope/vim-markdown'
 
+" ---------------------------------------------------------------------------
+
 Bundle 'tpope/vim-repeat'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'tpope/vim-surround'
 
+" ---------------------------------------------------------------------------
+
 Bundle 'tpope/vim-unimpaired'
 
+" ---------------------------------------------------------------------------
+
 Bundle 'tsaleh/vim-supertab'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'easytags.vim'
 let g:easytags_on_cursorhold=0  " Wastes too much CPU
 let g:easytags_dynamic_files=2  " Always use local .tags file
 let g:easytags_file='~/.vim/tags'
 let g:easytags_include_members=1
+let g:easytags_resolve_links=1
+
+" ---------------------------------------------------------------------------
 
 Bundle 'IndexedSearch'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'StanAngeloff/php.vim'
 Bundle 'shawncplus/phpcomplete.vim'
@@ -382,6 +444,8 @@ Bundle '2072/PHP-Indenting-for-VIm'
 " For PHP code, enable fancy options and better syntax sync.
 let php_htmlInStrings=1
 
+" ---------------------------------------------------------------------------
+
 Bundle 'session.vim--Odding'
 let g:session_autosave=0
 let g:session_autoload=0
@@ -389,9 +453,14 @@ let g:session_directory='~/.vim/sessions'
 noremap <leader>ss :SaveSession user<CR>
 noremap <leader>sr :OpenSession user<CR>
 
+" ---------------------------------------------------------------------------
+
+" to open an URL / directory under the cursor.
 Bundle 'shell.vim--Odding'
 " Disable <F11> mappings.
 let g:shell_mappings_enabled=0
+
+" ---------------------------------------------------------------------------
 
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_map=''
@@ -405,14 +474,24 @@ let g:ctrlp_max_depth=24
 nnoremap <silent> <leader>o :<C-U>CtrlPCurWD<CR>
 nnoremap <silent> <leader>b :<C-U>CtrlPBufTag<CR>
 
+" ---------------------------------------------------------------------------
+
 Bundle 'thinca/vim-visualstar'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'StanAngeloff/ManPageView'
 let g:manpageview_pgm_php="$HOME/bin/pman"
 
+" ---------------------------------------------------------------------------
+
 Bundle 'tpope/vim-speeddating'
 
+" ---------------------------------------------------------------------------
+
 Bundle 'tpope/vim-abolish'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'sickill/vim-pasta'
 let g:pasta_enabled_filetypes = [] " Don't allow Pasta by default in any buffer.
@@ -431,15 +510,25 @@ if has('autocmd')
   augroup END
 end
 
+" ---------------------------------------------------------------------------
+
 Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme = 'zend55'
 
+" ---------------------------------------------------------------------------
+
 Bundle 'nono/vim-handlebars'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'groenewege/vim-less'
 
+" ---------------------------------------------------------------------------
+
 Bundle 'hail2u/vim-css3-syntax'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'dbext.vim'
 " Type and credentials of most often connected to database.
@@ -449,14 +538,26 @@ let g:dbext_default_passwd = ''
 let g:dbext_default_always_prompt_for_variables = 1
 let g:dbext_default_history_size = 1024 " Controls how many SQL statements should be stored within the history.
 
+" ---------------------------------------------------------------------------
+
 Bundle 'SQLComplete.vim'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'bogado/file-line'
 
+" ---------------------------------------------------------------------------
+
 Bundle 'tpope/vim-eunuch'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'zaiste/tmux.vim'
 
+" ---------------------------------------------------------------------------
+
 Bundle 'benmills/vimux'
+
+" ---------------------------------------------------------------------------
 
 Bundle 'jesseschalken/list-text-object'
