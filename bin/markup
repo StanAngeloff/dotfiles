@@ -1,0 +1,56 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'nokogiri'
+require 'pygments.rb'
+require 'redcarpet'
+
+class AlbinoHTML < Redcarpet::Render::HTML
+  include Redcarpet::Render::SmartyPants
+
+  def block_code(code, language)
+    Pygments.highlight(code,
+      :lexer   => (language || 'text'),
+      :options => { :encoding => 'utf-8' }
+    )
+  end
+end
+
+markdown = Redcarpet::Markdown.new(AlbinoHTML,
+  :autolink            => true,
+  :fenced_code_blocks  => true,
+  :hard_wrap           => true,
+  :lax_html_blocks     => true,
+  :no_intra_emphasis   => true,
+  :space_after_headers => true,
+  :strikethrough       => true,
+  :superscripts        => true,
+  :tables              => true
+)
+
+html  = markdown.render(File.read(ARGV[0]))
+title = File.basename(ARGV[0])
+
+document = Nokogiri::HTML(html)
+document.search('//h1').each do |h1|
+  title = h1.text.strip
+end
+
+puts <<-EOD
+<!doctype html>
+<html lang=en>
+<head>
+  <meta charset=utf-8>
+  <title>#{ title }</title>
+</head>
+<body>
+
+<article id=page>
+#{ html }
+</article>
+
+<style>/* normalize.css 2012-07-07T09:50 UTC - http://github.com/necolas/normalize.css */article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block}audio,canvas,video{display:inline-block;*display:inline;*zoom:1}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html,button,input,select,textarea{font-family:sans-serif}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:0.67em 0}h2{font-size:1.5em;margin:0.83em 0}h3{font-size:1.17em;margin:1em 0}h4{font-size:1em;margin:1.33em 0}h5{font-size:0.83em;margin:1.67em 0}h6{font-size:0.75em;margin:2.33em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}blockquote{margin:1em 40px}dfn{font-style:italic}mark{background:#ff0;color:#000}p,pre{margin:1em 0}code,kbd,pre,samp{font-family:monospace, serif;_font-family:'courier new', monospace;font-size:1em}pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word}q{quotes:none}q:before,q:after{content:'';content:none}small{font-size:75%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}dl,menu,ol,ul{margin:1em 0}dd{margin:0 0 0 40px}menu,ol,ul{padding:0 0 0 40px}nav ul,nav ol{list-style:none;list-style-image:none}img{border:0;-ms-interpolation-mode:bicubic}svg:not(:root){overflow:hidden}figure{margin:0}form{margin:0}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{border:0;padding:0;white-space:normal;*margin-left:-7px}button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle}button,input{line-height:normal}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;*overflow:visible}button[disabled],input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;*height:13px;*width:13px}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}pre .hll,code .hll{background-color:#ffffcc}pre .c,code .c{color:#999988}pre .err,code .err{color:#a61717;background-color:#e3d2d2}pre .k,code .k{color:#000000}pre .o,code .o{color:#000000}pre .cm,code .cm{color:#999988}pre .cp,code .cp{color:#999999}pre .c1,code .c1{color:#999988}pre .cs,code .cs{color:#999999}pre .gd,code .gd{color:#000000;background-color:#ffdddd}pre .ge,code .ge{color:#000000}pre .gr,code .gr{color:#aa0000}pre .gh,code .gh{color:#999999}pre .gi,code .gi{color:#000000;background-color:#ddffdd}pre .go,code .go{color:#888888}pre .gp,code .gp{color:#555555}pre .gu,code .gu{color:#aaaaaa}pre .gt,code .gt{color:#aa0000}pre .kc,code .kc{color:#000000}pre .kd,code .kd{color:#000000}pre .kn,code .kn{color:#000000}pre .kp,code .kp{color:#000000}pre .kr,code .kr{color:#000000}pre .kt,code .kt{color:#445588}pre .m,code .m{color:#009999}pre .s,code .s{color:#d01040}pre .na,code .na{color:#008080}pre .nb,code .nb{color:#0086B3}pre .nc,code .nc{color:#445588}pre .no,code .no{color:#008080}pre .nd,code .nd{color:#3c5d5d}pre .ni,code .ni{color:#800080}pre .ne,code .ne{color:#990000}pre .nf,code .nf{color:#990000}pre .nl,code .nl{color:#990000}pre .nn,code .nn{color:#555555}pre .nt,code .nt{color:#000080}pre .nv,code .nv{color:#008080}pre .ow,code .ow{color:#000000}pre .w,code .w{color:#bbbbbb}pre .mf,code .mf{color:#009999}pre .mh,code .mh{color:#009999}pre .mi,code .mi{color:#009999}pre .mo,code .mo{color:#009999}pre .sb,code .sb{color:#d01040}pre .sc,code .sc{color:#d01040}pre .sd,code .sd{color:#d01040}pre .s2,code .s2{color:#d01040}pre .se,code .se{color:#d01040}pre .sh,code .sh{color:#d01040}pre .si,code .si{color:#d01040}pre .sx,code .sx{color:#d01040}pre .sr,code .sr{color:#009926}pre .s1,code .s1{color:#d01040}pre .ss,code .ss{color:#990073}pre .bp,code .bp{color:#999999}pre .vc,code .vc{color:#008080}pre .vg,code .vg{color:#008080}pre .vi,code .vi{color:#008080}pre .il,code .il{color:#009999}html{font-size:100%;line-height:1.4em}html,button,input,select,textarea{font-family:"PT Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans","Droid Sans",tahoma,verdana,arial,sans-serif}h1,h2,h3,h4,h5,h6{font-family:"Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L",Cambria,Georgia,"Times New Roman",times,serif}code,kbd,pre,samp{font-family:Inconsolata,Consolas,Menlo,"Liberation Mono","Courier New",courier,monospace}html{background-color:#fff;color:#101010;height:100.1%;overflow-y:scroll}h1,h2,h3,h4,h5,h6{line-height:140%}small{color:#505050}pre{background-color:rgba(0,51,102,0.043);border:0.105em solid rgba(0,51,102,0.085);-webkit-border-radius:0.35em;-moz-border-radius:0.35em;-ms-border-radius:0.35em;-o-border-radius:0.35em;border-radius:0.35em;padding:0.7em;-webkit-box-shadow:inset 0 0 0.455em rgba(0,51,102,0.17);-moz-box-shadow:inset 0 0 0.455em rgba(0,51,102,0.17);box-shadow:inset 0 0 0.455em rgba(0,51,102,0.17)}code{background-color:rgba(0,51,102,0.043);border:0.105em solid rgba(0,51,102,0.085);-webkit-border-radius:0.175em;-moz-border-radius:0.175em;-ms-border-radius:0.175em;-o-border-radius:0.175em;border-radius:0.175em;padding:0.105em 0.175em;-webkit-box-shadow:inset 0 0 0.175em rgba(0,51,102,0.17);-moz-box-shadow:inset 0 0 0.175em rgba(0,51,102,0.17);box-shadow:inset 0 0 0.175em rgba(0,51,102,0.17)}pre code{background-color:transparent;border:0;-webkit-border-radius:0;-moz-border-radius:0;-ms-border-radius:0;-o-border-radius:0;border-radius:0;padding:0;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}blockquote{margin-left:0;padding-left:1.05em;border-left:0.175em solid #e6e6e6;font-style:italic}#page{*zoom:1;max-width:60.5em;margin-left:auto;margin-right:auto;padding-left:1em;padding-right:1em;border-top:0.175em solid #404040;border-bottom:0.35em solid #404040;padding-bottom:1.4em}#page:after{content:"";display:table;clear:both}#page>header aside{float:right;margin-left:0.7em}#page>footer{text-align:right}#page>footer small{line-height:100%}.unstyled{list-style:none}.unstyled li{list-style-image:none;list-style-type:none;margin-left:0}.inline{margin:0;padding:0}.inline,.inline li{display:-moz-inline-stack;display:inline-block;vertical-align:middle;*vertical-align:auto;zoom:1;*display:inline}.inline a{border-bottom:0}.long{margin:0;padding:0}.long li{margin-bottom:0.7em}a{text-decoration:none;border-bottom:0.105em solid rgba(16,16,16,0.125)}#page .gist .gist-file{border:0}#page .gist .gist-file,#page .gist .gist-file .gist-data pre{font-family:Inconsolata,Consolas,Menlo,"Liberation Mono","Courier New",courier,monospace}#page .gist .gist-file .gist-data pre{padding:0.7em !important;background-color:rgba(0,51,102,0.043) !important}#page .gist .gist-syntax{background-color:transparent;border-bottom:0}#page .gist .gist-syntax *{font-style:normal;font-weight:normal}#page .gist .gist-meta{background-color:transparent}#disqus_thread{margin-top:1.4em;margin-bottom:1.4em;font-family:"PT Sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans","Droid Sans",tahoma,verdana,arial,sans-serif}</style>
+
+</body>
+</html>
+EOD
