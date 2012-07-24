@@ -1,5 +1,8 @@
 #!/bin/zsh
 
-export GEM_HOME=~/.gem
-export PATH="$HOME/.gem/bin:$HOME/bin/android-sdk-linux_x86/tools:$PATH"
+# Add Android SDK tools to $PATH.
+export PATH="$HOME/bin/android-sdk-linux_x86/tools:$PATH"
+
+# The Node.js PPA (~chris-lea/+archive/node.js) does not seem to set the path
+# to any NPM installed modules.
 export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
