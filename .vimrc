@@ -186,6 +186,9 @@ nnoremap <leader>w2 :setlocal tabstop=2<CR>:setlocal shiftwidth=2<CR>
 nnoremap <leader>w4 :setlocal tabstop=4<CR>:setlocal shiftwidth=4<CR>
 nnoremap <leader>w8 :setlocal tabstop=8<CR>:setlocal shiftwidth=8<CR>
 
+nnoremap <leader>w<Tab>   :setlocal noexpandtab<CR>
+nnoremap <leader>w<Space> :setlocal expandtab<CR>
+
 " Evaluate block as expression
 vnoremap <C-R> "ac<C-R>=<C-R>a<CR><Esc>vbo
 
