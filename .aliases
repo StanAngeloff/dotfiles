@@ -13,7 +13,7 @@ alias pu='pushd'
 alias po='popd'
 
 # `tmux` operations for starting and attaching to a session.
-alias '!'='tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -s default'
+alias '!'='tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -s default -n default'
 
 # Directory listing.
 alias ll='ls -hal --color=tty'
