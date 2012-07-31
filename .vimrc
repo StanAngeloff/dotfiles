@@ -497,21 +497,8 @@ Bundle 'tpope/vim-abolish'
 " ---------------------------------------------------------------------------
 
 Bundle 'sickill/vim-pasta'
-let g:pasta_enabled_filetypes = [] " Don't allow Pasta by default in any buffer.
-
-function! s:SetupPastaManual()
-  nmap <buffer> <leader>p <Plug>AfterPasta
-  xmap <buffer> <leader>p <Plug>VisualPasta
-
-  nmap <buffer> <leader>P <Plug>BeforePasta
-  xmap <buffer> <leader>P <Plug>VisualPasta
-endfunction
-
-if has('autocmd')
-  augroup vim_pasta_manual
-    au FileType * call <SID>SetupPastaManual()
-  augroup END
-end
+let g:pasta_paste_before_mapping='<leader>P'
+let g:pasta_paste_after_mapping='<leader>p'
 
 " ---------------------------------------------------------------------------
 
