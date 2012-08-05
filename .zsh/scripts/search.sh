@@ -7,7 +7,7 @@ function search() {
   local temporary
 
   if [ $# -lt 1 ]; then
-    echo 'Usage: '"$0"' PATTERN PATH [OPTIONS...]'
+    echo 'Usage: '"$0"' PATTERN PATH [OPTIONS...]' >/dev/stderr
     return 1
   fi
 
