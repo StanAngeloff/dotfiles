@@ -67,6 +67,8 @@ set textwidth=78
 
 set listchars=tab:→\ ,eol:§    " Display a placeholder character for tabs and newlines.
 
+set matchpairs+=<:> " Balance HTML tags.
+
 set backup   " Keep backups of files in case we mess up.
 set backupdir=$HOME/.vim/backup
 
