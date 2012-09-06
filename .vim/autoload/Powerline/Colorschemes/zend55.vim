@@ -40,7 +40,7 @@ let g:Powerline#Colorschemes#zend55#colorscheme = Pl#Colorscheme#Init([
 		\ 'n': ['gray10', 'gray4'],
 		\ }),
 	\
-	\ Pl#Hi#Segments(['fileinfo', 'filename'], {
+	\ Pl#Hi#Segments(['fileinfo', 'filename', 'filepath'], {
 		\ 'n': ['gray10', 'gray2'],
 		\ }),
 	\
@@ -56,11 +56,11 @@ let g:Powerline#Colorschemes#zend55#colorscheme = Pl#Colorscheme#Init([
 		\ 'n': ['brightestred'],
 		\ }),
 	\
-	\ Pl#Hi#Segments(['currenttag', 'fileformat', 'fileencoding', 'pwd', 'filetype', 'rvm:string', 'rvm:statusline', 'virtualenv:statusline', 'charcode', 'currhigroup'], {
+	\ Pl#Hi#Segments(['fileformat', 'fileencoding', 'pwd', 'filetype', 'rvm:string', 'rvm:statusline', 'virtualenv:statusline', 'charcode', 'currhigroup'], {
 		\ 'n': ['gray8', 'gray2'],
 		\ }),
 	\
-	\ Pl#Hi#Segments(['currenttag'], {
+	\ Pl#Hi#Segments(['currenttag', 'fullcurrenttag'], {
 		\ 'n': ['gray8', 'gray0'],
 		\ }),
 	\
