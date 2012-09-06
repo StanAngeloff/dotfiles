@@ -149,7 +149,7 @@ noremap  <Right> <NOP>
 nnoremap <silent> Q ZZ
 
 " Toggle display of placeholder characters for tabs and newlines.
-nnoremap <F9> :set list!<CR>
+nnoremap <F7> :set list!<CR>
 
 " Start a new Undo group before undoing changes in INSERT mode.
 " Undos can be re-done using 'u' in NORMAL mode.
@@ -388,7 +388,7 @@ let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 " Check for syntax errors.
-nnoremap <silent> <F5> :w<CR>:sign unplace *<CR>:SyntasticCheck<CR>
+nnoremap <silent> <F9> :w<CR>:sign unplace *<CR>:SyntasticCheck<CR>
 
 " ---------------------------------------------------------------------------
 
@@ -550,6 +550,8 @@ Bundle 'zaiste/tmux.vim'
 " ---------------------------------------------------------------------------
 
 Bundle 'benmills/vimux'
+nnoremap <silent> <F5>      :w<CR>:VimuxRunLastCommand<CR>
+inoremap <silent> <F5> <Esc>:w<CR>:VimuxRunLastCommand<CR>a
 
 " ---------------------------------------------------------------------------
 
