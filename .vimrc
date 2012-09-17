@@ -345,9 +345,9 @@ nnoremap <silent> <F11> :TagbarToggle<CR>
 
 " ---------------------------------------------------------------------------
 
-Bundle 'msanders/snipmate.vim'
-" Don't load snipmate's default snippets, use ours instead.
-let snippets_dir='$HOME/.vim/snippets/'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
 
 " ---------------------------------------------------------------------------
 
@@ -426,7 +426,8 @@ Bundle 'tpope/vim-unimpaired'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'tsaleh/vim-supertab'
+Bundle 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType='context'
 
 " ---------------------------------------------------------------------------
 
