@@ -244,6 +244,14 @@ set foldmethod=marker
 set viewdir=$HOME/.vim/view
 set viewoptions=cursor,folds,slash,unix
 
+" Cyrillic configuration, tired of layout switching, no?
+set langmap+=чявертъуиопшщасдфгхйклзьцжбнмЧЯВЕРТЪУИОПШЩАСДФГХЙКЛЗѝЦЖБНМ;`qwertyuiop[]asdfghjklzxcvbnm~QWERTYUIOP{}ASDFGHJKLZXCVBNM,ю\\,Ю\|,
+
+nnoremap <silent> Я ZZ
+
+inoremap йй <Esc>
+inoremap кк <Esc>
+
 " Enable file type detection.
 filetype plugin indent on
 
