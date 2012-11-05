@@ -1,5 +1,5 @@
--f
--
+-f .tags
+--tag-relative=yes
 --format=2
 --excmd=pattern
 --exclude="\.git"
@@ -7,3 +7,4 @@
 --exclude="\.svn"
 --exclude="\.sass-cache"
 --fields=nksaSmt
+--PHP-kinds=+icfv

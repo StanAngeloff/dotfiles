@@ -40,6 +40,11 @@ set autoindent                 " Auto-indent new lines.
 set timeoutlen=325             " Time to wait after ESC (default causes an annoying delay).
 set clipboard+=unnamed         " Yank to clipboard.
 
+" 'i' is avoided as it can be extremely slow on large trees.
+set complete-=i
+" The Preview/Scratch window is extremely annoying.
+set completeopt-=preview
+
 set modeline
 set modelines=5    " Default numbers of lines to read for modeline instructions.
 
