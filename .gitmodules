@@ -1,6 +1,3 @@
-[submodule ".urxvt/ext/tabbedex"]
-	path = .urxvt/ext/tabbedex
-	url = git://github.com/stepb/urxvt-tabbedex.git
 [submodule ".urxvt/ext/perls"]
 	path = .urxvt/ext/perls
 	url = git://github.com/muennich/urxvt-perls.git

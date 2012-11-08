@@ -19,13 +19,6 @@ URxvt.inheritPixmap: false
 URxvt.fading: 0
 URxvt.background: rgba:0000/0000/0000/efef
 URxvt.foreground: 15
-URxvt.tabbed.autohide:  1
-URxvt.tabbed.tabbar-fg: 244
-URxvt.tabbed.tabbar-bg: 232
-URxvt.tabbed.tab-fg:    247
-URxvt.tabbed.tab-bg:    235
-URxvt.tabbed.title-fg:  247
-URxvt.tabbed.title-bg:  232
 
 URxvt.font: xft:inconsolata for powerline:pixelsize=18:antialias=true:hinting=true
 URxvt.boldFont: xft:inconsolata for powerline:bold:pixelsize=18:antialias=true:hinting=true
@@ -48,8 +41,8 @@ URxvt.keysym.Control-Right:     \033[1;5C
 URxvt.keysym.Control-Page_Up:   \033[5;5~
 URxvt.keysym.Control-Page_Down: \033[6;5~
 
-URxvt.perl-lib: ${HOME}/.urxvt/ext/perls:${HOME}/.urxvt/ext/tabbedex
-URxvt.perl-ext-common: clipboard,default,matcher,tabbedex,-option-popup,-searchable-scrollback,-selection-popup
+URxvt.perl-lib: ${HOME}/.urxvt/ext/perls
+URxvt.perl-ext-common: clipboard,default,matcher,-option-popup,-searchable-scrollback,-selection-popup
 
 URxvt.matcher.button: 1
 URxvt.urlLauncher: x-www-browser
@@ -58,10 +51,6 @@ URxvt.copyCommand:  xclip -i -selection clipboard
 URxvt.pasteCommand: xclip -o -selection clipboard
 URxvt.keysym.Control-Shift-C: perl:clipboard:copy
 URxvt.keysym.Control-Shift-V: perl:clipboard:paste
-
-URxvt.keysym.Control-Shift-T:     perl:tabbedex:new_tab
-URxvt.keysym.Control-Shift-Left:  perl:tabbedex:prev_tab
-URxvt.keysym.Control-Shift-Right: perl:tabbedex:next_tab
 
 URxvt.color0:  #000000
 URxvt.color1:  #cd0000
