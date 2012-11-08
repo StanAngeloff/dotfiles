@@ -44,11 +44,12 @@ URxvt.keysym.Control-Page_Down: \033[6;5~
 URxvt.perl-lib: ${HOME}/.urxvt/ext/perls
 URxvt.perl-ext-common: clipboard,default,matcher,-option-popup,-searchable-scrollback,-selection-popup
 
-URxvt.matcher.button: 1
-URxvt.urlLauncher: x-www-browser
+URxvt.url-select.button:   1
+URxvt.url-select.launcher: x-www-browser
 
-URxvt.copyCommand:  xclip -i -selection clipboard
-URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.clipboard.copycmd:  xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
+
 URxvt.keysym.Control-Shift-C: perl:clipboard:copy
 URxvt.keysym.Control-Shift-V: perl:clipboard:paste
 
