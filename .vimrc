@@ -358,9 +358,8 @@ nnoremap <silent> <F11> :TagbarToggle<CR>
 
 " ---------------------------------------------------------------------------
 
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
+Bundle 'SirVer/ultisnips'
+let g:UltiSnipsSnippetDirectories=['snippets']
 
 " ---------------------------------------------------------------------------
 
