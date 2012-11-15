@@ -44,6 +44,8 @@ set clipboard+=unnamed         " Yank to clipboard.
 set complete-=i
 " The Preview/Scratch window is extremely annoying.
 set completeopt-=preview
+" Only insert the longest common text of the matches.
+set completeopt+=longest
 
 set modeline
 set modelines=5    " Default numbers of lines to read for modeline instructions.
@@ -439,7 +441,11 @@ Bundle 'tpope/vim-unimpaired'
 " ---------------------------------------------------------------------------
 
 Bundle 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType='context'
+let g:SuperTabDefaultCompletionType='<C-P>'
+let g:SuperTabMappingForward='<C-K>'
+let g:SuperTabMappingBackward='<C-J>'
+let g:SuperTabLongestEnhanced=1
+let g:SuperTabLongestHighlight=1
 
 " ---------------------------------------------------------------------------
 
