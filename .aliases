@@ -6,22 +6,16 @@ alias Q='exit'
 # Quick commands access.
 alias g='git'
 
-alias md='mkdir -p'
-alias rd=rmdir
-
-alias pu='pushd'
-alias po='popd'
-
-# `tmux` operations for starting and attaching to a session.
-alias '!'='tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -s default -n default'
+# `tmux` operations for starting and attaching to sessions.
+for session_name in default.default inception.vm; do
+  eval "alias '${session_name%.*}!'='tmux has-session -t ${session_name%.*} 1>/dev/null 2>&1 && exec tmux attach-session -t ${session_name%.*} || exec tmux new-session -s ${session_name%.*} -n ${session_name#*.}'"
+done
 
 # Directory listing.
 alias ll='ls -hal --color=tty'
 
 # Basic directory operations.
 alias ..='cd ..'
-alias ...='cd ../..'
-alias -- -='cd -'
 
 # Super-User operation.
 alias _='sudo'
