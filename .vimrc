@@ -228,6 +228,9 @@ nnoremap <leader>] <C-w><C-]><C-w>T
 " Write using `sudo` in COMMAND mode if the file is read-only.
 cnoremap w!! w !sudo tee % >/dev/null
 
+" XML formatting through `xmllint`.
+cnoreabbrev xmlformat %!xmllint --format --encode UTF-8 -
+
 if has("gui_running")
   set guifont=Inconsolata\ for\ Powerline\ Medium\ 14
 else
