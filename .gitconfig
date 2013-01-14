@@ -50,3 +50,5 @@
 	sp = stash pop
 	su = submodule update --init --recursive
 
+[push]
+	default = upstream
