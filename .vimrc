@@ -322,9 +322,6 @@ Bundle 'godlygeek/csapprox'
 
 Bundle 'godlygeek/tabular'
 
-" ---------------------------------------------------------------------------
-
-Bundle 'gregsexton/gitv'
 
 " ---------------------------------------------------------------------------
 
@@ -337,14 +334,6 @@ Bundle 'kchmck/vim-coffee-script'
 " ---------------------------------------------------------------------------
 
 Bundle 'leshill/vim-json'
-
-" ---------------------------------------------------------------------------
-
-Bundle 'mattn/zencoding-vim'
-" Leading key for expanding or balance tag, or for all.
-let g:user_zen_leader_key = '<leader>z'
-" Change global indent size to 2 spaces.
-let g:user_zen_settings = { 'indentation': '  ' }
 
 " ---------------------------------------------------------------------------
 
@@ -515,12 +504,6 @@ Bundle 'tpope/vim-abolish'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'sickill/vim-pasta'
-let g:pasta_paste_before_mapping='<leader>P'
-let g:pasta_paste_after_mapping='<leader>p'
-
-" ---------------------------------------------------------------------------
-
 Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme = 'zend55'
@@ -539,29 +522,7 @@ Bundle 'hail2u/vim-css3-syntax'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'dbext.vim'
-" Type and credentials of most often connected to database.
-let g:dbext_default_type = 'MYSQL'
-let g:dbext_default_user = 'root'
-let g:dbext_default_passwd = ''
-let g:dbext_default_always_prompt_for_variables = 1
-let g:dbext_default_history_size = 1024 " Controls how many SQL statements should be stored within the history.
-
-" ---------------------------------------------------------------------------
-
-Bundle 'SQLComplete.vim'
-
-" ---------------------------------------------------------------------------
-
-Bundle 'bogado/file-line'
-
-" ---------------------------------------------------------------------------
-
 Bundle 'tpope/vim-eunuch'
-
-" ---------------------------------------------------------------------------
-
-Bundle 'zaiste/tmux.vim'
 
 " ---------------------------------------------------------------------------
 
@@ -580,4 +541,4 @@ Bundle 'lucapette/vim-textobj-underscore'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'vim-scripts/swap'
+Bundle 'kurkale6ka/vim-swap'
