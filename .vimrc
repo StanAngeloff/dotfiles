@@ -68,7 +68,7 @@ set hlsearch                   " Highlight the last used search pattern.
 set cursorline!                " Highlight line under cursor.
 
 set colorcolumn=78             " Gutter position.
-set textwidth=78
+set textwidth=120
 
 set listchars=tab:→\ ,eol:§    " Display a placeholder character for tabs and newlines.
 
