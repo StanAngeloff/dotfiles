@@ -153,9 +153,6 @@ noremap  <Right> <NOP>
 " Q for 'Q'uit, 'Ex' mode has received zero use.
 nnoremap <silent> Q ZZ
 
-" Toggle display of placeholder characters for tabs and newlines.
-nnoremap <F7> :set list!<CR>
-
 " Start a new Undo group before undoing changes in INSERT mode.
 " Undos can be re-done using 'u' in NORMAL mode.
 inoremap <C-U> <C-G>u<C-U>
@@ -183,10 +180,14 @@ nnoremap <silent> <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 nnoremap <silent> <leader><Space> :noh<CR>:sign unplace *<CR>
 
 " Toggle spell-checking keyboard binding.
-noremap <silent> <F1> :set nospell!<CR>:set nospell?<CR>
+noremap <silent> <F1> :set nospell! nospell?<CR>
 " Toggle paste-mode keyboard binding.
-nnoremap <F2> :set invpaste paste?<CR>
+nnoremap <silent> <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
+" Toggle case sensitive/insensitive.
+nnoremap <silent> <F3> :set ignorecase! ignorecase?<CR>
+" Toggle display of placeholder characters for tabs and newlines.
+nnoremap <silent> <F4> :set list! list?<CR>
 
 " Adjust the tab/shift width keyboard bindings.
 nnoremap <leader>w2 :setlocal tabstop=2<CR>:setlocal shiftwidth=2<CR>
