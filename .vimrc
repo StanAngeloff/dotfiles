@@ -134,9 +134,6 @@ let mapleader="\\"
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 
-noremap  / /\v
-nnoremap / /\v
-vnoremap / /\v
 
 inoremap jj <Esc>
 inoremap kk <Esc>
