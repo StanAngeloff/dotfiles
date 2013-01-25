@@ -131,8 +131,8 @@ let g:is_posix = 1
 let mapleader="\\"
 
 " Keyboard bindings.
-nnoremap j gj
-nnoremap k gk
+nnoremap <silent> j gj
+nnoremap <silent> k gk
 
 noremap  / /\v
 nnoremap / /\v
