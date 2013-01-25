@@ -135,6 +135,8 @@ let mapleader="\\"
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 
+" Make Y consistent with C and D. See ':help Y'.
+nnoremap Y y$
 
 inoremap jj <Esc>
 inoremap kk <Esc>
