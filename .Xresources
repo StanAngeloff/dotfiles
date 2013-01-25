@@ -26,6 +26,9 @@ URxvt.italicFont: xft:inconsolata for powerline:italic:pixelsize=18:antialias=tr
 URxvt.boldItalicFont: xft:inconsolata for powerline:bold:italic:pixelsize=18:antialias=true:hinting=true
 URxvt.letterSpace: -1
 
+! Disable screen printing by overriding the default print pipe.
+URxvt.print-pipe: "cat >/dev/null"
+
 URxvt.keysym.Shift-Up:          \033[1;2A
 URxvt.keysym.Shift-Down:        \033[1;2B
 URxvt.keysym.Shift-Right:       \033[1;2C
