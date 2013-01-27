@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# Abort immediately if any command exists with a non-zero code.
+set -e
+
+# Do we need 'sudo'?
+sudo=
+if [ "$( id -u )" != 0 ]; then
+  sudo='sudo'
+fi
+
+# Ensure Chromium is in the expected location. We could provide command-line
+# arguments for that, but the whole purpose of this script is to start Chromium
+# in the fastest possible way without any hassle.
+CHROME_DEVEL_PATH='/opt/chrome-linux'
+if [ ! -d "$CHROME_DEVEL_PATH" ]; then
+  echo "[ERROR] You must have a copy of Chromium in '${CHROME_DEVEL_PATH}'." 1>&2
+  echo '[ERROR] Please update this script if you have downloaded a copy elsewhere.' 1>&2
+  exit 1
+fi
+
+# Tell Chromium to use a sandbox.
+export CHROME_DEVEL_SANDBOX="${CHROME_DEVEL_PATH}/chrome_sandbox"
+
+# Chromium is very picky about who owns what and in which mode, set it up properly.
+if [ ! "$( stat -c'%f' "$CHROME_DEVEL_SANDBOX" | tr -d '\n' )" = "89ed" ]; then
+  echo -n "[INFO] The '${CHROME_DEVEL_SANDBOX}' file mode needs to be updated... "
+  $sudo chmod 4755 "$CHROME_DEVEL_SANDBOX"
+  echo 'OK'
+fi
+
+if [ ! "$( stat -c'%g:%u' "$CHROME_DEVEL_SANDBOX" | tr -d '\n' )" = "0:0" ]; then
+  echo -n "[INFO] The '${CHROME_DEVEL_SANDBOX}' binary owner needs to be updated... "
+  $sudo chown root:root "$CHROME_DEVEL_SANDBOX"
+  echo 'OK'
+fi
+
+# Use the `start-and-forget` script to run Chromium detached in the background.
+#   --ignore-gpu-blacklist is an override to enable GPU acceleration on all hardware.
+start-and-forget "${CHROME_DEVEL_PATH}/chrome" --ignore-gpu-blacklist "$@"
