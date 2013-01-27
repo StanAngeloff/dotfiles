@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Close any open SSH connections by killing the owner process.
+# Unfortunately this is needed to deal with control sockets getting stuck.
+
+ps aux | grep '[s]sh:' | grep '[mux]' | awk '{ print $2 }' | xargs -r kill
