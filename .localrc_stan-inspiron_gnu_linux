@@ -3,6 +3,10 @@
 # Add Android SDK tools to $PATH.
 export PATH="$HOME/bin/android-sdk-linux/tools:$PATH"
 
+# Add Qt5-beta1 to $PATH.
+# See http://developer.ubuntu.com/get-started/gomobile/
+export PATH="/opt/qt5/bin:$PATH"
+
 # The Node.js PPA (~chris-lea/+archive/node.js) does not seem to set the path
 # to any NPM installed modules.
 export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
