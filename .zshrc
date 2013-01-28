@@ -236,6 +236,9 @@ for __script in "$ZSH/scripts/"**/*.sh(N); do
   source "$__script"
 done
 
+unset __path
+unset __script
+
 # Restore last working directory if there is another Zsh instance running.
 if [ -f "$ZSH/.last_directory" ]; then
   if [ $( ps a | grep '[z]sh' | wc -l ) -gt 1 ]; then
