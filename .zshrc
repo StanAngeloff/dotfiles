@@ -193,9 +193,6 @@ function _terminal_title {
 
 function _before_directory_change {
   _terminal_title "%15<..<%~%<<" "%n@%m: %~"
-  if declare -f _z > /dev/null; then
-    _z --add "$( pwd -P )"
-  fi
 }
 
 function _before_command_execute {
