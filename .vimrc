@@ -39,7 +39,7 @@ set nowrap                     " Don't wrap long lines.
 set autoindent                 " Auto-indent new lines.
 set timeoutlen=325             " Time to wait after ESC (default causes an annoying delay).
 
-set clipboard=unnamedplus,unnamed,autoselect,exclude:cons\|linux  " Yank to X11 clipboard, if not in console mode.
+set clipboard+=unnamed         " Yank to clipboard.
 
 " 'i' is avoided as it can be extremely slow on large trees.
 set complete-=i
