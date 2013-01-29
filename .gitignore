@@ -32,10 +32,12 @@
 !.vim/bundle/
 !.vim/bundle/vundle
 
-# Vim: after/ scripts, e.g., for CSS3 support in HTML/SCSS.
+# Vim: after/ scripts, e.g., for CSS3 support in HTML/SCSS, Abolish, etc.
 !.vim/after/
 !.vim/after/syntax/
 !.vim/after/syntax/*.vim
+!.vim/after/plugin/
+!.vim/after/plugin/*.vim
 
 # Vim: pathogen.vim as a symlink.
 !.vim/autoload/
