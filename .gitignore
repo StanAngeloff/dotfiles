@@ -56,3 +56,7 @@
 # Zsh scripts.
 !.zsh/scripts/
 !.zsh/scripts/*
+
+# Zsh completions.
+!.zsh/completion/
+!.zsh/completion/*

@@ -80,6 +80,9 @@ zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
 
+# Add user-'completion' directory to the array of Zsh sources.
+fpath=( "$HOME/.zsh/completion" $fpath )
+
 # Disable named-directories autocompletion.
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 cdpath=(.)
