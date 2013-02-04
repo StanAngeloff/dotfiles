@@ -432,9 +432,9 @@ Bundle 'tpope/vim-unimpaired'
 " ---------------------------------------------------------------------------
 
 Bundle 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType='<C-P>'
-let g:SuperTabMappingForward='<C-K>'
-let g:SuperTabMappingBackward='<C-J>'
+let g:SuperTabDefaultCompletionType='<C-X><C-U>'
+let g:SuperTabMappingForward='<C-J>'
+let g:SuperTabMappingBackward='<C-K>'
 let g:SuperTabLongestHighlight=1
 
 " ---------------------------------------------------------------------------
@@ -546,3 +546,22 @@ Bundle 'lucapette/vim-textobj-underscore'
 " ---------------------------------------------------------------------------
 
 Bundle 'kurkale6ka/vim-swap'
+
+" ---------------------------------------------------------------------------
+
+Bundle 'Shougo/neocomplcache'
+let g:neocomplcache_enable_at_startup=1
+let g:neocomplcache_enable_auto_select=1
+let g:neocomplcache_enable_camel_case_completion=1
+let g:neocomplcache_enable_underbar_completion=1
+let g:neocomplcache_enable_prefetch=1
+let g:neocomplcache_disable_auto_complete=1
+
+let g:neocomplcache_tags_caching_limit_file_size=128 * 1024 * 1024
+
+let g:neocomplcache_temporary_dir='/tmp/.neocomplcache'
+
+let g:neocomplcache_source_rank = {
+  \ 'buffer_complete': 500,
+  \ 'omni_complete': 400,
+\ }
