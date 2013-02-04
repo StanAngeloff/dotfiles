@@ -29,6 +29,7 @@ set showmode   " Display Vim mode, e.g., INSERT, REPLACE, etc.
 set incsearch  " Do incremental searching.
 set ignorecase " Lowercase matches all.
 set smartcase  " Uppercase matches uppercase only.
+set infercase  " Adjust case of match depending on the typed text.
 
 set backspace=indent,eol,start " Backspace wraps at start- and end-of-line.
 set tabstop=2                  " Default number of spaces per tab character.
