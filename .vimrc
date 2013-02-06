@@ -41,6 +41,8 @@ set nowrap                     " Don't wrap long lines.
 set autoindent                 " Auto-indent new lines.
 set timeoutlen=325             " Time to wait after ESC (default causes an annoying delay).
 
+set shortmess=aoOtTAI          " Keep UI notices to a minimum.
+
 set clipboard+=unnamed         " Yank to clipboard.
 
 " 'i' is avoided as it can be extremely slow on large trees.
