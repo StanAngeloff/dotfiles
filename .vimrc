@@ -387,8 +387,9 @@ let NERDTreeIgnore=['\~$', '\.pyc$', '^.sass-cache$']
 let NERDTreeMapJumpNextSibling=''
 let NERDTreeMapJumpPrevSibling=''
 let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=1
 
-nnoremap <silent> <F12> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+nnoremap <silent> <leader>e :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 
 " ---------------------------------------------------------------------------
 
