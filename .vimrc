@@ -1,5 +1,6 @@
 " Make Vim behave in a more useful way (the default) than the vi-compatible manner.
 set nocompatible
+scriptencoding utf-8 " Help Vim use the correct character encoding for this script.
 
 " Pathogen, manage your runtimepath.
 filetype off
