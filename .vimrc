@@ -41,8 +41,6 @@ set nowrap                     " Don't wrap long lines.
 set autoindent                 " Auto-indent new lines.
 set timeoutlen=325             " Time to wait after ESC (default causes an annoying delay).
 
-set shortmess=aoOtTAI          " Keep UI notices to a minimum.
-
 set clipboard+=unnamed         " Yank to clipboard.
 
 " 'i' is avoided as it can be extremely slow on large trees.
@@ -67,6 +65,7 @@ set novisualbell               " Disable annoying sounds and use visual feedback
 set noerrorbells               " Disable more annoying noise.
 set laststatus=2               " Always display a status line.
 set formatoptions=qrn1lo       " Format comments, numbered-lists, one-letter words.
+set shortmess=aoOtTAI          " Keep UI notices to a minimum.
 
 set guioptions=                " No GUI.
 set hlsearch                   " Highlight the last used search pattern.
