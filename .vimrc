@@ -178,8 +178,18 @@ nnoremap <leader>q gqip
 " Restore last visual selection in VISUAL mode.
 nnoremap <leader>v V`]
 
-" Erase trailing whitespace keyboard binding.
-nnoremap <silent> <leader>W :%s/\s\+$//<CR>:let @/=''<CR>
+" Erase trailing whitespace function and keyboard binding.
+function! s:strip_trailing_whitespace()
+  let previous_line = line('.')
+  let previous_column = col('.')
+  let previous_search = @/
+  %s/\s\+$//e
+  let @/ = previous_search
+  call cursor(previous_line, previous_column)
+endfunction
+
+nnoremap <silent> <leader>W :call <SID>strip_trailing_whitespace()<CR>
+
 " Turn off active highlighting keyboard binding.
 nnoremap <silent> <leader><Space> :noh<CR>:sign unplace *<CR>
 
