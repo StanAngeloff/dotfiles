@@ -399,7 +399,13 @@ let NERDTreeMapJumpPrevSibling=''
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 
-nnoremap <silent> <leader>e :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+" ---------------------------------------------------------------------------
+
+Bundle 'jistr/vim-nerdtree-tabs'
+let g:nerdtree_tabs_open_on_gui_startup=0
+let g:nerdtree_tabs_open_on_new_tab=0
+
+nnoremap <silent> <leader>e :NERDTreeMirrorToggle<CR>
 
 " ---------------------------------------------------------------------------
 
