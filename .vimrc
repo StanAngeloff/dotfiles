@@ -68,6 +68,7 @@ set formatoptions=qrn1lo       " Format comments, numbered-lists, one-letter wor
 set shortmess=aoOtTAI          " Keep UI notices to a minimum.
 
 set guioptions=                " No GUI.
+set showtabline=2              " The line with tab page labels will be displayed always.
 set hlsearch                   " Highlight the last used search pattern.
 set cursorline!                " Highlight line under cursor.
 
