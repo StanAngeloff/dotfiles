@@ -32,6 +32,10 @@
 !.vim/bundle/
 !.vim/bundle/vundle
 
+# Vim: ftplugin/ scripts, e.g., abbreviations by file type.
+!.vim/ftplugin/
+!.vim/ftplugin/*.vim
+
 # Vim: after/ scripts, e.g., for CSS3 support in HTML/SCSS, Abolish, etc.
 !.vim/after/
 !.vim/after/syntax/
