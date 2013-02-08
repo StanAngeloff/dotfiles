@@ -240,6 +240,9 @@ vnoremap <leader>a: m[om]:Tabularize /:\zs/l0l1<CR>`]V`[
 " Open tag under cursor in a new tab.
 nnoremap <leader>] <C-w><C-]><C-w>T
 
+" Sort inside a paragraph.
+nnoremap <silent> <leader>sip mZvip:sort<CR>`Z:echo (line("'>") - line("'<") + 1) . ' line(s) sorted'<CR>
+
 " Write using `sudo` in COMMAND mode if the file is read-only.
 cnoremap w!! w !sudo tee % >/dev/null
 
