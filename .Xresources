@@ -20,10 +20,10 @@ URxvt.fading: 0
 URxvt.background: rgba:0000/0000/0000/efef
 URxvt.foreground: 15
 
-URxvt.font: xft:inconsolata for powerline:pixelsize=18:antialias=true:hinting=true
-URxvt.boldFont: xft:inconsolata for powerline:bold:pixelsize=18:antialias=true:hinting=true
-URxvt.italicFont: xft:inconsolata for powerline:italic:pixelsize=18:antialias=true:hinting=true
-URxvt.boldItalicFont: xft:inconsolata for powerline:bold:italic:pixelsize=18:antialias=true:hinting=true
+URxvt.font: xft:inconsolata for powerline:pixelsize=18:antialias=true:hinting=true,xft:dejavu sans mono:pixelsize=18:antialias=true:hinting=true
+URxvt.boldFont: xft:inconsolata for powerline:bold:pixelsize=18:antialias=true:hinting=true,xft:dejavu sans mono:bold:pixelsize=18:antialias=true:hinting=true
+URxvt.italicFont: xft:inconsolata for powerline:italic:pixelsize=18:antialias=true:hinting=true,xft:dejavu sans mono:italic:pixelsize=18:antialias=true:hinting=true
+URxvt.boldItalicFont: xft:inconsolata for powerline:bold:italic:pixelsize=18:antialias=true:hinting=true,xft:dejavu sans mono:bold:italic:pixelsize=18:antialias=true:hinting=true
 URxvt.letterSpace: -1
 
 ! Disable screen printing by overriding the default print pipe.
