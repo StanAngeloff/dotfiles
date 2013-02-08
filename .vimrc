@@ -225,7 +225,7 @@ nnoremap <silent> gl :wincmd l<CR>
 inoremap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 
 " Copy entire buffer to X clipboard.
-nnoremap <leader>= mmggVG"+y`m
+nnoremap <leader>= mZggVG"+y`Z
 
 " Align commands.
 nnoremap <leader>a= :Tabularize /=<CR>
