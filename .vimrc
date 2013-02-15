@@ -437,11 +437,18 @@ Bundle 'tpope/vim-unimpaired'
 " ---------------------------------------------------------------------------
 
 Bundle 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType='<C-X><C-U>'
 let g:SuperTabMappingForward='<C-J>'
 let g:SuperTabMappingBackward='<C-K>'
 let g:SuperTabLongestHighlight=1
 
+if has('autocmd')
+  autocmd FileType *
+        \ if &omnifunc != '' |
+        \   call SuperTabChain(&omnifunc, '<C-X><C-N>') |
+        \   call SuperTabSetDefaultCompletionType('<C-X><C-U>') |
+        \   echom 'm' |
+        \ endif
+endif
 
 " ---------------------------------------------------------------------------
 
