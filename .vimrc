@@ -91,7 +91,7 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/* " Ignore rules for Vim
 
 set sessionoptions=blank,buffers,curdir,folds,tabpages,slash,unix " Session Handling.
 
-set tags=./.tags;,~/.vim/tags " Tags can be stored in working directory or globally.
+set tags=.tags,./.tags,~/.vim/tags " Tags can be stored against a project, next to a file or globally.
 
 if has('statusline')
   set statusline=                   " Clear the statusline, allow for rearranging parts.
@@ -442,14 +442,6 @@ let g:SuperTabMappingForward='<C-J>'
 let g:SuperTabMappingBackward='<C-K>'
 let g:SuperTabLongestHighlight=1
 
-" ---------------------------------------------------------------------------
-
-Bundle 'easytags.vim'
-let g:easytags_on_cursorhold=0  " Wastes too much CPU
-let g:easytags_dynamic_files=2  " Always use local .tags file
-let g:easytags_file='~/.vim/tags'
-let g:easytags_include_members=1
-let g:easytags_resolve_links=1
 
 " ---------------------------------------------------------------------------
 
