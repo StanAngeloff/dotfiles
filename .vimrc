@@ -306,7 +306,7 @@ if has('autocmd')
   autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
 
   " Recognise additional types.
-  au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,*.rake,config.ru} set ft=ruby
+  au BufRead,BufNewFile {Gemfile,Guardfile,Rakefile,Vagrantfile,*.rake,config.ru} set ft=ruby
   au BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
   au BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
 
