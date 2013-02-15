@@ -227,16 +227,6 @@ inoremap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 " Copy entire buffer to X clipboard.
 nnoremap <leader>= mZggVG"+y`Z
 
-" Align commands.
-nnoremap <leader>a= :Tabularize /=<CR>
-vnoremap <leader>a= m[om]:Tabularize /=<CR>`]V`[
-
-nnoremap <leader>a> :Tabularize /=><CR>
-vnoremap <leader>a> m[om]:Tabularize /=><CR>`]V`[
-
-nnoremap <leader>a: :Tabularize /:\zs/l0l1<CR>
-vnoremap <leader>a: m[om]:Tabularize /:\zs/l0l1<CR>`]V`[
-
 " Open tag under cursor in a new tab.
 nnoremap <leader>] <C-w><C-]><C-w>T
 
@@ -347,6 +337,15 @@ Bundle 'godlygeek/csapprox'
 
 Bundle 'godlygeek/tabular'
 
+" Align commands.
+nnoremap <leader>a= :Tabularize /=<CR>
+vnoremap <leader>a= m[om]:Tabularize /=<CR>`]V`[
+
+nnoremap <leader>a> :Tabularize /=><CR>
+vnoremap <leader>a> m[om]:Tabularize /=><CR>`]V`[
+
+nnoremap <leader>a: :Tabularize /:\zs/l0l1<CR>
+vnoremap <leader>a: m[om]:Tabularize /:\zs/l0l1<CR>`]V`[
 
 " ---------------------------------------------------------------------------
 
@@ -359,16 +358,6 @@ Bundle 'kchmck/vim-coffee-script'
 " ---------------------------------------------------------------------------
 
 Bundle 'leshill/vim-json'
-
-" ---------------------------------------------------------------------------
-
-Bundle 'majutsushi/tagbar'
-let g:tagbar_autoclose=1
-let g:tagbar_autofocus=1
-let g:tagbar_compact=1
-let g:tagbar_autoshowtag=1
-" Toggle tag list window.
-nnoremap <silent> <F11> :TagbarToggle<CR>
 
 " ---------------------------------------------------------------------------
 
@@ -413,15 +402,6 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 let g:nerdtree_tabs_open_on_new_tab=0
 
 nnoremap <silent> <leader>e :NERDTreeMirrorToggle<CR>
-
-" ---------------------------------------------------------------------------
-
-Bundle 'scrooloose/syntastic'
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-" Check for syntax errors.
-nnoremap <silent> <F9> :w<CR>:sign unplace *<CR>:SyntasticCheck<CR>
 
 " ---------------------------------------------------------------------------
 
@@ -489,22 +469,6 @@ let php_htmlInStrings=1
 
 " ---------------------------------------------------------------------------
 
-Bundle 'session.vim--Odding'
-let g:session_autosave=0
-let g:session_autoload=0
-let g:session_directory='~/.vim/sessions'
-noremap <leader>ss :SaveSession user<CR>
-noremap <leader>sr :OpenSession user<CR>
-
-" ---------------------------------------------------------------------------
-
-" to open an URL / directory under the cursor.
-Bundle 'shell.vim--Odding'
-" Disable <F11> mappings.
-let g:shell_mappings_enabled=0
-
-" ---------------------------------------------------------------------------
-
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_map=''
 let g:ctrlp_cmd='CtrlPCurWD'
@@ -520,11 +484,6 @@ nnoremap <silent> <leader>b :<C-U>CtrlPBufTag<CR>
 " ---------------------------------------------------------------------------
 
 Bundle 'thinca/vim-visualstar'
-
-" ---------------------------------------------------------------------------
-
-Bundle 'StanAngeloff/ManPageView'
-let g:manpageview_pgm_php="$HOME/bin/pman"
 
 " ---------------------------------------------------------------------------
 
