@@ -299,9 +299,6 @@ if has('autocmd')
   au BufRead,BufNewFile {Gemfile,Guardfile,Rakefile,Vagrantfile,*.rake,config.ru} set ft=ruby
   au BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
   au BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
-
-  " Sass variables.
-  au BufRead,BufNewFile {*.sass,*.scss} setlocal iskeyword+=$,-
 endif
 
 " Vundle, the plug-in manager for Vim.

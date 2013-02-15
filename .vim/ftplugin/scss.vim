@@ -1,3 +1,5 @@
+setlocal iskeyword+=$,-
+
 inoreabbrev bc: background-color:
 
 inoreabbrev bo: border:
