@@ -447,7 +447,6 @@ if has('autocmd')
         \ if &omnifunc != '' |
         \   call SuperTabChain(&omnifunc, '<C-X><C-N>') |
         \   call SuperTabSetDefaultCompletionType('<C-X><C-U>') |
-        \   echom 'm' |
         \ endif
 endif
 
