@@ -8,7 +8,7 @@ alias g='git'
 
 # `tmux` operations for starting and attaching to sessions.
 for session_name in default.default inception.vm; do
-  eval "alias '${session_name%.*}!'='tmux has-session -t ${session_name%.*} 1>/dev/null 2>&1 && exec tmux attach-session -t ${session_name%.*} || exec tmux new-session -s ${session_name%.*} -n ${session_name#*.}'"
+  eval "alias '${session_name%.*}!'='tmux has-session -t ${session_name%.*} &>/dev/null && exec tmux attach-session -t ${session_name%.*} || exec tmux new-session -s ${session_name%.*} -n ${session_name#*.}'"
 done
 
 # Directory listing.
