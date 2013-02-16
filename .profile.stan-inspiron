@@ -157,6 +157,10 @@ s0_put_topright_key = Disabled
 s0_put_bottomleft_key = Disabled
 s0_put_bottomright_key = Disabled
 s0_put_restore_key = Disabled
+s0_top_left_corner_action = 7
+s0_top_right_corner_action = 9
+s0_bottom_left_corner_action = 1
+s0_bottom_right_corner_action = 3
 s0_outline_color = #008bfb9f
 s0_fill_color = #008bfb4f
 
