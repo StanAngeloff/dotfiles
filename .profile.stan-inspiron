@@ -1,0 +1,169 @@
+[unityshell]
+s0_show_hud = Disabled
+s0_launcher_hide_mode = 1
+s0_show_launcher = <Super>l
+s0_keyboard_focus = Disabled
+s0_execute_command = <Super>r
+s0_panel_first_menu = <Super>F10
+s0_alt_tab_timeout = false
+s0_alt_tab_bias_viewport = false
+s0_alt_tab_forward = Disabled
+s0_alt_tab_prev = Disabled
+s0_alt_tab_forward_all = Disabled
+s0_alt_tab_prev_all = Disabled
+s0_alt_tab_right = Disabled
+s0_alt_tab_left = Disabled
+s0_alt_tab_detail_start = Disabled
+s0_alt_tab_detail_stop = Disabled
+s0_background_color = #10101080
+s0_backlight_mode = 4
+s0_urgent_animation = 1
+s0_panel_opacity = 0.650000
+s0_panel_opacity_maximized_toggle = true
+s0_launcher_opacity = 0.850000
+s0_icon_size = 32
+s0_edge_responsiveness = 5.000000
+s0_shortcut_overlay = false
+s0_num_launchers = 1
+s0_launcher_capture_mouse = false
+
+[gnomecompat]
+s0_main_menu_key = Disabled
+s0_run_key = Disabled
+s0_run_command_screenshot_key = <Super>Print
+s0_command_window_screenshot = gnome-screenshot -w
+s0_run_command_window_screenshot_key = <Shift><Super>Print
+s0_command_terminal = urxvt -title 'Terminal' -e zsh -c 'tmux -t default has-session &>/dev/null && exec tmux attach-session -d -t default || exec tmux new-session -s default -n default'
+s0_run_command_terminal_key = <Super>t
+
+[opengl]
+s0_texture_filter = 2
+s0_lighting = true
+s0_texture_compression = true
+s0_unredirect_driver_blacklist = (nouveau|Intel).*Mesa 8\.0
+
+[shift]
+s0_ground_color1 = #b3b3b3cc
+s0_ground_color2 = #b3b3b300
+
+[wall]
+s0_preview_scale = 256
+s0_thumb_highlight_gradient_shadow_color = #dfdfdfff
+s0_arrow_base_color = #e6e6e6d9
+s0_arrow_shadow_color = #dcdcdcd9
+s0_left_key = <Shift><Super>Left
+s0_right_key = <Shift><Super>Right
+s0_up_key = <Shift><Super>Up
+s0_down_key = <Shift><Super>Down
+s0_left_window_key = <Shift><Control><Primary><Super>Left
+s0_right_window_key = <Shift><Control><Primary><Super>Right
+s0_up_window_key = <Shift><Control><Primary><Super>Up
+s0_down_window_key = <Shift><Control><Primary><Super>Down
+
+[resizeinfo]
+s0_gradient_1 = #cccce6cc
+s0_gradient_2 = #f3f3f3cc
+s0_gradient_3 = #d9d9d9cc
+
+[expo]
+s0_selected_color = #008bfbff
+s0_ground_color1 = #b3b3b3cc
+s0_ground_color2 = #b3b3b300
+
+[core]
+s0_active_plugins = core;composite;opengl;compiztoolbox;decor;place;obs;extrawm;session;grid;staticswitcher;mousepoll;gnomecompat;wall;regex;snap;imgpng;resize;imgsvg;put;move;animation;expo;fade;workarounds;scale;unityshell;
+s0_raise_window_button = Disabled
+s0_lower_window_button = Disabled
+s0_minimize_window_key = <Super>Down
+s0_maximize_window_key = Disabled
+s0_unmaximize_window_key = Disabled
+s0_window_menu_button = <Super>Button3
+s0_show_desktop_key = <Super>d
+s0_toggle_window_maximized_key = <Super>Up
+s0_toggle_window_shaded_key = Disabled
+
+[resize]
+s0_initiate_button = <Super>Button2
+s0_initiate_key = Disabled
+s0_border_color = #008bfb9f
+s0_fill_color = #008bfb19
+
+[put]
+s0_put_center_key = Disabled
+s0_put_left_key = Disabled
+s0_put_right_key = Disabled
+s0_put_top_key = Disabled
+s0_put_bottom_key = Disabled
+s0_put_topleft_key = Disabled
+s0_put_topright_key = Disabled
+s0_put_bottomleft_key = Disabled
+s0_put_bottomright_key = Disabled
+s0_put_restore_key = Disabled
+s0_put_pointer_key = Disabled
+s0_put_next_output_key = <Super>space
+s0_avoid_offscreen = true
+s0_speed = 6.250000
+s0_timestep = 0.625000
+
+[firepaint]
+s0_fire_color = #ff3305ff
+
+[move]
+s0_initiate_button = <Super>Button1
+s0_initiate_key = Disabled
+s0_constrain_y = false
+
+[showmouse]
+s0_color = #ffdf3fff
+
+[decor]
+s0_active_shadow_color = #00000080
+s0_inactive_shadow_color = #000000ff
+
+[rotate]
+s0_rotate_left_key = <Shift><Super>Left
+s0_rotate_right_key = <Shift><Super>Right
+s0_rotate_left_window_key = <Shift><Control><Primary><Super>Left
+s0_rotate_right_window_key = <Shift><Control><Primary><Super>Right
+
+[place]
+s0_multioutput_mode = 1
+
+[obs]
+s0_opacity_increase_button = <Super>Button4
+s0_opacity_decrease_button = <Super>Button5
+
+[animation]
+s0_close_durations = 240;80;50;
+s0_minimize_durations = 120;
+s0_unminimize_effects = animation:Glide 2;
+s0_unminimize_durations = 120;
+s0_shade_durations = 120;
+
+[extrawm]
+s0_toggle_fullscreen_key = <Super>f
+
+[scale]
+s0_initiate_key = Disabled
+s0_initiate_all_key = <Super>w
+
+[grid]
+s0_put_left_key = <Super>Left
+s0_put_right_key = <Super>Right
+s0_put_top_key = Disabled
+s0_put_bottom_key = Disabled
+s0_put_topleft_key = Disabled
+s0_put_topright_key = Disabled
+s0_put_bottomleft_key = Disabled
+s0_put_bottomright_key = Disabled
+s0_put_restore_key = Disabled
+s0_outline_color = #008bfb9f
+s0_fill_color = #008bfb4f
+
+[staticswitcher]
+s0_next_all_key = Disabled
+s0_prev_all_key = Disabled
+s0_saturation = 80
+s0_brightness = 80
+s0_mipmap = true
+
