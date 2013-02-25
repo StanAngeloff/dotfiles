@@ -437,6 +437,7 @@ Bundle 'tpope/vim-unimpaired'
 " ---------------------------------------------------------------------------
 
 Bundle 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType='<C-X><C-N>'
 let g:SuperTabMappingForward='<C-J>'
 let g:SuperTabMappingBackward='<C-K>'
 let g:SuperTabLongestEnhanced=1
