@@ -13,6 +13,7 @@ function unpack() {
   case "$file" in
     *.tar.gz  | *.tgz  ) command='tar -zxvf' ;;
     *.tar.bz2 | *.tbz2 ) command='tar -jxvf' ;;
+    *.tar.xz           ) command='tar -Jxvf' ;;
     *.tar              ) command='tar -xvf'  ;;
     *.zip              ) command='unzip'     ;;
     *.gzip  | *.gz     ) command='gunzip'    ;;
