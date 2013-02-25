@@ -498,10 +498,6 @@ let g:Powerline_colorscheme = 'zend55'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'nono/vim-handlebars'
-
-" ---------------------------------------------------------------------------
-
 Bundle 'groenewege/vim-less'
 
 " ---------------------------------------------------------------------------
@@ -517,15 +513,6 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'benmills/vimux'
 nnoremap <silent> <F5>      :w<CR>:VimuxRunLastCommand<CR>
 inoremap <silent> <F5> <Esc>:w<CR>:VimuxRunLastCommand<CR>a
-
-" ---------------------------------------------------------------------------
-
-Bundle 'jesseschalken/list-text-object'
-
-" ---------------------------------------------------------------------------
-
-Bundle 'kana/vim-textobj-user'
-Bundle 'lucapette/vim-textobj-underscore'
 
 " ---------------------------------------------------------------------------
 
