@@ -542,7 +542,7 @@ let g:neocomplcache_enable_underbar_completion=1
 let g:neocomplcache_enable_prefetch=1
 let g:neocomplcache_disable_auto_complete=1
 
-let g:neocomplcache_tags_caching_limit_file_size=128 * 1024 * 1024
+let g:neocomplcache_tags_caching_limit_file_size=32 * 1024 * 1024
 
 let g:neocomplcache_temporary_dir='/tmp/.neocomplcache'
 
