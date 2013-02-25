@@ -6,5 +6,5 @@
 --exclude="\.hg"
 --exclude="\.svn"
 --exclude="\.sass-cache"
---fields=nksaSmt
---PHP-kinds=+icfv
+--fields=aiklmnsSt
+--PHP-kinds=+cidfv
