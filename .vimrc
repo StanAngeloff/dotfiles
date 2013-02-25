@@ -175,8 +175,8 @@ nnoremap <silent> <C-K> gT
 
 " Reformat a paragraph in NORMAL mode.
 nnoremap <leader>q gqip
-" Restore last visual selection in VISUAL mode.
-nnoremap <leader>v V`]
+" Restore last implicit selection (e.g., on paste) in VISUAL mode.
+nnoremap <leader>v `[V`]o
 
 " Erase trailing whitespace function and keyboard binding.
 function! s:strip_trailing_whitespace()
