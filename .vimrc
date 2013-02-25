@@ -550,3 +550,12 @@ let g:neocomplcache_source_rank = {
   \ 'buffer_complete': 500,
   \ 'omni_complete': 400,
 \ }
+
+" ---------------------------------------------------------------------------
+
+Bundle 'AutoTag'
+
+let g:autotagmaxTagsFileSize=32 * 1024 * 1024
+let g:autotagTagsFile='.tags'
+let g:autotagVerbosityLevel=0
+let g:autotagCtagsCmd='silent ctags'
