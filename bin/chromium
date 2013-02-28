@@ -23,18 +23,63 @@ fi
 export CHROME_DEVEL_SANDBOX="${CHROME_DEVEL_PATH}/chrome_sandbox"
 
 # Chromium is very picky about who owns what and in which mode, set it up properly.
-if [ ! "$( stat -c'%f' "$CHROME_DEVEL_SANDBOX" | tr -d '\n' )" = "89ed" ]; then
+if [ ! "$( stat -c'%f' "$CHROME_DEVEL_SANDBOX" | tr -d '\n' )" = '89ed' ]; then
   echo -n "[INFO] The '${CHROME_DEVEL_SANDBOX}' file mode needs to be updated... "
   $sudo chmod 4755 "$CHROME_DEVEL_SANDBOX"
   echo 'OK'
+  echo '[INFO] Start this script again to continue.'
+  exit 0
 fi
 
-if [ ! "$( stat -c'%g:%u' "$CHROME_DEVEL_SANDBOX" | tr -d '\n' )" = "0:0" ]; then
+if [ ! "$( stat -c'%g:%u' "$CHROME_DEVEL_SANDBOX" | tr -d '\n' )" = '0:0' ]; then
   echo -n "[INFO] The '${CHROME_DEVEL_SANDBOX}' binary owner needs to be updated... "
   $sudo chown root:root "$CHROME_DEVEL_SANDBOX"
   echo 'OK'
+  echo '[INFO] Start this script again to continue.'
+  exit 0
+fi
+
+# Utility function to download a copy of Google Chrome from unstable channel and extract its contents.
+# If this function is used more than once, only a single copy is downloaded.
+google_chrome_unstable() {
+  local unstable_path="google-chrome-$( date +%F )"
+  cd /tmp
+  if [ -d "$unstable_path" ]; then
+    cd "$unstable_path"
+  else
+    mkdir "$unstable_path" && cd "$unstable_path"
+    curl -#O 'https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb'
+    ar x *.deb
+    tar xJf *.tar.lzma
+  fi
+}
+
+# Install Flash player as Pepper plug-in.
+plugin_ppapi_flash_path="${CHROME_DEVEL_PATH}/PepperFlash"
+if [ ! -d "$plugin_ppapi_flash_path" ]; then
+  echo '[INFO] Installing Flash plug-in...'
+  ( \
+    google_chrome_unstable &&
+    mkdir -p "$plugin_ppapi_flash_path" &&
+    cp -R 'opt/google/chrome/PepperFlash/'* "$plugin_ppapi_flash_path" \
+  )
+fi
+
+# Install PDF viewer as native plug-in.
+plugin_native_pdf="${CHROME_DEVEL_PATH}/libpdf.so"
+if [ ! -f "$plugin_native_pdf" ]; then
+  echo '[INFO] Installing PDF plug-in...'
+  ( \
+    google_chrome_unstable &&
+    cp 'opt/google/chrome/libpdf.so' "$plugin_native_pdf" &&
+    chmod 0755 "$plugin_native_pdf" \
+  )
 fi
 
 # Use the `start-and-forget` script to run Chromium detached in the background.
 #   --ignore-gpu-blacklist is an override to enable GPU acceleration on all hardware.
-start-and-forget "${CHROME_DEVEL_PATH}/chrome" --ignore-gpu-blacklist "$@"
+start-and-forget "${CHROME_DEVEL_PATH}/chrome" \
+  --ignore-gpu-blacklist \
+  --ppapi-flash-path="${plugin_ppapi_flash_path}/libpepflashplayer.so" \
+  --ppapi-flash-version="$( cat "${plugin_ppapi_flash_path}/manifest.json" | grep -i '"version"' | cut -d':' -f2 | tr -d ' ",' )"
+  "$@"
