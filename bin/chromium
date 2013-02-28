@@ -77,9 +77,13 @@ if [ ! -f "$plugin_native_pdf" ]; then
 fi
 
 # Use the `start-and-forget` script to run Chromium detached in the background.
+#   --enable-seccomp-sandbox explicitly enables the Linux sandbox.
 #   --ignore-gpu-blacklist is an override to enable GPU acceleration on all hardware.
+#   --purge-memory-button enables a button in the task manager (available in Tools > Task Manager, or by pressing Shift+Esc).
 start-and-forget "${CHROME_DEVEL_PATH}/chrome" \
+  --enable-seccomp-sandbox \
   --ignore-gpu-blacklist \
+  --purge-memory-button \
   --ppapi-flash-path="${plugin_ppapi_flash_path}/libpepflashplayer.so" \
-  --ppapi-flash-version="$( cat "${plugin_ppapi_flash_path}/manifest.json" | grep -i '"version"' | cut -d':' -f2 | tr -d ' ",' )"
+  --ppapi-flash-version="$( cat "${plugin_ppapi_flash_path}/manifest.json" | grep -i '"version"' | cut -d':' -f2 | tr -d ' ",' )" \
   "$@"
