@@ -394,14 +394,6 @@ let NERDTreeQuitOnOpen=1
 
 " ---------------------------------------------------------------------------
 
-Bundle 'jistr/vim-nerdtree-tabs'
-let g:nerdtree_tabs_open_on_gui_startup=0
-let g:nerdtree_tabs_open_on_new_tab=0
-
-nnoremap <silent> <leader>e :NERDTreeMirrorToggle<CR>
-
-" ---------------------------------------------------------------------------
-
 Bundle 'sjl/gundo.vim'
 " Toggle Gundo undo tree.
 nnoremap <silent> <F6> :GundoToggle<CR>
