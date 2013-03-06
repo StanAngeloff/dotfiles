@@ -76,6 +76,17 @@ if [ ! -f "$plugin_native_pdf" ]; then
   )
 fi
 
+# Install ffmpeg from Chrome which has got H.264 playback support.
+plugin_native_ffmpeg="${CHROME_DEVEL_PATH}/libffmpegsumo.so"
+if [ ! -f "$plugin_native_ffmpeg" ]; then
+  echo '[INFO] Installing ffmpeg+h.264 plug-in...'
+  ( \
+    google_chrome_unstable &&
+    cp 'opt/google/chrome/libffmpegsumo.so' "$plugin_native_ffmpeg" &&
+    chmod 0755 "$plugin_native_ffmpeg" \
+  )
+fi
+
 # Use the `start-and-forget` script to run Chromium detached in the background.
 #   --enable-seccomp-sandbox explicitly enables the Linux sandbox.
 #   --ignore-gpu-blacklist is an override to enable GPU acceleration on all hardware.
