@@ -546,3 +546,19 @@ Bundle 'coderifous/textobj-word-column.vim'
 " ---------------------------------------------------------------------------
 
 Bundle 'argtextobj.vim'
+
+" ---------------------------------------------------------------------------
+
+Bundle 'scrooloose/syntastic'
+
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
+
+let g:syntastic_warning_symbol='W>'
+let g:syntastic_style_warning_symbol='s>'
+
+let g:syntastic_error_symbol='E>'
+let g:syntastic_style_error_symbol='S>'
+
+" Check for syntax errors.
+nnoremap <silent> <F9>      :w<CR>:SyntasticCheck<CR>
+inoremap <silent> <F9> <ESC>:w<CR>:SyntasticCheck<CR>a
