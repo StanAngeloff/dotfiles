@@ -16,6 +16,7 @@ function unpack() {
     *.tar.xz           ) command='tar -Jxvf' ;;
     *.tar              ) command='tar -xvf'  ;;
     *.zip              ) command='unzip'     ;;
+    *.7z               ) command='7za x'     ;;
     *.gzip  | *.gz     ) command='gunzip'    ;;
     *.bzip2 | *.bz2    ) command='bunzip2'   ;;
     * )
