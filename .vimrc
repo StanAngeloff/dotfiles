@@ -361,6 +361,10 @@ Bundle 'leshill/vim-json'
 Bundle 'SirVer/ultisnips'
 let g:UltiSnipsSnippetDirectories=['snippets']
 
+" Don't let UltiSnips handle the <C-J> and <C-K> keys.
+let g:UltiSnipsJumpForwardTrigger='<NOP>'
+let g:UltiSnipsJumpBackwardTrigger='<NOP>'
+
 " ---------------------------------------------------------------------------
 
 Bundle 'othree/html5.vim'
@@ -430,8 +434,8 @@ Bundle 'tpope/vim-unimpaired'
 
 Bundle 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType='<C-X><C-N>'
-let g:SuperTabMappingForward='<C-J>'
-let g:SuperTabMappingBackward='<C-K>'
+let g:SuperTabMappingForward='<nul>'
+let g:SuperTabMappingBackward='<s-nul>'
 let g:SuperTabLongestEnhanced=1
 let g:SuperTabLongestHighlight=1
 
@@ -442,6 +446,13 @@ if has('autocmd')
         \   call SuperTabSetDefaultCompletionType('<C-X><C-U>') |
         \ endif
 endif
+
+" Use <C-{J,K}> for navigating the popup menu, if visible. Otherwise, delegate to UltiSnips.
+inoremap <expr> <C-J> pumvisible() ? "\<C-N>" : '<C-R>=UltiSnips_JumpForwards()<CR>'
+inoremap <expr> <C-K> pumvisible() ? "\<C-P>" : '<C-R>=UltiSnips_JumpBackwards()<CR>'
+
+snoremap <C-J> <Esc>:call UltiSnips_JumpForwards()<CR>
+snoremap <C-K> <Esc>:call UltiSnips_JumpBackwards()<CR>
 
 " ---------------------------------------------------------------------------
 
