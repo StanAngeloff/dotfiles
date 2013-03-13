@@ -441,10 +441,8 @@ let g:SuperTabLongestHighlight=1
 
 if has('autocmd')
   autocmd FileType *
-        \ if &omnifunc != '' |
-        \   call SuperTabChain(&omnifunc, '<C-X><C-N>') |
-        \   call SuperTabSetDefaultCompletionType('<C-X><C-U>') |
-        \ endif
+        \ call SuperTabChain(&omnifunc, '<C-X><C-N>') |
+        \ call SuperTabSetDefaultCompletionType('<C-X><C-U>') |
 endif
 
 " Use <C-{J,K}> for navigating the popup menu, if visible. Otherwise, delegate to UltiSnips.
