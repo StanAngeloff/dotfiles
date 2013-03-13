@@ -527,6 +527,25 @@ let g:neocomplcache_enable_underbar_completion=1
 let g:neocomplcache_enable_prefetch=1
 let g:neocomplcache_disable_auto_complete=1
 
+if ! exists('g:neocomplcache_delimiter_patterns')
+  let g:neocomplcache_delimiter_patterns={}
+endif
+if ! exists('g:neocomplcache_next_keyword_patterns')
+  let g:neocomplcache_next_keyword_patterns={}
+endif
+if ! exists('g:neocomplcache_member_prefix_patterns')
+  let g:neocomplcache_member_prefix_patterns={}
+endif
+if ! exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns={}
+endif
+
+" Add support for PHP file type.
+let g:neocomplcache_delimiter_patterns['php']=['->', '::', '\']
+let g:neocomplcache_next_keyword_patterns['php']='\h\w*>'
+let g:neocomplcache_member_prefix_patterns['php']='->\|::'
+let g:neocomplcache_omni_patterns['php'] = '[^. \t]->\h\w*\|\h\w*::'
+
 let g:neocomplcache_tags_caching_limit_file_size=32 * 1024 * 1024
 
 let g:neocomplcache_temporary_dir='/tmp/.neocomplcache'
