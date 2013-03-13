@@ -517,10 +517,6 @@ inoremap <silent> <F5> <Esc>:w<CR>:VimuxRunLastCommand<CR>a
 
 " ---------------------------------------------------------------------------
 
-Bundle 'kurkale6ka/vim-swap'
-
-" ---------------------------------------------------------------------------
-
 Bundle 'Shougo/neocomplcache'
 let g:neocomplcache_enable_at_startup=1
 let g:neocomplcache_enable_auto_select=1
