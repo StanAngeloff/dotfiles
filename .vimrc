@@ -462,8 +462,11 @@ Bundle 'StanAngeloff/php.vim'
 Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'phpfolding.vim'
 Bundle '2072/PHP-Indenting-for-VIm'
+
 " For PHP code, enable fancy options and better syntax sync.
 let php_htmlInStrings=1
+" Don't use the PHP syntax folding.
+let g:DisableAutoPHPFolding = 0
 
 " ---------------------------------------------------------------------------
 
@@ -587,3 +590,7 @@ let g:syntastic_style_error_symbol='S>'
 " Check for syntax errors.
 nnoremap <silent> <F9>      :w<CR>:SyntasticCheck<CR>
 inoremap <silent> <F9> <ESC>:w<CR>:SyntasticCheck<CR>a
+
+" ---------------------------------------------------------------------------
+
+Bundle 'matchit.zip'
