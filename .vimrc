@@ -354,10 +354,6 @@ Bundle 'kchmck/vim-coffee-script'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'leshill/vim-json'
-
-" ---------------------------------------------------------------------------
-
 Bundle 'SirVer/ultisnips'
 let g:UltiSnipsSnippetDirectories=['snippets']
 
