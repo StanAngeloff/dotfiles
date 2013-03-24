@@ -512,41 +512,32 @@ inoremap <silent> <F5> <Esc>:w<CR>:VimuxRunLastCommand<CR>a
 
 Bundle 'Shougo/neocomplcache'
 let g:neocomplcache_enable_at_startup=1
-let g:neocomplcache_enable_auto_select=0
+let g:neocomplcache_manual_completion_start_length=1
+let g:neocomplcache_min_keyword_length=1
+let g:neocomplcache_min_syntax_length=1
 let g:neocomplcache_enable_ignore_case=0
-let g:neocomplcache_enable_fuzzy_completion=0
+let g:neocomplcache_enable_smart_case=0
+let g:neocomplcache_disable_auto_complete=1
+let g:neocomplcache_enable_wildcard=0
+let g:neocomplcache_enable_auto_select=0
 let g:neocomplcache_enable_camel_case_completion=1
 let g:neocomplcache_enable_underbar_completion=1
-let g:neocomplcache_enable_prefetch=1
-let g:neocomplcache_disable_auto_complete=1
-
-if ! exists('g:neocomplcache_delimiter_patterns')
-  let g:neocomplcache_delimiter_patterns={}
-endif
-if ! exists('g:neocomplcache_next_keyword_patterns')
-  let g:neocomplcache_next_keyword_patterns={}
-endif
-if ! exists('g:neocomplcache_member_prefix_patterns')
-  let g:neocomplcache_member_prefix_patterns={}
-endif
-if ! exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns={}
-endif
-
-" Add support for PHP file type.
-let g:neocomplcache_delimiter_patterns['php']=['->', '::', '\']
-let g:neocomplcache_next_keyword_patterns['php']='\h\w*>'
-let g:neocomplcache_member_prefix_patterns['php']='->\|::'
-let g:neocomplcache_omni_patterns['php'] = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplcache_enable_fuzzy_completion=0
 
 let g:neocomplcache_tags_caching_limit_file_size=32 * 1024 * 1024
 
 let g:neocomplcache_temporary_dir='/tmp/.neocomplcache'
 
-let g:neocomplcache_source_rank = {
-  \ 'buffer_complete': 500,
-  \ 'omni_complete': 400,
-\ }
+" Add support for PHP file type (turned off or sloppy by default in NeoComplCache).
+if ! exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns={}
+endif
+let g:neocomplcache_omni_patterns['php'] = '[^. \t]->\h\w*\|\h\w*::'
+
+if ! exists('g:neocomplcache_member_prefix_patterns')
+  let g:neocomplcache_member_prefix_patterns={}
+endif
+let g:neocomplcache_member_prefix_patterns['php']='->\|::'
 
 " ---------------------------------------------------------------------------
 
