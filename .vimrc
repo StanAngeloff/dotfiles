@@ -429,17 +429,11 @@ Bundle 'tpope/vim-unimpaired'
 " ---------------------------------------------------------------------------
 
 Bundle 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType='<C-X><C-N>'
+let g:SuperTabDefaultCompletionType='<C-X><C-U>'
 let g:SuperTabMappingForward='<nul>'
 let g:SuperTabMappingBackward='<s-nul>'
 let g:SuperTabLongestEnhanced=1
 let g:SuperTabLongestHighlight=1
-
-if has('autocmd')
-  autocmd FileType *
-        \ call SuperTabChain(&omnifunc, '<C-X><C-N>') |
-        \ call SuperTabSetDefaultCompletionType('<C-X><C-U>') |
-endif
 
 " Use <C-{J,K}> for navigating the popup menu, if visible. Otherwise, delegate to UltiSnips.
 inoremap <expr> <C-J> pumvisible() ? "\<C-N>" : '<C-R>=UltiSnips_JumpForwards()<CR>'
