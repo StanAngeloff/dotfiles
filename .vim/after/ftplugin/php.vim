@@ -5,7 +5,7 @@ inoreabbrev <buffer> {{ {<CR>}<ESC>O
 inoreabbrev <buffer> [] [] = 
 
 " Handle docblocks in the same manner.
-inoreabbrev <buffer> /** /**<CR>/<ESC>O<ESC>^Xa 
+inoreabbrev <buffer> /** /**<CR>/<ESC>ka
 
 " Turn on PHP fast folds.
 EnableFastPHPFolds
