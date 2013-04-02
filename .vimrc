@@ -361,8 +361,24 @@ Bundle 'SirVer/ultisnips'
 let g:UltiSnipsSnippetDirectories=['snippets']
 
 " Don't let UltiSnips handle the <C-J> and <C-K> keys.
+let g:UltiSnipsExpandTrigger='<NOP>'
 let g:UltiSnipsJumpForwardTrigger='<NOP>'
 let g:UltiSnipsJumpBackwardTrigger='<NOP>'
+
+" Try to complete as a snippet, pop-up item or just forward the Tab key.
+function! UltiSnipsComplete()
+  call UltiSnips_ExpandSnippet()
+  if g:ulti_expand_res == 0
+    if pumvisible()
+      return "\<C-Y>"
+    else
+      return "\<Tab>"
+    endif
+  endif
+  return ''
+endfunction
+
+inoremap <silent> <Tab> <C-R>=UltiSnipsComplete()<CR>
 
 " ---------------------------------------------------------------------------
 
