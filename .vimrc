@@ -263,6 +263,9 @@ set viewoptions=cursor,folds,slash,unix
 " Cyrillic configuration, tired of layout switching, no?
 set langmap+=чявертъуиопшщасдфгхйклзьцжбнмЧЯВЕРТЪУИОПШЩАСДФГХЙКЛЗѝЦЖБНМ;`qwertyuiop[]asdfghjklzxcvbnm~QWERTYUIOP{}ASDFGHJKLZXCVBNM,ю\\,Ю\|,
 
+cnoremap в w
+cnoremap вя wq
+
 nnoremap <silent> Я ZZ
 
 inoremap йй <Esc>
