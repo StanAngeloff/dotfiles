@@ -518,14 +518,12 @@ let g:neocomplcache_enable_at_startup=1
 let g:neocomplcache_manual_completion_start_length=1
 let g:neocomplcache_min_keyword_length=1
 let g:neocomplcache_min_syntax_length=1
-let g:neocomplcache_enable_ignore_case=0
-let g:neocomplcache_enable_smart_case=0
 let g:neocomplcache_disable_auto_complete=1
 let g:neocomplcache_enable_wildcard=0
-let g:neocomplcache_enable_auto_select=0
-let g:neocomplcache_enable_camel_case_completion=1
-let g:neocomplcache_enable_underbar_completion=1
-let g:neocomplcache_enable_fuzzy_completion=0
+let g:neocomplcache_enable_auto_select=1
+let g:neocomplcache_enable_fuzzy_completion=1
+let g:neocomplcache_fuzzy_completion_start_length=1
+let g:neocomplcache_skip_auto_completion_time='0.625'
 
 let g:neocomplcache_tags_caching_limit_file_size=32 * 1024 * 1024
 
@@ -541,6 +539,16 @@ if ! exists('g:neocomplcache_member_prefix_patterns')
   let g:neocomplcache_member_prefix_patterns={}
 endif
 let g:neocomplcache_member_prefix_patterns['php']='->\|::'
+
+if ! exists('g:neocomplcache_delimiter_patterns')
+  let g:neocomplcache_delimiter_patterns={}
+endif
+let g:neocomplcache_delimiter_patterns['php']=['->', '::', '\']
+
+if ! exists('g:neocomplcache_next_keyword_patterns')
+  let g:neocomplcache_next_keyword_patterns={}
+endif
+let g:neocomplcache_next_keyword_patterns['php']='\h\w*>'
 
 " ---------------------------------------------------------------------------
 
