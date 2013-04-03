@@ -142,17 +142,20 @@ nnoremap <silent> k gk
 " Make Y consistent with C and D. See ':help Y'.
 nnoremap Y y$
 
-inoremap jj <Esc>
-inoremap kk <Esc>
-
-inoremap <Up>    <NOP>
+" God mode.
 noremap  <Up>    <NOP>
-inoremap <Down>  <NOP>
 noremap  <Down>  <NOP>
-inoremap <Left>  <NOP>
 noremap  <Left>  <NOP>
-inoremap <Right> <NOP>
 noremap  <Right> <NOP>
+
+vnoremap jj <NOP>
+nnoremap jj <NOP>
+vnoremap kk <NOP>
+noremap  kk <NOP>
+vnoremap hh <NOP>
+noremap  hh <NOP>
+vnoremap ll <NOP>
+noremap  ll <NOP>
 
 " Q for 'Q'uit, 'Ex' mode has received zero use.
 nnoremap <silent> Q ZZ
