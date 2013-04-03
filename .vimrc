@@ -36,6 +36,7 @@ set backspace=indent,eol,start " Backspace wraps at start- and end-of-line.
 set tabstop=2                  " Default number of spaces per tab character.
 set softtabstop=2              " Tab size during editing operation.
 set shiftwidth=2               " Default tab size.
+set shiftround                 " Round indent to multiple of 'shiftwidth'. Applies to > and < commands.
 set expandtab                  " Expand tab into spaces.
 set nowrap                     " Don't wrap long lines.
 set autoindent                 " Auto-indent new lines.
