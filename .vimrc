@@ -495,6 +495,10 @@ let g:ctrlp_max_height=20
 let g:ctrlp_highlight_match=[1, 'Search']
 let g:ctrlp_max_files=64000
 let g:ctrlp_max_depth=24
+let g:ctrlp_cache_dir='/tmp/.ctrlp'
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '[\/]\(\.\(git\|hg\|svn\|sass-cache\)\|components\|node_modules\|vendor\)$',
+  \ }
 
 nnoremap <silent> <leader>o :<C-U>CtrlPCurWD<CR>
 nnoremap <silent> <leader>b :<C-U>CtrlPBufTag<CR>
