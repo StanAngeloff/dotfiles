@@ -143,6 +143,9 @@ nnoremap <silent> k gk
 " Make Y consistent with C and D. See ':help Y'.
 nnoremap Y y$
 
+" OMG! This is sooo much better.
+nnoremap <Space> :
+
 " God mode.
 noremap  <Up>    <NOP>
 inoremap <Up>    <NOP>
