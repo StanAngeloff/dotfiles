@@ -421,6 +421,8 @@ let NERDTreeMapJumpNextSibling=''
 let NERDTreeMapJumpPrevSibling=''
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
+" Free up '?' for reverse search.
+let NERDTreeMapHelp = 'H'
 
 " ---------------------------------------------------------------------------
 
