@@ -190,7 +190,7 @@ nnoremap <leader>q gqip
 nnoremap <leader>v `[V`]o
 
 " Erase trailing whitespace function and keyboard binding.
-function! s:strip_trailing_whitespace()
+function! StripTrailingWhitespace()
   let previous_line = line('.')
   let previous_column = col('.')
   let previous_search = @/
@@ -199,7 +199,7 @@ function! s:strip_trailing_whitespace()
   call cursor(previous_line, previous_column)
 endfunction
 
-nnoremap <silent> <leader>W :call <SID>strip_trailing_whitespace()<CR>
+nnoremap <silent> <leader>W :call StripTrailingWhitespace()<CR>
 
 " Turn off active highlighting keyboard binding.
 nnoremap <silent> <leader><Space> :noh<CR>:sign unplace *<CR>
