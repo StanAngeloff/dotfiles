@@ -156,14 +156,38 @@ inoremap <Left>  <NOP>
 noremap  <Right> <NOP>
 inoremap <Right> <NOP>
 
-vnoremap jj <NOP>
-nnoremap jj <NOP>
-vnoremap kk <NOP>
-noremap  kk <NOP>
-vnoremap hh <NOP>
-noremap  hh <NOP>
-vnoremap ll <NOP>
-noremap  ll <NOP>
+" Disallow repeatedly performing the same single-motion command, e.g., {j,k,h,l}, etc.
+let g:MovementKeyPrevious = 'none'
+let g:MovementKeyTime = reltime()
+let g:MovementKeyPause = &timeoutlen
+
+function! MovementKey(key)
+  let l:allow = 0
+  " If the previous key is different, allow immediately.
+  if g:MovementKeyPrevious != a:key
+    let l:allow = 1
+  else
+    " Allow only if more than the specified interval in milliseconds has passed since the last motion.
+    let l:ellapsed = str2float(reltimestr(reltime(g:MovementKeyTime))) * 1000
+    let l:allow = (l:ellapsed >= g:MovementKeyPause)
+  endif
+  " Record the motion and the time when it was performed.
+  let g:MovementKeyPrevious = a:key
+  let g:MovementKeyTime = reltime()
+  if l:allow
+    return a:key
+  else
+    " Negative reinforcement.
+    echohl WarningMsg | echo "WARN: Motion '" . a:key . "' already executed within the last " . g:MovementKeyPause . 'ms.' | echohl None
+  endif
+  return '\<NOP>'
+endfunction
+
+for s:SingleMotionMode in ['n', 'v']
+  for s:SingleMotionKey in ['j', 'k', 'h', 'l', '-', '+', '<BS>']
+    exe s:SingleMotionMode . 'noremap <expr> ' . s:SingleMotionKey . " MovementKey('" . s:SingleMotionKey . "')"
+  endfor
+endfor
 
 " Q for 'Q'uit, 'Ex' mode has received zero use.
 nnoremap <silent> Q ZZ
