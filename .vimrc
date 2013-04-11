@@ -145,6 +145,7 @@ nnoremap Y y$
 
 " OMG! This is sooo much better.
 nnoremap <Space> :
+nnoremap <Return> :w<CR>
 
 " God mode.
 noremap  <Up>    <NOP>
