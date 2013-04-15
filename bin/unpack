@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+# Abort immediately if any command exists with a non-zero code.
+set -e
+
+# Idea from https://github.com/yomi322/config/blob/master/dot.zshrc
+
+if [ $# -lt 1 ]; then
+  echo 'Usage: '"$0"' FILE [DIRECTORY]' >/dev/stderr
+  return 1
+fi
+
+file="$( readlink -f "$1" )"
+directory="${2:-.}"
+
+case "$file" in
+  *.tar.gz  | *.tgz  ) command='tar -zxvf' ;;
+  *.tar.bz2 | *.tbz2 ) command='tar -jxvf' ;;
+  *.tar.xz           ) command='tar -Jxvf' ;;
+  *.tar              ) command='tar -xvf'  ;;
+  *.zip              ) command='unzip'     ;;
+  *.7z               ) command='7za x'     ;;
+  *.gzip  | *.gz     ) command='gunzip'    ;;
+  *.bzip2 | *.bz2    ) command='bunzip2'   ;;
+  * )
+    echo "$0: Unsupported file format: $file" >/dev/stderr ;
+    return 2
+    ;;
+esac
+
+if [ ! -d "$directory" ]; then
+  mkdir -p "$directory"
+fi
+
+( cd "$directory" && eval $command "\$file" )
