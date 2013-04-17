@@ -13,7 +13,6 @@ if !has("gui_running")
 end
 " Switch syntax on and select a theme.
 syntax on
-colorscheme vim-zend55
 set synmaxcol=2048
 
 " Use UTF-8 and Unix line-endings for new files.
@@ -354,6 +353,7 @@ Bundle 'gmarik/vundle'
 " ---------------------------------------------------------------------------
 
 Bundle 'StanAngeloff/vim-zend55'
+colorscheme vim-zend55
 
 " ---------------------------------------------------------------------------
 
@@ -368,20 +368,6 @@ endif
 " ---------------------------------------------------------------------------
 
 Bundle 'godlygeek/csapprox'
-
-" ---------------------------------------------------------------------------
-
-Bundle 'godlygeek/tabular'
-
-" Align commands.
-nnoremap <leader>a= :Tabularize /=<CR>
-vnoremap <leader>a= m[om]:Tabularize /=<CR>`]V`[
-
-nnoremap <leader>a> :Tabularize /=><CR>
-vnoremap <leader>a> m[om]:Tabularize /=><CR>`]V`[
-
-nnoremap <leader>a: :Tabularize /:\zs/l0l1<CR>
-vnoremap <leader>a: m[om]:Tabularize /:\zs/l0l1<CR>`]V`[
 
 " ---------------------------------------------------------------------------
 
@@ -539,10 +525,6 @@ Bundle 'thinca/vim-visualstar'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'tpope/vim-speeddating'
-
-" ---------------------------------------------------------------------------
-
 Bundle 'tpope/vim-abolish'
 
 " ---------------------------------------------------------------------------
@@ -568,45 +550,6 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'benmills/vimux'
 nnoremap <silent> <F5>      :w<CR>:VimuxRunLastCommand<CR>
 inoremap <silent> <F5> <Esc>:w<CR>:VimuxRunLastCommand<CR>a
-
-" ---------------------------------------------------------------------------
-
-Bundle 'Shougo/neocomplcache'
-let g:neocomplcache_enable_at_startup=1
-let g:neocomplcache_manual_completion_start_length=1
-let g:neocomplcache_min_keyword_length=1
-let g:neocomplcache_min_syntax_length=1
-let g:neocomplcache_disable_auto_complete=1
-let g:neocomplcache_enable_wildcard=0
-let g:neocomplcache_enable_auto_select=1
-let g:neocomplcache_enable_fuzzy_completion=1
-let g:neocomplcache_fuzzy_completion_start_length=1
-let g:neocomplcache_skip_auto_completion_time='0.625'
-
-let g:neocomplcache_tags_caching_limit_file_size=32 * 1024 * 1024
-
-let g:neocomplcache_temporary_dir='/tmp/.neocomplcache'
-
-" Add support for PHP file type (turned off or sloppy by default in NeoComplCache).
-if ! exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns={}
-endif
-let g:neocomplcache_omni_patterns['php'] = '[^. \t]->\h\w*\|\h\w*::'
-
-if ! exists('g:neocomplcache_member_prefix_patterns')
-  let g:neocomplcache_member_prefix_patterns={}
-endif
-let g:neocomplcache_member_prefix_patterns['php']='->\|::'
-
-if ! exists('g:neocomplcache_delimiter_patterns')
-  let g:neocomplcache_delimiter_patterns={}
-endif
-let g:neocomplcache_delimiter_patterns['php']=['->', '::', '\']
-
-if ! exists('g:neocomplcache_next_keyword_patterns')
-  let g:neocomplcache_next_keyword_patterns={}
-endif
-let g:neocomplcache_next_keyword_patterns['php']='\h\w*>'
 
 " ---------------------------------------------------------------------------
 
@@ -640,10 +583,6 @@ let g:syntastic_style_error_symbol='S>'
 " Check for syntax errors.
 nnoremap <silent> <F9>      :w<CR>:SyntasticCheck<CR>
 inoremap <silent> <F9> <ESC>:w<CR>:SyntasticCheck<CR>a
-
-" ---------------------------------------------------------------------------
-
-Bundle 'matchit.zip'
 
 " ---------------------------------------------------------------------------
 
