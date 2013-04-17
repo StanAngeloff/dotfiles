@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# umask sets an environment variable which automatically sets file permissions on newly created files.
+# Set default file permissions for newly created files.
 umask 022
 
 # Set Zsh home directory and history file location.
@@ -8,12 +8,12 @@ umask 022
 ZSH="$HOME/.zsh"
 HISTFILE="$ZSH/history"
 
-# Configure history size
+# Configure Zsh command history size.
 HISTSIZE=40960
 SAVEHIST=$HISTSIZE
 
 # Turn on 256-colour terminal support.
-[ -z "$TERM" ] || [[ "$TERM" == "xterm" ]] && export TERM=xterm-256color
+[ -z "$TERM" ] || [[ "$TERM" == 'xterm' ]] && export TERM=xterm-256color
 
 # Configure preferred applications.
 export EDITOR=vim
@@ -28,8 +28,6 @@ export LC_MESSAGES="en_GB.UTF-8"
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
-export ACK_OPTIONS=--type-set=php=.php,.php3,.php4,.php5,.module,.inc,.install # PHP support for ack-grep
-
 # Enable colour terminal and prompt.
 autoload colors; colors;
 
@@ -39,28 +37,6 @@ function _prompt_type() {
 
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export PROMPT="%{$fg[white]%}%n@%{$reset_color%}%{$fg[green]%}%m:%{$reset_color%}%{$fg[yellow]%}%(!.%1~.%~)%{$reset_color%}%{$fg[white]%}$(_prompt_type)%{$reset_color%} " # format is 'login-name@machine-name:cwd %'
-
-# Use a separate file to configure command aliases.
-[[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
-
-# -g allows operations on parameters without making them local.
-# -A Associative array. Each name will converted to an associate array. If a variable already exists, the current value will become index 0.
-# FX FG BG make using 256 colors in zsh less painful.
-typeset -Ag FX FG BG
-
-FX=(
-  reset     "%{[00m%}"
-  bold      "%{[01m%}" no-bold      "%{[22m%}"
-  italic    "%{[03m%}" no-italic    "%{[23m%}"
-  underline "%{[04m%}" no-underline "%{[24m%}"
-  blink     "%{[05m%}" no-blink     "%{[25m%}"
-  reverse   "%{[07m%}" no-reverse   "%{[27m%}"
-)
-
-for color in {000..255}; do
-  FG[$color]="%{[38;5;${color}m%}"
-  BG[$color]="%{[48;5;${color}m%}"
-done
 
 # Allow variable substitution to take place in the prompt.
 setopt prompt_subst
@@ -72,7 +48,7 @@ zmodload -i zsh/complist
 
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path $ZSH/cache
+zstyle ':completion:*' cache-path /tmp/.zsh/cache
 
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%Bno matches for:%b %d'
@@ -80,7 +56,7 @@ zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
 
-# Add user-'completion' directory to the array of Zsh sources.
+# Add user-completion directory to the array of Zsh sources (e.g., for improved Git).
 fpath=( "$HOME/.zsh/completion" $fpath )
 
 # Disable named-directories autocompletion.
@@ -182,44 +158,12 @@ bindkey ' '       magic-space
 
 bindkey "^[m"     copy-prev-shell-word
 
-function chpwd {
-  echo "$( pwd -P )" > "$ZSH/.last_directory"
-}
-
-# Fancy terminal title
-function _terminal_title {
-  if [[ "$TERM" == xterm* ]] || [[ "$TERM" == rxvt* ]]; then
-    print -Pn "\e]2;$2:q\a" # Set window name.
-    print -Pn "\e]1;$1:q\a" # Set icon (=tab) name (will override window name on broken terminal).
-  fi
-}
-
-function _before_directory_change {
-  _terminal_title "%15<..<%~%<<" "%n@%m: %~"
-}
-
-function _before_command_execute {
-  emulate -L zsh
-  setopt extended_glob
-  local CMD=${1[(wr)^(*=*|sudo|ssh|-*)]} # Command name only, or if this is `sudo` or `ssh`, the next command.
-  _terminal_title "$CMD" "%100>...>$2%<<"
-}
-
-# For compatibility with Zsh 4.3, use functions instead of `add-zsh-hook`.
-function precmd {
-  _before_directory_change "$@"
-}
-
-function preexec {
-  _before_command_execute "$@"
-}
-
-# Expand PATH and include User's private binaries and rbenv, if installed.
+# Expand PATH and include User binaries and rbenv, if installed.
 for __path in "$HOME/bin" "$HOME/.rbenv/bin"; do
   [ -d "$__path" ] && export PATH="$__path:$PATH"
 done
 
-# Extend rbenv with plug-ins from non-standard locations.
+# Extend rbenv with plug-ins from non-standard location.
 for __path in "$HOME/.rbenv-plugins/"; do
   if [ -d "$__path" ]; then
     for __script in "$__path"*/bin(N); do
@@ -232,9 +176,9 @@ for __path in "$HOME/.rbenv-plugins/"; do
 done
 
 # Add rbenv to shell for shims and auto-completion.
-which rbenv 1>/dev/null 2>&1 && eval "$( rbenv init - )"
+which rbenv &>/dev/null && eval "$( rbenv init - )"
 
-# Load all Zsh scripts in no particular order.
+# Load Zsh scripts in no particular order.
 for __script in "$ZSH/scripts/"**/*.sh(N); do
   source "$__script"
 done
@@ -242,17 +186,9 @@ done
 unset __path
 unset __script
 
-# Restore last working directory if there is another Zsh instance running.
-if [ -f "$ZSH/.last_directory" ]; then
-  if [ $( ps a | grep '[z]sh' | wc -l ) -gt 1 ]; then
-    ZSH_LAST_DIRECTORY="$( cat "$ZSH/.last_directory" )"
-    [ -d "$ZSH_LAST_DIRECTORY" ] && cd "$ZSH_LAST_DIRECTORY"
-    unset ZSH_LAST_DIRECTORY
-  else
-    rm -f "$ZSH/.last_directory" 2>&1 1>/dev/null
-  fi
-fi
+# Use a separate file to configure command aliases.
+[[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
-# Source machine-specific local configuration file.
+# Source machine-specific local configuration.
 LOCALRC=$( echo ".localrc_`uname -n`_`uname -o`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
 [ -s "$HOME/$LOCALRC" ] && source "$HOME/$LOCALRC"
