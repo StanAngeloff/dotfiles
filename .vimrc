@@ -5,7 +5,7 @@ scriptencoding utf-8 " Help Vim use the correct character encoding for this scri
 " Pathogen, manage your runtimepath.
 filetype off
 call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+call pathogen#incubate()
 
 " Enable 256-colour terminal if no GUI.
 if !has("gui_running")
