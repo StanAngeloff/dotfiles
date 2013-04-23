@@ -146,6 +146,9 @@ nnoremap Y y$
 nnoremap <Space> :
 nnoremap <Return> :w<CR>
 
+vnoremap <Space> :
+vnoremap <Return> :<C-U>w<CR>gv
+
 " God mode.
 noremap  <Up>    <NOP>
 inoremap <Up>    <NOP>
@@ -160,6 +163,9 @@ inoremap <Right> <NOP>
 let g:MovementKeyPrevious = 'none'
 let g:MovementKeyTime = reltime()
 let g:MovementKeyPause = &timeoutlen
+noremap  : <NOP>
+vnoremap : <NOP>
+
 
 function! MovementKey(key)
   let l:allow = 0
@@ -191,6 +197,7 @@ endfor
 
 " Q for 'Q'uit, 'Ex' mode has received zero use.
 nnoremap <silent> Q ZZ
+vnoremap <silent> Q qZZ
 
 " Start a new Undo group before undoing changes in INSERT mode.
 " Undos can be re-done using 'u' in NORMAL mode.
