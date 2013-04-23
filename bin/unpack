@@ -32,4 +32,4 @@ if [ ! -d "$directory" ]; then
   mkdir -p "$directory"
 fi
 
-( cd "$directory" && eval $command "\$file" )
+( cd "$directory" && eval $command \"\$file\" )
