@@ -165,7 +165,7 @@ vnoremap : <NOP>
 " Disallow repeatedly performing the same single-motion command, e.g., {jjj,kkk,hhhh,lll}, etc.
 let g:MovementPreviousKey = 'none'
 let g:MovementPreviousTime = reltime()
-let g:MovementPreviousRepeat = 0
+let g:MovementPreviousRepeat = 1
 let g:MovementPauseDuration = &timeoutlen
 
 function! MovementKey(key)
@@ -173,7 +173,7 @@ function! MovementKey(key)
   " If the previous key is different, allow immediately.
   if g:MovementPreviousKey != a:key
     " Reset the counter of how many times the previous key was repeated.
-    let g:MovementPreviousRepeat = 0
+    let g:MovementPreviousRepeat = 1
     let l:allow = 1
   else
     " If we have not repeated the motion multiple times, allow immediately.
@@ -186,7 +186,7 @@ function! MovementKey(key)
       let l:allow = (l:ellapsed >= g:MovementPauseDuration)
       " If the specified interval has passed, reset the counter as well.
       if l:allow
-        let g:MovementPreviousRepeat = 0
+        let g:MovementPreviousRepeat = 1
       endif
     endif
   endif
