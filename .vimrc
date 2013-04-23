@@ -203,7 +203,7 @@ function! MovementKey(key)
 endfunction
 
 for s:SingleMovementMode in ['n', 'v']
-  for s:SingleMovementKey in ['j', 'k', 'h', 'l', '-', '+', '<BS>']
+  for s:SingleMovementKey in ['j', 'k', 'h', 'l', '-', '+', '<BS>', 'w', 'e', 'W', 'E', 'b', 'B']
     exe s:SingleMovementMode . 'noremap <expr> ' . s:SingleMovementKey . " MovementKey('" . s:SingleMovementKey . "')"
   endfor
 endfor
