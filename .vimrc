@@ -245,6 +245,28 @@ endfunction
 
 nnoremap <silent> <leader>W :call StripTrailingWhitespace()<CR>
 
+" Fast Fingers
+" Quickly open up NERDTree nodes after completing a search.
+let g:FastFingersSpeed = 100
+let g:FastFingersUpdateTime = &ut
+let g:FastFingersNERDTreeClosed = '^\s*▸.*\/$'
+
+function! FastFingersSearch()
+
+  " Lower the update time so our 'CursorHold' code fires immediately after the search.
+  if &ut > g:FastFingersSpeed | let g:FastFingersUpdateTime = &ut | let &ut = g:FastFingersSpeed | endif
+
+  augroup FastFingers
+    autocmd CursorHold *
+          \ exe 'set ut=' . g:FastFingersUpdateTime | 
+          \ if getline(".") =~ g:FastFingersNERDTreeClosed | call feedkeys('o', 'm') | endif |
+          \ augroup FastFingers | execute "autocmd!" | augroup END | augroup! FastFingers
+  augroup END
+endfunction
+
+nnoremap / :call FastFingersSearch()<CR>/
+nnoremap ? :call FastFingersSearch()<CR>?
+
 " Turn off active highlighting keyboard binding.
 nnoremap <silent> <leader><Space> :noh<CR>:sign unplace *<CR>
 
