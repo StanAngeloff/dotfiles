@@ -507,10 +507,6 @@ snoremap <C-K> <Esc>:call UltiSnips_JumpBackwards()<CR>
 
 " ---------------------------------------------------------------------------
 
-Bundle 'IndexedSearch'
-
-" ---------------------------------------------------------------------------
-
 Bundle 'StanAngeloff/php.vim'
 Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'phpfolding.vim'
