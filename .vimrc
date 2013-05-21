@@ -235,12 +235,11 @@ nnoremap <leader>v `[V`]o
 
 " Erase trailing whitespace function and keyboard binding.
 function! StripTrailingWhitespace()
-  let previous_line = line('.')
-  let previous_column = col('.')
-  let previous_search = @/
+  let l:previousPosition = getpos('.')
+  let l:previousSearch = @/
   %s/\s\+$//e
-  let @/ = previous_search
-  call cursor(previous_line, previous_column)
+  let @/ = l:previousSearch
+  call setpos('.', l:previousPosition)
 endfunction
 
 nnoremap <silent> <leader>W :call StripTrailingWhitespace()<CR>
