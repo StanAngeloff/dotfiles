@@ -291,11 +291,12 @@ nnoremap <leader>w<Space> :setlocal expandtab<CR>
 " Evaluate block as expression
 vnoremap <C-R> "ac<C-R>=<C-R>a<CR><Esc>vbo
 
-" Make Control-direction switch between windows (like C-W h, etc.)
-nnoremap <silent> gk :wincmd k<CR>
-nnoremap <silent> gj :wincmd j<CR>
-nnoremap <silent> gh :wincmd h<CR>
-nnoremap <silent> gl :wincmd l<CR>
+" Faster navigation when performing code reads.
+nnoremap gj 8gj
+nnoremap gk 8gk
+
+vnoremap gj 8gj
+vnoremap gk 8gk
 
 " Snippets keyboard bindings.
 " Unix timestamp.
