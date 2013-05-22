@@ -1,0 +1,13 @@
+# vi: set ft=php :
+# <?php
+snippet throw
+throw new ${1:Runtime}Exception(
+	strtr(
+		'${2}.',
+		array(
+			$0
+		)
+	),
+	`date +%s`
+);
+endsnippet

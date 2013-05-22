@@ -1,0 +1,25 @@
+# vi: set ft=php :
+# <?php
+snippet getter_setter
+/**
+ * Get ${4}.
+ *
+ * @return ${3:`!p snip.rv = (t[2] if len(t[2]) else 'mixed')`}
+ */
+public function get${1:Property}()
+{
+	return $this->`!p snip.rv = (t[1][0].lower() + t[1][1:] if t[1] else '')`;
+}`!p snip.rv = """
+
+	"""`/**
+ * Set $4.
+ *
+ * @param $3 $`!p snip.rv = (t[1][0].lower() + t[1][1:] if t[1] else '')`
+ * @return self
+ */
+public function set$1(${2:mixed}`!p snip.rv = (' ' if len(t[2]) else '')`$`!p snip.rv = (t[1][0].lower() + t[1][1:] if t[1] else '')`)
+{
+	$this->`!p snip.rv = (t[1][0].lower() + t[1][1:] if t[1] else '')` = $`!p snip.rv = (t[1][0].lower() + t[1][1:] if t[1] else '')`;
+	return $this;
+}$0
+endsnippet
