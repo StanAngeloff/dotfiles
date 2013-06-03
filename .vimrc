@@ -165,7 +165,7 @@ vnoremap : <NOP>
 " Disallow repeatedly performing the same single-motion command, e.g., {jjj,kkk,hhhh,lll}, etc.
 let g:MovementPreviousKey = 'none'
 let g:MovementPreviousTime = reltime()
-let g:MovementPreviousRepeat = 1
+let g:MovementPreviousRepeat = 0
 let g:MovementPauseDuration = &timeoutlen
 
 function! MovementKey(key)
@@ -173,12 +173,12 @@ function! MovementKey(key)
   " If the previous key is different, allow immediately.
   if g:MovementPreviousKey != a:key
     " Reset the counter of how many times the previous key was repeated.
-    let g:MovementPreviousRepeat = 1
+    let g:MovementPreviousRepeat = 0
     let l:allow = 1
   else
     " If we have not repeated the motion multiple times, allow immediately.
+    let g:MovementPreviousRepeat = g:MovementPreviousRepeat + 1
     if g:MovementPreviousRepeat < 2
-      let g:MovementPreviousRepeat = g:MovementPreviousRepeat + 1
       let l:allow = 1
     else
       " Allow only if more than the specified interval in milliseconds has passed since the last motion.
@@ -186,20 +186,18 @@ function! MovementKey(key)
       let l:allow = (l:ellapsed >= g:MovementPauseDuration)
       " If the specified interval has passed, reset the counter as well.
       if l:allow
-        let g:MovementPreviousRepeat = 1
+        let g:MovementPreviousRepeat = 0
       endif
     endif
   endif
   " Record the motion and the time when it was performed.
   let g:MovementPreviousKey = a:key
   let g:MovementPreviousTime = reltime()
-  if l:allow
-    return a:key
-  else
+  if !l:allow
     " Negative reinforcement.
     echohl WarningMsg | echo "WARN: Motion '" . a:key . "' already executed " . g:MovementPreviousRepeat . " time(s) within the last " . g:MovementPauseDuration . 'ms.' | echohl None
   endif
-  return '\<NOP>'
+  return a:key
 endfunction
 
 for s:SingleMovementMode in ['n', 'v']
