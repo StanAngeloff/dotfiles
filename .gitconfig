@@ -1,6 +1,9 @@
 [user]
 	name = ${name}
 	email = ${email}
+[company]
+	name = PSP UK Group Ltd.
+	email = hello@psp-group.co.uk
 [github]
 	user = ${username}
 	token = ${token}
