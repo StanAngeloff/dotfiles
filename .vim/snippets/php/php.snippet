@@ -1,5 +1,13 @@
 snippet php
 <?php
+/**
+ * (c) `git config --get company.name || git config --get user.name` <`git config --get company.email || git config --get user.email`>
+ *
+ * For the full copyright and license information,
+ * please view the LICENSE file that was distributed with this source code.
+ */
+
+namespace `!v substitute(substitute(expand('%:h'), '\v.*src\/', '', ''), '\/', '\\', 'g')`;
 
 
 endsnippet

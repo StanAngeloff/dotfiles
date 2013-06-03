@@ -1,0 +1,31 @@
+# vi: set ft=php :
+# <?php
+snippet class
+`!p
+# If the file is extending a built-in Exception, mark the class as final.
+if snip.fn.endswith('Exception.php') or snip.fn.endswith('Test.php'):
+	snip.rv = "final "
+elif snip.fn.startswith('Abstract'):
+	snip.rv = "abstract "
+else:
+	snip.rv = ""
+`${1:`!p
+if snip.fn.endswith('Interface.php'):
+ snip.rv = "interface"
+elif snip.fn.endswith('Trait.php'):
+ snip.rv = "trait"
+else:
+ snip.rv = "class"
+`} `!v substitute(expand('%:t'), ('\.' . expand('%:e') . '$'), '', 'g')``!p
+# Is the file extending a built-in Exception object?
+if snip.fn.endswith('Exception.php'):
+	snip.rv = " extends \\" + os.path.splitext(os.path.basename(snip.fn))[0]
+elif snip.fn.endswith('Test.php'):
+	snip.rv = " extends \PHPUnit_Framework_TestCase"
+else:
+	snip.rv = ""
+`
+{`!p snip.rv = "\n" if snip.fn.endswith('Exception.php') else """
+	"""`$0`!p snip.rv = "" if snip.fn.endswith('Exception.php') else """
+"""`}
+endsnippet
