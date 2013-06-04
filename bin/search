@@ -1,4 +1,6 @@
-function search() {
+#!/usr/bin/env bash
+
+search() {
   local search_locale
   local search_query
   local search_path
@@ -7,7 +9,7 @@ function search() {
   local temporary
 
   if [ $# -lt 1 ]; then
-    echo 'Usage: '"$0"' PATTERN PATH [OPTIONS...]' >/dev/stderr
+    echo 'Usage: '"${0}"' PATTERN [+EXTENSION...] [-EXTENSION...] PATH [OPTIONS...]' 1>&2
     return 1
   fi
 
@@ -18,9 +20,9 @@ function search() {
   # If any of the following arguments starts with a '+' or '-',
   # it is considered an include/exclude extension.
   while [[ "${1:0:1}" == '+' ]] || [[ "${1:0:1}" == '-' ]]; do
-    if  [[ "${1:0:1}" == '+' ]]; then method='include' fi
-    if  [[ "${1:0:1}" == '-' ]]; then method='exclude' fi
-    search_args="$search_args --$method='*.${1:1}'"
+    if  [[ "${1:0:1}" == '+' ]]; then method='include' ; fi
+    if  [[ "${1:0:1}" == '-' ]]; then method='exclude' ; fi
+    search_args="${search_args} --${method}='*.${1:1}'"
     shift
   done
 
@@ -60,3 +62,5 @@ function search() {
     2>/dev/null                 \
   | less -iRS
 }
+
+search "$@"
