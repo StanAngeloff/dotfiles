@@ -56,9 +56,9 @@ search() {
     --exclude-dir='.svn'        \
     --exclude-dir='.sass-cache' \
     "$search_args"              \
-    "\$@"                       \
-    "\$search_query"            \
-    "\${search_path:-.}"        \
+    \"\$@\"                     \
+    \"\$search_query\"          \
+    \"\${search_path:-.}\"      \
     2>/dev/null                 \
   | less -iRS
 }
