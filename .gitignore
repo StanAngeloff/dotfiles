@@ -3,6 +3,7 @@
 !.aliases
 !.cleanup_profile.sh
 !.ctags
+!.danger_history
 !.fonts
 !.gemrc
 !.gitconfig
