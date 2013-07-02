@@ -19,10 +19,19 @@ search() {
 
   # If any of the following arguments starts with a '+' or '-',
   # it is considered an include/exclude extension.
-  while [[ "${1:0:1}" == '+' ]] || [[ "${1:0:1}" == '-' ]]; do
-    if  [[ "${1:0:1}" == '+' ]]; then method='include' ; fi
-    if  [[ "${1:0:1}" == '-' ]]; then method='exclude' ; fi
-    search_args="${search_args} --${method}='*.${1:1}'"
+  while [[ "$1" =~ ^[!+\-][^\-] ]]; do
+    case "${1:0:1}" in
+      !)
+        argument="--exclude-dir='${1:1}'"
+        ;;
+      +)
+        argument="--include='*.${1:1}'"
+        ;;
+      -)
+        argument="--exclude='*.${1:1}'"
+        ;;
+    esac
+    search_args="${search_args} ${argument}"
     shift
   done
 
