@@ -7,9 +7,6 @@ inoreabbrev <buffer> [] [] =
 " Handle docblocks in the same manner.
 inoreabbrev <buffer> /** /**<CR>/<ESC>ka
 
-" Turn on PHP fast folds.
-EnableFastPHPFolds
-
 " Fix matchpairs for PHP (for matchit.vim plugin).
 if exists('loaded_matchit')
   let b:match_skip = 's:comment\|string'
