@@ -6,5 +6,5 @@
 --exclude="\.hg"
 --exclude="\.svn"
 --exclude="\.sass-cache"
+--exclude="node_modules"
 --fields=aiklmnsSt
---PHP-kinds=+cidfv
