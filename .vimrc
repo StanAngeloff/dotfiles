@@ -461,6 +461,9 @@ Bundle 'kchmck/vim-coffee-script'
 " ---------------------------------------------------------------------------
 
 Bundle 'SirVer/ultisnips'
+
+let g:UltiSnipsNoPythonWarning=1
+
 let g:UltiSnipsSnippetDirectories=['snippets']
 
 " Don't let UltiSnips handle the <C-J> and <C-K> keys.
