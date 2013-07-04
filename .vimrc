@@ -521,9 +521,10 @@ let NERDTreeMapHelp = 'H'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'sjl/gundo.vim'
-" Toggle Gundo undo tree.
-nnoremap <silent> <F6> :GundoToggle<CR>
+Bundle 'mbbill/undotree'
+nnoremap <silent> <F6> :UndotreeToggle<CR>
+let g:undotree_SplitWidth=45
+let g:undotree_SetFocusWhenToggle=1
 
 " ---------------------------------------------------------------------------
 
