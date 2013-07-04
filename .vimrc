@@ -668,4 +668,4 @@ Bundle 'elzr/vim-json'
 " ---------------------------------------------------------------------------
 
 " OMG! THIS!
-Bundle 'Auto-Pairs'
+Bundle 'jiangmiao/auto-pairs'
