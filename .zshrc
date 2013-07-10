@@ -33,13 +33,13 @@ autoload colors; colors;
 
 function _user_hostname_prompt() {
   if [ -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY" ]; then
-    echo "%{$fg[white]%}%n@%{$reset_color%}%{$fg[green]%}%m%{$reset_color%}"
+    echo "%{$fg[white]%}%n@%{$reset_color%}%{$fg[green]%}%m:%{$reset_color%}"
   fi
 }
 function _root_prompt() {
   if [ $UID -eq 0 ]; then echo "%{$fg[white]%}#%{$reset_color%}"; fi
 }
-export PROMPT="$(_user_hostname_prompt)%{$fg[white]%} ➜ %{$reset_color%}%{$fg[yellow]%}%(!.%1~.%~)%{$reset_color%}$(_root_prompt) " # format is 'login-name@machine-name ➜ cwd #'
+export PROMPT="$(_user_hostname_prompt)%{$fg[white]%}%{$reset_color%}%{$fg[yellow]%}%(!.%1~.%~)%{$reset_color%}$(_root_prompt) ➜ " # format is 'login-name@machine-name ➜ cwd #'
 
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
