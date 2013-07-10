@@ -357,16 +357,6 @@ cnoreabbrev xmlformat %!xmllint --format --encode UTF-8 -
 
 if has("gui_running")
   set guifont=Inconsolata\ for\ Powerline\ Medium\ 14
-else
-  " Mode-dependent cursor for gnome-terminal.
-  if &term =~ "xterm\\|xterm-256color\\|rxvt-unicode-256color"
-    :silent !echo -ne "\033]12;white\007"
-    let &t_SI = "\033]12;steelblue\007"
-    let &t_EI = "\033]12;white\007"
-    if has('autocmd')
-      autocmd VimLeave * :!echo -ne "\033]12;white\007"
-    endif
-  endif
 endif
 
 " Preferred fold method is marker, e.g., manual.
