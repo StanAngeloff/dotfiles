@@ -658,8 +658,3 @@ inoremap <silent> <F9> <ESC>:w<CR>:SyntasticCheck<CR>a
 " ---------------------------------------------------------------------------
 
 Bundle 'elzr/vim-json'
-
-" ---------------------------------------------------------------------------
-
-" OMG! THIS!
-Bundle 'jiangmiao/auto-pairs'
