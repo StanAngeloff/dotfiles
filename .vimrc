@@ -401,8 +401,8 @@ if has('autocmd')
   autocmd VimEnter * set vb t_vb=
 
   " Highlight trailing whitespace in red.
-  highlight                  ExtraWhitespace ctermbg=red guibg=red
   autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
+        \ | highlight        ExtraWhitespace ctermbg=red guibg=red
 
   " Recognise additional types.
   au BufRead,BufNewFile {Gemfile,Guardfile,Rakefile,Vagrantfile,*.rake,config.ru} set ft=ruby
