@@ -31,12 +31,17 @@ export GREP_COLOR='1;32'
 # Enable colour terminal and prompt.
 autoload colors; colors;
 
-function _prompt_type() {
-  if [ $UID -eq 0 ]; then echo '#'; else echo '$'; fi
+function _user_hostname_prompt() {
+  if [ -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY" ]; then
+    echo "%{$fg[white]%}%n@%{$reset_color%}%{$fg[green]%}%m%{$reset_color%}"
+  fi
 }
+function _root_prompt() {
+  if [ $UID -eq 0 ]; then echo "%{$fg[white]%}#%{$reset_color%}"; fi
+}
+export PROMPT="$(_user_hostname_prompt)%{$fg[white]%} ➜ %{$reset_color%}%{$fg[yellow]%}%(!.%1~.%~)%{$reset_color%}$(_root_prompt) " # format is 'login-name@machine-name ➜ cwd #'
 
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
-export PROMPT="%{$fg[white]%}%n@%{$reset_color%}%{$fg[green]%}%m:%{$reset_color%}%{$fg[yellow]%}%(!.%1~.%~)%{$reset_color%}%{$fg[white]%}$(_prompt_type)%{$reset_color%} " # format is 'login-name@machine-name:cwd %'
 
 # Allow variable substitution to take place in the prompt.
 setopt prompt_subst
