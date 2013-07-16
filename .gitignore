@@ -27,9 +27,12 @@
 # Scripts
 !bin/*
 
-# rbenv
+# {rb,php}env
 !.rbenv-plugins
 !.rbenv-plugins/*
+
+!.phpenv-plugins
+!.phpenv-plugins/*
 
 # Vim: Vundle
 !.vim/bundle/

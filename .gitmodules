@@ -22,3 +22,6 @@
 [submodule ".phpenv-install"]
 	path = .phpenv-install
 	url = git@github.com:CHH/phpenv.git
+[submodule ".phpenv-plugins/php-build"]
+	path = .phpenv-plugins/php-build
+	url = git@github.com:CHH/php-build.git
