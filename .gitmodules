@@ -19,6 +19,3 @@
 [submodule ".rbenv-plugins/rbenv-gemset"]
 	path = .rbenv-plugins/rbenv-gemset
 	url = git://github.com/jamis/rbenv-gemset.git
-[submodule ".phpenv-install"]
-	path = .phpenv-install
-	url = git@github.com:CHH/phpenv.git
