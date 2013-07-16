@@ -1,51 +1,68 @@
 #!/bin/bash
 
-VALUES=(                    \
-  name     'Name'           \
-  email    'E-mail address' \
-  username 'GitHub name'    \
-  token    'GitHub token'   \
+# {{{ Templates
+
+profile_values=( \
+  name 'Name' \
+  email 'E-mail address' \
+  username 'GitHub name' \
+  token 'GitHub token' \
 )
-TEMPLATED=(   \
-  .gitconfig  \
+profile_templates=( \
+  .gitconfig \
   .Xresources \
 )
 
-INSTALL_PATH="$HOME/.install_values"
-INSTALL_VALUES=''
+profile_previous_values="${HOME}/.install_values"
+profile_new_values=''
 
-SED_SCRIPT='sed '
+sed_eval_script='sed '
 
 # Load previous install values so we could offer defaults.
-[ -f "$INSTALL_PATH" ] && source "$INSTALL_PATH"
+[ -f "$profile_previous_values" ] && source "$profile_previous_values"
 
-for (( i = 0 ; i < ${#VALUES[@]} ; i += 2 )); do
-  NAME="${VALUES[$i]}"
-  DESCRIPTION="${VALUES[$i + 1]}"
-  VALUE="INSTALL_$NAME"
-  PREVIOUS="${!VALUE}"
-  echo -n "Please enter your $DESCRIPTION [$PREVIOUS]: "
-  read "$VALUE"
-  [ -z "${!VALUE}" ] && eval $VALUE=\"$PREVIOUS\"
-  INSTALL_VALUES="$INSTALL_VALUES"$'\n'"$VALUE='${!VALUE}'"
-  SED_SCRIPT="$SED_SCRIPT -e 's/''$PREVIOUS'' # \${$NAME}\|\${$NAME}/'""'${!VALUE}'""' # \${$NAME}/g'"
+for (( i = 0 ; i < ${#profile_values[@]} ; i += 2 )); do
+  value_name="${profile_values[$i]}"
+  value_title="${profile_values[$i + 1]}"
+  value_variable="INSTALL_${value_name}"
+  value_previous="${!value_variable}"
+  echo -n "${value_title} [${value_previous}]: "
+  read "$value_variable"
+  [ -z "${!value_variable}" ] && eval $value_variable=\"$value_previous\"
+  profile_new_values="${profile_new_values}"$'\n'"${value_variable}='${!value_variable}'"
+  sed_eval_script="${sed_eval_script} -e 's/''${value_previous}'' # \${${value_name}}\|\${${value_name}}/'""'${!value_variable}'""' # \${${value_name}}/g'"
 done
 
 # Store install values for next time.
-echo "$INSTALL_VALUES" > "$INSTALL_PATH"
+echo "$profile_new_values" > "$profile_previous_values"
 
-SED_SCRIPT="$SED_SCRIPT -e 's#\\\${HOME}#'"$HOME"'#g'"
+sed_eval_script="${sed_eval_script} -e 's#\\\${HOME}#${HOME}#g'"
 
-for file in "${TEMPLATED[@]}"; do
-  eval "$SED_SCRIPT" -i "$HOME/$file"
+for template in "${profile_templates[@]}"; do
+  eval "$sed_eval_script" -i "${HOME}/${template}"
 done
+
+# }}}
+
+# {{{ Modules/Git, plug-ins, etc.
 
 ( cd "$HOME" && git submodule update --init --recursive )
 
-if which xrdb 1>/dev/null 2>&1; then
-  xrdb -merge "$HOME/.Xresources"
+# }}}
+
+# {{{ Resources
+
+if which xrdb &>/dev/null; then
+  xrdb -merge "${HOME}/.Xresources"
 fi
 
-vim -c 'BundleInstall' -c 'qa!'
+# }}}
+
+# {{{ Editors/Vim
+
+vim -c 'silent! BundleClean!'  -c 'qa!'
+vim -c 'silent! BundleInstall!' -c 'qa!'
+
+# }}}
 
 echo -e "\nDone."
