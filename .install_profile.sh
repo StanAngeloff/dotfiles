@@ -3,10 +3,11 @@
 # {{{ Templates
 
 profile_values=( \
-  name 'Name' \
-  email 'E-mail address' \
-  username 'GitHub name' \
-  token 'GitHub token' \
+  name 'Name' '' \
+  email 'E-mail address' '' \
+  pushDefault 'Git "push.default" (use "upstream" for Git 1.8)' 'nothing' \
+  username 'GitHub name' '' \
+  token 'GitHub token' '' \
 )
 profile_templates=( \
   .gitconfig \
@@ -21,15 +22,20 @@ sed_eval_script='sed '
 # Load previous install values so we could offer defaults.
 [ -f "$profile_previous_values" ] && source "$profile_previous_values"
 
-for (( i = 0 ; i < ${#profile_values[@]} ; i += 2 )); do
+for (( i = 0 ; i < ${#profile_values[@]} ; i += 3 )); do
   value_name="${profile_values[$i]}"
   value_title="${profile_values[$i + 1]}"
+  value_default="${profile_values[$i + 2]}"
+
   value_variable="INSTALL_${value_name}"
-  value_previous="${!value_variable}"
+  value_previous="${!value_variable:-${value_default}}"
+
   echo -n "${value_title} [${value_previous}]: "
   read "$value_variable"
+
   [ -z "${!value_variable}" ] && eval $value_variable=\"$value_previous\"
   profile_new_values="${profile_new_values}"$'\n'"${value_variable}='${!value_variable}'"
+
   sed_eval_script="${sed_eval_script} -e 's/''${value_previous}'' # \${${value_name}}\|\${${value_name}}/'""'${!value_variable}'""' # \${${value_name}}/g'"
 done
 

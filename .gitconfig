@@ -54,4 +54,4 @@
 	su = submodule update --init --recursive
 
 [push]
-	default = upstream
+	default = nothing # ${pushDefault}
