@@ -12,6 +12,7 @@
 !.gtkrc-2.0
 !.install_profile.sh
 !.localrc_stan-inspiron_gnu_linux
+!.phpenv-install
 !.profile.*
 !.rbenv
 !.tmux.conf
