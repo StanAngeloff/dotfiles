@@ -19,3 +19,6 @@
 [submodule ".rbenv-plugins/rbenv-gemset"]
 	path = .rbenv-plugins/rbenv-gemset
 	url = git://github.com/jamis/rbenv-gemset.git
+[submodule "/home/stan/.phpenv"]
+	path = /home/stan/.phpenv
+	url = git://github.com/phpenv/phpenv.git

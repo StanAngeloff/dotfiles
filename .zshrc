@@ -163,8 +163,8 @@ bindkey ' '       magic-space
 
 bindkey "^[m"     copy-prev-shell-word
 
-# Expand PATH and include User binaries and rbenv, if installed.
-for __path in "$HOME/bin" "$HOME/.rbenv/bin"; do
+# Expand PATH and include User binaries and {php,rb}env, if installed.
+for __path in "$HOME/bin" "$HOME/."{php,rb}'env/bin'; do
   [ -d "$__path" ] && export PATH="$__path:$PATH"
 done
 
@@ -180,8 +180,10 @@ for __path in "$HOME/.rbenv-plugins/"; do
   fi
 done
 
-# Add rbenv to shell for shims and auto-completion.
-which rbenv &>/dev/null && eval "$( rbenv init - )"
+# Add {php,rb}env to shell for shims and auto-completion.
+for __script in {php,rb}env; do
+  which "$__script" &>/dev/null && eval "$( "$__script" init - )"
+done
 
 # Load Zsh scripts in no particular order.
 for __script in "$ZSH/scripts/"**/*.sh(N); do
