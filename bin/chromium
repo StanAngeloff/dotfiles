@@ -97,7 +97,7 @@ fi
 export XDG_CACHE_HOME='/tmp/.cache'
 
 # Update library lookup path to include Chromium's directory.
-export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${CHROME_DEVEL_PATH}" 
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${CHROME_DEVEL_PATH}"
 
 # Use the `start-and-forget` script to run Chromium detached in the background.
 #   --enable-seccomp-sandbox explicitly enables the Linux sandbox.
