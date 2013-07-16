@@ -54,17 +54,6 @@ done
 
 ( cd "$HOME" && git submodule update --init --recursive )
 
-phpenv_path="${HOME}/.phpenv"
-phpenv_install_script="${phpenv_path}-install/bin/phpenv-install.sh"
-if [ -e "$phpenv_install_script" ]; then
-  phpenv_install_arguments="PHPENV_ROOT='${phpenv_path}'"
-  # If a directory already exists, we need to update.
-  if [ -d "$phpenv_path" ]; then
-    phpenv_install_arguments="${phpenv_install_arguments} UPDATE=yes"
-  fi
-  eval "$phpenv_install_arguments" "$phpenv_install_script"
-fi
-
 # }}}
 
 # {{{ Resources

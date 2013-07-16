@@ -163,29 +163,25 @@ bindkey ' '       magic-space
 
 bindkey "^[m"     copy-prev-shell-word
 
-# Expand PATH and include User binaries and {php,rb}env, if installed.
-# NOTE: The order is important -- we scan PHP first and Ruby next,
-#       but since we are prepending to PATH, Ruby will go in first.
-for __path in "$HOME/bin" "$HOME/."{php,rb}"env/bin"; do
+# Expand PATH and include User binaries and rbenv, if installed.
+for __path in "$HOME/bin" "$HOME/.rbenv/bin"; do
   [ -d "$__path" ] && export PATH="$__path:$PATH"
 done
 
-# Extend {php,rb}env with plug-ins from non-standard location.
-for __path in "$HOME/."{php,rb}"env-plugins/"; do
+# Extend rbenv with plug-ins from non-standard location.
+for __path in "$HOME/.rbenv-plugins/"; do
   if [ -d "$__path" ]; then
     for __script in "$__path"*/bin(N); do
       export PATH="$__script:$PATH"
     done
-    for __script in "$__path"*/etc/{php,rb}env.d(N); do
+    for __script in "$__path"*/etc/rbenv.d(N); do
       export RBENV_HOOK_PATH="$__script:$RBENV_HOOK_PATH"
     done
   fi
 done
 
-# Add {php,rb}env to shell for shims and auto-completion.
-for __script in {php,rb}env; do
-  which "$__script" &>/dev/null && eval "$( "$__script" init - )"
-done
+# Add rbenv to shell for shims and auto-completion.
+which rbenv &>/dev/null && eval "$( rbenv init - )"
 
 # Load Zsh scripts in no particular order.
 for __script in "$ZSH/scripts/"**/*.sh(N); do
