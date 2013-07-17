@@ -1,12 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-PURGE_DAYS=60
-TARGETS=(     \
-  .vim/undo   \
-  .vim/backup \
-  .vim/view   \
+purge_days=60
+targets=( \
+  '.vim/undo' \
+  '.vim/backup' \
+  '.vim/view' \
 )
 
-for directory in "${TARGETS[@]}"; do
-  find "$directory" -mtime +$PURGE_DAYS \! -name '.*' -exec rm -f '{}' \;
+action='-delete'
+if which trash 1>/dev/null 2>&1; then
+  action='-exec trash {}'
+fi
+
+for target in "${targets[@]}"; do
+  exec find "${HOME}/${target}" -mtime +$purge_days \! -name '.*' $action \;
 done
