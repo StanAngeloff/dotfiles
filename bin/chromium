@@ -14,6 +14,19 @@ if [ -z "$chrome_devel_path" ]; then
   chrome_devel_path='/opt/chrome-linux'
 fi
 
+# The '--force-update' flag tells the script to create a backup of Chromium and download the latest copy.
+if [ "$1" = '--force-update' ]; then
+  chrome_devel_index=1
+  while [ -d "$chrome_devel_path" ]; do
+    if [ -d "${chrome_devel_path}.${chrome_devel_index}" ]; then
+      let chrome_devel_index++
+    else
+      echo "Backing up previous Chromium installation '${chrome_devel_path}{,.${chrome_devel_index}}'..."
+      mv "$chrome_devel_path" "${chrome_devel_path}.${chrome_devel_index}"
+    fi
+  done
+fi
+
 # Utility function to download the latest version of Chromium from continuous builds and extract its contents.
 google_chromium_latest() {
   local target="$1"
