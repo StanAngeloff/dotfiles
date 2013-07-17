@@ -13,6 +13,7 @@ Abolish priv private
 Abolish prv private
 
 Abolish fn function
+Abolish fun function
 
 " Common misspellings
 Abolish eixt exit
