@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Abort immediately if any command exists with a non-zero code.
 set -e
@@ -9,34 +9,44 @@ if [ "$( id -u )" != 0 ]; then
   sudo='sudo'
 fi
 
-# Ensure Chromium is in the expected location. We could provide command-line
-# arguments for that, but the whole purpose of this script is to start Chromium
-# in the fastest possible way without any hassle.
-CHROME_DEVEL_PATH='/opt/chrome-linux'
-if [ ! -d "$CHROME_DEVEL_PATH" ]; then
-  echo "[ERROR] You must have a copy of Chromium in '${CHROME_DEVEL_PATH}'." 1>&2
-  echo '[ERROR] Please update this script if you have downloaded a copy elsewhere.' 1>&2
-  exit 1
+# Set up the default location of Chromium.
+if [ -z "$chrome_devel_path" ]; then
+  chrome_devel_path='/opt/chrome-linux'
+fi
+
+# Utility function to download the latest version of Chromium from continuous builds and extract its contents.
+google_chromium_latest() {
+  local target="$1"
+  local platform="$( uname -i | sed -e 's#x86_#x#' )"
+  local version="$( curl -so- "http://commondatastorage.googleapis.com/chromium-browser-continuous/Linux_${platform}/LAST_CHANGE" )"
+  local latest_path="/tmp/chrome-linux_${platform}-${version}.zip"
+  if [ ! -f "$latest_path" ]; then
+    curl -#o "$latest_path" "http://commondatastorage.googleapis.com/chromium-browser-continuous/Linux_${platform}/${version}/chrome-linux.zip"
+  fi
+  mkdir -p "$target"
+  unzip -q "$latest_path" -d "$target"
+  mv "${target}/chrome-linux/"* "$target"
+  rmdir "${target}/chrome-linux"
+}
+
+# If Chromium hasn't been downloaded yet, download the most recent snapshot.
+if [ ! -d "$chrome_devel_path" ]; then
+  echo "Downloading the latest version of Chromium in '${chrome_devel_path}'..."
+  google_chromium_latest "$chrome_devel_path"
 fi
 
 # Tell Chromium to use a sandbox.
-export CHROME_DEVEL_SANDBOX="${CHROME_DEVEL_PATH}/chrome_sandbox"
+export CHROME_DEVEL_SANDBOX="${chrome_devel_path}/chrome_sandbox"
 
 # Chromium is very picky about who owns what and in which mode, set it up properly.
 if [ ! "$( stat -c'%f' "$CHROME_DEVEL_SANDBOX" | tr -d '\n' )" = '89ed' ]; then
-  echo -n "[INFO] The '${CHROME_DEVEL_SANDBOX}' file mode needs to be updated... "
+  echo "Updating sandbox permissions in '${CHROME_DEVEL_SANDBOX}'..."
   $sudo chmod 4755 "$CHROME_DEVEL_SANDBOX"
-  echo 'OK'
-  echo '[INFO] Start this script again to continue.'
-  exit 0
 fi
 
 if [ ! "$( stat -c'%g:%u' "$CHROME_DEVEL_SANDBOX" | tr -d '\n' )" = '0:0' ]; then
-  echo -n "[INFO] The '${CHROME_DEVEL_SANDBOX}' binary owner needs to be updated... "
+  echo "Updating sandbox owner in '${CHROME_DEVEL_SANDBOX}'..."
   $sudo chown root:root "$CHROME_DEVEL_SANDBOX"
-  echo 'OK'
-  echo '[INFO] Start this script again to continue.'
-  exit 0
 fi
 
 # Utility function to download a copy of Google Chrome from unstable channel and extract its contents.
@@ -55,9 +65,9 @@ google_chrome_unstable() {
 }
 
 # Install Flash player as Pepper plug-in.
-plugin_ppapi_flash_path="${CHROME_DEVEL_PATH}/PepperFlash"
+plugin_ppapi_flash_path="${chrome_devel_path}/PepperFlash"
 if [ ! -d "$plugin_ppapi_flash_path" ]; then
-  echo '[INFO] Installing Flash plug-in...'
+  echo 'Installing Flash plug-in...'
   ( \
     google_chrome_unstable &&
     mkdir -p "$plugin_ppapi_flash_path" &&
@@ -66,9 +76,9 @@ if [ ! -d "$plugin_ppapi_flash_path" ]; then
 fi
 
 # Install PDF viewer as native plug-in.
-plugin_native_pdf="${CHROME_DEVEL_PATH}/libpdf.so"
+plugin_native_pdf="${chrome_devel_path}/libpdf.so"
 if [ ! -f "$plugin_native_pdf" ]; then
-  echo '[INFO] Installing PDF plug-in...'
+  echo 'Installing PDF plug-in...'
   ( \
     google_chrome_unstable &&
     cp 'opt/google/chrome/libpdf.so' "$plugin_native_pdf" &&
@@ -77,9 +87,9 @@ if [ ! -f "$plugin_native_pdf" ]; then
 fi
 
 # Install ffmpeg from Chrome which has got H.264 playback support.
-plugin_native_ffmpeg="${CHROME_DEVEL_PATH}/libffmpegsumo.so"
+plugin_native_ffmpeg="${chrome_devel_path}/libffmpegsumo.so"
 if [ ! -f "$plugin_native_ffmpeg" ]; then
-  echo '[INFO] Installing ffmpeg+h.264 plug-in...'
+  echo 'Installing ffmpeg+h.264 plug-in...'
   ( \
     google_chrome_unstable &&
     cp 'opt/google/chrome/libffmpegsumo.so' "$plugin_native_ffmpeg" &&
@@ -88,25 +98,22 @@ if [ ! -f "$plugin_native_ffmpeg" ]; then
 fi
 
 # On Ubuntu 13.04 the libudev.so.0 file is replaced with libudev1.
-lib_udev="${CHROME_DEVEL_PATH}/libudev.so.0"
+lib_udev="${chrome_devel_path}/libudev.so.0"
 if [ ! -e "$lib_udev" ]; then
+  echo "Adding symbolic link to 'libudev'..."
   ln -s '/usr/lib/x86_64-linux-gnu/libudev.so' "$lib_udev"
 fi
 
 # Use /tmp as the Chromium cache directory.
 export XDG_CACHE_HOME='/tmp/.cache'
 
-# Update library lookup path to include Chromium's directory.
-export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${CHROME_DEVEL_PATH}"
+# Update library lookup path to include Chromium's directory (for libudev).
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${chrome_devel_path}"
 
-# Use the `start-and-forget` script to run Chromium detached in the background.
-#   --enable-seccomp-sandbox explicitly enables the Linux sandbox.
-#   --ignore-gpu-blacklist is an override to enable GPU acceleration on all hardware.
-#   --purge-memory-button enables a button in the task manager (available in Tools > Task Manager, or by pressing Shift+Esc).
-start-and-forget "${CHROME_DEVEL_PATH}/chrome" \
-  --enable-seccomp-sandbox \
-  --ignore-gpu-blacklist \
-  --purge-memory-button \
+# Use `nohup` and `disown` to run Chromium detached in the background.
+nohup "${chrome_devel_path}/chrome" \
+  --enable-seccomp-sandbox `: # explicitly enables the Linux sandbox` \
+  --ignore-gpu-blacklist `: # enable GPU acceleration on all hardware` \
   --ppapi-flash-path="${plugin_ppapi_flash_path}/libpepflashplayer.so" \
   --ppapi-flash-version="$( cat "${plugin_ppapi_flash_path}/manifest.json" | grep -i '"version"' | cut -d':' -f2 | tr -d ' ",' )" \
-  "$@"
+  "$@" 1>/dev/null 2>&1 & disown
