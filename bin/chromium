@@ -38,15 +38,15 @@ fi
 # Tell Chromium to use a sandbox.
 export CHROME_DEVEL_SANDBOX="${chrome_devel_path}/chrome_sandbox"
 
+if [ ! "$( stat -c'%g:%u' "$CHROME_DEVEL_SANDBOX" | tr -d '\n' )" = '0:0' ]; then
+  echo "Updating sandbox owner in '${CHROME_DEVEL_SANDBOX}'..."
+  $sudo chown root:root "$CHROME_DEVEL_SANDBOX"
+fi
+
 # Chromium is very picky about who owns what and in which mode, set it up properly.
 if [ ! "$( stat -c'%f' "$CHROME_DEVEL_SANDBOX" | tr -d '\n' )" = '89ed' ]; then
   echo "Updating sandbox permissions in '${CHROME_DEVEL_SANDBOX}'..."
   $sudo chmod 4755 "$CHROME_DEVEL_SANDBOX"
-fi
-
-if [ ! "$( stat -c'%g:%u' "$CHROME_DEVEL_SANDBOX" | tr -d '\n' )" = '0:0' ]; then
-  echo "Updating sandbox owner in '${CHROME_DEVEL_SANDBOX}'..."
-  $sudo chown root:root "$CHROME_DEVEL_SANDBOX"
 fi
 
 # Utility function to download a copy of Google Chrome from unstable channel and extract its contents.
