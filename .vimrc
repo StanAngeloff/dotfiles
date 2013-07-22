@@ -486,13 +486,6 @@ Bundle 'pangloss/vim-javascript'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'samsonw/vim-task'
-" Toggle task status on current line.
-inoremap <silent> <leader>m <ESC>:call Toggle_task_status()<CR>a
-nnoremap <silent> <leader>m      :call Toggle_task_status()<CR>
-
-" ---------------------------------------------------------------------------
-
 Bundle 'scrooloose/nerdcommenter'
 
 " ---------------------------------------------------------------------------
@@ -641,14 +634,6 @@ let g:autotagmaxTagsFileSize=32 * 1024 * 1024
 let g:autotagTagsFile='.tags'
 let g:autotagVerbosityLevel=0
 let g:autotagCtagsCmd='silent ctags'
-
-" ---------------------------------------------------------------------------
-
-Bundle 'coderifous/textobj-word-column.vim'
-
-" ---------------------------------------------------------------------------
-
-Bundle 'argtextobj.vim'
 
 " ---------------------------------------------------------------------------
 
