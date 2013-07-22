@@ -50,12 +50,12 @@
 !.vim/autoload/
 !.vim/autoload/pathogen.vim
 
-# Vim: vim-powerline colour schemes in ~/.vim/autoload/Powerline/Colorschemes/file.vim
+# Vim: vim-airline colour schemes in ~/.vim/autoload/airline/themes/file.vim
 !.vim/autoload/*/
 !.vim/autoload/*/*/
 !.vim/autoload/*/*/*.vim
 
-# Vim: vim-powerline colour schemes in ~/.vim/autoload/Powerline/Colorschemes/file.vim
+# Vim: UltiSnips snippets
 !.vim/snippets/
 !.vim/snippets/*/
 !.vim/snippets/*/*.snippet
