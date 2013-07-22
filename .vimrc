@@ -600,9 +600,20 @@ Bundle 'tpope/vim-abolish'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'Lokaltog/vim-powerline'
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_colorscheme = 'zend55'
+Bundle 'bling/vim-airline'
+
+let g:airline_theme='grey'
+
+let g:airline_powerline_fonts=1
+
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_fugitive_prefix = '⭠ '
+let g:airline_readonly_symbol = '⭤ '
+let g:airline_linecolumn_prefix = '⭡'
+let g:airline_paste_symbol = '❯ PASTE'
 
 " ---------------------------------------------------------------------------
 
