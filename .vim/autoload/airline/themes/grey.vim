@@ -1,6 +1,6 @@
 " vim-airline grey theme (incomplete).
 
-let s:file = ['#000000', '#000000', 0, 0, '']
+let s:file = ['#000000', '#000000', 255, 236, '']
 
 " NORMAL
 let s:N1 = ['#000000', '#000000', 252, 244, '']
