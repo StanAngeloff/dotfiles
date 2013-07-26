@@ -249,7 +249,7 @@ nnoremap <expr> <leader>f FindClosest()
 
 " Q for 'Q'uit, 'Ex' mode has received zero use.
 nnoremap <silent> Q ZZ
-vnoremap <silent> Q qZZ
+vnoremap <silent> Q <Esc>ZZ
 
 " Start a new Undo group before undoing changes in INSERT mode.
 " Undos can be re-done using 'u' in NORMAL mode.
@@ -664,7 +664,7 @@ let g:syntastic_style_error_symbol='S>'
 
 " Check for syntax errors.
 nnoremap <silent> <F9>      :w<CR>:SyntasticCheck<CR>
-inoremap <silent> <F9> <ESC>:w<CR>:SyntasticCheck<CR>a
+inoremap <silent> <F9> <Esc>:w<CR>:SyntasticCheck<CR>a
 
 " ---------------------------------------------------------------------------
 
