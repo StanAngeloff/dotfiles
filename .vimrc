@@ -411,15 +411,14 @@ if has('autocmd')
 
   " If a local .lvimrc file exists in the current working directory, source it on load (unsafe).
   " When the file is changed, update it by sourcing again.
-  au VimEnter *
-        \ | let s:LocalConfigurationPaths = ['.lvimrc', 'attic/.lvimrc']
+  au VimEnter * let s:LocalConfigurationPaths = ['.lvimrc', 'attic/.lvimrc']
         \ | let s:LocalConfigurationBase = getcwd() . '/'
         \ | for s:LocalConfigurationFile in s:LocalConfigurationPaths
           \ | if filereadable(s:LocalConfigurationBase . s:LocalConfigurationFile)
             \ | echohl WarningMsg | echom 'Loading local configuration from file "' . s:LocalConfigurationFile . '".' | echohl None
             \ | execute 'source' s:LocalConfigurationBase . s:LocalConfigurationFile
             \ | augroup LocalConfigurationUpdate
-            \ |   execute 'au! BufWritePost' s:LocalConfigurationBase . s:LocalConfigurationFile 'source %'
+              \ | execute 'au! BufWritePost' s:LocalConfigurationBase . s:LocalConfigurationFile 'source %'
             \ | augroup END
           \ | endif
         \ | endfor
