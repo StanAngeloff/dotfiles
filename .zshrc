@@ -105,6 +105,11 @@ setopt pushd_ignore_dups
 
 setopt long_list_jobs
 
+# See http://stackoverflow.com/a/1438523
+# Stop on '/' character when deleting words using ^H.
+autoload -U select-word-style
+select-word-style bash
+
 # Automatically quote meta-characters like question marks, quotes and ampersands during typing or pasting.
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
