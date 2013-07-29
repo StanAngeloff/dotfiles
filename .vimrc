@@ -133,6 +133,13 @@ endif
 " Syntax highlight shell scripts as per POSIX, not the original Bourne shell which very few use.
 let g:is_posix = 1
 
+" Use our customised `grep` script for powerful searches.
+set grepprg=$HOME/bin/search\ -n\ --color=never\ $*
+set grepformat=%f:%l:%m
+
+command! -nargs=+ Search execute 'silent grep! <args>' | botright copen 8 | nnoremap <buffer> <CR> ^:wincmd F<CR>:wincmd T<CR>
+
+" Use a custom leader character.
 let mapleader="\\"
 
 " Keyboard bindings.
