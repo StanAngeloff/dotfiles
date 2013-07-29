@@ -19,3 +19,6 @@
 [submodule ".rbenv-plugins/rbenv-gemset"]
 	path = .rbenv-plugins/rbenv-gemset
 	url = git://github.com/jamis/rbenv-gemset.git
+[submodule ".zsh/scripts/lalias.sh"]
+	path = .zsh/scripts/lalias.sh
+	url = git://github.com/StanAngeloff/lalias.sh.git

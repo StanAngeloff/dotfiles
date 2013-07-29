@@ -190,7 +190,9 @@ which rbenv &>/dev/null && eval "$( rbenv init - )"
 
 # Load Zsh scripts in no particular order.
 for __script in "$ZSH/scripts/"**/*.sh(N); do
-  source "$__script"
+  if [ -f "$__script" ]; then
+    source "$__script"
+  fi
 done
 
 unset __path
