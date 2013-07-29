@@ -1,0 +1,51 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import sys
+import os
+import dbus
+
+from subprocess import call, check_output
+
+def main(app_name):
+
+    app_protocol = 8
+
+    try:
+        skype_username = sys.argv[1]
+    except IndexError:
+        sys.stderr.write('Usage: "%s" USERNAME\n' % app_name)
+        sys.exit(1)
+
+    session_bus = dbus.SessionBus()
+
+    skype_found = session_bus.get_object('org.freedesktop.DBus', '/org/freedesktop/DBus').NameHasOwner('com.Skype.API')
+    if not skype_found:
+        sys.stderr.write('Cannot find Skype with DBus support. Please make sure Skype is running.')
+        sys.exit(2)
+
+    skype_service = session_bus.get_object('com.Skype.API', '/com/Skype')
+    result = skype_service.Invoke('Name %s' % app_name)
+    if result != 'OK':
+        sys.stderr.write('Connection refused.')
+        sys.exit(4)
+
+    result = skype_service.Invoke('PROTOCOL %d' % app_protocol)
+    if result != 'PROTOCOL %d' % app_protocol:
+        sys.stderr.write('Connection refused, cannot select the API protocol.')
+        sys.exit(8)
+
+    result = skype_service.Invoke('GET WINDOWSTATE')
+    if result != 'WINDOWSTATE NORMAL':
+        skype_service.Invoke('SET WINDOWSTATE NORMAL')
+
+    window_id_focused = check_output('xdotool getwindowfocus', shell=True)
+    window_id_skype = check_output('xdotool search --name "%s - Skype."' % skype_username, shell=True)
+
+    if window_id_focused == window_id_skype:
+        skype_service.Invoke('SET WINDOWSTATE HIDDEN')
+    else:
+        call('xdotool search --name "%s - Skype." windowactivate' % skype_username, shell=True)
+
+if __name__ == '__main__':
+    main(os.path.basename(sys.argv[0]))
