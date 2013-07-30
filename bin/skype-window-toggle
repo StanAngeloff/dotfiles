@@ -35,17 +35,28 @@ def main(app_name):
         sys.stderr.write('Connection refused, cannot select the API protocol.')
         sys.exit(8)
 
-    result = skype_service.Invoke('GET WINDOWSTATE')
-    if result != 'WINDOWSTATE NORMAL':
-        skype_service.Invoke('SET WINDOWSTATE NORMAL')
-
-    window_id_focused = check_output('xdotool getwindowfocus', shell=True)
-    window_id_skype = check_output('xdotool search --name "%s - Skype."' % skype_username, shell=True)
-
-    if window_id_focused == window_id_skype:
-        skype_service.Invoke('SET WINDOWSTATE HIDDEN')
+    result = skype_service.Invoke('SEARCH MISSEDCHATS')[6:]
+    # If there are missed chat messages, display them instead of the Contacts window.
+    if len(result):
+        missed_chats = result.split(', ')
+        # Display the first message for now, we will add a pick dialogue soon.
+        chat_id = missed_chats[0]
+        # The result is 'CHAT %s FRIENDLYNAME ... | ...'
+        window_friendly_name = skype_service.Invoke('GET CHAT %s FRIENDLYNAME' % chat_id)[5 + len(chat_id) + 14:].split(' | ')[0]
+        skype_service.Invoke('OPEN CHAT %s' % chat_id)
+        call('xdotool search --name "%s - Skype." windowactivate' % window_friendly_name, shell=True)
     else:
-        call('xdotool search --name "%s - Skype." windowactivate' % skype_username, shell=True)
+        result = skype_service.Invoke('GET WINDOWSTATE')
+        if result != 'WINDOWSTATE NORMAL':
+            skype_service.Invoke('SET WINDOWSTATE NORMAL')
+
+        window_id_focused = check_output('xdotool getwindowfocus', shell=True)
+        window_id_skype = check_output('xdotool search --name "%s - Skype."' % skype_username, shell=True)
+
+        if window_id_focused == window_id_skype:
+            skype_service.Invoke('SET WINDOWSTATE HIDDEN')
+        else:
+            call('xdotool search --name "%s - Skype." windowactivate' % skype_username, shell=True)
 
 if __name__ == '__main__':
     main(os.path.basename(sys.argv[0]))
