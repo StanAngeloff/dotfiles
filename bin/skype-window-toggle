@@ -54,6 +54,8 @@ def main(app_name):
         window_id_skype = check_output('xdotool search --name "%s - Skype."' % skype_username, shell=True)
 
         if window_id_focused == window_id_skype:
+            # Cancel any on-going operation, e.g., a contact search.
+            check_output('xdotool search --name "%s - Skype." key Escape Escape' % skype_username, shell=True)
             skype_service.Invoke('SET WINDOWSTATE HIDDEN')
         else:
             call('xdotool search --name "%s - Skype." windowactivate' % skype_username, shell=True)
