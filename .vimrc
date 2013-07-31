@@ -364,6 +364,9 @@ vnoremap gk 8gk
 " Unix timestamp.
 inoremap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 
+" Quickly create a { .. } block.
+inoremap {<CR>} {<CR>}<C-O>O
+
 " Copy entire buffer to X clipboard.
 nnoremap <leader>= mZggVG"+y`Z
 
