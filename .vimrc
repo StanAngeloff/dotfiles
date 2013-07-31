@@ -51,7 +51,9 @@ set completeopt-=preview
 set modeline
 set modelines=5    " Default numbers of lines to read for modeline instructions.
 
-set nospell        " Turn off spell checking by default
+set spell " Turn on spell checking by default
+set spellfile=$HOME/.vim/spell/en.utf-8.add
+set spelllang=en
 
 set scrolloff=120  " Scroll when lots of lines from edge of screen. Bigger numbers work better with ':help rnu'.
 set rnu            " Show the line number relative to the line with the cursor in front of each line.
@@ -444,6 +446,13 @@ if has('autocmd')
             \ | augroup END
           \ | endif
         \ | endfor
+
+  " Update spell checking to ignore Interface names, $variables, @docblock tags and @Annotations.
+  autocmd BufRead,BufNewFile * syn match SpellIgnoreInterfaces /\<\w\+Interface\>/ contains=@NoSpell transparent
+        \ | syn match SpellIgnoreVariables /\<\$\w\+\>/ contains=@NoSpell transparent
+        \ | syn match SpellIgnoreDocBlocks /@\([A-Z]\w\+\|param\)\>/ contains=@NoSpell transparent
+        \ | syn cluster Spell add=SpellIgnoreInterfaces,SpellIgnoreVariables,SpellIgnoreDocBlocks
+
 endif
 
 " Vundle, the plug-in manager for Vim.

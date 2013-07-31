@@ -59,6 +59,10 @@
 !.vim/snippets/*/
 !.vim/snippets/*/*.snippet
 
+# Vim: Spelling dictionaries.
+!.vim/spell/
+!.vim/spell/*.add
+
 # Zsh scripts.
 !.zsh/scripts/
 !.zsh/scripts/*
