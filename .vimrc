@@ -254,6 +254,18 @@ endfunction
 
 nnoremap <expr> <leader>f FindClosest()
 
+" Choose '^' or '0' depending on the cursor position.
+function! CleverJumpFirst()
+  let l:before = getline('.')[:col('.') - 1]
+  if l:before =~ '^\s\+\S$'
+    return '0'
+  endif
+  return '^'
+endfunction
+
+nnoremap <expr> 0 CleverJumpFirst()
+vnoremap <expr> 0 CleverJumpFirst()
+
 " Q for 'Q'uit, 'Ex' mode has received zero use.
 nnoremap <silent> Q ZZ
 vnoremap <silent> Q <Esc>ZZ
