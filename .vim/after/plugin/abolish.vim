@@ -18,3 +18,4 @@ Abolish fun function
 " Common misspellings
 Abolish eixt exit
 Abolish pritn print
+Abolish retrun return
