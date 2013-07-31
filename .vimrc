@@ -266,6 +266,9 @@ endfunction
 nnoremap <expr> 0 CleverJumpFirst()
 vnoremap <expr> 0 CleverJumpFirst()
 
+" Make $ behave consistently in visual mode.
+vnoremap $ $h
+
 " Q for 'Q'uit, 'Ex' mode has received zero use.
 nnoremap <silent> Q ZZ
 vnoremap <silent> Q <Esc>ZZ
