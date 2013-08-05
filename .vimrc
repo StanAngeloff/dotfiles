@@ -330,7 +330,7 @@ nnoremap / :call FastFingersSearch()<CR>/
 nnoremap ? :call FastFingersSearch()<CR>?
 
 " Turn off active highlighting keyboard binding.
-nnoremap <silent> <leader><Space> :noh<CR>:sign unplace *<CR>
+nnoremap <silent> <leader><Space> :noh<CR>:sign unplace *<CR>:SyntasticReset<CR>
 
 " Toggle spell-checking keyboard binding.
 noremap <silent> <F1> :set nospell! nospell?<CR>
