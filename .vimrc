@@ -286,7 +286,7 @@ inoremap <C-R> <C-G>u<C-R>
 " Quick tab creation and navigation.
 nnoremap <leader>tn :tabnew<CR>
 nnoremap <leader>tm :tabmove
-nnoremap <leader>te :tabedit 
+nnoremap <expr> <leader>te ':tabedit '
 
 nnoremap <silent> <C-J> gt
 nnoremap <silent> <C-K> gT
@@ -320,7 +320,7 @@ function! FastFingersSearch()
 
   augroup FastFingers
     autocmd CursorHold *
-          \ exe 'set ut=' . g:FastFingersUpdateTime | 
+          \ exe 'set ut=' . g:FastFingersUpdateTime |
           \ if getline(".") =~ g:FastFingersNERDTreeClosed | call feedkeys('o', 'm') | endif |
           \ augroup FastFingers | execute "autocmd!" | augroup END | augroup! FastFingers
   augroup END
