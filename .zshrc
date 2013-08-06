@@ -39,7 +39,7 @@ function _user_hostname_prompt() {
 function _root_prompt() {
   if [ $UID -eq 0 ]; then echo "%{$fg[white]%}#%{$reset_color%}"; fi
 }
-export PROMPT="$(_user_hostname_prompt)%{$fg[white]%}%{$reset_color%}%{$fg[yellow]%}%(!.%1~.%~)%{$reset_color%}$(_root_prompt) ➜ " # format is 'login-name@machine-name ➜ cwd #'
+export PROMPT="$(_user_hostname_prompt)%{$fg[white]%}%{$reset_color%}%{$fg[yellow]%}%(!.%1~.%~)%{$reset_color%}$(_root_prompt) %(?:➜:×) " # format is 'login-name@machine-name ➜ cwd #'
 
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
