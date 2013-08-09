@@ -61,6 +61,10 @@ set rnu            " Show the line number relative to the line with the cursor i
 set lazyredraw     " Do not redraw while running macros (much faster).
 set ttyfast        " Enable fast-terminal.
 
+if exists('&regexpengine')
+  set regexpengine=1 " Use the old engine which seems faster in most cases.
+endif
+
 set wildmenu                   " Show possible matches when <Tab> is pressed.
 set wildmode=list:longest,full " Include possible matches from these groups.
 set novisualbell               " Disable annoying sounds and use visual feedback instead.
