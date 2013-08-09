@@ -61,7 +61,7 @@
 
 # Vim: Spelling dictionaries.
 !.vim/spell/
-!.vim/spell/*.add
+!.vim/spell/.gitignore
 
 # Zsh scripts.
 !.zsh/scripts/
