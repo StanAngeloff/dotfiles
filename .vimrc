@@ -554,6 +554,8 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 " Free up '?' for reverse search.
 let NERDTreeMapHelp = 'H'
+" Don't ask if buffers should be deleted on rename.
+let NERDTreeAutoDeleteBuffer=1
 
 " ---------------------------------------------------------------------------
 
