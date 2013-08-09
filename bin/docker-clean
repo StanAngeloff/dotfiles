@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 # See http://stackoverflow.com/a/17237701
-docker ps -a | grep 'Exit' | awk '{ print $1; }' | xargs -r docker rm
+sudo docker ps -a | grep 'Exit' | awk '{ print $1; }' | xargs -r sudo docker rm
