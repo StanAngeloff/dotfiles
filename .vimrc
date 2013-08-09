@@ -72,6 +72,7 @@ set noerrorbells               " Disable more annoying noise.
 set laststatus=2               " Always display a status line.
 set formatoptions=qrn1lo       " Format comments, numbered-lists, one-letter words.
 set shortmess=aoOtTAI          " Keep UI notices to a minimum.
+set nojoinspaces               " Don't be clever when joining lines.
 
 set guioptions=                " No GUI.
 set showtabline=2              " The line with tab page labels will be displayed always.
