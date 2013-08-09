@@ -8,11 +8,7 @@ alias g='git'
 
 # Open Vim tabs for each argument or the current working directory if none were given.
 v() {
-  if [ $# -gt 0 ]; then
-    vim -p "$@"
-  else
-    vim .
-  fi
+  vim -p "$@"
 }
 
 # Directory listing.
