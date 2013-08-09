@@ -734,7 +734,7 @@ Bundle 'jistr/vim-nerdtree-tabs'
 let g:nerdtree_tabs_open_on_new_tab=0
 let g:nerdtree_tabs_focus_on_files=1
 
-nnoremap <silent> <Tab> :NERDTreeMirrorToggle<CR>
+nnoremap <silent><expr> <Tab> exists('b:NERDTreeType') ? ':NERDTreeMirrorToggle<CR>' : ':NERDTreeFocus<CR>'
 
 " Make sure a NERDTree instance is mirrored for all tabs.
 " This is needed as if the buffer with the only NERDTree instance is closed,
