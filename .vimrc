@@ -547,6 +547,7 @@ Bundle 'scrooloose/nerdtree'
 let NERDTreeChDirMode=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
+let NERDTreeWinSize=48
 let NERDTreeIgnore=['\~$', '\.pyc$', '^.sass-cache$']
 let NERDTreeMapJumpNextSibling=''
 let NERDTreeMapJumpPrevSibling=''
@@ -713,3 +714,12 @@ Bundle 'elzr/vim-json'
 " ---------------------------------------------------------------------------
 
 Bundle 'jnwhiteh/vim-golang'
+
+" ---------------------------------------------------------------------------
+
+Bundle 'jistr/vim-nerdtree-tabs'
+
+let g:nerdtree_tabs_open_on_new_tab=0
+let g:nerdtree_tabs_focus_on_files=1
+
+nnoremap <Tab> :NERDTreeMirrorToggle<CR>
