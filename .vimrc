@@ -296,6 +296,9 @@ nnoremap <expr> <leader>te ':tabedit '
 nnoremap <silent> <C-J> gt
 nnoremap <silent> <C-K> gT
 
+" Quick window navigation.
+nnoremap <silent> <S-Tab> <C-W><C-W>
+
 " Reformat a paragraph in NORMAL mode.
 nnoremap <leader>q gqip
 " Restore last implicit selection (e.g., on paste) in VISUAL mode.
