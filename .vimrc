@@ -510,6 +510,13 @@ endfunction
 
 inoremap <silent> <Tab> <C-R>=UltiSnipsComplete()<CR>
 
+" Use <C-{J,K}> for navigating the popup menu, if visible. Otherwise, delegate to UltiSnips.
+inoremap <expr> <C-J> pumvisible() ? "\<C-N>" : '<C-R>=UltiSnips_JumpForwards()<CR>'
+inoremap <expr> <C-K> pumvisible() ? "\<C-P>" : '<C-R>=UltiSnips_JumpBackwards()<CR>'
+
+snoremap <C-J> <Esc>:call UltiSnips_JumpForwards()<CR>
+snoremap <C-K> <Esc>:call UltiSnips_JumpBackwards()<CR>
+
 " ---------------------------------------------------------------------------
 
 Bundle 'othree/html5.vim'
@@ -616,13 +623,6 @@ let g:SuperTabMappingForward='<nul>'
 let g:SuperTabMappingBackward='<s-nul>'
 let g:SuperTabLongestEnhanced=1
 let g:SuperTabLongestHighlight=1
-
-" Use <C-{J,K}> for navigating the popup menu, if visible. Otherwise, delegate to UltiSnips.
-inoremap <expr> <C-J> pumvisible() ? "\<C-N>" : '<C-R>=UltiSnips_JumpForwards()<CR>'
-inoremap <expr> <C-K> pumvisible() ? "\<C-P>" : '<C-R>=UltiSnips_JumpBackwards()<CR>'
-
-snoremap <C-J> <Esc>:call UltiSnips_JumpForwards()<CR>
-snoremap <C-K> <Esc>:call UltiSnips_JumpBackwards()<CR>
 
 " ---------------------------------------------------------------------------
 
