@@ -339,13 +339,6 @@ nnoremap <leader>w<Space> :setlocal expandtab<CR>
 " Evaluate block as expression
 vnoremap <C-R> "ac<C-R>=<C-R>a<CR><Esc>vbo
 
-" Faster navigation when performing code reads.
-nnoremap gj 8gj
-nnoremap gk 8gk
-
-vnoremap gj 8gj
-vnoremap gk 8gk
-
 " Snippets keyboard bindings.
 " Unix timestamp.
 inoremap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
