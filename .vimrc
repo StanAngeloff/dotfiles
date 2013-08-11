@@ -302,7 +302,7 @@ nnoremap <silent> <S-Tab> <C-W><C-W>
 " Reformat a paragraph in NORMAL mode.
 nnoremap <leader>q gqip
 " Restore last implicit selection (e.g., on paste) in VISUAL mode.
-nnoremap <leader>v `[V`]o
+nnoremap <leader>v g`[Vg`]o
 
 " Erase trailing whitespace function and keyboard binding.
 function! StripTrailingWhitespace()
@@ -354,13 +354,13 @@ inoremap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 inoremap {}<CR> {<CR>}<C-O>O
 
 " Copy entire buffer to X clipboard.
-nnoremap <leader>= mZggVG"+y`Z
+nnoremap <leader>= mZggVG"+yg`Z
 
 " Open tag under cursor in a new tab.
 nnoremap <leader>] <C-w><C-]><C-w>T
 
 " Sort inside a paragraph.
-nnoremap <silent> <leader>sip mZvip:sort<CR>`Z:echo (line("'>") - line("'<") + 1) . ' line(s) sorted'<CR>
+nnoremap <silent> <leader>sip mZvip:sort<CR>g`Z:echo (line("'>") - line("'<") + 1) . ' line(s) sorted'<CR>
 
 " Write using `sudo` in COMMAND mode if the file is read-only.
 cnoremap w!! w !sudo tee % >/dev/null
