@@ -524,9 +524,30 @@ endfunction
 
 inoremap <silent> <Tab> <C-R>=UltiSnipsComplete()<CR>
 
-" Use <C-{J,K}> for navigating the popup menu, if visible. Otherwise, delegate to UltiSnips.
-inoremap <expr> <C-J> pumvisible() ? "\<C-N>" : '<C-R>=UltiSnips_JumpForwards()<CR>'
-inoremap <expr> <C-K> pumvisible() ? "\<C-P>" : '<C-R>=UltiSnips_JumpBackwards()<CR>'
+" Use <C-{J,K}> for navigating the popup menu, if visible.
+" Otherwise, delegate to UltiSnips. If that fails, jump lines.
+let g:UltiSnipsPreviousPosition = [0, 0, 0]
+
+function! UltiSnipsDidJump(navigation_mode)
+  let l:position = getpos('.')
+  if g:UltiSnipsPreviousPosition[0] == l:position[0]
+\ && g:UltiSnipsPreviousPosition[1] == l:position[1]
+\ && g:UltiSnipsPreviousPosition[2] == l:position[2]
+    return "\<C-O>" . a:navigation_mode
+  endif
+  return ''
+endfunction
+
+function! UltiSnipsJump(jump_mode, ultisnips_mode, navigation_mode)
+  if pumvisible()
+    return a:jump_mode
+  endif
+  let g:UltiSnipsPreviousPosition = getpos('.')
+  return "\<C-R>=UltiSnips_Jump" . a:ultisnips_mode . "()\<CR>\<C-R>=UltiSnipsDidJump('" . a:navigation_mode . "')\<CR>"
+endfunction
+
+inoremap <expr> <C-J> UltiSnipsJump("\<C-N>", 'Forwards', 'gj')
+inoremap <expr> <C-K> UltiSnipsJump("\<C-P>", 'Backwards', 'gk')
 
 snoremap <C-J> <Esc>:call UltiSnips_JumpForwards()<CR>
 snoremap <C-K> <Esc>:call UltiSnips_JumpBackwards()<CR>
