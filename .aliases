@@ -17,3 +17,5 @@ alias ..='cd ..'
 
 # Super-User operation.
 alias _='sudo'
+
+alias docker='sudo docker'
