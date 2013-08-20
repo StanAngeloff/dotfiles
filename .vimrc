@@ -450,8 +450,8 @@ if has('autocmd')
           \ | endif
         \ | endfor
 
-  " Update spell checking to ignore Interface names, $variables, @docblock tags and @Annotations.
-  autocmd BufRead,BufNewFile * syn match SpellIgnoreInterfaces /\<\w\+Interface\>/ contains=@NoSpell transparent
+  " Update spell checking to ignore class names, $variables, @docblock tags and @Annotations.
+  autocmd BufRead,BufNewFile * syn match SpellIgnoreInterfaces /\<\(\(Abstract\)\w\+\|\w\+\(Interface\|Controller\|Trait\|Bundle\|Repository\)\)\>/ contains=@NoSpell transparent
         \ | syn match SpellIgnoreVariables /\<\$\w\+\>/ contains=@NoSpell transparent
         \ | syn match SpellIgnoreDocBlocks /@\([A-Z]\w\+\|param\)\>/ contains=@NoSpell transparent
         \ | syn cluster Spell add=SpellIgnoreInterfaces,SpellIgnoreVariables,SpellIgnoreDocBlocks
