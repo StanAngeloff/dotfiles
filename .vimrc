@@ -566,7 +566,7 @@ let g:FastFingersSpeed = 100
 let g:FastFingersUpdateTime = &ut
 let g:FastFingersNERDTreeClosed = '^\s*▸.*\/$'
 
-function! FastFingersSearch()
+function! FastFingersSearch(mode)
 
   " Lower the update time so our 'CursorHold' code fires immediately after the search.
   if &ut > g:FastFingersSpeed | let g:FastFingersUpdateTime = &ut | let &ut = g:FastFingersSpeed | endif
@@ -577,10 +577,12 @@ function! FastFingersSearch()
           \ if getline(".") =~ g:FastFingersNERDTreeClosed | call feedkeys('o', 'm') | endif |
           \ augroup FastFingers | execute "autocmd!" | augroup END | augroup! FastFingers
   augroup END
+
+  return a:mode
 endfunction
 
-nnoremap / :call FastFingersSearch()<CR>/
-nnoremap ? :call FastFingersSearch()<CR>?
+nnoremap <expr> / FastFingersSearch('/')
+nnoremap <expr> ? FastFingersSearch('?')
 
 " Reveal the current file in NERDTree.
 autocmd VimEnter * call NERDTreeAddKeyMap({
