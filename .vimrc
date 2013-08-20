@@ -75,7 +75,6 @@ set shortmess=aoOtTAI          " Keep UI notices to a minimum.
 set nojoinspaces               " Don't be clever when joining lines.
 
 set guioptions=                " No GUI.
-set showtabline=2              " The line with tab page labels will be displayed always.
 set hlsearch                   " Highlight the last used search pattern.
 set cursorline!                " Highlight line under cursor.
 
@@ -287,14 +286,42 @@ inoremap <C-W> <C-G>u<C-W>
 
 " Start a new Undo group before pasting in INSERT mode.
 inoremap <C-R> <C-G>u<C-R>
-
 " Quick tab creation and navigation.
 nnoremap <leader>tn :tabnew<CR>
 nnoremap <leader>tm :tabmove
 nnoremap <expr> <leader>te ':tabedit '
 
-nnoremap <silent> <C-J> gt
-nnoremap <silent> <C-K> gT
+" Tab navigation
+set showtabline=0
+
+let g:ChangeTabPageIsWaiting=0
+let g:ChangeTabPageSpeed=1250
+let g:ChangeTabPageUpdateTime = &ut
+
+function! ChangeTabPage(mode)
+  set showtabline=2
+
+  if !g:ChangeTabPageIsWaiting
+    let g:ChangeTabPageIsWaiting=1
+
+    " Change the update time so our 'CursorHold' code fires after the required time.
+    if &ut > g:ChangeTabPageSpeed | let g:ChangeTabPageUpdateTime = &ut | let &ut = g:ChangeTabPageSpeed | endif
+
+    " Hide the tabline after the time has passed.
+    augroup ChangeTabPage
+      autocmd CursorHold *
+            \ exe 'set ut=' . g:ChangeTabPageUpdateTime |
+            \ set showtabline=0 | let g:ChangeTabPageIsWaiting=0 |
+            \ augroup ChangeTabPage | execute "autocmd!" | augroup END | augroup! ChangeTabPage
+    augroup END
+  endif
+
+  return a:mode
+endfunction
+
+nnoremap <expr> <C-J> ChangeTabPage('gt')
+nnoremap <expr> <C-K> ChangeTabPage('gT')
+nnoremap <expr> <C-G> ChangeTabPage('<C-G>')
 
 " Quick window navigation.
 nnoremap <silent> <S-Tab> <C-W><C-W>
