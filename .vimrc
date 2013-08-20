@@ -637,15 +637,6 @@ Bundle 'tpope/vim-unimpaired'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType='<C-X><C-U>'
-let g:SuperTabMappingForward='<nul>'
-let g:SuperTabMappingBackward='<s-nul>'
-let g:SuperTabLongestEnhanced=1
-let g:SuperTabLongestHighlight=1
-
-" ---------------------------------------------------------------------------
-
 Bundle 'StanAngeloff/php.vim'
 Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'phpfolding.vim'
