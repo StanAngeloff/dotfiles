@@ -6,10 +6,8 @@ alias Q='exit'
 # Quick commands access.
 alias g='git'
 
-# Open Vim tabs for each argument or the current working directory if none were given.
-v() {
-  vim -p "$@"
-}
+# Open Vim tabs for each argument.
+alias v='vim -p'
 
 # Directory listing.
 alias ll='ls -hal --color=tty'
