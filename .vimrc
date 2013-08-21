@@ -294,34 +294,36 @@ nnoremap <expr> <leader>te ':tabedit '
 " Tab navigation
 set showtabline=0
 
-let g:ChangeTabPageIsWaiting=0
-let g:ChangeTabPageSpeed=1250
-let g:ChangeTabPageUpdateTime = &ut
+let g:ShowTabLineIsShowing=0
+let g:ShowTabLineDuration=1250
+let g:ShowTabLineUpdateTime = &ut
 
-function! ChangeTabPage(mode)
+function! ShowTabLine()
   set showtabline=2
 
-  if !g:ChangeTabPageIsWaiting
-    let g:ChangeTabPageIsWaiting=1
+  if !g:ShowTabLineIsShowing
+    let g:ShowTabLineIsShowing=1
 
     " Change the update time so our 'CursorHold' code fires after the required time.
-    if &ut > g:ChangeTabPageSpeed | let g:ChangeTabPageUpdateTime = &ut | let &ut = g:ChangeTabPageSpeed | endif
+    if &ut > g:ShowTabLineDuration | let g:ShowTabLineUpdateTime = &ut | let &ut = g:ShowTabLineDuration | endif
 
     " Hide the tabline after the time has passed.
-    augroup ChangeTabPage
+    augroup HideTabLine
       autocmd CursorHold *
-            \ exe 'set ut=' . g:ChangeTabPageUpdateTime |
-            \ set showtabline=0 | let g:ChangeTabPageIsWaiting=0 |
-            \ augroup ChangeTabPage | execute "autocmd!" | augroup END | augroup! ChangeTabPage
+            \ exe 'set ut=' . g:ShowTabLineUpdateTime |
+            \ set showtabline=0 | let g:ShowTabLineIsShowing=0 |
+            \ augroup HideTabLine | execute "autocmd!" | augroup END | augroup! HideTabLine
     augroup END
   endif
-
-  return a:mode
 endfunction
 
-nnoremap <expr> <C-J> ChangeTabPage('gt')
-nnoremap <expr> <C-K> ChangeTabPage('gT')
-nnoremap <expr> <C-G> ChangeTabPage('<C-G>')
+if has('autocmd')
+  au TabEnter * call ShowTabLine()
+endif
+
+nnoremap <silent> <C-J> gt
+nnoremap <silent> <C-K> gT
+nnoremap <silent> <C-G> :call ShowTabLine()<CR><C-G>
 
 " Quick window navigation.
 nnoremap <silent> <S-Tab> <C-W><C-W>
