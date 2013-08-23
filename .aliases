@@ -19,3 +19,4 @@ alias ..='cd ..'
 alias _='sudo'
 
 alias docker='sudo docker'
+alias apt-get='sudo apt-get'
