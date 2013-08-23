@@ -31,6 +31,8 @@ set ignorecase " Lowercase matches all.
 set smartcase  " Uppercase matches uppercase only.
 set infercase  " Adjust case of match depending on the typed text.
 
+set showtabline=2
+
 set backspace=indent,eol,start " Backspace wraps at start- and end-of-line.
 set tabstop=2                  " Default number of spaces per tab character.
 set softtabstop=2              " Tab size during editing operation.
@@ -292,38 +294,8 @@ nnoremap <leader>tm :tabmove
 nnoremap <expr> <leader>te ':tabedit '
 
 " Tab navigation
-set showtabline=0
-
-let g:ShowTabLineIsShowing=0
-let g:ShowTabLineDuration=1250
-let g:ShowTabLineUpdateTime = &ut
-
-function! ShowTabLine()
-  set showtabline=2
-
-  if !g:ShowTabLineIsShowing
-    let g:ShowTabLineIsShowing=1
-
-    " Change the update time so our 'CursorHold' code fires after the required time.
-    if &ut > g:ShowTabLineDuration | let g:ShowTabLineUpdateTime = &ut | let &ut = g:ShowTabLineDuration | endif
-
-    " Hide the tabline after the time has passed.
-    augroup HideTabLine
-      autocmd CursorHold *
-            \ exe 'set ut=' . g:ShowTabLineUpdateTime |
-            \ set showtabline=0 | let g:ShowTabLineIsShowing=0 |
-            \ augroup HideTabLine | execute "autocmd!" | augroup END | augroup! HideTabLine
-    augroup END
-  endif
-endfunction
-
-if has('autocmd')
-  au TabEnter * call ShowTabLine()
-endif
-
 nnoremap <silent> <C-J> gt
 nnoremap <silent> <C-K> gT
-nnoremap <silent> <C-G> :call ShowTabLine()<CR><C-G>
 
 " Quick window navigation.
 nnoremap <silent> <S-Tab> <C-W><C-W>
