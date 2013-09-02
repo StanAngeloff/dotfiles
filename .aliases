@@ -15,8 +15,9 @@ alias ll='ls -hal --color=tty'
 # Basic directory operations.
 alias ..='cd ..'
 
-# Super-User operation.
+# Super-User operations.
 alias _='sudo'
 
-alias docker='sudo docker'
-alias apt-get='sudo apt-get'
+for __cmd in apt-get docker service; do
+  eval "alias $__cmd='_ $__cmd'"
+done ; unset __cmd
