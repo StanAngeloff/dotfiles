@@ -47,6 +47,7 @@
 	fr = flow release
 	l  = log       --graph        --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
 	la = log --all --graph --tags --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
+	rp = !bash -c 'git rev-parse --symbolic-full-name --abbrev-ref=strict "${1:-HEAD}" "${@:2}"' -
 	s  = status -sb
 	sf = !sh -c 'git show --pretty="format:" --name-only "$@" | grep -v "^$" | sort -u' -
 	sl = stash list
