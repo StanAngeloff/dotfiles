@@ -53,6 +53,7 @@
 	sl = stash list
 	sp = stash pop
 	su = submodule update --init --recursive
+	ig = !git ls-files -v | grep "^[[:lower:]]"
 
 [push]
 	default = nothing # ${pushDefault}
