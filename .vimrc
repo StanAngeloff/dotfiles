@@ -649,12 +649,14 @@ let g:ctrlp_highlight_match=[1, 'Search']
 let g:ctrlp_max_files=64000
 let g:ctrlp_max_depth=24
 let g:ctrlp_cache_dir='/tmp/.ctrlp'
-let g:ctrlp_custom_ignore = {
-  \ 'dir': '[\/]\(\.\(git\|hg\|svn\|sass-cache\)\|components\|node_modules\|vendor\)$',
-  \ }
 
 nnoremap <silent> <leader>o :<C-U>CtrlPCurWD<CR>
 nnoremap <silent> <leader>b :<C-U>CtrlPBufTag<CR>
+
+if executable('ag')
+  " Use 'ag' in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l -g "" --hidden --nocolor'
+endif
 
 " ---------------------------------------------------------------------------
 
