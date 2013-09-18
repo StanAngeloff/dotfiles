@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+set -e
+set -o pipefail
+
 search() {
   local search_locale
   local search_query
@@ -9,7 +12,7 @@ search() {
   local temporary
 
   if [ $# -lt 1 ]; then
-    echo 'Usage: '"${0}"' PATTERN [+EXTENSION...] [-EXTENSION...] PATH [OPTIONS...]' 1>&2
+    echo 'Usage: '"$( basename "$0" )"' PATTERN [+EXTENSION...] [-EXTENSION...] [!DIRECTORY...] [PATH] [OPTIONS...]' 1>&2
     return 1
   fi
 
@@ -36,10 +39,18 @@ search() {
   done
 
   # Directory (path) to search always comes last.
+  # The current working directory is stripped to shorten file paths in output.
   if [ $# -gt 0 ]; then
     search_path="$1"
+    if [ ! -d "$search_path" ]; then
+      echo "$( basename "$0" ): no such directory: ${search_path}" 1>&2
+      return 2
+    fi
     shift
+  else
+    search_path="${PWD}"
   fi
+  search_path="${search_path/#${PWD}/.}"
 
   # > Using LC_CTYPE=POSIX instead of UTF-8 speeds up my grep by a factor of 27.
   # > Log file greppers of the world, take note.
@@ -59,6 +70,7 @@ search() {
     --color=always              \
     --line-number               \
     --binary-file=without-match \
+    --extended-regexp           \
         --exclude='.tags'       \
     --exclude-dir='.git'        \
     --exclude-dir='.hg'         \
@@ -67,9 +79,8 @@ search() {
     "$search_args"              \
     \"\$@\"                     \
     \"\$search_query\"          \
-    \"\${search_path:-.}\"      \
-    2>/dev/null                 \
-  | less -iRS
+    \"\${search_path}\"         \
+  | less -iRSg
 }
 
 search "$@"
