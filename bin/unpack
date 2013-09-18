@@ -6,8 +6,8 @@ set -e
 # Idea from https://github.com/yomi322/config/blob/master/dot.zshrc
 
 if [ $# -lt 1 ]; then
-  echo 'Usage: '"$0"' FILE [DIRECTORY]' >/dev/stderr
-  return 1
+  echo 'Usage: '"$( basename "$0" )"' FILE [DIRECTORY]' >/dev/stderr
+  exit 1
 fi
 
 file="$( readlink -f "$1" )"
@@ -23,8 +23,8 @@ case "$file" in
   *.gzip  | *.gz     ) command='gunzip'    ;;
   *.bzip2 | *.bz2    ) command='bunzip2'   ;;
   * )
-    echo "$0: Unsupported file format: $file" >/dev/stderr ;
-    return 2
+    echo "$( basename "$0" ): unsupported file format: $file" >/dev/stderr ;
+    exit 2
     ;;
 esac
 
