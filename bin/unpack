@@ -22,6 +22,7 @@ case "$file" in
   *.7z               ) command='7za x'     ;;
   *.gzip  | *.gz     ) command='gunzip'    ;;
   *.bzip2 | *.bz2    ) command='bunzip2'   ;;
+  *.sfx | *.rar      ) command='unrar e'   ;;
   * )
     echo "$( basename "$0" ): unsupported file format: $file" >/dev/stderr ;
     exit 2
