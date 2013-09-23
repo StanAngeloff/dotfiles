@@ -18,6 +18,6 @@ alias ..='cd ..'
 # Super-User operations.
 alias _='sudo'
 
-for __cmd in apt-get docker service; do
+for __cmd in apt-get docker service start stop status restart; do
   eval "alias $__cmd='_ $__cmd'"
 done ; unset __cmd
