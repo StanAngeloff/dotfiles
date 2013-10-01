@@ -8,6 +8,9 @@ let s:N2 = ['#000000', '#000000', 252, 240, '']
 let s:N3 = ['#000000', '#000000', 247, 236, '']
 
 let g:airline#themes#grey#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
+let g:airline#themes#grey#palette.normal_paste = {
+      \ 'airline_a': ['#000000', '#000000', 255, 9, ''],
+      \ }
 
 " INSERT
 let s:I1 = s:N1
