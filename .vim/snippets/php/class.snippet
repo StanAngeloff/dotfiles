@@ -2,6 +2,20 @@
 # <?php
 snippet class
 `!p
+# Create a 'use' statement for the class being tested.
+if snip.fn.endswith('Test.php'):
+	snip.rv = "use " + re.sub(
+		r'Test$', '', re.sub(
+			r'/', '\\\\', re.sub(
+				r'/Tests/', '/', re.sub(
+					r'.*src\/', '', os.path.splitext(path)[0]
+				)
+			)
+		)
+	) + ";\n\n" # !v substitute(, '\/', '\\', 'g')"
+else:
+	snip.rv = ""
+``!p
 # If the file is extending a built-in Exception, mark the class as final.
 if snip.fn.endswith('Exception.php') or snip.fn.endswith('Test.php'):
 	snip.rv = "final "
@@ -9,14 +23,14 @@ elif snip.fn.startswith('Abstract'):
 	snip.rv = "abstract "
 else:
 	snip.rv = ""
-`${1:`!p
+``!p
 if snip.fn.endswith('Interface.php'):
  snip.rv = "interface"
 elif snip.fn.endswith('Trait.php'):
  snip.rv = "trait"
 else:
  snip.rv = "class"
-`} `!v substitute(expand('%:t'), ('\.' . expand('%:e') . '$'), '', 'g')``!p
+` `!v substitute(expand('%:t'), ('\.' . expand('%:e') . '$'), '', 'g')``!p
 # Is the file extending a built-in Exception object?
 if snip.fn.endswith('Exception.php'):
 	snip.rv = " extends \\" + os.path.splitext(os.path.basename(snip.fn))[0]

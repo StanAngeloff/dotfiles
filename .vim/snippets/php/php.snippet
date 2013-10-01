@@ -7,7 +7,7 @@ snippet php
  * please view the LICENSE file that was distributed with this source code.
  */
 
-namespace `!v substitute(substitute(expand('%:h'), '\v.*src\/', '', ''), '\/', '\\', 'g')`;
+namespace `!p snip.rv = re.sub(r'.*src\/', '', os.path.dirname(path)).replace('/', '\\')`;
 
 
 endsnippet
