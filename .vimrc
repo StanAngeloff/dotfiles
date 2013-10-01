@@ -76,6 +76,8 @@ set formatoptions=qrn1lo       " Format comments, numbered-lists, one-letter wor
 set shortmess=aoOtTAI          " Keep UI notices to a minimum.
 set nojoinspaces               " Don't be clever when joining lines.
 
+set virtualedit=block          " Visual mode with bounds outside the actual text.
+
 set guioptions=                " No GUI.
 set hlsearch                   " Highlight the last used search pattern.
 set cursorline!                " Highlight line under cursor.
