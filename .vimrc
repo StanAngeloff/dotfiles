@@ -29,7 +29,7 @@ set showmode   " Display Vim mode, e.g., INSERT, REPLACE, etc.
 set incsearch  " Do incremental searching.
 set ignorecase " Lowercase matches all.
 set smartcase  " Uppercase matches uppercase only.
-set infercase  " Adjust case of match depending on the typed text.
+set noinfercase  " DO NOT adjust case of match/inserted text depending on context.
 
 set showtabline=2
 
