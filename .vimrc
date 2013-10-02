@@ -166,6 +166,9 @@ nnoremap <Return> :w<CR>
 vnoremap <Space> :
 vnoremap <Return> :<C-U>w<CR>gv
 
+" I mistype <C-[> often when trying to get out on INSERT mode and save the buffer, try and be helpful.
+imap [<CR> <Esc><Return>
+
 " God mode.
 noremap  <Up>    <NOP>
 inoremap <Up>    <NOP>
@@ -346,9 +349,6 @@ vnoremap <C-R> "ac<C-R>=<C-R>a<CR><Esc>vbo
 " Unix timestamp.
 inoremap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 
-" Quickly create a { .. } block.
-inoremap {}<CR> {<CR>}<C-O>O
-
 " Copy entire buffer to X clipboard.
 nnoremap <leader>= mZggVG"+yg`Z
 
@@ -522,8 +522,8 @@ function! UltiSnipsJump(jump_mode, ultisnips_mode, navigation_mode)
   return "\<C-R>=UltiSnips_Jump" . a:ultisnips_mode . "()\<CR>\<C-R>=UltiSnipsDidJump('" . a:navigation_mode . "')\<CR>"
 endfunction
 
-inoremap <expr> <C-J> UltiSnipsJump("\<C-N>", 'Forwards', 'gj')
-inoremap <expr> <C-K> UltiSnipsJump("\<C-P>", 'Backwards', 'gk')
+inoremap <expr> <C-J> UltiSnipsJump("\<C-N>", 'Forwards', 'o')
+inoremap <expr> <C-K> UltiSnipsJump("\<C-P>", 'Backwards', 'O')
 
 snoremap <C-J> <Esc>:call UltiSnips_JumpForwards()<CR>
 snoremap <C-K> <Esc>:call UltiSnips_JumpBackwards()<CR>
