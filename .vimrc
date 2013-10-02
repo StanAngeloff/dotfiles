@@ -47,8 +47,8 @@ set clipboard+=unnamed         " Yank to clipboard.
 
 " 'i' is avoided as it can be extremely slow on large trees.
 set complete-=i
-" The Preview/Scratch window is extremely annoying.
-set completeopt-=preview
+" Only complete the common part and always display a menu.
+set completeopt=longest,menuone
 
 set modeline
 set modelines=5    " Default numbers of lines to read for modeline instructions.
