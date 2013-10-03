@@ -1,13 +1,68 @@
 # vi: set ft=php :
 # <?php
 snippet throw
-throw new ${1:Runtime}Exception(
-	strtr(
-		'${2}.',
-		array(
-			$0
-		)
-	),
+throw new ${1:Runtime}Exception(`!p
+
+def f7(list):
+	seen = set()
+	return [x for x in list if x not in seen and not seen.add(x)]
+
+captures = f7(re.findall('{\w+}', t[2]))
+
+def print_capture(snip, c, i, part):
+	if c:
+		if i < len(c):
+			if part == "key":
+				snip >> 3
+				snip.rv += "\n"
+				snip.rv += snip.mkline("'" + c[i] + "' => ")
+			elif part == "value":
+				snip.rv = "null"
+			elif part == "end":
+				snip.rv = ","
+			return
+	snip.rv = ""
+
+if captures:
+	snip >> 1
+	snip.rv += "\n"
+	snip.rv += snip.mkline("strtr(")
+	snip.rv += "\n"
+	snip >> 1
+	snip.rv += snip.mkline("")
+else:
+	snip >> 1
+	snip.rv += "\n"
+	snip.rv += snip.mkline("")
+`'${2}.',`!p
+if captures:
+	snip >> 2
+	snip.rv += "\n"
+	snip.rv += snip.mkline("array(")
+	snip >> 1
+else:
+	snip.rv = ""
+``!p print_capture(snip, captures, 0, "key")`${3:`!p print_capture(snip, captures, 0, "value")`}`!p print_capture(snip, captures, 0, "end")
+``!p print_capture(snip, captures, 1, "key")`${4:`!p print_capture(snip, captures, 1, "value")`}`!p print_capture(snip, captures, 1, "end")
+``!p print_capture(snip, captures, 2, "key")`${5:`!p print_capture(snip, captures, 2, "value")`}`!p print_capture(snip, captures, 2, "end")
+``!p print_capture(snip, captures, 3, "key")`${6:`!p print_capture(snip, captures, 3, "value")`}`!p print_capture(snip, captures, 3, "end")
+``!p print_capture(snip, captures, 4, "key")`${7:`!p print_capture(snip, captures, 4, "value")`}`!p print_capture(snip, captures, 4, "end")
+``!p print_capture(snip, captures, 5, "key")`${8:`!p print_capture(snip, captures, 5, "value")`}`!p print_capture(snip, captures, 5, "end")
+``!p print_capture(snip, captures, 6, "key")`${9:`!p print_capture(snip, captures, 6, "value")`}`!p print_capture(snip, captures, 6, "end")
+``!p print_capture(snip, captures, 7, "key")`${10:`!p print_capture(snip, captures, 7, "value")`}`!p print_capture(snip, captures, 7, "end")
+``!p print_capture(snip, captures, 8, "key")`${11:`!p print_capture(snip, captures, 8, "value")`}`!p print_capture(snip, captures, 8, "end")
+``!p print_capture(snip, captures, 9, "key")`${12:`!p print_capture(snip, captures, 9, "value")`}`!p print_capture(snip, captures, 9, "end")
+``!p
+if captures:
+	snip >> 2
+	snip.rv += "\n"
+	snip.rv += snip.mkline(")")
+	snip << 1
+	snip.rv += "\n"
+	snip.rv += snip.mkline("),")
+else:
+	snip.rv = ""
+`
 	`date +%s`
-);
+);$0
 endsnippet
