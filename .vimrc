@@ -462,6 +462,20 @@ call vundle#rc()
 " Make broken SSL happy again
 let $GIT_SSL_NO_VERIFY='true'
 
+" Refactoring.
+
+let g:RefactorLength = 0
+
+function! RefactorExtractVariable()
+  augroup refactorComplete
+    autocmd InsertLeave * augroup refactorComplete | execute "autocmd!" | augroup END | augroup! refactorComplete |
+          \ exe "normal! mZ" | let g:RefactorLength = len(@.) | exe "normal! O\<C-R>. = \<C-R>\";" | exe "normal! `Z" | exe "normal! " . (g:RefactorLength - 1) . "\<Left>"
+  augroup END
+  return "c"
+endfunction
+
+vnoremap <expr> <leader>re RefactorExtractVariable()
+
 " ---------------------------------------------------------------------------
 
 Bundle 'gmarik/vundle'
