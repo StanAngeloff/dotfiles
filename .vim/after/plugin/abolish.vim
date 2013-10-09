@@ -19,3 +19,6 @@ Abolish fun function
 Abolish eixt exit
 Abolish pritn print
 Abolish retrun return
+
+" Lazy hands
+Abolish 4this $this
