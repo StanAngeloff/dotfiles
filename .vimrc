@@ -173,8 +173,8 @@ inoremap <expr> <C-N> pumvisible() ? '<C-N>' : '<C-N><C-R>=pumvisible() ? "\<lt>
 inoremap <expr> <C-P> pumvisible() ? '<C-P>' : '<C-P><C-R>=pumvisible() ? "\<lt>Up>" : ""<CR>'
 
 " When a special key is typed, if the pop-up menu is visible, complete the selected item first.
-for s:CompleteCloseKey in ['(', ')', ';', '-']
-  exe 'inoremap  <expr> ' . s:CompleteCloseKey . " pumvisible() ? '<C-Y>" . s:CompleteCloseKey . "' : '" . s:CompleteCloseKey . "'"
+for s:CompleteCloseKey in ['(', ')', '[', ']', '{', '}', ',', ';', '-', '<Space>']
+  exe 'imap  <expr> ' . s:CompleteCloseKey . " pumvisible() ? '<C-Y>" . s:CompleteCloseKey . "' : '" . s:CompleteCloseKey . "'"
 endfor
 
 " Alias <C-Space> to <C-N> in GUI/terminal.
