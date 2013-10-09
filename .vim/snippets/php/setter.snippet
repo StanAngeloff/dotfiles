@@ -2,15 +2,22 @@
 # <?php
 snippet setter
 /**
- * ${4}
+ * Set ${3}.
  *
- * @param ${3:`!p snip.rv = (t[2] if len(t[2]) else 'mixed')`} $`!p snip.rv = (t[1][0].lower() + t[1][1:] if t[1] else '')`
- * @return ${5:void}
+ * @param ${2:mixed} $`!p snip.rv = (t[1][0].lower() + t[1][1:] if t[1] else '')`
+ * @return ${4:void}
  */
-public function set${1:Property}(${2:mixed}`!p snip.rv = (' ' if len(t[2]) else '')`$`!p snip.rv = (t[1][0].lower() + t[1][1:] if t[1] else '')`)
+public function set${1:Property}(`!p
+
+if t[2] in ['bool', 'boolean', 'int', 'integer', 'float', 'double', 'real', 'string', 'object', 'mixed']:
+	snip.rv = ''
+else:
+	snip.rv = t[2] + ' '
+
+`$`!p snip.rv = (t[1][0].lower() + t[1][1:] if t[1] else '')`)
 {
 	$this->`!p snip.rv = (t[1][0].lower() + t[1][1:] if t[1] else '')` = $`!p snip.rv = (t[1][0].lower() + t[1][1:] if t[1] else '')`;`!p snip.rv = """
-		return $this;""" if ('self' == t[5]) else ''
+		return $this;""" if ('self' == t[4]) else ''
 `
 }$0
 endsnippet

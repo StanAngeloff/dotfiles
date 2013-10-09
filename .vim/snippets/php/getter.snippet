@@ -2,11 +2,11 @@
 # <?php
 snippet getter
 /**
- * ${2}
+ * Get ${3}.
  *
- * @return ${3:mixed}
+ * @return ${2:mixed}
  */
-public function get${1:Property}()
+public function `!p snip.rv = ('is' if t[2] in ['bool', 'boolean'] else 'get')`${1:Property}()
 {
 	return $this->`!p snip.rv = (t[1][0].lower() + t[1][1:] if t[1] else '')`;
 }$0
