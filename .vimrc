@@ -166,6 +166,27 @@ nnoremap <Return> :w<CR>
 vnoremap <Space> :
 vnoremap <Return> :<C-U>w<CR>gv
 
+" IDE goodness.
+
+" When using <C-{N,P}>, always select the {first,last} item in the pop-up menu.
+inoremap <expr> <C-N> pumvisible() ? '<C-N>' : '<C-N><C-R>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <C-P> pumvisible() ? '<C-P>' : '<C-P><C-R>=pumvisible() ? "\<lt>Up>" : ""<CR>'
+
+" When a special key is typed, if the pop-up menu is visible, complete the selected item first.
+for s:CompleteCloseKey in ['(', ')', ';', '-']
+  exe 'inoremap  <expr> ' . s:CompleteCloseKey . " pumvisible() ? '<C-Y>" . s:CompleteCloseKey . "' : '" . s:CompleteCloseKey . "'"
+endfor
+
+" Alias <C-Space> to <C-N> in GUI/terminal.
+if has("gui_running")
+  imap <C-Space> <C-N>
+else
+  imap <Nul> <C-N>
+endif
+
+" If the pop-up menu is visible, close it without inserting a new line.
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<C-G>u\<CR>"
+
 " I mistype <C-[> often when trying to get out on INSERT mode and save the buffer, try and be helpful.
 imap [<CR> <Esc><Return>
 
