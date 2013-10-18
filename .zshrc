@@ -39,7 +39,19 @@ function _user_hostname_prompt() {
 function _root_prompt() {
   if [ $UID -eq 0 ]; then echo "%{$fg[white]%}#%{$reset_color%}"; fi
 }
-export PROMPT="$(_user_hostname_prompt)%{$fg[white]%}%{$reset_color%}%{$fg[yellow]%}%(!.%1~.%~)%{$reset_color%}$(_root_prompt) %(?:➜:×) " # format is 'login-name@machine-name ➜ cwd #'
+
+precmd() {
+  local jobs
+  # If there are suspended jobs, display the first argument of each command-line.
+  #
+  # See http://www.zsh.org/mla/users/2001/threads.html#00700
+  if [[ "${(k)jobstates[(r)*+*]}" -gt 0 ]]; then
+    jobs=' ['"${jobtexts[@]%% *}"']'
+  fi
+  psvar=( "$jobs" )
+}
+
+export PROMPT="$(_user_hostname_prompt)%{$fg[white]%}%{$reset_color%}%{$fg[yellow]%}%(!.%1~.%~)%{$reset_color%}$(_root_prompt)%{$fg[white]%}%1v%{$reset_color%} %(?:➜:×) " # format is 'login-name@machine-name ➜ cwd #'
 
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
