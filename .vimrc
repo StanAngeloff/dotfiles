@@ -200,54 +200,7 @@ inoremap <Left>  <NOP>
 noremap  <Right> <NOP>
 inoremap <Right> <NOP>
 
-noremap  : <NOP>
-vnoremap : <NOP>
-
-" Disallow repeatedly performing the same single-motion command, e.g., {jjj,kkk,hhhh,lll}, etc.
-let g:MovementPreviousKey = 'none'
-let g:MovementPreviousTime = reltime()
-let g:MovementPreviousRepeat = 0
-let g:MovementPauseDuration = &timeoutlen
-
-function! MovementKey(key)
-  let l:allow = 0
-  " If the previous key is different, allow immediately.
-  if g:MovementPreviousKey != a:key
-    " Reset the counter of how many times the previous key was repeated.
-    let g:MovementPreviousRepeat = 0
-    let l:allow = 1
-  else
-    " If we have not repeated the motion multiple times, allow immediately.
-    let g:MovementPreviousRepeat = g:MovementPreviousRepeat + 1
-    if g:MovementPreviousRepeat < 2
-      let l:allow = 1
-    else
-      " Allow only if more than the specified interval in milliseconds has passed since the last motion.
-      let l:ellapsed = str2float(reltimestr(reltime(g:MovementPreviousTime))) * 1000
-      let l:allow = (l:ellapsed >= g:MovementPauseDuration)
-      " If the specified interval has passed, reset the counter as well.
-      if l:allow
-        let g:MovementPreviousRepeat = 0
-      endif
-    endif
-  endif
-  " Record the motion and the time when it was performed.
-  let g:MovementPreviousKey = a:key
-  let g:MovementPreviousTime = reltime()
-  if !l:allow
-    " Negative reinforcement.
-    echohl WarningMsg | echo "WARN: Motion '" . a:key . "' already executed " . g:MovementPreviousRepeat . " time(s) within the last " . g:MovementPauseDuration . 'ms.' | echohl None
-  endif
-  return a:key
-endfunction
-
-for s:SingleMovementMode in ['n', 'v']
-  for s:SingleMovementKey in ['j', 'k', 'h', 'l', '-', '+', '<BS>', 'w', 'e', 'W', 'E', 'b', 'B']
-    exe s:SingleMovementMode . 'noremap <expr> ' . s:SingleMovementKey . " MovementKey('" . s:SingleMovementKey . "')"
-  endfor
-endfor
-
-" Find the closest occurence of a given character.
+" Find the closest occurrence of a given character.
 function! FindClosest()
   let l:inputCode = getchar()
   " If we received a numeric sequence, we have a character code.
