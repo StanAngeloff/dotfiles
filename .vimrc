@@ -103,37 +103,6 @@ set sessionoptions=blank,buffers,curdir,folds,tabpages,slash,unix " Session Hand
 
 set tags=.tags,./.tags,~/.vim/tags " Tags can be stored against a project, next to a file or globally.
 
-if has('statusline')
-  set statusline=                   " Clear the statusline, allow for rearranging parts.
-  set statusline+=%f                " Path to the file, as typed or relative to current directory.
-  set statusline+=%#errormsg#       " Change colour.
-  set statusline+=%{&ff!='unix'?'['.&ff.']':''} " Display a warning if fileformat isn't unix.
-  set statusline+=%*                " Reset colour to normal statusline colour.
-  set statusline+=%#errormsg#       " Change colour.
-  set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''} " Display a warning if file encoding isn't UTF-8.
-  set statusline+=%*                " Reset colour to normal statusline colour.
-  set statusline+=\ %y              " Filetype.
-  set statusline+=%([%R%M]%)        " Read-only (RO), modified (+) and unmodifiable (-) flags between braces.
-  set statusline+=%#StatusLineNC#%{&ff=='unix'?'':&ff.'\ format'}%* " Shows '!' if file format is not platform default.
-  set statusline+=%{'~'[&pm=='']}   " Shows a '~' if in patch-mode.
-  if exists('fugitive#statusline')
-    set statusline+=\ %{fugitive#statusline()} " Show Git info, via fugitive.git.
-  endif
-  set statusline+=%#error#          " Change colour.
-  set statusline+=%{&paste?'[paste]':''} " Display a warning if &paste is set.
-  set statusline+=%*                " Reset colour to normal statusline colour.
-  set statusline+=%=                " Right-align following items.
-  set statusline+=#%n               " Buffer number.
-  set statusline+=\ %l/%L,          " Current line number/total number of lines.
-  set statusline+=%c                " Column number.
-  set statusline+=%V                " -{virtual column number} (not displayed if equal to 'c').
-  set statusline+=\ %p%%            " Percentage of lines through the file%.
-  set statusline+=\                 " Trailing space.
-  if has('title')
-    set titlestring=%t%(\ [%R%M]%)
-  endif
-endif
-
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
