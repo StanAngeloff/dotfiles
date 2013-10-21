@@ -200,47 +200,6 @@ inoremap <Left>  <NOP>
 noremap  <Right> <NOP>
 inoremap <Right> <NOP>
 
-" Find the closest occurrence of a given character.
-function! FindClosest()
-  let l:inputCode = getchar()
-  " If we received a numeric sequence, we have a character code.
-  if l:inputCode !~ '^\d\+$'
-    return '\<NOP>'
-  endif
-  " Convert code to a single character using the current buffer encoding.
-  let l:character = nr2char(l:inputCode)
-  " Look for the pattern on the current line, both behind and in front of the cursor position.
-  let l:command = ''
-  let l:position = getpos('.')
-  let l:pattern = '\V' . escape(l:character, '\/')
-  let [l:discard, l:previousColumn] = searchpos(l:pattern, 'bnW', l:position[1])
-  let [l:discard, l:nextColumn] = searchpos(l:pattern, 'nW', l:position[1])
-  " Determine which is the closest match, if any.
-  if l:previousColumn
-    if l:nextColumn
-      if abs(l:position[2] - l:previousColumn) > abs(l:position[2] - l:nextColumn)
-        let l:command = 'F'
-      else
-        let l:command = 'f'
-      endif
-    else
-      let l:command = 'F'
-    endif
-  elseif l:nextColumn
-    let l:command = 'f'
-  endif
-  " We wish to keep ';' and ',' mappings consistent, update cursor as needed.
-  if l:command ==# 'F'
-    let l:command = (l:position[2] - l:previousColumn) . 'hf'
-  endif
-  if len(l:command)
-    return (l:command . l:character)
-  endif
-  return '\<NOP>'
-endfunction
-
-nnoremap <expr> <leader>f FindClosest()
-
 " Choose '^' or '0' depending on the cursor position.
 function! CleverJumpFirst()
   let l:before = getline('.')[:col('.') - 1]
