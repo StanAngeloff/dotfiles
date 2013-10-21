@@ -188,13 +188,14 @@ vnoremap $ $h
 nnoremap <silent> Q ZZ
 vnoremap <silent> Q <Esc>ZZ
 
-" Start a new Undo group before undoing changes in INSERT mode.
-" Undos can be re-done using 'u' in NORMAL mode.
-inoremap <C-U> <C-G>u<C-U>
+" Start a new Undo group before making changes in INSERT mode.
 inoremap <C-W> <C-G>u<C-W>
-
-" Start a new Undo group before pasting in INSERT mode.
 inoremap <C-R> <C-G>u<C-R>
+
+" Quickly undo a change (i.e., accidental paste of wrong register) in INSERT mode.
+" This overrides the default 'kill-line' on <C-U>.
+inoremap <C-U> <C-O>u
+
 " Quick tab creation and navigation.
 nnoremap <leader>tn :tabnew<CR>
 nnoremap <leader>tm :tabmove
