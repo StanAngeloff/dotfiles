@@ -1,0 +1,119 @@
+#!/usr/bin/env bash
+
+# Abort immediately if any command exists with a non-zero code.
+set -eo pipefail
+
+# Do we need 'sudo'?
+sudo=
+if [ "$( id -u )" != 0 ]; then
+  sudo='sudo'
+fi
+
+# Set up the default location of Chromium.
+if [ -z "$chrome_devel_path" ]; then
+  chrome_devel_path='/opt/chrome-linux'
+fi
+
+chrome_devel_index=1
+while [ -d "$chrome_devel_path" ]; do
+  if [ -d "${chrome_devel_path}.${chrome_devel_index}" ]; then
+    let chrome_devel_index++
+  else
+    echo "Backing up previous Chromium installation '${chrome_devel_path}{,.${chrome_devel_index}}'..."
+    mv "$chrome_devel_path" "${chrome_devel_path}.${chrome_devel_index}"
+  fi
+done
+
+# Utility function to download the latest version of Chromium from continuous builds and extract its contents.
+google_chromium_latest() {
+  local target="$1"
+  local platform="$( uname -i | sed -e 's#x86_#x#' )"
+  local version="$( curl -so- "http://commondatastorage.googleapis.com/chromium-browser-continuous/Linux_${platform}/LAST_CHANGE" )"
+  local latest_path="/tmp/chrome-linux_${platform}-${version}.zip"
+  if [ ! -f "$latest_path" ]; then
+    curl -#o "$latest_path" "http://commondatastorage.googleapis.com/chromium-browser-continuous/Linux_${platform}/${version}/chrome-linux.zip"
+  fi
+  mkdir -p "$target"
+  unzip -q "$latest_path" -d "$target"
+  mv "${target}/chrome-linux/"* "$target"
+  rmdir "${target}/chrome-linux"
+}
+
+# Download the most recent compiled snapshot of Chromium.
+echo "Downloading the latest version of Chromium in '${chrome_devel_path}'..."
+google_chromium_latest "$chrome_devel_path"
+
+# Chromium is very picky about who owns what and in which mode, set it up properly.
+export chrome_devel_sandbox="${chrome_devel_path}/chrome_sandbox"
+echo "Updating sandbox owner in '${chrome_devel_sandbox}'..."
+$sudo chown root:root "$chrome_devel_sandbox"
+
+echo "Updating sandbox permissions in '${chrome_devel_sandbox}'..."
+$sudo chmod 4755 "$chrome_devel_sandbox"
+
+# Utility function to download a copy of Google Chrome from unstable channel and extract its contents.
+# If this function is used more than once, only a single copy is downloaded.
+google_chrome_unstable() {
+  local unstable_path="google-chrome-$( date +%F )"
+  cd /tmp
+  if [ -d "$unstable_path" ]; then
+    cd "$unstable_path"
+  else
+    mkdir "$unstable_path" && cd "$unstable_path"
+    curl -#O 'https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb'
+    ar x *.deb
+    tar xJf *.tar.lzma
+  fi
+}
+
+# Install Flash player as Pepper plug-in.
+plugin_ppapi_flash_path="${chrome_devel_path}/PepperFlash"
+echo 'Installing Flash plug-in...'
+( \
+  google_chrome_unstable &&
+  mkdir -p "$plugin_ppapi_flash_path" &&
+  cp -R 'opt/google/chrome/PepperFlash/'* "$plugin_ppapi_flash_path" \
+)
+
+# Install PDF viewer as native plug-in.
+plugin_native_pdf="${chrome_devel_path}/libpdf.so"
+echo 'Installing PDF plug-in...'
+( \
+  google_chrome_unstable &&
+  cp 'opt/google/chrome/libpdf.so' "$plugin_native_pdf" &&
+  chmod 0755 "$plugin_native_pdf" \
+)
+
+# Install ffmpeg from Chrome which has got H.264 playback support.
+plugin_native_ffmpeg="${chrome_devel_path}/libffmpegsumo.so"
+echo 'Installing ffmpeg+h.264 plug-in...'
+( \
+  google_chrome_unstable &&
+  cp 'opt/google/chrome/libffmpegsumo.so' "$plugin_native_ffmpeg" &&
+  chmod 0755 "$plugin_native_ffmpeg" \
+)
+
+# On Ubuntu 13.04 the libudev.so.0 file is replaced with libudev1.
+lib_udev="${chrome_devel_path}/libudev.so.0"
+if [ ! -e "$lib_udev" ]; then
+  echo "Adding symbolic link to 'libudev'..."
+  ln -s '/usr/lib/x86_64-linux-gnu/libudev.so' "$lib_udev"
+fi
+
+# Modify the wrapper script.
+#
+# Tell Chromium to use a sandbox.
+sed '/^exec/i export CHROME_DEVEL_SANDBOX="$HERE/chrome_sandbox"' -i "${chrome_devel_path}/chrome-wrapper"
+
+# Use /tmp as the Chromium cache directory.
+sed '/^exec/i export XDG_CACHE_HOME="/tmp/.cache"' -i "${chrome_devel_path}/chrome-wrapper"
+
+sed -e '$s!\s*\("$@"\)! \\\
+  --enable-seccomp-sandbox `: # explicitly enables the Linux sandbox` \\\
+  --ignore-gpu-blacklist `: # enable GPU acceleration on all hardware` \\\
+  --ppapi-flash-path="$HERE/PepperFlash/libpepflashplayer.so" \\\
+  --ppapi-flash-version='"$( cat "${plugin_ppapi_flash_path}/manifest.json" | grep -i '"version"' | cut -d':' -f2 | tr -d ' ",' )"' \\\
+  \1!' -i "${chrome_devel_path}/chrome-wrapper"
+
+# Use `nohup` and `disown` to run Chromium detached in the background.
+nohup "${chrome_devel_path}/chrome-wrapper" 1>/dev/null 2>&1 & disown
