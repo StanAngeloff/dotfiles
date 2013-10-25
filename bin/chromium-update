@@ -100,6 +100,10 @@ if [ ! -e "$lib_udev" ]; then
   ln -s '/usr/lib/x86_64-linux-gnu/libudev.so' "$lib_udev"
 fi
 
+# The default product logo is too small for Gnome Shell.
+echo 'Downloading high-resolution version of Chromium product logo...'
+curl -#o "${chrome_devel_path}/product_logo_256.png" 'http://src.chromium.org/svn/trunk/src/chrome/app/theme/chromium/product_logo_256.png'
+
 # Modify the wrapper script.
 #
 # Tell Chromium to use a sandbox.
@@ -107,6 +111,9 @@ sed '/^exec/i export CHROME_DEVEL_SANDBOX="$HERE/chrome_sandbox"' -i "${chrome_d
 
 # Use /tmp as the Chromium cache directory.
 sed '/^exec/i export XDG_CACHE_HOME="/tmp/.cache"' -i "${chrome_devel_path}/chrome-wrapper"
+
+# Update the logo used in the desktop shortcut.
+sed -e 's/product_logo_[0-9]\+.png/product_logo_256.png/' -i "${chrome_devel_path}/chrome-wrapper"
 
 sed -e '$s!\s*\("$@"\)! \\\
   --enable-seccomp-sandbox `: # explicitly enables the Linux sandbox` \\\
