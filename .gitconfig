@@ -39,8 +39,8 @@
 	cm = commit -m
 	co = checkout
 	eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
-	f  = flow
-	fa = fetch --all
+	f  = fetch       --prune --verbose
+	fa = fetch --all --prune --verbose
 	ff = flow feature
 	fh = flow hotfix
 	fi = flow init
