@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ps aux | grep '[s]sh:' | grep '[mux]' | awk '{ print $2 "\t" $12 }'
