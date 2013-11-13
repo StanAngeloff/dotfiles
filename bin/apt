@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+if [[ $# -gt 0 ]]; then
+  operation="$1"
+  shift
+fi
+
+case "$operation" in
+  install|reinstall|remove|purge|downgrade)
+    exec /usr/bin/aptdcon --"$operation" "$@"
+    ;;
+  update)
+    exec /usr/bin/aptdcon --refresh "$@"
+    ;;
+  upgrade)
+    exec /usr/bin/aptdcon --safe-upgrade "$@"
+    ;;
+  dist-upgrade)
+    exec /usr/bin/aptdcon --full-upgrade "$@"
+    ;;
+  version)
+    echo "$( basename "$0" ): 0.0.1"
+    echo "aptdcon: $( /usr/bin/aptdcon --version )"
+    ;;
+  *)
+    if [[ -n "$operation" ]] && [[ "$operation" != 'help' ]]; then
+      echo "Unknown operation: '${operation}'." 1>&2
+    fi
+    cat <<EOD
+Usage: '$( basename "$0" )' {
+    install pkg...
+  | reinstall pkg...
+  | remove pkg...
+  | purge pkg...
+  | downgrade pkg...
+  | update
+  | upgrade
+  | dist-upgrade
+  | version
+} ...
+EOD
+    exit 1
+    ;;
+esac
