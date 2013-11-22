@@ -213,6 +213,12 @@ nnoremap <leader>q gqip
 " Restore last implicit selection (e.g., on paste) in VISUAL mode.
 nnoremap <leader>v g`[Vg`]o
 
+" Quick bookmarking and jumping.
+" When in NORMAL mode, 'mm' can be used to toggle a bookmark.
+" Editing can continue on a new line, etc. and then `` can be used to jump back to the original line/column.
+" The default behaviour is to jump back to the previous position which is not very intuitive when multiple jumps happen between edits.
+nnoremap `` `m
+
 " Erase trailing whitespace function and keyboard binding.
 function! StripTrailingWhitespace()
   let l:previousPosition = getpos('.')
