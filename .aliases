@@ -10,7 +10,7 @@ alias g='git'
 alias v='vim -p'
 
 # Directory listing.
-alias ll='ls -hal --color=tty'
+alias ll='ls -halF --color=tty'
 
 # Basic directory operations.
 alias ..='cd ..'
