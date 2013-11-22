@@ -549,7 +549,7 @@ Bundle 'tpope/vim-unimpaired'
 
 Bundle 'StanAngeloff/php.vim'
 Bundle 'shawncplus/phpcomplete.vim'
-Bundle 'phpfolding.vim'
+Bundle 'rayburgemeestre/phpfolding.vim'
 Bundle '2072/PHP-Indenting-for-VIm'
 
 " For PHP code, enable fancy options and better syntax sync.
