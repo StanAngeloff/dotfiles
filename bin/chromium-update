@@ -72,7 +72,7 @@ echo 'Installing Flash plug-in...'
 ( \
   google_chrome_unstable &&
   mkdir -p "$plugin_ppapi_flash_path" &&
-  cp -R 'opt/google/chrome/PepperFlash/'* "$plugin_ppapi_flash_path" \
+  cp -R 'opt/google/chrome-unstable/PepperFlash/'* "$plugin_ppapi_flash_path" \
 )
 
 # Install PDF viewer as native plug-in.
@@ -80,7 +80,7 @@ plugin_native_pdf="${chrome_devel_path}/libpdf.so"
 echo 'Installing PDF plug-in...'
 ( \
   google_chrome_unstable &&
-  cp 'opt/google/chrome/libpdf.so' "$plugin_native_pdf" &&
+  cp 'opt/google/chrome-unstable/libpdf.so' "$plugin_native_pdf" &&
   chmod 0755 "$plugin_native_pdf" \
 )
 
@@ -89,7 +89,7 @@ plugin_native_ffmpeg="${chrome_devel_path}/libffmpegsumo.so"
 echo 'Installing ffmpeg+h.264 plug-in...'
 ( \
   google_chrome_unstable &&
-  cp 'opt/google/chrome/libffmpegsumo.so' "$plugin_native_ffmpeg" &&
+  cp 'opt/google/chrome-unstable/libffmpegsumo.so' "$plugin_native_ffmpeg" &&
   chmod 0755 "$plugin_native_ffmpeg" \
 )
 
