@@ -113,10 +113,13 @@ endif
 let g:is_posix = 1
 
 " Use our customised `grep` script for powerful searches.
-set grepprg=$HOME/bin/search\ -n\ --color=never\ $*
+set grepprg=$HOME/bin/search\ $*
 set grepformat=%f:%l:%m
 
-command! -nargs=+ Search execute 'silent grep! <args>' | botright copen 8 | nnoremap <buffer> <CR> ^:wincmd F<CR>:wincmd T<CR>
+command! -nargs=+ -complete=dir Search execute 'silent grep! ' . <q-args> |
+			\ botright copen 8 |
+			\ nnoremap <buffer> <CR> ^:wincmd F<CR>:wincmd T<CR>:tabprevious<CR>:wincmd w<CR>:tabnext<CR> |
+			\ nnoremap <buffer> <silent> q :cclose<CR>
 
 " Use a custom leader character.
 let mapleader="\\"
