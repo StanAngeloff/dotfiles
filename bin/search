@@ -38,6 +38,11 @@ search() {
     shift
   done
 
+  # If we are in Vim, don't use color and print line numbers for each match.
+  if [ -n "$VIM" ]; then
+    search_args="${search_args} --color=never -n"
+  fi
+
   # Directory (path) to search always comes last.
   # The current working directory is stripped to shorten file paths in output.
   if [ $# -gt 0 ]; then
