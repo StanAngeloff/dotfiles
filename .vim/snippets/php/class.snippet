@@ -33,7 +33,7 @@ else:
 ` `!v substitute(expand('%:t'), ('\.' . expand('%:e') . '$'), '', 'g')``!p
 # Is the file extending a built-in Exception object?
 if snip.fn.endswith('Exception.php'):
-	snip.rv = " extends \\" + os.path.splitext(os.path.basename(snip.fn))[0]
+	snip.rv = " extends \\" + os.path.splitext(os.path.basename(snip.fn))[0] + " implements ExceptionInterface"
 elif snip.fn.endswith('Test.php'):
 	snip.rv = " extends \PHPUnit_Framework_TestCase"
 else:
