@@ -1,0 +1,36 @@
+# vi: set ft=php :
+# <?php
+snippet sf_bundle
+`!p
+
+if len(t[1]):
+	snip.rv  = snip.mkline('use ' + re.sub(r'.*src\/', '', os.path.dirname(path)).replace('/', '\\') + '\\DependencyInjection\\' + os.path.splitext(os.path.basename(snip.fn))[0][:-6] + 'Extension;')
+	snip.rv += "\n"
+	snip.rv += "\n"
+else:
+	snip.rv = ''
+
+`use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+/**
+ * @codeCoverageIgnore
+ */
+class `!p snip.rv = os.path.splitext(os.path.basename(snip.fn))[0]` extends Bundle
+{${1:
+	/**
+	 * @var \Symfony\Component\DependencyInjection\Extension\Extension
+	 */
+	protected $extension;
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getContainerExtension()
+	{
+		if ($this->extension === null) {
+			$this->extension = new `!p snip.rv = os.path.splitext(os.path.basename(snip.fn))[0][:-6]`Extension();
+		}
+		return $this->extension;
+	}}
+}
+endsnippet
