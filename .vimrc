@@ -199,6 +199,10 @@ inoremap <C-R> <C-G>u<C-R>
 " This overrides the default 'kill-line' on <C-U>.
 inoremap <C-U> <C-O>u
 
+" Jump words in INSERT mode.
+inoremap <C-B> <C-O>B
+inoremap <C-F> <C-O>W
+
 " Quick tab creation and navigation.
 nnoremap <leader>tn :tabnew<CR>
 nnoremap <leader>tm :tabmove
