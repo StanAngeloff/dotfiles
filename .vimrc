@@ -693,25 +693,8 @@ endif
 
 " ---------------------------------------------------------------------------
 
-Bundle 'YankRing.vim'
+Bundle 'mhinz/vim-signify'
 
-let g:yankring_max_element_length=32 * 1024 * 1024
-let g:yankring_history_dir=$HOME . '/.vim'
-let g:yankring_history_file='yank_history'
-let g:yankring_clipboard_monitor=0
+let g:signify_vcs_list = ['git', 'hg']
 
-function! YRShowRestoreMode(mode)
-  let g:YRShowMode = a:mode
-  augroup YRShowRestoreMode
-    autocmd BufEnter <buffer>
-          \ augroup YRShowRestoreMode | execute "autocmd!" | augroup END | augroup! YRShowRestoreMode |
-          \ call feedkeys(g:YRShowMode, 'n')
-  augroup END
-  return "\<Esc>:YRShow\<CR>"
-endfunction
-
-nnoremap <silent> <F8>      :YRShow<CR>
-inoremap <expr>   <leader>p YRShowRestoreMode('a')
-
-let g:yankring_replace_n_pkey='<C-P>'
-let g:yankring_replace_n_nkey='<C-N>'
+let g:signify_sign_change = '*'
