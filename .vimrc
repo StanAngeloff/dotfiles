@@ -118,6 +118,7 @@ set grepformat=%f:%l:%m
 
 command! -nargs=+ -complete=dir Search execute 'silent grep! ' . <q-args> |
 			\ botright copen 8 |
+			\ redraw! |
 			\ nnoremap <buffer> <CR> ^:wincmd F<CR>:wincmd T<CR>:tabprevious<CR>:wincmd w<CR>:tabnext<CR> |
 			\ nnoremap <buffer> <silent> q :cclose<CR>
 
