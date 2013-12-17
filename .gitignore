@@ -63,6 +63,10 @@
 !.vim/spell/
 !.vim/spell/.gitignore
 
+# Vim: NERDTree
+!.vim/nerdtree_plugin/
+!.vim/nerdtree_plugin/*
+
 # Zsh scripts.
 !.zsh/scripts/
 !.zsh/scripts/*

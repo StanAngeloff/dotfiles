@@ -493,18 +493,6 @@ endfunction
 nnoremap <expr> / FastFingersSearch('/')
 nnoremap <expr> ? FastFingersSearch('?')
 
-" Reveal the current file in NERDTree.
-autocmd VimEnter * call NERDTreeAddKeyMap({
-      \ 'key': 'a',
-      \ 'scope': 'all',
-      \ 'callback': 'NERDTreeReveal',
-      \ 'quickhelpText': 'reveal the file from previous window' })
-
-function! NERDTreeReveal()
-  wincmd p
-  execute 'silent! NERDTreeFind'
-endfunction
-
 " ---------------------------------------------------------------------------
 
 Bundle 'mbbill/undotree'
