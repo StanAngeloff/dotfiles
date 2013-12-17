@@ -18,6 +18,7 @@ Abolish fun function
 " Common misspellings
 Abolish anohter another
 Abolish antoher another
+Abolish aray array
 Abolish eixt exit
 Abolish naem name
 Abolish pritn print
