@@ -119,7 +119,7 @@ set grepformat=%f:%l:%m
 command! -nargs=+ -complete=dir Search execute 'silent grep! ' . <q-args> |
 			\ botright copen 8 |
 			\ redraw! |
-			\ nnoremap <buffer> <CR> ^:wincmd F<CR>:wincmd T<CR>:tabprevious<CR>:wincmd w<CR>:tabnext<CR> |
+			\ nnoremap <buffer> <C-T> :let g:search_previous_position = getpos('.')<CR>^:wincmd gF<CR>:botright copen 8<CR>:call setpos('.', g:search_previous_position)<CR>:tabprevious<CR>:cclose<CR>:tabnext<CR>:redraw!<CR> |
 			\ nnoremap <buffer> <silent> q :cclose<CR>
 
 " Use a custom leader character.
