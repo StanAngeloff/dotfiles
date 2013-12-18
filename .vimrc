@@ -103,6 +103,8 @@ set sessionoptions=blank,buffers,curdir,folds,tabpages,slash,unix " Session Hand
 
 set tags=.tags,./.tags,~/.vim/tags " Tags can be stored against a project, next to a file or globally.
 
+set switchbuf=usetab,newtab
+
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
