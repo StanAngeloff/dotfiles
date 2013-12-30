@@ -21,10 +21,11 @@ Abolish antoher another
 Abolish aray array
 Abolish eixt exit
 Abolish naem name
+Abolish parma param
 Abolish pritn print
 Abolish retrun return
 
 " Lazy hands
-Abolish 4this $this
 Abolish 2param @param
 Abolish 2return @return
+Abolish 4this $this
