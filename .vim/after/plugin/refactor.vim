@@ -21,6 +21,7 @@ function! RefactorOrganiseUsesCanonicalNamespace(namespace)
 
   let namespace = substitute(namespace, '\\\@<!Bundle\\.*', '', '')
   let namespace = substitute(namespace, '^\(Symfony\\\(Component\|Bridge\)\\[^\\]\+\).*', '\1', '')
+  let namespace = substitute(namespace, '^\(Doctrine\\[^\\]\+\).*', '\1', '')
   let namespace = substitute(namespace, '^\(Psr\\[^\\]\+\).*', '\1', '')
 
   return namespace
@@ -43,7 +44,7 @@ function! RefactorOrganiseUsesScore(declaration)
   while i >= 0
     if match(namespace, join(base_namespace_parts[0:i], '\\')) == 0
       " The closer we are to the base namespace, the higher the score.
-      return i * 1000
+      return (i + 1) * 1000
     endif
     let i = i - 1
   endwhile
@@ -57,6 +58,8 @@ function! RefactorOrganiseUsesScore(declaration)
     return 910
   elseif match(namespace, 'Doctrine\\') == 0
     return 800
+  elseif match(namespace, 'Psr\\') == 0
+    return 100
   endif
 
   return 0
