@@ -24,6 +24,7 @@ Abolish naem name
 Abolish parma param
 Abolish pritn print
 Abolish retrun return
+Abolish reutrn return
 
 " Lazy hands
 Abolish 2param @param
