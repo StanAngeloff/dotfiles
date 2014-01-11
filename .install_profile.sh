@@ -58,7 +58,7 @@ done
 
 # {{{ Resources
 
-if which xrdb &>/dev/null; then
+if [[ -n "$DISPLAY" ]] && which xrdb &>/dev/null; then
   xrdb -merge "${HOME}/.Xresources"
 fi
 
