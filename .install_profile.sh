@@ -64,6 +64,22 @@ fi
 
 # }}}
 
+# {{{ Composer
+
+if which php &>/dev/null; then
+  composer_binary="${HOME}/bin/composer"
+  if [ -f "$composer_binary" ]; then
+    "$composer_binary" self-update
+  else
+    curl -sS 'https://getcomposer.org/installer' | php -- --install-dir="${HOME}/bin"
+    mv "${HOME}/bin/composer"* "$composer_binary"
+  fi
+fi
+
+"$composer_binary" global install
+
+# }}}
+
 # {{{ Editors/Vim
 
 vim -c 'silent! BundleClean!'  -c 'qa!'

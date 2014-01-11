@@ -30,6 +30,14 @@
 !.rbenv-plugins
 !.rbenv-plugins/*
 
+# Composer
+bin/composer
+!.composer/
+!.composer/composer.*
+!.composer/vendor/
+!.composer/vendor/bin/
+!.composer/vendor/bin/*
+
 # Vim: Vundle
 !.vim/bundle/
 !.vim/bundle/vundle
