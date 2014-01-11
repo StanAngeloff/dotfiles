@@ -1,8 +1,5 @@
 #!/bin/zsh
 
-# Add Android SDK tools to $PATH.
-export PATH="$HOME/bin/android-sdk-linux/tools:$PATH"
-
 # The Node.js PPA (~chris-lea/+archive/node.js) does not seem to set the path
 # to any NPM installed modules.
 export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
