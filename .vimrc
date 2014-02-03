@@ -428,7 +428,7 @@ function! UltiSnipsDidJump(navigation_mode)
   if g:UltiSnipsPreviousPosition[0] == l:position[0]
 \ && g:UltiSnipsPreviousPosition[1] == l:position[1]
 \ && g:UltiSnipsPreviousPosition[2] == l:position[2]
-    return "\<C-O>" . a:navigation_mode
+    return "\<C-G>u\<C-O>" . a:navigation_mode
   endif
   return ''
 endfunction
