@@ -21,6 +21,7 @@ Abolish antoher another
 Abolish aray array
 Abolish eixt exit
 Abolish naem name
+Abolish overriden overridden
 Abolish parma param
 Abolish pritn print
 Abolish retrun return
