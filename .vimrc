@@ -704,3 +704,18 @@ Bundle 'mhinz/vim-signify'
 let g:signify_vcs_list = ['git', 'hg']
 
 let g:signify_sign_change = '*'
+
+" ---------------------------------------------------------------------------
+
+Bundle 'reedes/vim-litecorrect'
+
+let g:litecorrect_user_dict = {
+      \ 'I''ve': ['Ive']
+      \ }
+
+augroup litecorrect
+  autocmd!
+  autocmd FileType markdown call litecorrect#init(g:litecorrect_user_dict)
+augroup END
+
+let g:litecorrect#typographic=0
