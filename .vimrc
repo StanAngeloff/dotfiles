@@ -564,10 +564,11 @@ let g:ctrlp_cache_dir='/tmp/.ctrlp'
 nnoremap <silent> <leader>o :<C-U>CtrlPCurWD<CR>
 nnoremap <silent> <leader>b :<C-U>CtrlPBufTag<CR>
 
-if executable('ag')
-  " Use 'ag' in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l -g "" --hidden --nocolor'
-endif
+let g:ctrlp_user_command = {
+      \     'types': {
+      \         1: ['.git', 'cd %s && git ls-files --exclude-standard --cached --others'],
+      \     },
+      \ }
 
 " ---------------------------------------------------------------------------
 
