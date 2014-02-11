@@ -546,6 +546,8 @@ Bundle '2072/PHP-Indenting-for-VIm'
 let php_htmlInStrings=1
 " Don't use the PHP syntax folding.
 let g:DisableAutoPHPFolding = 1
+" Include the '$' as part of identifiers. 
+let php_var_selector_is_identifier = 1
 
 " ---------------------------------------------------------------------------
 
