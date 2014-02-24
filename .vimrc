@@ -723,3 +723,7 @@ let g:litecorrect#typographic=0
 " ---------------------------------------------------------------------------
 
 Bundle 'tommcdo/vim-exchange'
+
+" ---------------------------------------------------------------------------
+
+Bundle 'tommcdo/vim-fugitive-blame-ext'
