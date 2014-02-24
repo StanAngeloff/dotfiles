@@ -719,3 +719,7 @@ augroup litecorrect
 augroup END
 
 let g:litecorrect#typographic=0
+
+" ---------------------------------------------------------------------------
+
+Bundle 'tommcdo/vim-exchange'
