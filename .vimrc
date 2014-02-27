@@ -438,14 +438,14 @@ function! UltiSnipsJump(jump_mode, ultisnips_mode, navigation_mode)
     return a:jump_mode
   endif
   let g:UltiSnipsPreviousPosition = getpos('.')
-  return "\<C-R>=UltiSnips_Jump" . a:ultisnips_mode . "()\<CR>\<C-R>=UltiSnipsDidJump('" . a:navigation_mode . "')\<CR>"
+  return "\<C-R>=UltiSnips#Jump" . a:ultisnips_mode . "()\<CR>\<C-R>=UltiSnipsDidJump('" . a:navigation_mode . "')\<CR>"
 endfunction
 
 inoremap <expr> <C-J> UltiSnipsJump("\<C-N>", 'Forwards', 'o')
 inoremap <expr> <C-K> UltiSnipsJump("\<C-P>", 'Backwards', 'O')
 
-snoremap <C-J> <Esc>:call UltiSnips_JumpForwards()<CR>
-snoremap <C-K> <Esc>:call UltiSnips_JumpBackwards()<CR>
+snoremap <C-J> <Esc>:call UltiSnips#JumpForwards()<CR>
+snoremap <C-K> <Esc>:call UltiSnips#JumpBackwards()<CR>
 
 " ---------------------------------------------------------------------------
 
