@@ -572,6 +572,16 @@ let g:ctrlp_user_command = {
 
 " ---------------------------------------------------------------------------
 
+Bundle 'JazzCore/ctrlp-cmatcher'
+if filereadable(expand('~/.vim/bundle/ctrlp-cmatcher/autoload/fuzzycomt.so'))
+  let g:ctrlp_match_func = { 'match': 'matcher#cmatch' }
+  let g:ctrlp_max_files = 0
+else
+  echohl WarningMsg | echom 'You need to compile the CtrlP C matching extension.' | echohl None
+endif
+
+" ---------------------------------------------------------------------------
+
 Bundle 'thinca/vim-visualstar'
 
 " ---------------------------------------------------------------------------
