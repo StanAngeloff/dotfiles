@@ -363,7 +363,11 @@ function! BestComplete()
     if fuzzy_position != col('.')
       let fuzzy_completions = fuzzy#CompleteFuzzy(0, getline('.')[fuzzy_position : col('.')])
       if len(fuzzy_completions)
-        return "\<C-X>\<C-U>"
+        if len(fuzzy_completions) > 1
+          return "\<C-X>\<C-U>\<C-N>"
+        else
+          return "\<C-X>\<C-U>\<C-N>\<C-Y>"
+        endif
       endif
     endif
   endif
