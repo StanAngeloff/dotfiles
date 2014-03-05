@@ -353,6 +353,45 @@ if has('autocmd')
 
 endif
 
+" {{{ Tab completion
+
+function! BestComplete()
+
+  " If fuzzy completion has results, use 'completefunc' to complete.
+  if exists('*fuzzy#CompleteFuzzy')
+    let fuzzy_position = fuzzy#CompleteFuzzy(1, '')
+    if fuzzy_position != col('.')
+      let fuzzy_completions = fuzzy#CompleteFuzzy(0, getline('.')[fuzzy_position : col('.')])
+      if len(fuzzy_completions)
+        return "\<C-X>\<C-U>"
+      endif
+    endif
+  endif
+
+  " If UltiSnips is installed, try to expand as snippet.
+  " UltiSnips will insert a <Tab> for us if no snippet was available.
+  if exists('*UltiSnips#ExpandSnippet')
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+      if pumvisible()
+        return "\<C-Y>"
+      else
+        call UltiSnips#JumpForwards()
+        if g:ulti_jump_forwards_res == 0
+          return "\<Tab>"
+        endif
+      endif
+    endif
+    return ''
+  endif
+
+  return "\<Tab>"
+endfunction
+
+inoremap <silent> <Tab> <C-R>=BestComplete()<CR>
+
+" }}}
+
 " Vundle, the plug-in manager for Vim.
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -403,21 +442,6 @@ let g:UltiSnipsSnippetDirectories=['snippets']
 let g:UltiSnipsExpandTrigger='<NOP>'
 let g:UltiSnipsJumpForwardTrigger='<NOP>'
 let g:UltiSnipsJumpBackwardTrigger='<NOP>'
-
-" Try to complete as a snippet, pop-up item or just forward the Tab key.
-function! UltiSnipsComplete()
-  call UltiSnips#ExpandSnippet()
-  if g:ulti_expand_res == 0
-    if pumvisible()
-      return "\<C-Y>"
-    else
-      return "\<Tab>"
-    endif
-  endif
-  return ''
-endfunction
-
-inoremap <silent> <Tab> <C-R>=UltiSnipsComplete()<CR>
 
 " Use <C-{J,K}> for navigating the popup menu, if visible.
 " Otherwise, delegate to UltiSnips. If that fails, jump lines.
