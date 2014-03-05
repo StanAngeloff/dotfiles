@@ -1,7 +1,10 @@
 let g:fuzzy_complete_patterns = [
       \ { 'title': 'private $\1;',
       \   'patterns': ['p\s\+\$\(\h\+\)\(\s\+\(\h\+\)\)\?\;\?'],
-      \   'fn': 'fuzzy#complete_php_private_property' }
+      \   'fn': 'fuzzy#complete_php_private_property' },
+      \ { 'title': 'if (isset ($\1)) { ... }',
+      \   'patterns': ['if\s\+isset\(\(\s\+$\h\+\)\+\)'],
+      \   'fn': 'fuzzy#complete_php_if_isset' }
       \ ]
 
 let g:fuzzy_candidates = []
@@ -14,6 +17,11 @@ function! fuzzy#complete_php_private_property(name, _, type, ...) " {{{
   endif
   call extend(code, ['private $' . a:name . ';'])
   return code
+endfunction " }}}
+
+function! fuzzy#complete_php_if_isset(names, ...) " {{{
+  let variables = split(substitute(a:names, '^\s\+\|\s\+$', '', 'g'), '\s\+')
+  return ['if (isset (' . join(variables, ') && isset (') . ')) {', "\t$0", '}']
 endfunction " }}}
 
 function! fuzzy#get_word() " {{{
@@ -91,15 +99,33 @@ function! fuzzy#complete_done() " {{{
         let indent = matchstr(line, '^\s\+')
         let indented_lines = []
 
+        let move_lines = -1
+        let move_column = -1
+
         for append_line in complete_lines[1 : ]
           if &expandtab
             let append_line = substitute(append_line, '^\(\t\)\+', '\=repeat(" ", &tabstop * len(submatch(0)))', '')
           endif
-          call add(indented_lines, indent . append_line)
+
+          let append_line = indent . append_line
+
+          let match_column = match(append_line, '\$0')
+          if match_column > -1
+            let move_lines = 1 + len(indented_lines)
+            let move_column = match_column + 1
+            let append_line = substitute(append_line, '\$0', '', '')
+          endif
+
+          call add(indented_lines, append_line)
         endfor
         call append('.', indented_lines)
 
-        call setpos('.', [position[0], position[1] + len(indented_lines), len(indented_lines[len(indented_lines) - 1]) + 1, 0])
+        if move_lines == -1 && move_column == -1
+          let move_lines = len(indented_lines)
+          let move_column = 1 + len(indented_lines[len(indented_lines) - 1])
+        endif
+
+        call setpos('.', [position[0], position[1] + move_lines, move_column, 0])
       endif
 
       break
