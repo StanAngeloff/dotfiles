@@ -93,14 +93,15 @@ function! fuzzy#complete_done() " {{{
       let complete_options = g:fuzzy_arguments[complete_index]
       let complete_lines = call(complete_options['fn'], complete_options['arguments'])
 
+      let position = getpos('.')
+      let move_lines = -1
+      let move_column = -1
+
       call setline('.', before . complete_lines[0] . line[column : ])
+
       if len(complete_lines) > 1
-        let position = getpos('.')
         let indent = matchstr(line, '^\s\+')
         let indented_lines = []
-
-        let move_lines = -1
-        let move_column = -1
 
         for append_line in complete_lines[1 : ]
           if &expandtab
@@ -113,7 +114,9 @@ function! fuzzy#complete_done() " {{{
           if match_column > -1
             let move_lines = 1 + len(indented_lines)
             let move_column = match_column + 1
-            let append_line = substitute(append_line, '\$0', '', '')
+            let append_line = (match_column > 1 ? append_line[0 : match_column - 1] : '') . substitute(append_line[match_column + 2 : ], '\s\+$', '', '')
+          else
+            let append_line = substitute(append_line, '\s\+$', '', '')
           endif
 
           call add(indented_lines, append_line)
@@ -124,9 +127,12 @@ function! fuzzy#complete_done() " {{{
           let move_lines = len(indented_lines)
           let move_column = 1 + len(indented_lines[len(indented_lines) - 1])
         endif
-
-        call setpos('.', [position[0], position[1] + move_lines, move_column, 0])
+      else
+        let move_lines = 0
+        let move_column = 1 + len(before . complete_lines[0])
       endif
+
+      call setpos('.', [position[0], position[1] + move_lines, move_column, 0])
 
       break
     endif
