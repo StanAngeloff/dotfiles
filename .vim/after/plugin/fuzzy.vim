@@ -1,6 +1,6 @@
 let g:fuzzy_complete_patterns = [
-      \ { 'title': 'private $\1;',
-      \   'patterns': ['p\s\+\$\(\h\w*\)\(\s\+\(\h\w*\)\)\?\;\?'],
+      \ { 'title': 'private $\4;',
+      \   'patterns': ['\(p\|prv\|priv\|private\)\(\s\+\(\h\w*\)\)\?\s\+\$\(\h\w*\)\;\?'],
       \   'fn': 'fuzzy#complete_php_private_property' },
       \ { 'title': 'if (isset ($\1)) { ... }',
       \   'patterns': ['if\s\+isset\(\(\s\+$\h\w*\(\(->\h\w*\)*\)\)\+\)'],
@@ -16,7 +16,7 @@ let g:fuzzy_complete_patterns = [
 let g:fuzzy_candidates = []
 let g:fuzzy_arguments = []
 
-function! fuzzy#complete_php_private_property(name, _, type, ...) " {{{
+function! fuzzy#complete_php_private_property(_1, _2, type, name, ...) " {{{
   let code = []
   if len(a:type)
     call extend(code, ['/**', ' * @var ' . a:type, ' */'])
