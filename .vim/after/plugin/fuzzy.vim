@@ -1,6 +1,6 @@
 let g:fuzzy_complete_patterns = [
       \ { 'title': 'private $\1;',
-      \   'patterns': ['p\s\+\$\(\h\+\)\(\s\+\(\h\+\)\)\?\;\?'],
+      \   'patterns': ['p\s\+\$\(\h\w*\)\(\s\+\(\h\w*\)\)\?\;\?'],
       \   'fn': 'fuzzy#complete_php_private_property' },
       \ { 'title': 'if (isset ($\1)) { ... }',
       \   'patterns': ['if\s\+isset\(\(\s\+$\h\+\)\+\)'],
