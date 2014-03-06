@@ -41,7 +41,6 @@ function! fuzzy#complete_php_return_initialized_property(name, value, arguments,
 endfunction " }}}
 
 function! fuzzy#complete_php_ternary_isset(name, expression1, _1, _2, _3, expression2, ...) " {{{
-  echom join(a:000, ',')
   return ['(isset ($' . a:name . a:expression1 . ') ? $' . a:name . a:expression1 . a:expression2 . ' : null)']
 endfunction " }}}
 
