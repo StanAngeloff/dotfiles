@@ -3,8 +3,14 @@ let g:fuzzy_complete_patterns = [
       \   'patterns': ['p\s\+\$\(\h\w*\)\(\s\+\(\h\w*\)\)\?\;\?'],
       \   'fn': 'fuzzy#complete_php_private_property' },
       \ { 'title': 'if (isset ($\1)) { ... }',
-      \   'patterns': ['if\s\+isset\(\(\s\+$\h\+\)\+\)'],
-      \   'fn': 'fuzzy#complete_php_if_isset' }
+      \   'patterns': ['if\s\+isset\(\(\s\+$\h\w*\(\(->\h\w*\)*\)\)\+\)'],
+      \   'fn': 'fuzzy#complete_php_if_isset' },
+      \ { 'title': 'return $this->\1;',
+      \   'patterns': ['return\s\+\$\(\h\w*\)\s*=\s*new\s\+\(\h\w*\)\(([^)]*)\)\?\;\?'],
+      \   'fn': 'fuzzy#complete_php_return_initialized_property' },
+      \ { 'title': '(isset($\1) ? $\1\2 : null)',
+      \   'patterns': ['\$\(\h\w*\)\(\(\(->\h\w*\(([^)]*)\)\?\)\)*\)?\(\(\(->\h\w*\(([^)]*)\)\?\)\)*\)\;\?'],
+      \   'fn': 'fuzzy#complete_php_ternary_isset' }
       \ ]
 
 let g:fuzzy_candidates = []
@@ -22,6 +28,21 @@ endfunction " }}}
 function! fuzzy#complete_php_if_isset(names, ...) " {{{
   let variables = split(substitute(a:names, '^\s\+\|\s\+$', '', 'g'), '\s\+')
   return ['if (isset (' . join(variables, ') && isset (') . ')) {', "\t$0", '}']
+endfunction " }}}
+
+function! fuzzy#complete_php_return_initialized_property(name, value, arguments, ...) " {{{
+  return [
+        \ 'if ($this->' . a:name . ' === null) {',
+        \ "\t$this->" . a:name . ' = new ' . a:value . a:arguments . ';',
+        \ '}',
+        \ '',
+        \ 'return $this->' . a:name . ';'
+        \ ]
+endfunction " }}}
+
+function! fuzzy#complete_php_ternary_isset(name, expression1, _1, _2, _3, expression2, ...) " {{{
+  echom join(a:000, ',')
+  return ['(isset ($' . a:name . a:expression1 . ') ? $' . a:name . a:expression1 . a:expression2 . ' : null)']
 endfunction " }}}
 
 function! fuzzy#get_word() " {{{
