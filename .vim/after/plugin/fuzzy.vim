@@ -6,7 +6,7 @@ let g:fuzzy_complete_patterns = [
       \   'patterns': ['if\s\+isset\(\(\s\+$\h\w*\(\(->\h\w*\)*\)\)\+\)'],
       \   'fn': 'fuzzy#complete_php_if_isset' },
       \ { 'title': 'return $this->\1;',
-      \   'patterns': ['return\s\+\$\(\h\w*\)\s*=\s*new\s\+\(\h\w*\)\(([^)]*)\)\?\;\?'],
+      \   'patterns': ['return\s\+\$this->\(\h\w*\)\s*=\s*new\s\+\(\h\w*\)\(([^)]*)\)\?\;\?'],
       \   'fn': 'fuzzy#complete_php_return_initialized_property' },
       \ { 'title': '(isset ($\1\2) ? $\1\2\6 : null)',
       \   'patterns': ['\$\(\h\w*\)\(\(\(->\h\w*\(([^)]*)\)\?\)\)*\)?\(\(\(->\h\w*\(([^)]*)\)\?\)\)*\)\;\?'],
