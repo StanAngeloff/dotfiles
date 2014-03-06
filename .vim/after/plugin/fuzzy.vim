@@ -8,7 +8,7 @@ let g:fuzzy_complete_patterns = [
       \ { 'title': 'return $this->\1;',
       \   'patterns': ['return\s\+\$\(\h\w*\)\s*=\s*new\s\+\(\h\w*\)\(([^)]*)\)\?\;\?'],
       \   'fn': 'fuzzy#complete_php_return_initialized_property' },
-      \ { 'title': '(isset($\1) ? $\1\2 : null)',
+      \ { 'title': '(isset ($\1\2) ? $\1\2\6 : null)',
       \   'patterns': ['\$\(\h\w*\)\(\(\(->\h\w*\(([^)]*)\)\?\)\)*\)?\(\(\(->\h\w*\(([^)]*)\)\?\)\)*\)\;\?'],
       \   'fn': 'fuzzy#complete_php_ternary_isset' }
       \ ]
