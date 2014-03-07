@@ -357,13 +357,13 @@ endif
 
 function! BestComplete()
 
-  " If fuzzy completion has results, use 'completefunc' to complete.
-  if exists('*fuzzy#CompleteFuzzy')
-    let fuzzy_position = fuzzy#CompleteFuzzy(1, '')
-    if fuzzy_position != col('.')
-      let fuzzy_completions = fuzzy#CompleteFuzzy(0, getline('.')[fuzzy_position : col('.')])
-      if len(fuzzy_completions)
-        if len(fuzzy_completions) > 1
+  " If fizzy.vim has results, use 'completefunc' to complete.
+  if exists('g:loaded_fizzy')
+    let fizzy_position = fizzy#Complete(1, '')
+    if fizzy_position != col('.')
+      let fizzy_completions = fizzy#Complete(0, getline('.')[fizzy_position : col('.')])
+      if len(fizzy_completions)
+        if len(fizzy_completions) > 1
           return "\<C-X>\<C-U>\<C-N>"
         else
           return "\<C-X>\<C-U>\<C-N>\<C-Y>"
@@ -765,3 +765,7 @@ Bundle 'tommcdo/vim-exchange'
 " ---------------------------------------------------------------------------
 
 Bundle 'tommcdo/vim-fugitive-blame-ext'
+
+" ---------------------------------------------------------------------------
+
+Bundle 'StanAngeloff/fizzy.vim'
