@@ -321,7 +321,6 @@ if has('autocmd')
   autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
   autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
   autocmd FileType xml        set omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType php        set omnifunc=phpcomplete#CompletePHP
   autocmd FileType c          set omnifunc=ccomplete#Complete
 
   " Turn off beep sounds.
@@ -774,3 +773,21 @@ Bundle 'tommcdo/vim-fugitive-blame-ext'
 " ---------------------------------------------------------------------------
 
 Bundle 'StanAngeloff/fizzy.vim'
+
+" ---------------------------------------------------------------------------
+
+Bundle 'ervandew/eclim', { 'rtp': 'org.eclim.core/vim/eclim/' }
+
+set rtp+=~/.vim/bundle/eclim/org.eclim.pdt/vim/eclim/
+
+" eclim options.
+let g:EclimPhpSearchSingleResult = 'lopen'
+
+let g:EclimFileTypeValidate = 0
+
+let g:EclimShowQuickfixSigns = 0
+let g:EclimShowLoclistSigns = 0
+
+let g:EclimCompletionMethod = 'omnifunc'
+
+autocmd FileType php inoremap <buffer> <C-X><C-O> <C-X><C-O><C-N>
