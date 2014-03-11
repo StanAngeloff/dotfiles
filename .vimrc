@@ -120,9 +120,14 @@ set grepformat=%f:%l:%m
 
 command! -nargs=+ -complete=dir Search execute 'silent grep! ' . <q-args> |
 			\ botright copen 8 |
-			\ redraw! |
-			\ nnoremap <buffer> <C-T> :let g:search_previous_position = getpos('.')<CR>^:wincmd gF<CR>:botright copen 8<CR>:call setpos('.', g:search_previous_position)<CR>:tabprevious<CR>:cclose<CR>:tabnext<CR>:redraw!<CR> |
-			\ nnoremap <buffer> <silent> q :cclose<CR>
+			\ redraw!
+
+" Add useful mappings in quick-fix buffers (:copen, :lopen, etc.)
+if has('autocmd')
+  autocmd FileType qf nnoremap <buffer> <C-T> ^:wincmd gF<CR> |
+	\ nnoremap <buffer> t ^:wincmd gF<CR> |
+	\ nnoremap <buffer> <silent> q :cclose<CR>:lclose<CR>
+endif
 
 " Use a custom leader character.
 let mapleader="\\"
