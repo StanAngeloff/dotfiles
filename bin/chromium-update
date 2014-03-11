@@ -120,6 +120,7 @@ sed -e '$s!\s*\("$@"\)! \\\
   --ignore-gpu-blacklist `: # enable GPU acceleration on all hardware` \\\
   --ppapi-flash-path="$HERE/PepperFlash/libpepflashplayer.so" \\\
   --ppapi-flash-version='"$( cat "${plugin_ppapi_flash_path}/manifest.json" | grep -i '"version"' | cut -d':' -f2 | tr -d ' ",' )"' \\\
+  --disk-cache-dir="$XDG_CACHE_HOME" \\\
   \1!' -i "${chrome_devel_path}/chrome-wrapper"
 
 # Use `nohup` and `disown` to run Chromium detached in the background.
