@@ -518,13 +518,20 @@ let g:FastFingersNERDTreeClosed = '^\s*▸.*\/$'
 
 function! FastFingersSearch(mode)
 
+  let b:FastFingersPreviousPosition = getpos('.')
+
   " Lower the update time so our 'CursorHold' code fires immediately after the search.
   if &ut > g:FastFingersSpeed | let g:FastFingersUpdateTime = &ut | let &ut = g:FastFingersSpeed | endif
 
   augroup FastFingers
     autocmd CursorHold *
           \ exe 'set ut=' . g:FastFingersUpdateTime |
-          \ if getline(".") =~ g:FastFingersNERDTreeClosed | call feedkeys('o', 'm') | endif |
+          \ if getpos('.') != b:FastFingersPreviousPosition |
+          \   if getline(".") =~ g:FastFingersNERDTreeClosed |
+          \     call feedkeys('o', 'm') |
+          \   endif |
+          \ endif |
+          \ unlet b:FastFingersPreviousPosition |
           \ augroup FastFingers | execute "autocmd!" | augroup END | augroup! FastFingers
   augroup END
 
