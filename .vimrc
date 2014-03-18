@@ -118,9 +118,11 @@ let g:is_posix = 1
 set grepprg=$HOME/bin/search\ $*
 set grepformat=%f:%l:%m
 
-command! -nargs=+ -complete=dir Search execute 'silent grep! ' . <q-args> |
-			\ botright copen 8 |
-			\ redraw!
+command! -nargs=+ -complete=dir Search if len([<f-args>]) |
+      \ execute 'silent grep! ' . <q-args> |
+      \ botright copen 8 |
+      \ redraw! |
+      \ endif
 
 " Add useful mappings in quick-fix buffers (:copen, :lopen, etc.)
 if has('autocmd')

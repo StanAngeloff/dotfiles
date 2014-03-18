@@ -8,7 +8,9 @@ function! NERDTreeSearchInCurrentNode()
   let n = g:NERDTreeFileNode.GetSelected()
   if n != {}
     let query = input('Search: ', '', 'tag_listfiles')
-    let path = fnamemodify(n.path.str(), ':.')
-    execute "normal! :Search '" . substitute(query, "'", "''", 'g') . "' '" . path . "'\<CR>"
+    if len(query)
+      let path = fnamemodify(n.path.str(), ':.')
+      execute "normal! :NERDTreeClose\<CR>:Search '" . substitute(query, "'", "''", 'g') . "' '" . path . "'\<CR>"
+    endif
   endif
 endfunction
