@@ -127,8 +127,8 @@ command! -nargs=+ -complete=dir Search if len([<f-args>]) |
 " Add useful mappings in quick-fix buffers (:copen, :lopen, etc.)
 if has('autocmd')
   autocmd FileType qf nnoremap <buffer> <C-T> ^:wincmd gF<CR> |
-	\ nnoremap <buffer> t ^:wincmd gF<CR> |
-	\ nnoremap <buffer> <silent> q :cclose<CR>:lclose<CR>
+        \ nnoremap <buffer> t ^:wincmd gF<CR> |
+        \ nnoremap <buffer> <silent> q :cclose<CR>:lclose<CR>
 endif
 
 " Use a custom leader character.
