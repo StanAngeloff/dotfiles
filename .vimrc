@@ -800,3 +800,9 @@ let g:EclimShowLoclistSigns = 0
 let g:EclimCompletionMethod = 'omnifunc'
 
 autocmd FileType php inoremap <buffer> <C-X><C-O> <C-X><C-O><C-N>
+
+" ---------------------------------------------------------------------------
+
+Bundle 'henrik/vim-indexed-search'
+
+let g:indexed_search_colors = 0
