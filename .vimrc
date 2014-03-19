@@ -787,7 +787,7 @@ Bundle 'StanAngeloff/fizzy.vim'
 
 Bundle 'ervandew/eclim', { 'rtp': 'org.eclim.core/vim/eclim/' }
 
-set rtp+=~/.vim/bundle/eclim/org.eclim.pdt/vim/eclim/
+set rtp+=~/.vim/bundle/eclim/org.eclim.wst/vim/eclim/,~/.vim/bundle/eclim/org.eclim.pdt/vim/eclim/
 
 " eclim options.
 let g:EclimPhpSearchSingleResult = 'lopen'
