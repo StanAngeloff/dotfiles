@@ -5,7 +5,7 @@ scriptencoding utf-8 " Help Vim use the correct character encoding for this scri
 " Pathogen, manage your runtimepath.
 filetype off
 call pathogen#helptags()
-call pathogen#incubate()
+call pathogen#infect()
 
 " Enable 256-colour terminal if no GUI.
 if !has("gui_running")
@@ -403,7 +403,6 @@ inoremap <silent> <Tab> <C-R>=BestComplete()<CR>
 " }}}
 
 " Vundle, the plug-in manager for Vim.
-set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Make broken SSL happy again
@@ -787,7 +786,7 @@ Bundle 'StanAngeloff/fizzy.vim'
 
 Bundle 'ervandew/eclim', { 'rtp': 'org.eclim.core/vim/eclim/' }
 
-set rtp+=~/.vim/bundle/eclim/org.eclim.wst/vim/eclim/,~/.vim/bundle/eclim/org.eclim.pdt/vim/eclim/
+call pathogen#infect('bundle/eclim/{}/vim/eclim/')
 
 " eclim options.
 let g:EclimPhpSearchSingleResult = 'lopen'
