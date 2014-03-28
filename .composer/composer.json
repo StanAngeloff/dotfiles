@@ -1,6 +1,8 @@
 {
+    "minimum-stability": "stable",
     "require": {
-        "squizlabs/php_codesniffer": "*",
-        "phpmd/phpmd": "*"
+        "pdepend/pdepend": "2.0.0.*@dev",
+        "phpmd/phpmd": "2.0.0.*@dev",
+        "squizlabs/php_codesniffer": "dev-master as 2.0.x-dev"
     }
 }
