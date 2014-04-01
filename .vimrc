@@ -805,6 +805,8 @@ let g:EclimJavascriptIndentDisabled = 0
 let g:EclimPhpIndentDisabled = 0
 let g:EclimXmlIndentDisabled = 0
 
+let EclimShowCurrentError = 0
+
 let g:EclimCompletionMethod = 'omnifunc'
 
 autocmd FileType php inoremap <buffer> <C-X><C-O> <C-X><C-O><C-N>
