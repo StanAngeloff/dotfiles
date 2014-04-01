@@ -54,8 +54,8 @@ set modeline
 set modelines=5    " Default numbers of lines to read for modeline instructions.
 
 set spell " Turn on spell checking by default
-set spellfile=$HOME/.vim/spell/en.utf-8.add
-set spelllang=en
+set spellfile=$HOME/.vim/spell/en.utf-8.add,$HOME/.vim/spell/bg.utf-8.add
+set spelllang=en,bg
 
 set scrolloff=120  " Scroll when lots of lines from edge of screen. Bigger numbers work better with ':help rnu'.
 set rnu            " Show the line number relative to the line with the cursor in front of each line.
