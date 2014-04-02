@@ -445,7 +445,7 @@ Bundle 'SirVer/ultisnips'
 
 let g:UltiSnipsNoPythonWarning=1
 
-let g:UltiSnipsSnippetDirectories=['snippets']
+let g:UltiSnipsSnippetDirectories=['UltiSnips']
 
 " Don't let UltiSnips handle the <C-J> and <C-K> keys.
 let g:UltiSnipsExpandTrigger='<NOP>'
