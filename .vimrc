@@ -410,16 +410,16 @@ let $GIT_SSL_NO_VERIFY='true'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'StanAngeloff/vim-zend55'
+Plugin 'StanAngeloff/vim-zend55'
 colorscheme vim-zend55
 
 " ---------------------------------------------------------------------------
 
-Bundle 'ciaranm/detectindent'
+Plugin 'ciaranm/detectindent'
 " When the correct value for 'expandtab' cannot be determined, it will revert to the default value below.
 let g:detectindent_preferred_expandtab=1
 if has('autocmd')
@@ -429,19 +429,19 @@ endif
 
 " ---------------------------------------------------------------------------
 
-Bundle 'godlygeek/csapprox'
+Plugin 'godlygeek/csapprox'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'juvenn/mustache.vim'
+Plugin 'juvenn/mustache.vim'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'kchmck/vim-coffee-script'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'SirVer/ultisnips'
+Plugin 'SirVer/ultisnips'
 
 let g:UltiSnipsNoPythonWarning=1
 
@@ -482,19 +482,19 @@ snoremap <C-K> <Esc>:call UltiSnips#JumpBackwards()<CR>
 
 " ---------------------------------------------------------------------------
 
-Bundle 'othree/html5.vim'
+Plugin 'othree/html5.vim'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'pangloss/vim-javascript'
+Plugin 'pangloss/vim-javascript'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 let NERDTreeChDirMode=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
@@ -542,45 +542,45 @@ nnoremap <expr> ? FastFingersSearch('?')
 
 " ---------------------------------------------------------------------------
 
-Bundle 'mbbill/undotree'
+Plugin 'mbbill/undotree'
 nnoremap <silent> <F6> :UndotreeToggle<CR>
 let g:undotree_SplitWidth=45
 let g:undotree_SetFocusWhenToggle=1
 
 " ---------------------------------------------------------------------------
 
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'tpope/vim-git'
+Plugin 'tpope/vim-git'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'tpope/vim-haml'
+Plugin 'tpope/vim-haml'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'tpope/vim-markdown'
+Plugin 'tpope/vim-markdown'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'tpope/vim-repeat'
+Plugin 'tpope/vim-repeat'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-unimpaired'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'StanAngeloff/php.vim'
-Bundle 'shawncplus/phpcomplete.vim'
-Bundle 'rayburgemeestre/phpfolding.vim'
-Bundle '2072/PHP-Indenting-for-VIm'
+Plugin 'StanAngeloff/php.vim'
+Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'rayburgemeestre/phpfolding.vim'
+Plugin '2072/PHP-Indenting-for-VIm'
 
 " For PHP code, enable fancy options and better syntax sync.
 let php_htmlInStrings=1
@@ -591,7 +591,7 @@ let php_var_selector_is_identifier = 1
 
 " ---------------------------------------------------------------------------
 
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 let g:ctrlp_map=''
 let g:ctrlp_cmd='CtrlPCurWD'
 let g:ctrlp_match_window_reversed=0
@@ -612,7 +612,7 @@ let g:ctrlp_user_command = {
 
 " ---------------------------------------------------------------------------
 
-Bundle 'JazzCore/ctrlp-cmatcher'
+Plugin 'JazzCore/ctrlp-cmatcher'
 if filereadable(expand('~/.vim/bundle/ctrlp-cmatcher/autoload/fuzzycomt.so'))
   let g:ctrlp_match_func = { 'match': 'matcher#cmatch' }
   let g:ctrlp_max_files = 0
@@ -622,15 +622,15 @@ endif
 
 " ---------------------------------------------------------------------------
 
-Bundle 'thinca/vim-visualstar'
+Plugin 'thinca/vim-visualstar'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'tpope/vim-abolish'
+Plugin 'tpope/vim-abolish'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 
 let g:airline_theme='grey'
 
@@ -647,25 +647,25 @@ let g:airline_paste_symbol = 'ρ'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'groenewege/vim-less'
+Plugin 'groenewege/vim-less'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'hail2u/vim-css3-syntax'
+Plugin 'hail2u/vim-css3-syntax'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'tpope/vim-eunuch'
+Plugin 'tpope/vim-eunuch'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'benmills/vimux'
+Plugin 'benmills/vimux'
 nnoremap <silent> <F5>      :w<CR>:VimuxRunLastCommand<CR>
 inoremap <silent> <F5> <Esc>:w<CR>:VimuxRunLastCommand<CR>a
 
 " ---------------------------------------------------------------------------
 
-Bundle 'AutoTag'
+Plugin 'AutoTag'
 
 let g:autotagmaxTagsFileSize=32 * 1024 * 1024
 let g:autotagTagsFile='.tags'
@@ -674,7 +674,7 @@ let g:autotagCtagsCmd='silent ctags'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
 
@@ -690,15 +690,15 @@ inoremap <silent> <F9> <Esc>:w<CR>:SyntasticCheck<CR>a
 
 " ---------------------------------------------------------------------------
 
-Bundle 'elzr/vim-json'
+Plugin 'elzr/vim-json'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'jnwhiteh/vim-golang'
+Plugin 'jnwhiteh/vim-golang'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'jistr/vim-nerdtree-tabs'
+Plugin 'jistr/vim-nerdtree-tabs'
 
 let g:nerdtree_tabs_open_on_new_tab=0
 let g:nerdtree_tabs_focus_on_files=1
@@ -749,7 +749,7 @@ endif
 
 " ---------------------------------------------------------------------------
 
-Bundle 'mhinz/vim-signify'
+Plugin 'mhinz/vim-signify'
 
 let g:signify_vcs_list = ['git', 'hg']
 
@@ -757,7 +757,7 @@ let g:signify_sign_change = '*'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'reedes/vim-litecorrect'
+Plugin 'reedes/vim-litecorrect'
 
 let g:litecorrect_user_dict = {
       \ 'I''ve': ['Ive']
@@ -772,19 +772,19 @@ let g:litecorrect#typographic=0
 
 " ---------------------------------------------------------------------------
 
-Bundle 'tommcdo/vim-exchange'
+Plugin 'tommcdo/vim-exchange'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'tommcdo/vim-fugitive-blame-ext'
+Plugin 'tommcdo/vim-fugitive-blame-ext'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'StanAngeloff/fizzy.vim'
+Plugin 'StanAngeloff/fizzy.vim'
 
 " ---------------------------------------------------------------------------
 
-Bundle 'ervandew/eclim', { 'rtp': 'org.eclim.core/vim/eclim/' }
+Plugin 'ervandew/eclim', { 'rtp': 'org.eclim.core/vim/eclim/' }
 
 call pathogen#infect('bundle/eclim/{}/vim/eclim/')
 
