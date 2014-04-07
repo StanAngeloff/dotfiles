@@ -26,6 +26,7 @@ Abolish parma param
 Abolish pritn print
 Abolish retrun return
 Abolish reutrn return
+Abolish isntance instance
 
 " Lazy hands
 Abolish 2param @param
