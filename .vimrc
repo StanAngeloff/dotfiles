@@ -784,10 +784,6 @@ Plugin 'StanAngeloff/fizzy.vim'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'ervandew/eclim', { 'rtp': 'org.eclim.core/vim/eclim/' }
-
-call pathogen#infect('bundle/eclim/{}/vim/eclim/')
-
 " eclim options.
 let g:EclimPhpSearchSingleResult = 'lopen'
 
