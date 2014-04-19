@@ -3,6 +3,7 @@
     "require": {
         "pdepend/pdepend": "2.0.0.*@dev",
         "phpmd/phpmd": "2.0.0.*@dev",
+        "sebastian/phpcpd": "2.0.*@dev",
         "squizlabs/php_codesniffer": "dev-master as 2.0.x-dev"
     }
 }
