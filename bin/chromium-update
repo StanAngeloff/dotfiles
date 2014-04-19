@@ -100,6 +100,14 @@ if [ ! -e "$lib_udev" ]; then
   ln -s '/usr/lib/x86_64-linux-gnu/libudev.so' "$lib_udev"
 fi
 
+# If Google Talk plug-in is installed, symlink any binaries.
+if [ -d '/opt/google/chrome-unstable/pepper/' ]; then
+  mkdir -p "${chrome_devel_path}/pepper"
+  for binary in '/opt/google/chrome-unstable/pepper/'*.so; do
+    ln -s "$( readlink -fm "$binary" )" "${chrome_devel_path}/pepper/$( basename "$binary" )"
+  done
+fi
+
 # The default product logo is too small for Gnome Shell.
 echo 'Downloading high-resolution version of Chromium product logo...'
 curl -#o "${chrome_devel_path}/product_logo_256.png" 'http://src.chromium.org/svn/trunk/src/chrome/app/theme/chromium/product_logo_256.png'
