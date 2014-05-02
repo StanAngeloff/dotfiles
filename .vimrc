@@ -105,6 +105,8 @@ set tags=.tags,./.tags,~/.vim/tags " Tags can be stored against a project, next 
 
 set switchbuf=usetab,newtab
 
+set shell=/bin/bash
+
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
