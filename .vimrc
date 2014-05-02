@@ -212,8 +212,8 @@ inoremap <C-R> <C-G>u<C-R>
 inoremap <C-U> <C-O>u
 
 " Jump words in INSERT mode.
-inoremap <C-B> <C-O>B
-inoremap <C-F> <C-O>W
+inoremap <C-H> <C-O>B
+inoremap <C-L> <C-O>W
 
 " Quick tab creation and navigation.
 nnoremap <leader>tn :tabnew<CR>
@@ -223,9 +223,6 @@ nnoremap <expr> <leader>te ':tabedit '
 " Tab navigation
 nnoremap <silent> <C-J> gt
 nnoremap <silent> <C-K> gT
-
-" Quick window navigation.
-nnoremap <silent> <S-Tab> <C-W><C-W>
 
 " Reformat a paragraph in NORMAL mode.
 nnoremap <leader>q gqip
@@ -279,9 +276,6 @@ inoremap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 
 " Copy entire buffer to X clipboard.
 nnoremap <leader>= mZggVG"+yg`Z
-
-" Open tag under cursor in a new tab.
-nnoremap <leader>] <C-w><C-]><C-w>T
 
 " Sort inside a paragraph.
 nnoremap <silent> <leader>sip mZvip:sort u<CR>g`Z:echo (line("'>") - line("'<") + 1) . ' line(s) sorted'<CR>
@@ -604,7 +598,6 @@ let g:ctrlp_max_depth=24
 let g:ctrlp_cache_dir='/tmp/.ctrlp'
 
 nnoremap <silent> <leader>o :<C-U>CtrlPCurWD<CR>
-nnoremap <silent> <leader>b :<C-U>CtrlPBufTag<CR>
 
 let g:ctrlp_user_command = {
       \     'types': {
