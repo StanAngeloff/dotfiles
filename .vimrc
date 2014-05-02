@@ -168,6 +168,9 @@ else
   imap <Nul> <C-X><C-O>
 endif
 
+" Use omni-completion (if available) then keyword completion, if the former fails.
+inoremap <expr> <C-X><C-O> '<C-R>=exists("+omnifunc") && &omnifunc != "" ? "\<C-X>\<C-O>" : ""<CR><C-R>=pumvisible() ? "" : "\<lt>Esc>a\<lt>C-N>"<CR><C-R>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
 " If the pop-up menu is visible, close it without inserting a new line.
 inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<C-G>u\<CR>"
 
@@ -799,5 +802,3 @@ let g:EclimXmlIndentDisabled = 0
 let EclimShowCurrentError = 0
 
 let g:EclimCompletionMethod = 'omnifunc'
-
-autocmd FileType php inoremap <buffer> <C-X><C-O> <C-X><C-O><C-N>
