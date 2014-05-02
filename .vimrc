@@ -238,6 +238,39 @@ nnoremap <leader>v g`[Vg`]o
 " The default behaviour is to jump back to the previous position which is not very intuitive when multiple jumps happen between edits.
 nnoremap `` `m
 
+" Paste/Replace
+" -------------
+"
+" Usage: cp{motion}
+"
+" The contents of the replaced text are placed in the default register '"'.
+"
+" Example: cpiw  " paste over the current word.
+"
+function! PasteReplace(type, ...)
+  if ! exists('g:PasteReplaceRegister')
+    return
+  endif
+
+  let previous_selection = &selection
+  let &selection = 'inclusive'
+
+  if a:type == 'line'
+    silent exe "normal! '[V']"
+  elseif a:type == 'block'
+    silent exe "normal! `[\<C-V>`]"
+  else
+    silent exe "normal! `[v`]"
+  endif
+
+  silent exe "normal! \"" . g:PasteReplaceRegister . "P"
+
+  let &selection = previous_selection
+
+endfunction
+
+nnoremap <silent> cp :let g:PasteReplaceRegister=v:register<CR>:set opfunc=PasteReplace<CR>g@
+
 " Erase trailing whitespace function and keyboard binding.
 function! StripTrailingWhitespace()
   let l:previousPosition = getpos('.')
