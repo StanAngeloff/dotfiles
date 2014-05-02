@@ -163,9 +163,9 @@ endfor
 
 " Alias <C-Space> to <C-N> in GUI/terminal.
 if has("gui_running")
-  imap <C-Space> <C-N>
+  imap <C-Space> <C-X><C-O>
 else
-  imap <Nul> <C-N>
+  imap <Nul> <C-X><C-O>
 endif
 
 " If the pop-up menu is visible, close it without inserting a new line.
