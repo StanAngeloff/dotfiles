@@ -469,10 +469,6 @@ Plugin 'juvenn/mustache.vim'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'kchmck/vim-coffee-script'
-
-" ---------------------------------------------------------------------------
-
 Plugin 'SirVer/ultisnips'
 
 let g:UltiSnipsNoPythonWarning=1
