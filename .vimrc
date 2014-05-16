@@ -317,9 +317,6 @@ nnoremap <leader>= mZggVG"+yg`Z
 " Sort inside a paragraph.
 nnoremap <silent> <leader>sip mZvip:sort u<CR>g`Z:echo (line("'>") - line("'<") + 1) . ' line(s) sorted'<CR>
 
-" Write using `sudo` in COMMAND mode if the file is read-only.
-cnoremap w!! w !sudo tee % >/dev/null
-
 " XML formatting through `xmllint`.
 cnoreabbrev xmlformat %!xmllint --format --encode UTF-8 -
 
