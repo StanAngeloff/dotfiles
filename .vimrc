@@ -557,7 +557,7 @@ function! FastFingersSearch(mode)
   augroup FastFingers
     autocmd CursorHold *
           \ exe 'set ut=' . g:FastFingersUpdateTime |
-          \ if join(getpos('.'), ',') != join(b:FastFingersPreviousPosition, ',') |
+          \ if exists('b:FastFingersPreviousPosition') && join(getpos('.'), ',') != join(b:FastFingersPreviousPosition, ',') |
           \   if getline(".") =~ g:FastFingersNERDTreeClosed |
           \     call feedkeys('o', 'm') |
           \   endif |
