@@ -98,6 +98,7 @@ set undodir=$HOME/.vim/undo
 set directory=/tmp,. " Store swap files in /tmp if possible.
 
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/* " Ignore rules for Vim and plug-ins.
+set wildignorecase " Case is ignored when completing file names and directories. Does not apply when the shell is used.
 
 set sessionoptions=blank,buffers,curdir,folds,tabpages,slash,unix " Session Handling.
 
