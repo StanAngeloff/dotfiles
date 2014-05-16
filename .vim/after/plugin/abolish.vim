@@ -20,13 +20,14 @@ Abolish anohter another
 Abolish antoher another
 Abolish aray array
 Abolish eixt exit
+Abolish isntance instance
 Abolish naem name
 Abolish overriden overridden
 Abolish parma param
 Abolish pritn print
 Abolish retrun return
 Abolish reutrn return
-Abolish isntance instance
+Abolish srting string
 
 " Lazy hands
 Abolish 2param @param
