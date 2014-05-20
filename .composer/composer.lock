@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "a7166dfd097a7010e36d16e0a5ee6d51afe9bea2"
+                "reference": "0008154ed57e39c25185a78df2615823f7ce2b58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/a7166dfd097a7010e36d16e0a5ee6d51afe9bea2",
-                "reference": "a7166dfd097a7010e36d16e0a5ee6d51afe9bea2",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/0008154ed57e39c25185a78df2615823f7ce2b58",
+                "reference": "0008154ed57e39c25185a78df2615823f7ce2b58",
                 "shasum": ""
             },
             "require": {
@@ -25,7 +25,7 @@
                 "symfony/filesystem": "@stable"
             },
             "require-dev": {
-                "phpunit/phpunit": "@stable",
+                "phpunit/phpunit": "3.*@stable",
                 "squizlabs/php_codesniffer": "@stable"
             },
             "bin": [
@@ -47,7 +47,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2014-03-19 22:21:06"
+            "time": "2014-04-30 09:18:08"
         },
         {
             "name": "phpmd/phpmd",
@@ -55,17 +55,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmd/phpmd.git",
-                "reference": "399c70b4fbe43613249d1f40f9ab9a12f97070dc"
+                "reference": "168ae4108aba73c5d42c2a989fc3c7cf9bb81da3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/399c70b4fbe43613249d1f40f9ab9a12f97070dc",
-                "reference": "399c70b4fbe43613249d1f40f9ab9a12f97070dc",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/168ae4108aba73c5d42c2a989fc3c7cf9bb81da3",
+                "reference": "168ae4108aba73c5d42c2a989fc3c7cf9bb81da3",
                 "shasum": ""
             },
             "require": {
                 "pdepend/pdepend": "2.0.0.*@dev",
-                "php": ">=5.3.0"
+                "php": ">=5.3.0",
+                "symfony/config": "@stable",
+                "symfony/dependency-injection": "@stable",
+                "symfony/filesystem": "@stable"
             },
             "bin": [
                 "src/bin/phpmd"
@@ -91,7 +94,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of PHPMD handled with Composer.",
-            "time": "2014-03-19 22:06:20"
+            "time": "2014-04-30 11:30:12"
         },
         {
             "name": "phpunit/php-timer",
@@ -182,20 +185,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpcpd.git",
-                "reference": "a9462153f2dd90466a010179901d31fbff598365"
+                "reference": "a7488a03f25aa83e7557a2f9d524c6d40ce3fa39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpcpd/zipball/a9462153f2dd90466a010179901d31fbff598365",
-                "reference": "a9462153f2dd90466a010179901d31fbff598365",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpcpd/zipball/a7488a03f25aa83e7557a2f9d524c6d40ce3fa39",
+                "reference": "a7488a03f25aa83e7557a2f9d524c6d40ce3fa39",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
-                "phpunit/php-timer": ">=1.0.4",
-                "sebastian/finder-facade": ">=1.1.0",
-                "sebastian/version": ">=1.0.3",
-                "symfony/console": ">=2.2.0",
+                "phpunit/php-timer": "~1.0.4",
+                "sebastian/finder-facade": "~1.1",
+                "sebastian/version": "~1.0.3",
+                "symfony/console": "~2.2",
                 "theseer/fdomdocument": "~1.4"
             },
             "bin": [
@@ -225,7 +228,7 @@
             ],
             "description": "Copy/Paste Detector (CPD) for PHP code.",
             "homepage": "https://github.com/sebastianbergmann/phpcpd",
-            "time": "2014-03-31 09:25:30"
+            "time": "2014-05-04 17:53:54"
         },
         {
             "name": "sebastian/version",
@@ -268,12 +271,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "339b91cd73c9930c792d54092dc6e1cd376b7a8d"
+                "reference": "78538fb0b1ee92e633fefd381f5d3a968e327087"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/339b91cd73c9930c792d54092dc6e1cd376b7a8d",
-                "reference": "339b91cd73c9930c792d54092dc6e1cd376b7a8d",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/78538fb0b1ee92e633fefd381f5d3a968e327087",
+                "reference": "78538fb0b1ee92e633fefd381f5d3a968e327087",
                 "shasum": ""
             },
             "require": {
@@ -335,21 +338,21 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2014-04-02 00:29:17"
+            "time": "2014-05-19 02:12:50"
         },
         {
             "name": "symfony/config",
-            "version": "v2.4.3",
+            "version": "v2.4.4",
             "target-dir": "Symfony/Component/Config",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Config.git",
-                "reference": "e98693981385224bd31667e56204f311d9e0f98e"
+                "reference": "2effc67af6f21a0d267210b72d0b0b691d113528"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Config/zipball/e98693981385224bd31667e56204f311d9e0f98e",
-                "reference": "e98693981385224bd31667e56204f311d9e0f98e",
+                "url": "https://api.github.com/repos/symfony/Config/zipball/2effc67af6f21a0d267210b72d0b0b691d113528",
+                "reference": "2effc67af6f21a0d267210b72d0b0b691d113528",
                 "shasum": ""
             },
             "require": {
@@ -385,21 +388,21 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "http://symfony.com",
-            "time": "2014-03-26 11:35:33"
+            "time": "2014-04-22 08:11:06"
         },
         {
             "name": "symfony/console",
-            "version": "v2.4.3",
+            "version": "v2.4.4",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "ef20f1f58d7f693ee888353962bd2db336e3bbcb"
+                "reference": "2e452005b1e1d003d23702d227e23614679eb5ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/ef20f1f58d7f693ee888353962bd2db336e3bbcb",
-                "reference": "ef20f1f58d7f693ee888353962bd2db336e3bbcb",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/2e452005b1e1d003d23702d227e23614679eb5ca",
+                "reference": "2e452005b1e1d003d23702d227e23614679eb5ca",
                 "shasum": ""
             },
             "require": {
@@ -440,21 +443,21 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-03-01 17:35:04"
+            "time": "2014-04-27 13:34:57"
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v2.4.3",
+            "version": "v2.4.4",
             "target-dir": "Symfony/Component/DependencyInjection",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/DependencyInjection.git",
-                "reference": "5f17442aaa47610fcff7daeb635c834be71df204"
+                "reference": "f4f947f83aa2f1706ec8cf4f4ead6c85ea935156"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/5f17442aaa47610fcff7daeb635c834be71df204",
-                "reference": "5f17442aaa47610fcff7daeb635c834be71df204",
+                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/f4f947f83aa2f1706ec8cf4f4ead6c85ea935156",
+                "reference": "f4f947f83aa2f1706ec8cf4f4ead6c85ea935156",
                 "shasum": ""
             },
             "require": {
@@ -499,21 +502,21 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "http://symfony.com",
-            "time": "2014-03-27 14:53:17"
+            "time": "2014-04-18 20:38:54"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.4.3",
+            "version": "v2.4.4",
             "target-dir": "Symfony/Component/Filesystem",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",
-                "reference": "b717952487176a993e9b12a08b87beae25ae419c"
+                "reference": "a3af8294bcce4a7c1b2892363b0c9d8109affad4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/b717952487176a993e9b12a08b87beae25ae419c",
-                "reference": "b717952487176a993e9b12a08b87beae25ae419c",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/a3af8294bcce4a7c1b2892363b0c9d8109affad4",
+                "reference": "a3af8294bcce4a7c1b2892363b0c9d8109affad4",
                 "shasum": ""
             },
             "require": {
@@ -548,21 +551,21 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "http://symfony.com",
-            "time": "2014-03-26 11:55:03"
+            "time": "2014-04-16 10:34:31"
         },
         {
             "name": "symfony/finder",
-            "version": "v2.4.3",
+            "version": "v2.4.4",
             "target-dir": "Symfony/Component/Finder",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder.git",
-                "reference": "ab301c7d21f536c34ab6c2c79dba8d465104c518"
+                "reference": "25e1e7d5e7376f8a92ae3b1d714d956edf33a730"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Finder/zipball/ab301c7d21f536c34ab6c2c79dba8d465104c518",
-                "reference": "ab301c7d21f536c34ab6c2c79dba8d465104c518",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/25e1e7d5e7376f8a92ae3b1d714d956edf33a730",
+                "reference": "25e1e7d5e7376f8a92ae3b1d714d956edf33a730",
                 "shasum": ""
             },
             "require": {
@@ -597,7 +600,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "http://symfony.com",
-            "time": "2014-03-01 17:35:04"
+            "time": "2014-04-27 13:34:57"
         },
         {
             "name": "theseer/fdomdocument",
