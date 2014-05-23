@@ -54,6 +54,7 @@
 	sp = stash pop
 	su = submodule update --init --recursive
 	ig = !git ls-files -v | grep "^[[:lower:]]"
+	try = !sh -c 'git clone --depth "${2-1}" --branch "${1-master}" --single-branch "$0"'
 
 [push]
 	default = nothing # ${pushDefault}
