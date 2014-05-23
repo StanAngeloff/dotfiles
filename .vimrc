@@ -733,6 +733,9 @@ inoremap <silent> <F9> <Esc>:w<CR>:SyntasticCheck<CR>a
 
 Plugin 'elzr/vim-json'
 
+" Set this variable as vim-json barfs if it's not defined.
+let g:vim_json_warnings=1
+
 " ---------------------------------------------------------------------------
 
 Plugin 'jnwhiteh/vim-golang'
