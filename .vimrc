@@ -47,8 +47,8 @@ set clipboard+=unnamed         " Yank to clipboard.
 
 " 'i' is avoided as it can be extremely slow on large trees.
 set complete-=i
-" Only complete the common part and always display a menu.
-set completeopt=longest,menuone
+" Only complete the common part and display a menu if more than one choice.
+set completeopt=longest,menu
 
 set modeline
 set modelines=5    " Default numbers of lines to read for modeline instructions.
