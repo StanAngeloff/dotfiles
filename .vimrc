@@ -433,11 +433,19 @@ function! BestComplete()
         return "\<C-Y>"
       else
         call UltiSnips#JumpForwards()
-        if g:ulti_jump_forwards_res == 0
-          return "\<Tab>"
+        if g:ulti_jump_forwards_res != 0
+          return ''
         endif
       endif
+    else
+      return ''
     endif
+  endif
+
+  " If the character immediately before the column is not a whitespace, trigger omni-completion.
+  let l:before = getline('.')[:col('.') - 1]
+  if l:before =~ '\S$'
+    call feedkeys("\<C-X>\<C-O>", 'm')
     return ''
   endif
 
