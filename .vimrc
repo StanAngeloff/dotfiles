@@ -620,15 +620,12 @@ Plugin 'tpope/vim-unimpaired'
 " ---------------------------------------------------------------------------
 
 Plugin 'StanAngeloff/php.vim'
-Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'rayburgemeestre/phpfolding.vim'
 Plugin '2072/PHP-Indenting-for-VIm'
 
-" For PHP code, enable fancy options and better syntax sync.
-let php_htmlInStrings=1
 " Don't use the PHP syntax folding.
 let g:DisableAutoPHPFolding = 1
-" Include the '$' as part of identifiers. 
+" Include the '$' as part of identifiers.
 let php_var_selector_is_identifier = 1
 
 " ---------------------------------------------------------------------------
