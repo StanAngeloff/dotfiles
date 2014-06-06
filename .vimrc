@@ -802,6 +802,8 @@ Plugin 'StanAngeloff/fizzy.vim'
 
 " ---------------------------------------------------------------------------
 
+Plugin 'eclim', { 'pinned': 1 }
+
 " eclim options.
 let g:EclimPhpSearchSingleResult = 'lopen'
 
