@@ -832,3 +832,11 @@ let g:EclimXmlIndentDisabled = 0
 let EclimShowCurrentError = 0
 
 let g:EclimCompletionMethod = 'omnifunc'
+
+" ---------------------------------------------------------------------------
+
+Plugin 'godlygeek/tabular'
+
+" ---------------------------------------------------------------------------
+
+Plugin 'tpope/vim-cucumber'
