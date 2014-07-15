@@ -20,6 +20,7 @@ Abolish anohter another
 Abolish antoher another
 Abolish aray array
 Abolish eixt exit
+Abolish froeach foreach
 Abolish isntance instance
 Abolish naem name
 Abolish overriden overridden
