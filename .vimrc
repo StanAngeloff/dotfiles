@@ -765,7 +765,7 @@ function! ToggleNERDTree()
   endfor
 
   " If NERDTree is visible and inactive in the current tab, focus.
-  if (nerdtree#treeExistsForTab() && nerdtree#getTreeWinNum() != -1) && ! nerdtree#treeExistsForBuf()
+  if (g:NERDTree.ExistsForTab() && nerdtree#getTreeWinNum() != -1) && ! g:NERDTree.ExistsForBuf()
     execute 'silent! NERDTreeFocus'
   else
     execute 'silent! NERDTreeMirrorToggle'
