@@ -23,6 +23,7 @@ Abolish eixt exit
 Abolish froeach foreach
 Abolish isntance instance
 Abolish naem name
+Abolish otehrwise otherwise
 Abolish overriden overridden
 Abolish parma param
 Abolish pritn print
