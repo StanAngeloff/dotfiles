@@ -559,6 +559,9 @@ let NERDTreeMapHelp = 'H'
 " Don't ask if buffers should be deleted on rename.
 let NERDTreeAutoDeleteBuffer=1
 
+" Be safe!
+let NERDTreeRemoveDirCmd='trash '
+
 " Fast Fingers
 " Quickly open up NERDTree nodes after completing a search.
 let g:FastFingersSpeed = 100
