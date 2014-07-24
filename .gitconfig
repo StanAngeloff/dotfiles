@@ -45,6 +45,7 @@
 	fh = flow hotfix
 	fi = flow init
 	fr = flow release
+	ig = !git ls-files -v | grep "^[[:lower:]]"
 	l  = log       --graph        --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
 	la = log --all --graph --tags --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
 	rp = !bash -c 'git rev-parse --symbolic-full-name --abbrev-ref=strict "${1:-HEAD}" "${@:2}"' -
@@ -53,7 +54,6 @@
 	sl = stash list
 	sp = stash pop
 	su = submodule update --init --recursive
-	ig = !git ls-files -v | grep "^[[:lower:]]"
 	try = !sh -c 'git clone --depth "${2-1}" --branch "${1-master}" --single-branch "$0"'
 
 [push]
