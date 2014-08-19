@@ -272,7 +272,7 @@ function! PasteReplace(type, ...)
     silent exe "normal! `[v`]"
   endif
 
-  silent exe "normal! \"" . g:PasteReplaceRegister . "P"
+  silent exe "normal \"" . g:PasteReplaceRegister . "P"
 
   let &selection = previous_selection
 
