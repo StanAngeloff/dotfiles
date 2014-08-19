@@ -144,6 +144,14 @@ nnoremap <silent> k gk
 " Make Y consistent with C and D. See ':help Y'.
 nnoremap Y y$
 
+" Copy to & paste from the system clipboard.
+vnoremap <Leader>y "+y
+vnoremap <Leader>d "+d
+nnoremap <Leader>p "+p
+nnoremap <Leader>P "+P
+vnoremap <Leader>p "+p
+vnoremap <Leader>P "+P
+
 " OMG! This is sooo much better.
 nnoremap <Space> :
 nnoremap <Return> :w<CR>
