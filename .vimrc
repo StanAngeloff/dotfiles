@@ -405,6 +405,9 @@ if has('autocmd')
           \ | endif
         \ | endfor
 
+  " Open help windows on the right in a vertical split, credits @EvanPurkhiser.
+  autocmd FileType help wincmd L
+
 endif
 
 " {{{ Tab completion
