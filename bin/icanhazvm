@@ -20,24 +20,26 @@ version() {
 }
 
 usage() {
-  echo 'Usage: icanhazvm [-m MB] [-d] box'
+  echo 'Usage: icanhazvm [ stop | [-m MB] [-d] box ]'
 }
 
 help() {
   version
   usage
   echo
+  echo "Arguments:"
+  echo
+  echo "    stop"
+  echo "        Force shut down of a running VM (equivalent of pulling power)."
+  echo "    box (default: ${vm_box})"
+  echo "        The box name. See https://vagrantcloud.com/discover"
+  echo
   echo "Options:"
   echo
-  echo "    -m, --memory (default ${vm_memory}MB)"
+  echo "    -m, --memory (default: ${vm_memory})"
   echo "        Specify the amount of memory, in MB, the VM will have access to."
   echo "    -d, --destroy"
   echo "        Destroy the previous VM, if such exists."
-  echo
-  echo "Arguments:"
-  echo
-  echo "    box (default: '${vm_box}')"
-  echo "        The box name, see https://vagrantcloud.com/discover"
   echo
 }
 
@@ -77,6 +79,11 @@ if [[ $# -ne 0 ]]; then
 fi
 
 mkdir -p "$local_path"
+
+if [[ "$vm_box" = 'stop' ]]; then
+	vgrnt halt --force
+	exit 0
+fi
 
 cat > "${local_path}/Vagrantfile" <<-EOD
 Vagrant.configure('2') do |config|
