@@ -81,8 +81,8 @@ fi
 mkdir -p "$local_path"
 
 if [[ "$vm_box" = 'stop' ]]; then
-	vgrnt halt --force
-	exit 0
+  vgrnt halt --force
+  exit 0
 fi
 
 cat > "${local_path}/Vagrantfile" <<-EOD
