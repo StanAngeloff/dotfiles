@@ -330,20 +330,24 @@ nnoremap <silent> <leader>sip mZvip:sort u<CR>g`Z:echo (line("'>") - line("'<") 
 cnoreabbrev xmlformat %!xmllint --format --encode UTF-8 -
 
 " Send file to freedesktop.org trashcan, depends on `trash` command.
-command! -bar -bang Trash :
-      \ let s:file = fnamemodify(bufname(<q-args>), ':p') |
-      \ if isdirectory(s:file) |
-      \   echoerr 'Failed to trash "' . s:file . '", the path is a directory.' |
-      \ elseif filereadable(s:file) |
-      \   execute 'bdelete<bang>' |
-      \   call system('trash ' . shellescape(s:file)) |
-      \   if ! bufloaded(s:file) && v:shell_error |
-      \     echoerr 'Failed to trash "' . s:file . '", exit code "' . string(v:shell_error) . '".' |
-      \   endif |
-      \ else |
-      \   echoerr 'Failed to trash "' . s:file . '", the path is not readable.' |
-      \ endif |
-      \ unlet s:file
+function! Trash(path)
+  call system('trash ' . shellescape(a:path))
+  if v:shell_error != 0
+    if isdirectory(a:path)
+      throw "Trash.PathDeletionError: Could not trash directory: '" . a:path . "'."
+    elseif filereadable(a:path)
+      throw "Trash.FileDeletionError: Could not trash file '" . a:path . "'."
+    else
+      throw "Trash.UnknownDeletionError: Could not trash path '" . a:path . "', the path is not readable."
+    endif
+  endif
+  let bufnum = bufnr('^' . a:path . '$')
+  if buflisted(bufnum)
+    execute 'bwipeout! ' . bufnum
+  endif
+endfunction!
+
+command! -bar -bang Trash call Trash(fnamemodify(bufname(<q-args>), ':p'))
 
 if has("gui_running")
   set guifont=Inconsolata\ for\ Powerline\ Medium\ 14
