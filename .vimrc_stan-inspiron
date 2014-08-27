@@ -1,2 +1,3 @@
-" We start with urxvt which has the correct term information, but gets overridden by tmux. This sets it right.
-set term=rxvt-unicode-256color
+" The default 'screen-256color' termcap does not handle italics.
+set t_ZH=[3m
+set t_ZR=[23m
