@@ -17,7 +17,7 @@ URxvt.scrollTtyKeypress: true
 
 URxvt.inheritPixmap: false
 URxvt.fading: 0
-URxvt.background: rgba:0000/0000/0000/efef
+URxvt.background: rgba:0000/0000/0000/fafa
 URxvt.foreground: 15
 
 URxvt.font: xft:inconsolata for powerline:pixelsize=18:antialias=true:hinting=true,xft:dejavu sans mono:pixelsize=18:antialias=true:hinting=true
