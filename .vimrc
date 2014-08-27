@@ -502,6 +502,17 @@ endif
 
 Plugin 'godlygeek/csapprox'
 
+" Don't override 'italic' with 'underline', urxvt handles it just fine.
+let g:CSApprox_attr_map = { 'sp' : 'fg' }
+
+" Clear the background of the Normal and NonText groups,
+" forcing the terminal's default background color to be used instead,
+" including any pseudo-transparency done by that terminal emulator.
+let g:CSApprox_Zend55_hook_post = [
+      \ 'hi Normal  ctermbg=NONE ctermfg=NONE',
+      \ 'hi NonText ctermbg=NONE ctermfg=NONE',
+      \ ]
+
 " ---------------------------------------------------------------------------
 
 Plugin 'juvenn/mustache.vim'
