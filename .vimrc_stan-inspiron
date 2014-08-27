@@ -1,0 +1,2 @@
+" We start with urxvt which has the correct term information, but gets overridden by tmux. This sets it right.
+set term=rxvt-unicode-256color
