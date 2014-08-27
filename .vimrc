@@ -510,7 +510,7 @@ let g:CSApprox_attr_map = { 'sp' : 'fg' }
 " including any pseudo-transparency done by that terminal emulator.
 let g:CSApprox_Zend55_hook_post = [
       \ 'hi Normal  ctermbg=NONE ctermfg=NONE',
-      \ 'hi NonText ctermbg=NONE ctermfg=NONE',
+      \ 'hi NonText ctermbg=NONE ctermfg=238 " blank lines get a darker foreground.',
       \ ]
 
 " ---------------------------------------------------------------------------
