@@ -7,6 +7,13 @@ filetype off
 call pathogen#helptags()
 call pathogen#infect()
 
+" Source machine-specific local configuration.
+let s:localrc=$HOME . '/.vimrc_' . hostname()
+if filereadable(s:localrc)
+  execute 'source ' . s:localrc
+endif
+unlet s:localrc
+
 " Enable 256-colour terminal if no GUI.
 if !has("gui_running")
   set t_Co=256

@@ -18,7 +18,7 @@
 !.urxvt/
 !.urxvt/ext/
 !.vim/
-!.vimrc
+!.vimrc*
 !.Xresources
 !.zsh/
 !.zshrc
