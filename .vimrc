@@ -418,7 +418,8 @@ if has('autocmd')
         \ | endfor
 
   " Open help windows on the right in a vertical split, credits @EvanPurkhiser.
-  autocmd FileType help wincmd L
+  autocmd FileType help nnoremap <buffer> <silent> q :bwipeout<CR> |
+        \ wincmd L
 
 endif
 
