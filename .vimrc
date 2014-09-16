@@ -286,7 +286,7 @@ function! PasteReplace(type, ...)
 
 endfunction
 
-nnoremap <silent> cp :let g:PasteReplaceRegister=v:register<CR>:set opfunc=PasteReplace<CR>g@
+nnoremap <silent> cp :let g:PasteReplaceRegister=v:register<CR>:setlocal opfunc=PasteReplace<CR>g@
 
 " Erase trailing whitespace function and keyboard binding.
 function! StripTrailingWhitespace()
@@ -303,14 +303,14 @@ nnoremap <silent> <leader>W :call StripTrailingWhitespace()<CR>
 nnoremap <silent> <leader><Space> :noh<CR>:sign unplace *<CR>:SyntasticReset<CR>
 
 " Toggle spell-checking keyboard binding.
-noremap <silent> <F1> :set nospell! nospell?<CR>
+noremap <silent> <F1> :setlocal nospell! nospell?<CR>
 " Toggle paste-mode keyboard binding.
-nnoremap <silent> <F2> :set invpaste paste?<CR>
+nnoremap <silent> <F2> :setlocal invpaste paste?<CR>
 set pastetoggle=<F2>
 " Toggle case sensitive/insensitive.
-nnoremap <silent> <F3> :set ignorecase! ignorecase?<CR>
+nnoremap <silent> <F3> :setlocal ignorecase! ignorecase?<CR>
 " Toggle display of placeholder characters for tabs and newlines.
-nnoremap <silent> <F4> :set list! list?<CR>
+nnoremap <silent> <F4> :setlocal list! list?<CR>
 
 " Adjust the tab/shift width keyboard bindings.
 nnoremap <leader>w2 :setlocal tabstop=2<CR>:setlocal shiftwidth=2<CR>
