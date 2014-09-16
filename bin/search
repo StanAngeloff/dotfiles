@@ -75,6 +75,7 @@ search() {
     --color=always              \
     --line-number               \
     --binary-file=without-match \
+    --no-messages               \
     --extended-regexp           \
         --exclude='.tags'       \
     --exclude-dir='.git'        \
