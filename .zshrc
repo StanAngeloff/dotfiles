@@ -179,8 +179,20 @@ bindkey '^r'      history-incremental-search-backward
 bindkey "^[[5~"   up-line-or-history
 bindkey "^[[6~"   down-line-or-history
 
-bindkey '^[[A'    up-line-or-search
-bindkey '^[[B'    down-line-or-search
+# Search for a history line matching the start of the current line: {{{
+#
+# See https://bbs.archlinux.org/viewtopic.php?pid=1170157#p1170157
+
+autoload up-line-or-beginning-search
+autoload down-line-or-beginning-search
+
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+[[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-line-or-beginning-search
+
+# }}}
 
 bindkey "^[[H"    beginning-of-line
 bindkey "^[[1~"   beginning-of-line
