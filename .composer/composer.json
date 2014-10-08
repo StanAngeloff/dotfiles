@@ -1,9 +1,9 @@
 {
     "minimum-stability": "stable",
     "require": {
-        "pdepend/pdepend": "2.0.0.*@dev",
-        "phpmd/phpmd": "2.0.0.*@dev",
-        "sebastian/phpcpd": "2.0.*@dev",
-        "squizlabs/php_codesniffer": "dev-master as 2.0.x-dev"
+        "pdepend/pdepend": "2.*",
+        "phpmd/phpmd": "2.*",
+        "sebastian/phpcpd": "2.*",
+        "squizlabs/php_codesniffer": "2.*@RC"
     }
 }
