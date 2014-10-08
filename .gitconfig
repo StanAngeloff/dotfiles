@@ -38,7 +38,7 @@
 	ca = commit --amend
 	cm = commit -m
 	co = checkout
-	df = !sh -c 'git `git cat-file -t "$0" 1>/dev/null 2>&1 && echo show || echo diff` -U5 --minimal --word-diff=color --ignore-space-change --ignore-blank-lines "$0" "$@"'  
+	df = !sh -c 'git `git cat-file -t "$0" 1>/dev/null 2>&1 && echo show || echo diff` -U5 --minimal --word-diff=color --ignore-space-change --ignore-blank-lines --no-ext-diff "$0" "$@"'  
 	eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
 	f  = fetch       --prune --verbose
 	fa = fetch --all --prune --verbose
