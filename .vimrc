@@ -887,4 +887,5 @@ Plugin 'tpope/vim-cucumber'
 Plugin 'chase/vim-ansible-yaml'
 
 " ---------------------------------------------------------------------------
+
 Plugin 'tpope/vim-afterimage'
