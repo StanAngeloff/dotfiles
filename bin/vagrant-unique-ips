@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+path="${1-/data/projects/}"
+ip="$( echo "${2-192.168}" | sed -e 's/\.$//' )."
+
+find "$path" -type f -name Vagrantfile | \
+  xargs -l -i grep "$ip" '{}' | \
+  sed -e 's/.*\('"$ip"'\)/\1/' -e 's/\('"$ip"'[0-9\.]\+\).*/\1/' | \
+  sort -V | uniq
