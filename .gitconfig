@@ -59,3 +59,7 @@
 
 [push]
 	default = nothing # ${pushDefault}
+
+# See http://git-scm.com/blog/2010/03/08/rerere.html
+[rerere]
+	enabled = true
