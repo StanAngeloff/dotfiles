@@ -6,6 +6,14 @@ alias Q='exit'
 # Quick commands access.
 alias g='git'
 
+# Tell Git how to complete complex aliases.
+#
+# See https://coderwall.com/p/d2w7oa/auto-completion-within-complex-git-alias
+#
+function _git_df() {
+  _git_log
+}
+
 # Open Vim tabs for each argument.
 alias v='vim -p'
 
