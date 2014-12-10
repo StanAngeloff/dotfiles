@@ -851,31 +851,6 @@ Plugin 'StanAngeloff/fizzy.vim'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'eclim', { 'pinned': 1 }
-
-" eclim options.
-let g:EclimPhpSearchSingleResult = 'lopen'
-
-let g:EclimFileTypeValidate = 0
-
-let g:EclimShowQuickfixSigns = 0
-let g:EclimShowLoclistSigns = 0
-
-let g:EclimCssIndentDisabled = 0
-let g:EclimDtdIndentDisabled = 0
-let g:EclimHtmlIndentDisabled = 0
-let g:EclimHtmldjangoIndentDisabled = 0
-let g:EclimHtmljinjaIndentDisabled = 0
-let g:EclimJavascriptIndentDisabled = 0
-let g:EclimPhpIndentDisabled = 0
-let g:EclimXmlIndentDisabled = 0
-
-let EclimShowCurrentError = 0
-
-let g:EclimCompletionMethod = 'omnifunc'
-
-" ---------------------------------------------------------------------------
-
 Plugin 'godlygeek/tabular'
 
 " ---------------------------------------------------------------------------
