@@ -57,6 +57,9 @@
 	su = submodule update --init --recursive
 	try = !sh -c 'git clone --depth "${2-1}" --branch "${1-master}" --single-branch "$0"'
 
+	freeze = !bash -c '. $HOME/bin/git-freeze.sh && git-freeze'
+	thaw = !bash -c '. $HOME/bin/git-freeze.sh && git-thaw'
+
 [push]
 	default = nothing # ${pushDefault}
 
