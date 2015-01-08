@@ -125,6 +125,9 @@ endif
 " Syntax highlight shell scripts as per POSIX, not the original Bourne shell which very few use.
 let g:is_posix = 1
 
+" When editing SQL files, don't add default mappings for sqlcomplete. These mess up <C-C>
+let g:omni_sql_no_default_maps = 1
+
 " Use our customised `grep` script for powerful searches.
 set grepprg=$HOME/bin/search\ $*
 set grepformat=%f:%l:%m
