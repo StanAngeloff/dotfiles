@@ -14,6 +14,8 @@
 !.localrc_stan-inspiron_gnu_linux
 !.profile.*
 !.rbenv
+!.ssh/
+!.ssh/config
 !.tmux.conf
 !.urxvt/
 !.urxvt/ext/
