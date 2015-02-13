@@ -35,7 +35,7 @@
 # Composer
 bin/composer
 !.composer/
-!.composer/composer.*
+!.composer/composer.json
 !.composer/vendor/
 !.composer/vendor/bin/
 !.composer/vendor/bin/*
