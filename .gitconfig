@@ -66,3 +66,7 @@
 # See http://git-scm.com/blog/2010/03/08/rerere.html
 [rerere]
 	enabled = true
+
+# See http://git-scm.com/docs/git-rebase#_configuration
+[rebase]
+	autosquash = true
