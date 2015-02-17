@@ -1,0 +1,114 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [[ $# -lt 7 ]]; then
+    echo "Usage: '$( basename "$0" )' images_directory grep_pattern cell_width cell_height tile_x tile_y montage_image"
+    echo
+    echo "Arguments:"
+    echo
+    echo "    images_directory"
+    echo "        The absolute path to the directory which contains image files only."
+    echo "    grep_pattern"
+    echo "        The pattern used to narrow down the list of images to include in the photo wall."
+    echo "    cell_{width,height}"
+    echo "        The width/height of a single image in the photo wall."
+    echo "    tile_{x,y}"
+    echo "        The number of images to include horizontally/vertically in the photo wall."
+    echo "    montage_image"
+    echo "        The absolute path to the file which will contain the final photo wall."
+    echo
+    exit 1
+fi
+
+images_directory="$1"
+grep_pattern="$2"
+cell_width="$3"
+cell_height="$4"
+tile_x="$5"
+tile_y="$6"
+montage_image="$7"
+
+cascade_file=/tmp/haarcascade_frontalface_default.xml
+if [[ ! -f "$cascade_file" ]]; then
+    curl -s -o "$cascade_file" https://jviolajones.googlecode.com/files/haarcascade_frontalface_default.xml
+fi
+
+face_detect_file=/tmp/face_detect.py
+cat > "$face_detect_file" <<-EOD
+#!/usr/bin/env python
+
+import sys, os
+
+import cv2
+import numpy
+
+from PIL import Image
+
+cascadePath = sys.argv[1]
+imagePath = sys.argv[2]
+
+faceCascade = cv2.CascadeClassifier(cascadePath)
+
+if os.path.isfile(imagePath):
+    try:
+        im = Image.open(imagePath)
+        if sum(im.convert('L').getextrema()) in (0, 2):
+            sys.exit(1)
+
+        imcv = cv2.cvtColor(numpy.asarray(im), cv2.COLOR_RGB2BGR)
+        gray = cv2.cvtColor(imcv, cv2.COLOR_BGR2GRAY)
+    except:
+        sys.exit(1)
+
+    faces = faceCascade.detectMultiScale(
+        gray,
+        scaleFactor=1.1,
+        minNeighbors=5,
+        minSize=(30, 30),
+        flags = cv2.cv.CV_HAAR_SCALE_IMAGE
+    )
+
+    if len(faces) > 0:
+        sys.exit(0)
+
+sys.exit(1)
+EOD
+
+chmod +x "$face_detect_file"
+
+found_images=0
+arranged_images=( )
+while read line; do
+    arranged_images+=( "$( echo "$line" | awk -F $'\t' '{ print $2 }' )" )
+    ((found_images+=1))
+done < <( ( while read photo_file; do
+    if ! "$face_detect_file" "$cascade_file" "$photo_file"; then
+        continue
+    fi
+
+    photo_average=$( convert "$photo_file" -equalize -resize '1x1!' -depth 8 txt:- | tail -1 | grep -E -o "#(.)* " | cut -f1 -d' ' | tr -d '#' | cut -c -6 )
+    echo $((16#$photo_average))$'\t'"$photo_file"
+
+    ((found_images+=1))
+    if [[ $found_images -ge $((tile_x * tile_y)) ]]; then
+        break;
+    fi
+done < <( find "$images_directory" -type f \( -iname '*.png' -or -iname '*.jpg' -or -iname '*.gif' \) | grep "$grep_pattern" | sort --unique -R ) ) | sort -n )
+
+if [[ $found_images -lt $((tile_x * tile_y)) ]]; then
+    echo 'Not enough images.'
+    exit 2
+fi
+
+montage "${arranged_images[@]}" \
+    -auto-orient \
+    -trim +repage \
+    -thumbnail "${cell_width}x${cell_height}^" \
+    -unsharp 0x.5 \
+    -gravity center \
+    -extent "${cell_width}x${cell_height}" \
+    -tile "${tile_x}x${tile_y}" \
+    -geometry "${cell_width}x${cell_height}+0+0>" \
+    -quality 100 \
+    "$montage_image"
