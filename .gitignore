@@ -82,5 +82,4 @@ bin/composer
 !.zsh/scripts/*
 
 # Zsh completions.
-!.zsh/completion/
-!.zsh/completion/*
+!.zsh/completions

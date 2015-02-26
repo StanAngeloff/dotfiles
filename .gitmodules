@@ -22,3 +22,6 @@
 [submodule ".zsh/scripts/lalias.sh"]
 	path = .zsh/scripts/lalias.sh
 	url = git://github.com/StanAngeloff/lalias.sh.git
+[submodule ".zsh/completions"]
+	path = .zsh/completions
+	url = git://github.com/zsh-users/zsh-completions.git

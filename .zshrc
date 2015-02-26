@@ -84,7 +84,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
 
 # Add user-completion directory to the array of Zsh sources (e.g., for improved Git).
-fpath=( "$HOME/.zsh/completion" $fpath )
+fpath=( "${HOME}/.zsh/completions/src" $fpath )
 
 # Disable named-directories autocompletion.
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
