@@ -24,7 +24,9 @@ alias ll='ls -halF --color=tty'
 alias ..='cd ..'
 
 # Super-User operations.
-alias _='sudo'
+#
+# See https://wiki.archlinux.org/index.php/Sudo#Passing_aliases
+alias _='sudo '
 
 for __cmd in apt-get service start stop status restart; do
   eval "alias $__cmd='_ $__cmd'"
