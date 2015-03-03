@@ -223,8 +223,8 @@ vnoremap <expr> 0 CleverJumpFirst()
 vnoremap $ $h
 
 " Q for 'Q'uit, 'Ex' mode has received zero use.
-nnoremap <silent> Q ZZ
-vnoremap <silent> Q <Esc>ZZ
+nnoremap <silent> Q :windo normal ZZ<CR>
+vnoremap <silent> Q <Esc>:windo normal ZZ<CR>
 
 " Start a new Undo group before making changes in INSERT mode.
 inoremap <C-W> <C-G>u<C-W>

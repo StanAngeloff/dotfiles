@@ -64,6 +64,10 @@ bin/composer
 !.vim/autoload/*/*/
 !.vim/autoload/*/*/*.vim
 
+# Vim: Plug-ins
+!.vim/plugin/
+!.vim/plugin/*.vim
+
 # Vim: UltiSnips snippets
 !.vim/snippets/
 !.vim/snippets/*/

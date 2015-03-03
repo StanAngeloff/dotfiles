@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+vim \
+  -c 'silent call TabMultiDiff()' \
+  -c 'tabdo windo set nofoldenable foldcolumn=0' \
+  -c 'tabdo normal ]c' \
+  -c 'tabfirst' \
+  "$@"

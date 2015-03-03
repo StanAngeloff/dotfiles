@@ -1,0 +1,115 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# {{{ Version, usage, help...
+
+version() {
+  echo 'install-bin 0.1.0'
+}
+
+usage() {
+  echo 'Usage: install-bin [ -f ] [ -v ] [ bin_path ]'
+}
+
+description() {
+  echo 'Download and install third-party binaries/scripts.'
+}
+
+help() {
+  version ; description
+  echo
+  usage
+  echo
+  echo "Arguments:"
+  echo
+  echo "    bin_path (default: ${bin_path})"
+  echo "        The path where binaries/scripts will be installed."
+  echo
+  echo "Options:"
+  echo
+  echo "    -f, --force"
+  echo "        Force re-installation and overwrite existing binaries/scripts."
+  echo "    -v, --verbose (-vv, -vvv, ...)"
+  echo "        Increase the output verbosity level."
+}
+
+# }}}
+
+# {{{ Arguments parsing
+
+bin_path="${HOME}/bin"
+force_reinstall=0
+verbosity=0
+
+shopt -s extglob
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -V | --version ) version ; exit 0 ;;
+    -h | --help ) help ; exit 0 ;;
+    -f | --force ) force_reinstall=1; shift 1 ;;
+    --verbose ) ((verbosity+=1)); shift 1 ;;
+    -+(v) ) ((verbosity+=${#1}-1)); shift 1 ;;
+    -- ) shift ; break ;;
+    -* )
+      echo "install-bin: invalid option '${1}'" 1>&2
+      usage 1>&2 ; exit 1 ;;
+    * ) break ;;
+  esac
+done
+
+if [[ $# -gt 0 ]]; then
+  bin_path="$1"
+  shift
+fi
+
+if [[ $# -ne 0 ]]; then
+  echo 'install-bin: too many arguments' 1>&2
+  usage 1>&2
+  exit 1
+fi
+
+# }}}
+
+# {{{ Functions
+
+verbose=1
+very_verbose=2
+very_very_verbose=3
+
+print() {
+  local level="$1" ; shift
+
+  if [[ $verbosity -ge $level ]]; then
+    echo -ne "$@"
+  fi
+}
+
+download() {
+  local bin_name="$1" bin_uri="$2" bin_mode="$3" reinstall=0
+
+  print $verbose "Checking if '${bin_name}' is installed... "
+  if [[ ! -f "${bin_path}/${bin_name}" ]]; then
+    print $verbose "not found.\n"
+    reinstall=1
+  elif [[ $force_reinstall -ge 1 ]]; then
+    print $verbose "found, re-installing.\n"
+    reinstall=1
+  else
+    print $verbose "yes.\n"
+  fi
+
+  if [[ $reinstall -ge 1 ]]; then
+    print $verbose "    ----> Installing '${bin_name}' to '${bin_path}/${bin_name}'... "
+    curl -s -o "${bin_path}/${bin_name}" "$bin_uri"
+    print $verbose "done.\n"
+
+    chmod "$bin_mode" "${bin_path}/${bin_name}"
+  fi
+}
+
+# }}}
+
+download 'git-multidiff' 'https://raw.githubusercontent.com/xenomachina/public/master/bin/git-multidiff' +x
+download '_git-multidiff-helper' 'https://raw.githubusercontent.com/xenomachina/public/master/bin/_git-multidiff-helper' +x
