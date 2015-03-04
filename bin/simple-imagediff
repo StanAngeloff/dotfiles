@@ -61,6 +61,14 @@ class SimpleImageDiffWindow(Gtk.Window):
         self.resize(1, 1)
         self.set_position(Gtk.WindowPosition.CENTER)
 
+        accel = Gtk.AccelGroup()
+
+        for quit_key in ['Escape', '<Control>Q', '<Control>W']:
+            key, modifier = Gtk.accelerator_parse(quit_key)
+            accel.connect(key, modifier, Gtk.AccelFlags.VISIBLE, Gtk.main_quit)
+
+        self.add_accel_group(accel)
+
     def _create_image_box(self, image_file):
         box = Gtk.VBox(spacing=10)
         frame = Gtk.Frame()
