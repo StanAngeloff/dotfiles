@@ -225,7 +225,14 @@ nnoremap <expr> 0 CleverJumpFirst()
 vnoremap <expr> 0 CleverJumpFirst()
 
 " Make $ behave consistently in visual mode.
-vnoremap $ $h
+vnoremap $ g_
+
+" Alias H and L to more useful commands, easier to type than their counterparts.
+nmap H 0
+vmap H 0
+
+nmap L $
+vmap L $
 
 " Q for 'Q'uit, 'Ex' mode has received zero use.
 nnoremap <silent> Q :windo normal ZZ<CR>
