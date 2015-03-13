@@ -171,6 +171,10 @@ nnoremap <Return> :w<CR>
 vnoremap <Space> :
 vnoremap <Return> :<C-U>w<CR>gv
 
+" Don't jump on search.
+nnoremap * *<C-O>
+nnoremap # #<C-O>
+
 " IDE goodness.
 
 " When using <C-{N,P}>, always select the {first,last} item in the pop-up menu.
