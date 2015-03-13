@@ -46,7 +46,7 @@ set softtabstop=4              " Tab size during editing operation.
 set shiftwidth=4               " Default tab size.
 set shiftround                 " Round indent to multiple of 'shiftwidth'. Applies to > and < commands.
 set expandtab                  " Expand tab into spaces.
-set nowrap                     " Don't wrap long lines.
+set wrap                       " OK, let's try and wrap long lines for a change?
 set autoindent                 " Auto-indent new lines.
 set timeoutlen=325             " Time to wait after ESC (default causes an annoying delay).
 
