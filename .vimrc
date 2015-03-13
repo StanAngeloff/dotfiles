@@ -322,8 +322,8 @@ noremap <silent> <F1> :setlocal nospell! nospell?<CR>
 " Toggle paste-mode keyboard binding.
 nnoremap <silent> <F2> :setlocal invpaste paste?<CR>
 set pastetoggle=<F2>
-" Toggle case sensitive/insensitive.
-nnoremap <silent> <F3> :setlocal ignorecase! ignorecase?<CR>
+" Toggle long line wrap.
+nnoremap <silent> <F3> :setlocal wrap! wrap?<CR>
 " Toggle display of placeholder characters for tabs and newlines.
 nnoremap <silent> <F4> :setlocal list! list?<CR>
 
