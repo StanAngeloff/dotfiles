@@ -93,7 +93,8 @@ set cursorline!                " Highlight line under cursor.
 set textwidth=120              " Gutter position.
 set colorcolumn=+0             " Use an offset from &textwidth.
 
-set listchars=tab:→\ ,eol:§    " Display a placeholder character for tabs and newlines.
+set listchars=tab:→\ ,eol:¬,extends:❯,precedes:❮  " Display a placeholder character for tabs and newlines.
+set showbreak=↪
 
 set matchpairs+=<:> " Balance HTML tags.
 
