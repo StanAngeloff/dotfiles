@@ -82,6 +82,15 @@ fi
 
 # {{{ Editors/Vim
 
+( \
+  cd ~/.vim/spell ; \
+  echo 'Downloading Vim dictionaries... ' ; \
+  ( test -f en.utf-8.sug || curl -sO http://ftp.vim.org/vim/runtime/spell/en.utf-8.sug ) ; \
+  ( test -f en.utf-8.spl || curl -sO http://ftp.vim.org/vim/runtime/spell/en.utf-8.spl ) ; \
+  ( test -f bg.utf-8.sug || curl -sO http://ftp.vim.org/vim/runtime/spell/bg.utf-8.sug ) ; \
+  ( test -f bg.utf-8.spl || curl -sO http://ftp.vim.org/vim/runtime/spell/bg.utf-8.spl ) ; \
+)
+
 vim -c 'silent! BundleClean!'  -c 'qa!'
 vim -c 'silent! BundleInstall' -c 'qa!'
 
