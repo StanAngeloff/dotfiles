@@ -228,11 +228,11 @@ vnoremap <expr> 0 CleverJumpFirst()
 vnoremap $ g_
 
 " Alias H and L to more useful commands, easier to type than their counterparts.
-nmap H 0
-vmap H 0
+nnoremap H g^
+vnoremap H g^
 
-nmap L $
-vmap L $
+nnoremap L g$
+vnoremap L g$
 
 " Q for 'Q'uit, 'Ex' mode has received zero use.
 nnoremap <silent> Q :windo normal ZZ<CR>
