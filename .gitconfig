@@ -74,3 +74,10 @@
 
 [multidiff]
 	tool = vimmultidiff -f
+
+# See https://github.com/git-cola/git-cola/blob/b6715fea/share/doc/git-cola/git-cola.rst#configuration-variables
+[cola.color]
+	text = 000000
+	add = cdffe0
+	remove = ffd0d0
+	header = bbbbbb
