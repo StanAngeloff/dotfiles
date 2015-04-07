@@ -201,8 +201,8 @@ inoremap <expr> <C-X><C-O> '<C-R>=exists("+omnifunc") && &omnifunc != "" ? "\<C-
 " If the pop-up menu is visible, close it without inserting a new line.
 inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<C-G>u\<CR>"
 
-" I mistype <C-[> often when trying to get out on INSERT mode and save the buffer, try and be helpful.
-imap [<CR> <Esc><Return>
+" I don't mistype <C-[> very often these days... but used to when trying to get out on INSERT mode and save the buffer.
+" imap [<CR> <Esc><Return>
 
 " God mode.
 noremap  <Up>    <NOP>
