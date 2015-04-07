@@ -135,7 +135,7 @@ set grepformat=%f:%l:%m
 
 command! -nargs=+ -complete=dir Search if len([<f-args>]) |
       \ execute 'silent grep! ' . <q-args> |
-      \ botright copen 8 |
+      \ botright copen 8 | set nowrap |
       \ redraw! |
       \ endif
 
