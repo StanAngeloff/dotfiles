@@ -71,7 +71,9 @@ set rnu            " Show the line number relative to the line with the cursor i
 
 set lazyredraw     " Do not redraw while running macros (much faster).
 set ttyfast        " Enable fast-terminal.
-set ttyscroll=10   " Prefer full redraws for smaller scroll regions.
+if exists('&ttyscroll') " Neovim?
+  set ttyscroll=10 " Prefer full redraws for smaller scroll regions.
+endif
 
 if exists('&regexpengine')
   set regexpengine=1 " Use the old engine which seems faster in most cases.
