@@ -83,7 +83,7 @@ fi
 # {{{ Editors/Vim
 
 vim -c 'silent! BundleClean!'  -c 'qa!'
-vim -c 'silent! BundleInstall!' -c 'qa!'
+vim -c 'silent! BundleInstall' -c 'qa!'
 
 # }}}
 
