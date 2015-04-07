@@ -14,8 +14,9 @@ function _git_df() {
   _git_log
 }
 
-# Open Vim tabs for each argument.
+# Open {Neo,}Vim tabs for each argument.
 alias v='vim -p'
+alias nv='nvim -p'
 
 # Directory listing.
 alias ll='ls -halF --color=tty'
