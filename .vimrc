@@ -69,7 +69,9 @@ set spelllang=en,bg
 set scrolloff=120  " Scroll when lots of lines from edge of screen. Bigger numbers work better with ':help rnu'.
 set rnu            " Show the line number relative to the line with the cursor in front of each line.
 
-set lazyredraw     " Do not redraw while running macros (much faster).
+if ! has('nvim') " Neovim? See https://github.com/neovim/neovim/issues/2253
+  set lazyredraw   " Do not redraw while running macros (much faster).
+endif
 set ttyfast        " Enable fast-terminal.
 if exists('&ttyscroll') " Neovim?
   set ttyscroll=10 " Prefer full redraws for smaller scroll regions.
