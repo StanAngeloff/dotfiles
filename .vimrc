@@ -48,7 +48,9 @@ set shiftround                 " Round indent to multiple of 'shiftwidth'. Appli
 set expandtab                  " Expand tab into spaces.
 set wrap                       " OK, let's try and wrap long lines for a change?
 set autoindent                 " Auto-indent new lines.
+
 set timeoutlen=325             " Time to wait after ESC (default causes an annoying delay).
+set ttimeoutlen=10
 
 set clipboard+=unnamed         " Yank to clipboard.
 
