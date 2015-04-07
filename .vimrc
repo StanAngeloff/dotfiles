@@ -890,3 +890,11 @@ Plugin 'chase/vim-ansible-yaml'
 
 " ---------------------------------------------------------------------------
 
+" Cheatsheet
+"
+" List of commands that I tend to forget, but need to learn:
+"
+" gi    Insert text in the same position as where Insert mode
+"       was stopped last time in the current buffer.
+"       This uses the |'^| mark. [..]
+"
