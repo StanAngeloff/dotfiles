@@ -329,6 +329,17 @@ nnoremap <silent> <F3> :setlocal wrap! wrap?<CR>
 " Toggle display of placeholder characters for tabs and newlines.
 nnoremap <silent> <F4> :setlocal list! list?<CR>
 
+" Synstack {{{
+
+" Show the stack of syntax highlighting classes affecting whatever is under the cursor.
+function! SynStack()
+  echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), " > ")
+endfunc
+
+nnoremap <F7> :call SynStack()<CR>
+
+" }}}
+
 " Adjust the tab/shift width keyboard bindings.
 nnoremap <leader>w2 :setlocal tabstop=2<CR>:setlocal shiftwidth=2<CR>
 nnoremap <leader>w4 :setlocal tabstop=4<CR>:setlocal shiftwidth=4<CR>
