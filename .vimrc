@@ -359,6 +359,10 @@ vnoremap <C-R> "ac<C-R>=<C-R>a<CR><Esc>vbo
 " Unix timestamp.
 inoremap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 
+" Copy to & paste from the system clipboard in INSERT mode, too.
+inoremap <Leader>p <C-O>"+p
+inoremap <Leader>P <C-O>"+P
+
 " Copy entire buffer to X clipboard.
 nnoremap <leader>= mZggVG"+yg`Z
 
