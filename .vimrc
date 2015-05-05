@@ -830,7 +830,9 @@ function! CloseNERDTreeInTab(i)
   set ei=all
 
   exec 'tabnext ' . a:i
-  call nerdtree#closeTreeIfOpen()
+  if g:NERDTree.IsOpen()
+	  call g:NERDTree.Close()
+  endif
   exec 'tabnext ' . l:me
 
   let &ei = l:previous_ei
@@ -845,7 +847,7 @@ function! ToggleNERDTree()
   endfor
 
   " If NERDTree is visible and inactive in the current tab, focus.
-  if (g:NERDTree.ExistsForTab() && nerdtree#getTreeWinNum() != -1) && ! g:NERDTree.ExistsForBuf()
+  if (g:NERDTree.ExistsForTab() && g:NERDTree.GetWinNum() != -1) && ! g:NERDTree.ExistsForBuf()
     execute 'silent! NERDTreeFocus'
   else
     execute 'silent! NERDTreeMirrorToggle'
