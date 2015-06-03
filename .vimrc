@@ -320,7 +320,7 @@ endfunction
 
 nnoremap <silent> <leader>W :call StripTrailingWhitespace()<CR>
 
-" Turn off active highlighting keyboard binding.
+" Turn off active highlighting, reset signs and plug-ins.
 nnoremap <silent> <leader><Space> :noh<CR>:sign unplace *<CR>:SyntasticReset<CR>
 
 " Toggle spell-checking keyboard binding.
@@ -357,11 +357,7 @@ vnoremap <C-R> "ac<C-R>=<C-R>a<CR><Esc>vbo
 
 " Snippets keyboard bindings.
 " Unix timestamp.
-inoremap <leader>iu <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
-
-" Copy to & paste from the system clipboard in INSERT mode, too.
-inoremap <Leader>p <C-O>"+p
-inoremap <Leader>P <C-O>"+P
+inoremap \time <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 
 " Copy entire buffer to X clipboard.
 nnoremap <leader>= mZggVG"+yg`Z
