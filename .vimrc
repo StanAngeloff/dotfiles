@@ -104,6 +104,9 @@ set showbreak=↪
 
 set matchpairs+=<:> " Balance HTML tags.
 
+" Customise the fill characters.
+set fillchars+=vert:│,fold:┄
+
 set backup   " Keep backups of files in case we mess up.
 set backupdir=$HOME/.vim/backup
 
