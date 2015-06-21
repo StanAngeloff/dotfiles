@@ -75,22 +75,11 @@ echo 'Installing Flash plug-in...'
   cp -R 'opt/google/chrome-unstable/PepperFlash/'* "$plugin_ppapi_flash_path" \
 )
 
-# Install PDF viewer as native plug-in.
-plugin_native_pdf="${chrome_devel_path}/libpdf.so"
-echo 'Installing PDF plug-in...'
+# Install binaries and plug-ins from Chrome which has got native PDF and H.264 playback support.
+echo 'Installing plug-ins...'
 ( \
   google_chrome_unstable &&
-  cp 'opt/google/chrome-unstable/libpdf.so' "$plugin_native_pdf" &&
-  chmod 0755 "$plugin_native_pdf" \
-)
-
-# Install ffmpeg from Chrome which has got H.264 playback support.
-plugin_native_ffmpeg="${chrome_devel_path}/libffmpegsumo.so"
-echo 'Installing ffmpeg+h.264 plug-in...'
-( \
-  google_chrome_unstable &&
-  cp 'opt/google/chrome-unstable/libffmpegsumo.so' "$plugin_native_ffmpeg" &&
-  chmod 0755 "$plugin_native_ffmpeg" \
+  cp 'opt/google/chrome-unstable/'*.so "$chrome_devel_path" \
 )
 
 # On Ubuntu 13.04 the libudev.so.0 file is replaced with libudev1.
