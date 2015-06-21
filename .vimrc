@@ -153,7 +153,11 @@ if has('autocmd')
 endif
 
 " Use a custom leader character.
-let mapleader="\\"
+let mapleader = "\<Space>"
+
+" Keep the legacy leader around for a while.
+nmap \ <leader>
+vmap \ <leader>
 
 " Keyboard bindings.
 nnoremap <silent> j gj
