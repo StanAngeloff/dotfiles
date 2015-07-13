@@ -166,6 +166,9 @@ vmap \ <leader>
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 
+vnoremap <silent> j gj
+vnoremap <silent> k gk
+
 " Make Y consistent with C and D. See ':help Y'.
 nnoremap Y y$
 
