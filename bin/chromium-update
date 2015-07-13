@@ -75,11 +75,11 @@ echo 'Installing Flash plug-in...'
   cp -R 'opt/google/chrome-unstable/PepperFlash/'* "$plugin_ppapi_flash_path" \
 )
 
-# Install binaries and plug-ins from Chrome which has got native PDF and H.264 playback support.
+# Install binaries and plug-ins from Chrome.
 echo 'Installing plug-ins...'
 ( \
   google_chrome_unstable &&
-  cp 'opt/google/chrome-unstable/'*.so "$chrome_devel_path" \
+  cp 'opt/google/chrome-unstable/'libwidevinecdm.so "$chrome_devel_path" \
 )
 
 # On Ubuntu 13.04 the libudev.so.0 file is replaced with libudev1.
