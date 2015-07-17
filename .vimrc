@@ -403,7 +403,7 @@ nnoremap gz :call system('QT_QPA_PLATFORMTHEME=gnome zeal --query ' . shellescap
 " }}}
 
 if has("gui_running")
-  set guifont=Inconsolata\ for\ Powerline\ Medium\ 14
+  set guifont=Inconsolata\ for\ Powerline\ 14
 endif
 
 " Preferred fold method is marker, e.g., manual.
@@ -755,18 +755,16 @@ Plug 'bling/vim-airline'
 
 let g:airline_theme='grey'
 
-let g:airline_powerline_fonts=1
-
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
+let g:airline_left_sep = "\ue0b0"
+let g:airline_left_alt_sep = "\ue0b1"
+let g:airline_right_sep = "\ue0b2"
+let g:airline_right_alt_sep = "\ue0b3"
 
 let g:airline_symbols = {
-      \ 'paste': 'ρ',
-      \ 'readonly': '⭤',
-      \ 'linenr': '⭡',
-      \ 'branch': '⭠'
+      \ 'branch': "\ue0a0",
+      \ 'linenr': "\ue0a1",
+      \ 'readonly': "\ue0a2",
+      \ 'paste': 'ρ'
       \ }
 
 " ---------------------------------------------------------------------------

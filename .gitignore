@@ -32,6 +32,9 @@
 !.rbenv-plugins
 !.rbenv-plugins/*
 
+# Fonts
+!.fonts/*.ttf
+
 # Composer
 bin/composer
 !.composer/
