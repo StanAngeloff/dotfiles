@@ -2,10 +2,7 @@
 set nocompatible
 scriptencoding utf-8 " Help Vim use the correct character encoding for this script.
 
-" Pathogen, manage your runtimepath.
 filetype off
-call pathogen#helptags()
-call pathogen#infect()
 
 " Source machine-specific local configuration.
 let s:localrc=$HOME . '/.vimrc_' . hostname()
@@ -523,24 +520,19 @@ inoremap <silent> <Tab> <C-R>=BestComplete()<CR>
 
 " }}}
 
-" Vundle, the plug-in manager for Vim.
-call vundle#rc()
+" vim-plug: Minimalist Vim Plugin Manager.
+call plug#begin('~/.vim/plugged')
 
 " Make broken SSL happy again
 let $GIT_SSL_NO_VERIFY='true'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'gmarik/vundle'
+Plug 'StanAngeloff/vim-zend55'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'StanAngeloff/vim-zend55'
-colorscheme vim-zend55
-
-" ---------------------------------------------------------------------------
-
-Plugin 'ciaranm/detectindent'
+Plug 'ciaranm/detectindent'
 " When the correct value for 'expandtab' cannot be determined, it will revert to the default value below.
 let g:detectindent_preferred_expandtab=1
 if has('autocmd')
@@ -550,7 +542,7 @@ endif
 
 " ---------------------------------------------------------------------------
 
-Plugin 'godlygeek/csapprox'
+Plug 'godlygeek/csapprox'
 
 " Don't override 'italic' with 'underline', urxvt handles it just fine.
 let g:CSApprox_attr_map = { 'sp' : 'fg' }
@@ -565,11 +557,11 @@ let g:CSApprox_Zend55_hook_post = [
 
 " ---------------------------------------------------------------------------
 
-Plugin 'juvenn/mustache.vim'
+Plug 'juvenn/mustache.vim'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 
 let g:UltiSnipsNoPythonWarning=1
 
@@ -610,19 +602,19 @@ snoremap <C-K> <Esc>:call UltiSnips#JumpBackwards()<CR>
 
 " ---------------------------------------------------------------------------
 
-Plugin 'othree/html5.vim'
+Plug 'othree/html5.vim'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 let NERDTreeChDirMode=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
@@ -675,44 +667,44 @@ nnoremap <expr> ? FastFingersSearch('?')
 
 " ---------------------------------------------------------------------------
 
-Plugin 'mbbill/undotree'
+Plug 'mbbill/undotree'
 nnoremap <silent> <F6> :UndotreeToggle<CR>
 let g:undotree_SplitWidth=45
 let g:undotree_SetFocusWhenToggle=1
 
 " ---------------------------------------------------------------------------
 
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'tpope/vim-git'
+Plug 'tpope/vim-git'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'tpope/vim-haml'
+Plug 'tpope/vim-haml'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'StanAngeloff/php.vim'
-Plugin 'rayburgemeestre/phpfolding.vim'
-Plugin '2072/PHP-Indenting-for-VIm'
+Plug 'StanAngeloff/php.vim'
+Plug 'rayburgemeestre/phpfolding.vim'
+Plug '2072/PHP-Indenting-for-VIm'
 
 " Don't use the PHP syntax folding.
 let g:DisableAutoPHPFolding = 1
@@ -721,7 +713,7 @@ let php_var_selector_is_identifier = 1
 
 " ---------------------------------------------------------------------------
 
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 let g:ctrlp_map=''
 let g:ctrlp_cmd='CtrlPCurWD'
 let g:ctrlp_match_window_reversed=0
@@ -741,8 +733,8 @@ let g:ctrlp_user_command = {
 
 " ---------------------------------------------------------------------------
 
-Plugin 'JazzCore/ctrlp-cmatcher'
-if filereadable(expand('~/.vim/bundle/ctrlp-cmatcher/autoload/fuzzycomt.so'))
+Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
+if filereadable(expand('~/.vim/plugged/ctrlp-cmatcher/autoload/fuzzycomt.so'))
   let g:ctrlp_match_func = { 'match': 'matcher#cmatch' }
   let g:ctrlp_max_files = 0
 else
@@ -751,15 +743,15 @@ endif
 
 " ---------------------------------------------------------------------------
 
-Plugin 'thinca/vim-visualstar'
+Plug 'thinca/vim-visualstar'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'tpope/vim-abolish'
+Plug 'tpope/vim-abolish'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 
 let g:airline_theme='grey'
 
@@ -779,21 +771,21 @@ let g:airline_symbols = {
 
 " ---------------------------------------------------------------------------
 
-Plugin 'hail2u/vim-css3-syntax'
+Plug 'hail2u/vim-css3-syntax'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'tpope/vim-eunuch'
+Plug 'tpope/vim-eunuch'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'benmills/vimux'
+Plug 'benmills/vimux'
 nnoremap <silent> <F5>      :w<CR>:VimuxRunLastCommand<CR>
 inoremap <silent> <F5> <Esc>:w<CR>:VimuxRunLastCommand<CR>a
 
 " ---------------------------------------------------------------------------
 
-Plugin 'AutoTag'
+Plug 'AutoTag'
 
 let g:autotagmaxTagsFileSize=32 * 1024 * 1024
 let g:autotagTagsFile='.tags'
@@ -802,7 +794,7 @@ let g:autotagCtagsCmd='silent ctags'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
 
@@ -818,14 +810,14 @@ inoremap <silent> <F9> <Esc>:w<CR>:SyntasticCheck<CR>a
 
 " ---------------------------------------------------------------------------
 
-Plugin 'elzr/vim-json'
+Plug 'elzr/vim-json'
 
 " Set this variable as vim-json barfs if it's not defined.
 let g:vim_json_warnings=1
 
 " ---------------------------------------------------------------------------
 
-Plugin 'jistr/vim-nerdtree-tabs'
+Plug 'jistr/vim-nerdtree-tabs'
 
 let g:nerdtree_tabs_open_on_new_tab=0
 let g:nerdtree_tabs_focus_on_files=1
@@ -878,7 +870,7 @@ endif
 
 " ---------------------------------------------------------------------------
 
-Plugin 'mhinz/vim-signify'
+Plug 'mhinz/vim-signify'
 
 let g:signify_vcs_list = ['git', 'hg']
 
@@ -886,25 +878,29 @@ let g:signify_sign_change = '*'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'tommcdo/vim-fugitive-blame-ext'
+Plug 'tommcdo/vim-fugitive-blame-ext'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'StanAngeloff/fizzy.vim'
+Plug 'StanAngeloff/fizzy.vim'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'tpope/vim-cucumber'
+Plug 'tpope/vim-cucumber'
 
 " ---------------------------------------------------------------------------
 
-Plugin 'chase/vim-ansible-yaml'
+Plug 'chase/vim-ansible-yaml'
 
 " ---------------------------------------------------------------------------
+
+call plug#end()
+
+colorscheme vim-zend55
 
 " Cheatsheet
 "

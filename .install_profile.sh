@@ -91,8 +91,13 @@ fi
   ( test -f bg.utf-8.spl || curl -sO http://ftp.vim.org/vim/runtime/spell/bg.utf-8.spl ) ; \
 )
 
-vim -c 'silent! BundleClean!'  -c 'qa!'
-vim -c 'silent! BundleInstall' -c 'qa!'
+if [[ ! -f "$HOME/.vim/autoload/plug.vim" ]]; then
+    curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
+        'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+fi
+
+vim -c 'silent! PlugClean!'  -c 'qa!'
+vim -c 'silent! PlugInstall' -c 'qa!'
 
 # }}}
 

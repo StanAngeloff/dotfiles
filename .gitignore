@@ -40,10 +40,6 @@ bin/composer
 !.composer/vendor/bin/
 !.composer/vendor/bin/*
 
-# Vim: Vundle
-!.vim/bundle/
-!.vim/bundle/vundle
-
 # Vim: after/ scripts, e.g., for CSS3 support in HTML/SCSS, Abolish, etc.
 !.vim/after/
 !.vim/after/syntax/
@@ -54,10 +50,6 @@ bin/composer
 # Vim: after/ftplugin/ scripts, e.g., abbreviations by file type.
 !.vim/after/ftplugin/
 !.vim/after/ftplugin/*.vim
-
-# Vim: pathogen.vim as a symlink.
-!.vim/autoload/
-!.vim/autoload/pathogen.vim
 
 # Vim: vim-airline colour schemes in ~/.vim/autoload/airline/themes/file.vim
 !.vim/autoload/*/
