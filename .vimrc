@@ -557,7 +557,7 @@ let g:CSApprox_Zend55_hook_post = [
 
 " ---------------------------------------------------------------------------
 
-Plug 'juvenn/mustache.vim'
+Plug 'juvenn/mustache.vim', { 'for': ['mustache', 'handlebars', 'hbs', 'hogan', 'hulk', 'hjs'] }
 
 " ---------------------------------------------------------------------------
 
@@ -667,7 +667,7 @@ nnoremap <expr> ? FastFingersSearch('?')
 
 " ---------------------------------------------------------------------------
 
-Plug 'mbbill/undotree'
+Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 nnoremap <silent> <F6> :UndotreeToggle<CR>
 let g:undotree_SplitWidth=45
 let g:undotree_SetFocusWhenToggle=1
@@ -682,11 +682,11 @@ Plug 'tpope/vim-git'
 
 " ---------------------------------------------------------------------------
 
-Plug 'tpope/vim-haml'
+Plug 'tpope/vim-haml', { 'for': ['haml', 'hamlbars', 'hamlc', 'sass', 'scss'] }
 
 " ---------------------------------------------------------------------------
 
-Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown', { 'for': ['markdown', 'md', 'mdown', 'mkd', 'mkdn'] }
 
 " ---------------------------------------------------------------------------
 
@@ -713,7 +713,7 @@ let php_var_selector_is_identifier = 1
 
 " ---------------------------------------------------------------------------
 
-Plug 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim', { 'on': 'CtrlPCurWD' }
 let g:ctrlp_map=''
 let g:ctrlp_cmd='CtrlPCurWD'
 let g:ctrlp_match_window_reversed=0
@@ -884,11 +884,11 @@ Plug 'StanAngeloff/fizzy.vim'
 
 " ---------------------------------------------------------------------------
 
-Plug 'godlygeek/tabular'
+Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 
 " ---------------------------------------------------------------------------
 
-Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-cucumber', { 'for': ['feature', 'story'] }
 
 " ---------------------------------------------------------------------------
 
