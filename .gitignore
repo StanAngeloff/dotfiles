@@ -69,9 +69,9 @@ bin/composer
 !.vim/plugin/*.vim
 
 # Vim: UltiSnips snippets
-!.vim/snippets/
-!.vim/snippets/*/
-!.vim/snippets/*/*.snippet
+!.vim/UltiSnips/
+!.vim/UltiSnips/*/
+!.vim/UltiSnips/*/*.snippet*
 
 # Vim: Spelling dictionaries.
 !.vim/spell/
