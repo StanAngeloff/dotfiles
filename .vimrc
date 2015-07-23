@@ -440,10 +440,6 @@ if has('autocmd')
   " Turn off beep sounds.
   autocmd VimEnter * set vb t_vb=
 
-  " Highlight trailing whitespace in red.
-  autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
-        \ | highlight        ExtraWhitespace ctermbg=red guibg=red
-
   " Recognise additional types.
   au BufRead,BufNewFile {Gemfile,Guardfile,Rakefile,Vagrantfile,*.rake,config.ru} set ft=ruby
   au BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
@@ -899,6 +895,14 @@ Plug 'chase/vim-ansible-yaml'
 call plug#end()
 
 colorscheme vim-zend55
+
+if has('autocmd')
+
+  " Highlight trailing whitespace in red after the colour scheme has loaded.
+  autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
+        \ | highlight        ExtraWhitespace ctermbg=red guibg=red
+
+endif
 
 " Cheatsheet
 "
