@@ -14,6 +14,14 @@ function _git_df() {
   _git_log
 }
 
+# See http://stackoverflow.com/a/15157360
+#
+function npm-exec() {
+  local __bin_path="$( npm bin )"
+
+  PATH="$__bin_path:$PATH" "$@"
+}
+
 # Open {Neo,}Vim tabs for each argument.
 alias v='vim -p'
 alias nv='nvim -p'
