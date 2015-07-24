@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # Vim-like exit operation.
 alias Q='exit'
@@ -24,13 +24,8 @@ alias ll='ls -halF --color=tty'
 # Basic directory operations.
 alias ..='cd ..'
 
-# Super-User operations.
-#
-# See https://wiki.archlinux.org/index.php/Sudo#Passing_aliases
-alias _='sudo '
-
-for __cmd in apt-get service start stop status restart; do
-  eval "alias $__cmd='_ $__cmd'"
+for __cmd in apt-get apt-add-repository service start stop status restart; do
+  eval "alias $__cmd='sudo $__cmd'"
 done ; unset __cmd
 
 # The Unix socket where Docker listens is accessible by the 'docker' group.
