@@ -11,6 +11,7 @@ else:
 	snip.rv = ''
 
 `use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\Extension;
 `!p
 
 if len(t[1]):
@@ -20,9 +21,7 @@ else:
 
 `
 
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-
-class `!p snip.rv = os.path.splitext(os.path.basename(snip.fn))[0]` extends Extension
+final class `!p snip.rv = os.path.splitext(os.path.basename(snip.fn))[0]` extends Extension
 {
 	/**
 	 * {@inheritdoc}
