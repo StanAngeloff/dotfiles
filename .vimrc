@@ -531,10 +531,6 @@ Plug 'StanAngeloff/vim-zend55'
 Plug 'ciaranm/detectindent'
 " When the correct value for 'expandtab' cannot be determined, it will revert to the default value below.
 let g:detectindent_preferred_expandtab=1
-if has('autocmd')
-  " Attempt to detect indentation for the buffer.
-  autocmd BufReadPost * :DetectIndent
-endif
 
 " ---------------------------------------------------------------------------
 
@@ -901,6 +897,9 @@ if has('autocmd')
   " Highlight trailing whitespace in red after the colour scheme has loaded.
   autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
         \ | highlight        ExtraWhitespace ctermbg=red guibg=red
+
+  " Attempt to detect indentation for the buffer.
+  autocmd BufReadPost * :DetectIndent
 
 endif
 
