@@ -725,12 +725,13 @@ let g:ctrlp_user_command = {
 
 " ---------------------------------------------------------------------------
 
-Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
-if filereadable(expand('~/.vim/plugged/ctrlp-cmatcher/autoload/fuzzycomt.so'))
-  let g:ctrlp_match_func = { 'match': 'matcher#cmatch' }
+Plug 'nixprime/cpsm', { 'do': './install.sh' }
+
+if filereadable(expand('~/.vim/plugged/cpsm/autoload/cpsm_py.so'))
+  let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
   let g:ctrlp_max_files = 0
 else
-  echohl WarningMsg | echom 'You need to compile the CtrlP C matching extension.' | echohl None
+  echohl WarningMsg | echom 'You need to compile the CtrlP matching extension.' | echohl None
 endif
 
 " ---------------------------------------------------------------------------
