@@ -705,11 +705,33 @@ let php_var_selector_is_identifier = 1
 
 " ---------------------------------------------------------------------------
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'kien/ctrlp.vim', { 'on': 'CtrlPCurWD' }
+let g:ctrlp_map=''
+let g:ctrlp_cmd='CtrlPCurWD'
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_max_height=20
+let g:ctrlp_highlight_match=[1, 'Search']
+let g:ctrlp_max_files=64000
+let g:ctrlp_max_depth=24
+let g:ctrlp_cache_dir='/tmp/.ctrlp'
 
-let $FZF_DEFAULT_COMMAND='( git ls-files --exclude-standard --cached --others ) 2>/dev/null'
+nnoremap <silent> <leader>o :<C-U>CtrlPCurWD<CR>
 
-nnoremap <silent> <leader>o :<C-U>FZF<CR>
+let g:ctrlp_user_command = {
+      \     'types': {
+      \         1: ['.git', 'cd %s && git ls-files --exclude-standard --cached --others'],
+      \     },
+      \ }
+
+" ---------------------------------------------------------------------------
+
+Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
+if filereadable(expand('~/.vim/plugged/ctrlp-cmatcher/autoload/fuzzycomt.so'))
+  let g:ctrlp_match_func = { 'match': 'matcher#cmatch' }
+  let g:ctrlp_max_files = 0
+else
+  echohl WarningMsg | echom 'You need to compile the CtrlP C matching extension.' | echohl None
+endif
 
 " ---------------------------------------------------------------------------
 

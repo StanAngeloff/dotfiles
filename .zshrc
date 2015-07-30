@@ -236,14 +236,3 @@ unset __script
 # Source machine-specific local configuration.
 LOCALRC=$( echo ".localrc_`uname -n`_`uname -o`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
 [ -s "$HOME/$LOCALRC" ] && source "$HOME/$LOCALRC"
-
-# FZF, https://github.com/junegunn/fzf
-[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
-
-export FZF_DEFAULT_OPTS='
-  --extended --reverse
-  --prompt=">>> "
-  --bind ctrl-f:page-down,ctrl-b:page-up
-  --history="'"$HOME"'/.fzf.history" --history-size=1000
-  --color bg+:234,hl:11,hl+:11,pointer:243,prompt:243
-'
