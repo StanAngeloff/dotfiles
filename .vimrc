@@ -136,8 +136,8 @@ let g:is_posix = 1
 let g:omni_sql_no_default_maps = 1
 
 " Use our customised `grep` script for powerful searches.
-set grepprg=$HOME/bin/search\ $*
-set grepformat=%f:%l:%m
+set grepprg=pt\ --nogroup\ --nocolor\ --column\ --smart-case\ -e
+set grepformat=%f:%l:%c:%m
 
 command! -nargs=+ -complete=dir Search if len([<f-args>]) |
       \ execute 'silent grep! ' . <q-args> |
