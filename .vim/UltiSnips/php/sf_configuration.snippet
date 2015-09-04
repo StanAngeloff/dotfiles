@@ -21,6 +21,22 @@ final class `!p snip.rv = os.path.splitext(os.path.basename(snip.fn))[0]` implem
 		$this->setAlias($alias);
 	}
 
+	# {{{ Setters
+
+	/**
+	 * Set the extension alias.
+	 *
+	 * @param string $alias
+	 *
+	 * @return void
+	 */
+	private function setAlias($alias)
+	{
+		$this->alias = $alias;
+	}
+
+	# }}}
+
 	/**
 	 * Generates the configuration tree builder.
 	 *
@@ -62,7 +78,7 @@ snip.rv = re.sub("([a-z0-9])([A-Z])", r"\1_\2", snip.rv).lower()
 		return $node;
 	}
 
-	# {{{ Getters/Setters
+	# {{{ Getters
 
 	/**
 	 * Get the extension alias.
@@ -72,18 +88,6 @@ snip.rv = re.sub("([a-z0-9])([A-Z])", r"\1_\2", snip.rv).lower()
 	public function getAlias()
 	{
 		return $this->alias;
-	}
-
-	/**
-	 * Set the extension alias.
-	 *
-	 * @param string $alias
-	 *
-	 * @return void
-	 */
-	public function setAlias($alias)
-	{
-		$this->alias = $alias;
 	}
 
 	# }}}
