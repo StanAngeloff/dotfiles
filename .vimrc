@@ -506,10 +506,10 @@ function! BestComplete()
     endif
   endif
 
-  " If the character immediately before the column is not a whitespace, trigger omni-completion.
+  " If the character immediately before the column is not a whitespace, trigger completion.
   let l:before = getline('.')[:col('.') - 1]
   if l:before =~ '\S$'
-    call feedkeys("\<C-X>\<C-O>", 'm')
+    call feedkeys("\<C-G>u\<C-X>\<C-O>", 'm')
     return ''
   endif
 
