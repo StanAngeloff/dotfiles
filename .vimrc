@@ -469,6 +469,10 @@ endif
 
 function! BestComplete()
 
+  if pumvisible()
+    return "\<C-N>"
+  endif
+
   " If fizzy.vim has results, use 'completefunc' to complete.
   if exists('g:loaded_fizzy')
     let fizzy_position = fizzy#Complete(1, '')
