@@ -139,16 +139,16 @@ let g:omni_sql_no_default_maps = 1
 set grepprg=pt\ --nogroup\ --nocolor\ --column\ --smart-case\ -e
 set grepformat=%f:%l:%c:%m
 
-command! -nargs=+ -complete=dir Search if len([<f-args>]) |
-      \ execute 'silent grep! ' . <q-args> |
-      \ botright copen 8 | set nowrap |
+command! -nargs=+ -complete=file -bar Search if len([<f-args>]) |
+      \ execute 'silent! lgrep! ' . <q-args> |
+      \ botright lopen 8 | set nowrap |
       \ redraw! |
       \ endif
 
 " Add useful mappings in quick-fix buffers (:copen, :lopen, etc.)
 if has('autocmd')
-  autocmd FileType qf nnoremap <buffer> <C-T> ^vt<Bar><C-W>gF<CR> |
-        \ nnoremap <buffer> t ^vt<Bar><C-W>gF<CR> |
+  autocmd FileType qf nnoremap <buffer> <C-T> ^<C-W>gF |
+        \ nnoremap <buffer> t ^<C-W>gF |
         \ nnoremap <buffer> <silent> q :cclose<CR>:lclose<CR>
 endif
 
