@@ -35,27 +35,20 @@
 	b  = branch
 	br = branch -r
 	c  = commit
-	ca = commit --amend
-	cm = commit -m
 	co = checkout
 	df = !sh -c 'git `git cat-file -t "$0" 1>/dev/null 2>&1 && echo show || echo diff` -U5 --minimal --word-diff=color --ignore-space-change --ignore-blank-lines --no-ext-diff "$0" "$@"'  
 	eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
 	f  = fetch       --prune --verbose
 	fa = fetch --all --prune --verbose
-	ff = flow feature
-	fh = flow hotfix
-	fi = flow init
-	fr = flow release
 	ig = !git ls-files -v | grep "^[[:lower:]]"
 	l  = log       --graph        --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
 	la = log --all --graph --tags --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
 	mf = multidiff
-	rp = !bash -c 'git rev-parse --symbolic-full-name --abbrev-ref=strict "${1:-HEAD}" "${@:2}"' -
+	ro = !sh -c 'git rebase -i --autostash --autosquash origin/"$( git symbolic-ref --short HEAD )"'
 	s  = status -sb
 	sf = !sh -c 'git show --pretty="format:" --name-only "$@" | grep -v "^$" | sort -u' -
-	sl = stash list
-	sp = stash pop
 	su = submodule update --init --recursive
+
 	try = !sh -c 'git clone --depth "${2-1}" --branch "${1-master}" --single-branch "$0"'
 
 	freeze = !bash -c '. $HOME/bin/git-freeze.sh && git-freeze'
