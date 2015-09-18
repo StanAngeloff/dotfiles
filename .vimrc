@@ -865,11 +865,16 @@ endif
 
 " ---------------------------------------------------------------------------
 
-Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
 
-let g:signify_vcs_list = ['git', 'hg']
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+let g:gitgutter_max_signs = 9999
 
-let g:signify_sign_change = '*'
+hi def link GitGutterAdd DiffAdd
+hi def link GitGutterChange DiffChange
+hi def link GitGutterDelete DiffDelete
+hi def link GitGutterChangeDelete DiffChange
 
 " ---------------------------------------------------------------------------
 
