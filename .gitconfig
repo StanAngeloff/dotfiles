@@ -63,6 +63,7 @@
 # See http://git-scm.com/docs/git-rebase#_configuration
 [rebase]
 	autoSquash = true
+	autoStash = true
 
 [cola]
 	fontdiff = Inconsolata,12,-1,5,50,0,0,0,0,0
