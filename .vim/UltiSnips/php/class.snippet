@@ -5,10 +5,16 @@ snippet class
 # Create a 'use' statement for the class being tested.
 if snip.fn.endswith('Test.php'):
 	snip.rv = "use " + re.sub(
-		r'Test$', '', re.sub(
-			r'/', '\\\\', re.sub(
-				r'/Tests/', '/', re.sub(
-					r'.*src\/', '', os.path.splitext(path)[0]
+		r'/',
+		'\\\\',
+		re.sub(
+			r'^tests/',
+			vim.eval('exists("g:projectNamespace") ? g:projectNamespace . "/" : ""'),
+			re.sub(
+				r'Test$', '', re.sub(
+					r'/Tests/', '/', re.sub(
+						r'.*src\/', '', os.path.splitext(path)[0]
+					)
 				)
 			)
 		)

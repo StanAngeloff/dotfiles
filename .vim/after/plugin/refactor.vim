@@ -21,6 +21,7 @@ function! RefactorOrganiseUsesCanonicalNamespace(namespace)
 
   let namespace = substitute(namespace, '\\\@<!Bundle\\.*', '', '')
   let namespace = substitute(namespace, '^\(Symfony\\\(Component\|Bridge\)\\[^\\]\+\).*', '\1', '')
+  let namespace = substitute(namespace, '^\(Illuminate\\[^\\]\+\).*', '\1', '')
   let namespace = substitute(namespace, '^\(Doctrine\\[^\\]\+\).*', '\1', '')
   let namespace = substitute(namespace, '^\(Psr\\[^\\]\+\).*', '\1', '')
 
@@ -55,6 +56,8 @@ function! RefactorOrganiseUsesScore(declaration)
   elseif match(namespace, 'Symfony\\Bridge') == 0
     return 980
   elseif match(namespace, 'Symfony\\') == 0
+    return 910
+  elseif match(namespace, 'Illuminate\\') == 0
     return 910
   elseif match(namespace, 'Doctrine\\') == 0
     return 800
