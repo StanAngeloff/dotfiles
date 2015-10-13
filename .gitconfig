@@ -27,7 +27,7 @@
 [merge]
 	tool = vimdiff
 [branch]
-	autosetuprebase = always
+	autoSetupRebase = always
 [alias]
 	a  = add
 	au = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
@@ -62,7 +62,7 @@
 
 # See http://git-scm.com/docs/git-rebase#_configuration
 [rebase]
-	autosquash = true
+	autoSquash = true
 
 [cola]
 	fontdiff = Inconsolata,12,-1,5,50,0,0,0,0,0
