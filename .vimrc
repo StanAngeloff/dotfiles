@@ -719,7 +719,9 @@ let g:ctrlp_max_files=64000
 let g:ctrlp_max_depth=24
 let g:ctrlp_cache_dir='/tmp/.ctrlp'
 
-nnoremap <silent> <leader>o :<C-U>CtrlPCurWD<CR>
+nnoremap <silent> <leader>o :let g:ctrlp_default_input = ''<CR>:<C-U>CtrlPCurWD<CR>
+vnoremap <silent> <leader>o :<C-U>let g:ctrlp_default_input = @*<CR>:<C-U>CtrlPCurWD<CR><C-\>v
+nnoremap <silent> <leader>0 :let g:ctrlp_default_input = expand('<cword>')<CR>:<C-U>CtrlPCurWD<CR>
 
 let g:ctrlp_user_command = {
       \     'types': {
