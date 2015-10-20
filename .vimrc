@@ -153,7 +153,7 @@ if has('autocmd')
 endif
 
 " Use a custom leader character.
-let mapleader = "\<Space>"
+let mapleader = ','
 
 " Keep the legacy leader around for a while.
 nmap \ <leader>
@@ -178,10 +178,10 @@ vnoremap <Leader>p "+p
 vnoremap <Leader>P "+P
 
 " OMG! This is sooo much better.
-nnoremap <Space> :
+" nnoremap <Space> :
 nnoremap <Return> :w<CR>
 
-vnoremap <Space> :
+" vnoremap <Space> :
 vnoremap <Return> :<C-U>w<CR>gv
 
 " Don't jump on search.
