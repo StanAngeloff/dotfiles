@@ -123,6 +123,9 @@ set switchbuf=usetab,newtab
 
 set shell=/bin/bash
 
+set title
+set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)
+
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
