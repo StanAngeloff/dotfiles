@@ -13,7 +13,7 @@
 	commitmsgwidth = 78
 	encoding = utf-8
 	diffcontext = 4
-	historybrowser = giggle
+	historybrowser = gitk
 [color]
 	ui = auto
 [core]
