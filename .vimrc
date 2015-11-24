@@ -707,6 +707,8 @@ Plug '2072/PHP-Indenting-for-VIm'
 let g:DisableAutoPHPFolding = 1
 " Include the '$' as part of identifiers.
 let php_var_selector_is_identifier = 1
+" Indent 'case:' and 'default:' statements in switch() blocks:
+let g:PHP_vintage_case_default_indent = 1
 
 " ---------------------------------------------------------------------------
 
