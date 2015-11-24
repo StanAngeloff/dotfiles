@@ -367,7 +367,7 @@ vnoremap <C-R> "ac<C-R>=<C-R>a<CR><Esc>vbo
 
 " Snippets keyboard bindings.
 " Unix timestamp.
-inoremap \time <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
+inoremap <leader>time <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 
 " Copy entire buffer to X clipboard.
 nnoremap <leader>= mZggVG"+yg`Z
