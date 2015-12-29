@@ -19,13 +19,13 @@
 [core]
 	editor = vim
 [diff]
-	tool = vimdiff
+	tool = kdiff3
 [diff "image"]
 	command = simple-imagediff
 [multidiff]
 	tool = vimmultidiff -f
 [merge]
-	tool = vimdiff
+	tool = kdiff3
 [branch]
 	autoSetupRebase = always
 [alias]
