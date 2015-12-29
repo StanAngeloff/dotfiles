@@ -139,7 +139,7 @@ let g:is_posix = 1
 let g:omni_sql_no_default_maps = 1
 
 " Use our customised `grep` script for powerful searches.
-set grepprg=pt\ --nogroup\ --nocolor\ --column\ --smart-case\ -e
+set grepprg=pt\ --hidden\ --nogroup\ --nocolor\ --column\ --smart-case\ -e
 set grepformat=%f:%l:%c:%m
 
 command! -nargs=+ -complete=file -bar Search if len([<f-args>]) |
