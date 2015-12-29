@@ -611,7 +611,8 @@ Plug 'scrooloose/nerdcommenter'
 
 " ---------------------------------------------------------------------------
 
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'commit': 'ee4d42cf' }
+
 let NERDTreeChDirMode=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
