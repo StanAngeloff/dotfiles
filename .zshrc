@@ -201,7 +201,12 @@ bindkey ' '       magic-space
 bindkey "^[m"     copy-prev-shell-word
 
 # Expand PATH and include User binaries and rbenv, if installed.
-for __path in "$HOME/bin" "$HOME/.composer/vendor/bin" "$HOME/.rbenv/bin"; do
+for __path in \
+  /opt/terraform/bin \
+  "${HOME}/bin" \
+  "${HOME}/.composer/vendor/bin" \
+  "${HOME}/.rbenv/bin" \
+; do
   [ -d "$__path" ] && export PATH="$__path:$PATH"
 done
 
