@@ -241,3 +241,6 @@ unset __script
 # Source machine-specific local configuration.
 LOCALRC=$( echo ".localrc_`uname -n`_`uname -o`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
 [ -s "$HOME/$LOCALRC" ] && source "$HOME/$LOCALRC"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
