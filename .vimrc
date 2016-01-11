@@ -444,7 +444,7 @@ if has('autocmd')
   autocmd VimEnter * set vb t_vb=
 
   " Recognise additional types.
-  au BufRead,BufNewFile {Gemfile,Guardfile,Rakefile,Vagrantfile,*.rake,config.ru} set ft=ruby
+  au BufRead,BufNewFile {Gemfile,Guardfile,Rakefile,*.rake,config.ru} set ft=ruby
   au BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
   au BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
 
@@ -905,6 +905,10 @@ Plug 'chase/vim-ansible-yaml'
 " ---------------------------------------------------------------------------
 
 Plug 'kchmck/vim-coffee-script'
+
+" ---------------------------------------------------------------------------
+
+Plug 'hashivim/vim-hashicorp-tools'
 
 " ---------------------------------------------------------------------------
 
