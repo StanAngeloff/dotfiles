@@ -674,6 +674,8 @@ let g:undotree_SetFocusWhenToggle=1
 
 Plug 'tpope/vim-fugitive'
 
+nnoremap <leader>ha :silent! Git add %<CR>:redraw!<CR>
+
 " ---------------------------------------------------------------------------
 
 Plug 'tpope/vim-git'
