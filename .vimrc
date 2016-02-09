@@ -772,6 +772,9 @@ let g:airline_symbols = {
       \ 'paste': 'ρ'
       \ }
 
+" Suppress deprecation warning about themes.
+let g:loaded_airline_themes = 0
+
 " ---------------------------------------------------------------------------
 
 Plug 'hail2u/vim-css3-syntax'
