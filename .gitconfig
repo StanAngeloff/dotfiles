@@ -55,6 +55,7 @@
 
 [push]
 	default = nothing # ${pushDefault}
+	recurseSubmodules = check
 
 # See http://git-scm.com/blog/2010/03/08/rerere.html
 [rerere]
