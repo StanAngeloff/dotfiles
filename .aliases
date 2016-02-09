@@ -23,8 +23,8 @@ function npm-exec() {
 }
 
 # Open {Neo,}Vim tabs for each argument.
-alias v='vim -p'
-alias nv='nvim -p'
+alias v='nvim -p'
+alias vv='vim -p'
 
 # Directory listing.
 alias ll='ls -halF --color=tty'
