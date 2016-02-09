@@ -66,6 +66,9 @@
 	autoSquash = true
 	autoStash = true
 
+[stash]
+	showPatch = true
+
 [cola]
 	fontdiff = Inconsolata,12,-1,5,50,0,0,0,0,0
 	tabwidth = 4
