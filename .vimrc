@@ -835,7 +835,7 @@ function! CloseNERDTreeInTab(i)
 
   exec 'tabnext ' . a:i
   if g:NERDTree.IsOpen()
-	  call g:NERDTree.Close()
+    call g:NERDTree.Close()
   endif
   exec 'tabnext ' . l:me
 
