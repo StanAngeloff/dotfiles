@@ -87,8 +87,10 @@
 	fsckObjects = true
 
 [cola]
-	fontdiff = Inconsolata,12,-1,5,50,0,0,0,0,0
+	# format: font family, pointSizeF, pixelSize, QFont::StyleHint, QFont::Weight, QFont::Style, underline, strikeOut, fixedPitch, rawMode
+	fontdiff = Fira Code,11,-1,5,50,0,0,0,0,0
 	tabwidth = 4
+	boldheaders = false
 
 # See https://github.com/git-cola/git-cola/blob/b6715fea/share/doc/git-cola/git-cola.rst#configuration-variables
 [cola.color]
