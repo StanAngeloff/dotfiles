@@ -663,6 +663,11 @@ endfunction
 nnoremap <expr> / FastFingersSearch('/')
 nnoremap <expr> ? FastFingersSearch('?')
 
+" XML folding via syntax
+" See http://www.jroller.com/lmchung/entry/xml_folding_with_vim
+let g:xml_syntax_folding=1
+autocmd FileType xml setlocal foldmethod=syntax
+
 " ---------------------------------------------------------------------------
 
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
