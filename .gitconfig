@@ -74,6 +74,14 @@
 [stash]
 	showPatch = true
 
+# See https://groups.google.com/forum/m/#!msg/binary-transparency/f-BI4o8HZW0/MDmnWideAgAJ
+[transfer]
+	fsckobjects = true
+[fetch]
+	fsckobjects = true
+[receive]
+	fsckObjects = true
+
 [cola]
 	fontdiff = Inconsolata,12,-1,5,50,0,0,0,0,0
 	tabwidth = 4
