@@ -45,8 +45,8 @@
 	f  = fetch       --prune --verbose
 	fa = fetch --all --prune --verbose
 	ig = !git ls-files -v | grep "^[[:lower:]]"
-	l  = log       --graph        --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
-	la = log --all --graph --tags --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %Cblue%an%Creset'
+	l  = log       --graph        --abbrev-commit --date=relative --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)%cr%C(reset) %C(blue)%an%C(reset)'
+	la = log --all --graph --tags --abbrev-commit --date=relative --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)%cr%C(reset) %C(blue)%an%C(reset)'
 	mf = multidiff
 	ro = !sh -c 'git rebase -i --autostash --autosquash origin/"$( git symbolic-ref --short HEAD )"'
 	s  = status -sb
