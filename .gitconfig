@@ -40,7 +40,7 @@
 	br = branch -r
 	c  = commit
 	co = checkout
-	df = !sh -c 'git diff -U5 --color --minimal --ignore-space-change --ignore-blank-lines --no-ext-diff "$0" "$@" | ~/bin/diff-highlight | less -iRS'
+	df = diff -U5 --color --minimal --ignore-space-change --ignore-blank-lines --no-ext-diff
 	eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
 	f  = fetch       --prune --verbose
 	fa = fetch --all --prune --verbose
@@ -57,6 +57,10 @@
 
 	freeze = !bash -c '. $HOME/bin/git-freeze.sh && git-freeze'
 	thaw = !bash -c '. $HOME/bin/git-freeze.sh && git-thaw'
+
+[pager]
+	diff = diff-highlight | less -iRS
+	show = diff-highlight | less -iRS
 
 [push]
 	default = nothing # ${pushDefault}
