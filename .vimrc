@@ -825,6 +825,9 @@ Plug 'elzr/vim-json'
 
 " Set this variable as vim-json barfs if it's not defined.
 let g:vim_json_warnings=1
+let g:vim_json_syntax_conceal=0
+
+autocmd FileType json setlocal foldmethod=syntax
 
 " ---------------------------------------------------------------------------
 
