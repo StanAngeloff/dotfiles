@@ -16,7 +16,7 @@ SAVEHIST=$HISTSIZE
 [ -z "$TERM" ] || [[ "$TERM" == 'xterm' ]] && export TERM=xterm-256color
 
 # Configure preferred applications.
-export EDITOR=vim
+export EDITOR=nvim
 export PAGER=less
 
 export LESS='-iRS'
