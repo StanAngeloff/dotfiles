@@ -660,8 +660,8 @@ function! FastFingersSearch(mode)
   return a:mode
 endfunction
 
-nnoremap <expr> / FastFingersSearch('/')
-nnoremap <expr> ? FastFingersSearch('?')
+nnoremap <expr> / FastFingersSearch('mm/')
+nnoremap <expr> ? FastFingersSearch('mm?')
 
 " XML folding via syntax
 " See http://www.jroller.com/lmchung/entry/xml_folding_with_vim
