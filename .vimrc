@@ -188,8 +188,8 @@ nnoremap <Return> :w<CR>
 vnoremap <Return> :<C-U>w<CR>gv
 
 " Don't jump on search.
-nnoremap * *<C-O>
-nnoremap # #<C-O>
+nnoremap <expr> * SetUpSearch('*<C-O>', 'n', 'N', 0)
+nnoremap <expr> # SetUpSearch('#<C-O>', 'n', 'N', 1)
 
 " IDE goodness.
 
@@ -636,7 +636,11 @@ let g:FastFingersSpeed = 100
 let g:FastFingersUpdateTime = &ut
 let g:FastFingersNERDTreeClosed = '^\s*▸.*\/$'
 
-function! FastFingersSearch(mode)
+let g:search_on_forward = 'n'
+let g:search_on_backward = 'N'
+let g:search_is_opposite = 0
+
+function! FastFingersSearch(mode, on_forward, on_backward, is_opposite)
 
   let b:FastFingersPreviousPosition = getpos('.')
 
@@ -657,11 +661,31 @@ function! FastFingersSearch(mode)
           \ augroup FastFingers | execute "autocmd!" | augroup END | augroup! FastFingers
   augroup END
 
+  let g:search_on_forward = a:on_forward
+  let g:search_on_backward = a:on_backward
+  let g:search_is_opposite = a:is_opposite
+
   return a:mode
 endfunction
 
-nnoremap <expr> / FastFingersSearch('mm/')
-nnoremap <expr> ? FastFingersSearch('mm?')
+nnoremap <expr> / FastFingersSearch('mm/', 'n', 'N', 0)
+nnoremap <expr> ? FastFingersSearch('mm?', 'n', 'N', 1)
+
+function! SetUpSearch(feed, on_forward, on_backward, is_opposite)
+  let g:search_on_forward = a:on_forward
+  let g:search_on_backward = a:on_backward
+  let g:search_is_opposite = a:is_opposite
+
+  return a:feed
+endfunction
+
+nnoremap <expr> f SetUpSearch('f', ';', ',', 0)
+nnoremap <expr> F SetUpSearch('F', ';', ',', 1)
+nnoremap <expr> t SetUpSearch('t', ';', ',', 0)
+nnoremap <expr> T SetUpSearch('T', ';', ',', 1)
+
+nnoremap <expr> n g:search_on_forward
+nnoremap <expr> N g:search_on_backward
 
 " XML folding via syntax
 " See http://www.jroller.com/lmchung/entry/xml_folding_with_vim
