@@ -374,6 +374,7 @@ nnoremap <leader>= mZggVG"+yg`Z
 
 " Sort inside a paragraph.
 nnoremap <silent> <leader>sip mZvip:sort u<CR>g`Z:echo (line("'>") - line("'<") + 1) . ' line(s) sorted'<CR>
+vnoremap <leader>s :sort u<CR>gv
 
 " XML formatting through `xmllint`.
 cnoreabbrev xmlformat %!xmllint --format --encode UTF-8 -
