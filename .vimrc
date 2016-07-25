@@ -608,7 +608,7 @@ Plug 'pangloss/vim-javascript'
 
 " ---------------------------------------------------------------------------
 
-Plug 'scrooloose/nerdtree', { 'commit': 'ee4d42cf' }
+Plug 'scrooloose/nerdtree'
 
 let NERDTreeChDirMode=1
 let NERDTreeMinimalUI=1
