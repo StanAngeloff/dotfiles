@@ -608,10 +608,6 @@ Plug 'pangloss/vim-javascript'
 
 " ---------------------------------------------------------------------------
 
-Plug 'scrooloose/nerdcommenter'
-
-" ---------------------------------------------------------------------------
-
 Plug 'scrooloose/nerdtree', { 'commit': 'ee4d42cf' }
 
 let NERDTreeChDirMode=1
@@ -821,15 +817,6 @@ inoremap <silent> <F5> <Esc>:w<CR>:VimuxRunLastCommand<CR>a
 
 " ---------------------------------------------------------------------------
 
-Plug 'AutoTag'
-
-let g:autotagmaxTagsFileSize=32 * 1024 * 1024
-let g:autotagTagsFile='.tags'
-let g:autotagVerbosityLevel=0
-let g:autotagCtagsCmd='silent ctags'
-
-" ---------------------------------------------------------------------------
-
 Plug 'scrooloose/syntastic'
 
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
@@ -939,10 +926,6 @@ Plug 'tpope/vim-cucumber', { 'for': ['feature', 'story'] }
 " ---------------------------------------------------------------------------
 
 Plug 'chase/vim-ansible-yaml'
-
-" ---------------------------------------------------------------------------
-
-Plug 'kchmck/vim-coffee-script'
 
 " ---------------------------------------------------------------------------
 
