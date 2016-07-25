@@ -25,6 +25,7 @@
 	editor = vim
 [diff]
 	tool = kdiff3
+	compactionHeuristic = true
 [diff "image"]
 	command = simple-imagediff
 [multidiff]
