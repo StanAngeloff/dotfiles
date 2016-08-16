@@ -99,3 +99,5 @@
 	add = cdffe0
 	remove = ffd0d0
 	header = bbbbbb
+[credential]
+	helper = cache --timeout=3600
