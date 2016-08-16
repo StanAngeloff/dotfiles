@@ -151,7 +151,7 @@ set grepprg=pt\ --hidden\ --nogroup\ --nocolor\ --column\ --smart-case\ -e
 set grepformat=%f:%l:%c:%m
 
 command! -nargs=+ -complete=file -bar Search if len([<f-args>]) |
-      \ execute 'silent! lgrep! ' . <q-args> |
+      \ execute 'lgrep! ' . escape(<q-args>, '#%') |
       \ botright lopen 8 | set nowrap |
       \ redraw! |
       \ endif
