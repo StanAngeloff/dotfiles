@@ -815,15 +815,27 @@ Plug 'scrooloose/syntastic'
 
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
 
-let g:syntastic_warning_symbol='W>'
-let g:syntastic_style_warning_symbol='s>'
+let g:syntastic_warning_symbol='!'
+let g:syntastic_error_symbol='✖'
 
-let g:syntastic_error_symbol='E>'
+let g:syntastic_style_warning_symbol='s>'
 let g:syntastic_style_error_symbol='S>'
 
 " Check for syntax errors.
 nnoremap <silent> <F9>      :w<CR>:SyntasticCheck<CR>
 inoremap <silent> <F9> <Esc>:w<CR>:SyntasticCheck<CR>a
+
+" ---------------------------------------------------------------------------
+
+Plug 'neomake/neomake'
+
+let g:neomake_error_sign = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
+let g:neomake_warning_sign = {'text': '!', 'texthl': 'NeomakeWarningSign'}
+let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
+let g:neomake_info_sign = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
+
+hi def link NeomakeErrorSign ErrorMsg
+hi def link NeomakeWarningSign WarningMsg
 
 " ---------------------------------------------------------------------------
 
