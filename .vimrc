@@ -12,12 +12,20 @@ endif
 unlet s:localrc
 
 " Enable 256-colour terminal if no GUI.
+if $TERM =~ '256color'
+  " Disable Background Color Erase (BCE) so that color schemes render properly when inside 256-color tmux and GNU screen.
+  " See also http://sunaku.github.io/vim-256color-bce.html
+  set t_ut=
+endif
 if !has("gui_running")
   set t_Co=256
 end
 " Switch syntax on and select a theme.
 syntax on
 set synmaxcol=2048
+
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
 
 " Use UTF-8 and Unix line-endings for new files.
 set encoding=utf-8
@@ -537,21 +545,6 @@ Plug 'StanAngeloff/vim-zend55'
 " ---------------------------------------------------------------------------
 
 Plug 'tpope/vim-sleuth'
-
-" ---------------------------------------------------------------------------
-
-Plug 'godlygeek/csapprox'
-
-" Don't override 'italic' with 'underline', urxvt handles it just fine.
-let g:CSApprox_attr_map = { 'sp' : 'fg' }
-
-" Clear the background of the Normal and NonText groups,
-" forcing the terminal's default background color to be used instead,
-" including any pseudo-transparency done by that terminal emulator.
-let g:CSApprox_Zend55_hook_post = [
-      \ 'hi Normal  ctermbg=NONE ctermfg=NONE',
-      \ 'hi NonText ctermbg=NONE ctermfg=238 " blank lines get a darker foreground.',
-      \ ]
 
 " ---------------------------------------------------------------------------
 

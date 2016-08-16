@@ -13,7 +13,10 @@ HISTSIZE=40960
 SAVEHIST=$HISTSIZE
 
 # Turn on 256-colour terminal support.
-[ -z "$TERM" ] || [[ "$TERM" == 'xterm' ]] && export TERM=xterm-256color
+export TERM=rxvt-unicode-256color
+
+# Respect tmux wishes.
+[ -n "$TMUX" ] && export TERM=screen-256color
 
 # Configure preferred applications.
 export EDITOR=nvim
