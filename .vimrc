@@ -113,6 +113,7 @@ set matchpairs+=<:> " Balance HTML tags.
 set fillchars+=vert:│,fold:┄
 
 set backup   " Keep backups of files in case we mess up.
+set backupcopy=yes
 set backupdir=$HOME/.vim/backup
 
 set undofile " Keep undo files for cross-session edits.
