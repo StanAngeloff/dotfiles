@@ -64,7 +64,7 @@
 	show = diff-highlight | less -iRS
 
 [push]
-	default = nothing # ${pushDefault}
+	default = upstream # ${pushDefault}
 	recurseSubmodules = check
 
 # See http://git-scm.com/blog/2010/03/08/rerere.html
