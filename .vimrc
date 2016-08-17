@@ -757,7 +757,7 @@ let g:ctrlp_user_command = {
 
 " ---------------------------------------------------------------------------
 
-Plug 'nixprime/cpsm', { 'do': './install.sh', 'commit': '21133b56f22070453b434e1ab3607f03cd53d2ca' }
+Plug 'nixprime/cpsm', { 'do': './install.sh' }
 
 if filereadable(expand('~/.vim/plugged/cpsm/autoload/cpsm_py.so'))
   let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
