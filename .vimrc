@@ -533,6 +533,24 @@ inoremap <silent> <Tab> <C-R>=BestComplete()<CR>
 
 " }}}
 
+" See https://vimrcfu.com/snippet/143
+"
+command! Ltabs call s:Ltabs()
+
+function! s:Ltabs()
+    let files = {}
+    for entry in getloclist(0)
+        let filename = bufname(entry.bufnr)
+        let files[filename] = 1
+    endfor
+
+    for file in keys(files)
+        silent exe 'tabedit ' . file
+    endfor
+
+    silent exe 'tabprevious' . len(files)
+endfunction
+
 " vim-plug: Minimalist Vim Plugin Manager.
 call plug#begin('~/.vim/plugged')
 
