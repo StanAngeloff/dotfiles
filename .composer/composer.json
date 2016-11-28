@@ -4,6 +4,7 @@
         "pdepend/pdepend": "~2.0",
         "phpmd/phpmd": "~2.2",
         "sebastian/phpcpd": "~2.0",
-        "squizlabs/php_codesniffer": "~2.3"
+        "squizlabs/php_codesniffer": "~2.3",
+        "etsy/phan": "dev-master"
     }
 }
