@@ -945,6 +945,10 @@ Plug 'wannesm/wmgraphviz.vim'
 
 " ---------------------------------------------------------------------------
 
+Plug 'HerringtonDarkholme/yats.vim'
+
+" ---------------------------------------------------------------------------
+
 call plug#end()
 
 colorscheme vim-zend55
