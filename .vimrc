@@ -45,6 +45,8 @@ set noinfercase " Adjust case of match/inserted text depending on context.
 
 set showtabline=2
 
+set inccommand=nosplit
+
 set backspace=indent,eol,start " Backspace wraps at start- and end-of-line.
 set tabstop=4                  " Default number of spaces per tab character.
 set softtabstop=4              " Tab size during editing operation.
