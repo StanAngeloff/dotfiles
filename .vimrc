@@ -411,7 +411,7 @@ command! -bar -bang Trash call Trash(fnamemodify(bufname(<q-args>), ':p'))
 " {{{ Zeal documentation search
 
 " Why QT_QPA_PLATFORMTHEME? See https://github.com/jkozera/zeal/issues/172#issuecomment-57289916
-nnoremap gz :call system('QT_QPA_PLATFORMTHEME=gnome zeal --query ' . shellescape(expand('<cword>')) . ' &')<CR>
+nnoremap gz :call system('QT_QPA_PLATFORMTHEME=gnome zeal ' . shellescape(expand('<cword>')) . ' &')<CR>
 
 " }}}
 
