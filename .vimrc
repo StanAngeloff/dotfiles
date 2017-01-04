@@ -951,6 +951,15 @@ Plug 'HerringtonDarkholme/yats.vim'
 
 " ---------------------------------------------------------------------------
 
+Plug 'bfredl/nvim-miniyank'
+
+map p <Plug>(miniyank-autoput)
+map P <Plug>(miniyank-autoPut)
+
+map <leader>n <Plug>(miniyank-cycle)
+
+" ---------------------------------------------------------------------------
+
 call plug#end()
 
 colorscheme vim-zend55
