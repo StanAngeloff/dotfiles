@@ -1,10 +1,11 @@
 {
     "minimum-stability": "stable",
     "require": {
+        "etsy/phan": "dev-master",
+        "friendsofphp/php-cs-fixer": "^2.0",
         "pdepend/pdepend": "~2.0",
         "phpmd/phpmd": "~2.2",
         "sebastian/phpcpd": "~2.0",
-        "squizlabs/php_codesniffer": "~2.3",
-        "etsy/phan": "dev-master"
+        "squizlabs/php_codesniffer": "~2.3"
     }
 }
