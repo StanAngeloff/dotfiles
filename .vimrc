@@ -806,8 +806,30 @@ Plug 'tpope/vim-eunuch'
 " ---------------------------------------------------------------------------
 
 Plug 'benmills/vimux'
-nnoremap <silent> <F5>      :w<CR>:VimuxRunLastCommand<CR>
-inoremap <silent> <F5> <Esc>:w<CR>:VimuxRunLastCommand<CR>a
+
+" {{{ tmux
+
+if ! exists('g:tmuxTarget')
+  let g:tmuxTarget='default.2'
+endif
+if ! exists('g:tmuxCommand')
+  let g:tmuxCommand='!!'
+endif
+
+" Send the following key combinations on <F5> after writing the buffer to disk:
+"
+"     q - quit any running programs, such as `less`
+"     <C-C> - terminate any foreground processes, such as watchers
+"     <C-U> - clear the command-line prompt
+"     <C-L> - clear the screen
+"     <Space> - don't record the command in history
+"     …command
+"     <Enter> - execute the command
+"
+nnoremap <silent> <F5>      :w<CR>:call system('tmux send-keys -t ' . shellescape(g:tmuxTarget) . ' "q" "^c" "^u" "^l" "Space" ' . shellescape(g:tmuxCommand) . ' "Enter"')<CR>
+inoremap <silent> <F5> <Esc>:w<CR>:call system('tmux send-keys -t ' . shellescape(g:tmuxTarget) . ' "q" "^c" "^u" "^l" "Space" ' . shellescape(g:tmuxCommand) . ' "Enter"')<CR>a
+
+" }}}
 
 " ---------------------------------------------------------------------------
 
