@@ -410,13 +410,6 @@ endfunction!
 
 command! -bar -bang Trash call Trash(fnamemodify(bufname(<q-args>), ':p'))
 
-" {{{ Zeal documentation search
-
-" Why QT_QPA_PLATFORMTHEME? See https://github.com/jkozera/zeal/issues/172#issuecomment-57289916
-nnoremap gz :call system('QT_QPA_PLATFORMTHEME=gnome zeal ' . shellescape(expand('<cword>')) . ' &')<CR>
-
-" }}}
-
 if has("gui_running")
   set guifont=Inconsolata\ for\ Powerline\ 14
 endif
@@ -979,6 +972,24 @@ map p <Plug>(miniyank-autoput)
 map P <Plug>(miniyank-autoPut)
 
 map <leader>n <Plug>(miniyank-cycle)
+
+" ---------------------------------------------------------------------------
+
+Plug 'sunaku/vim-dasht'
+
+" search related docsets
+nnoremap <silent> gz :call Dasht([expand('<cWORD>'), expand('<cword>')])<Return>
+" search ALL the docsets
+nnoremap <silent> gZ :call Dasht([expand('<cWORD>'), expand('<cword>')], '!')<Return>
+
+" search related docsets
+vnoremap <silent> gz y:<C-U>call Dasht(getreg(0))<Return>
+" search ALL the docsets
+vnoremap <silent> gZ y:<C-U>call Dasht(getreg(0), '!')<Return>
+
+let g:dasht_filetype_docsets = {}
+
+let g:dasht_filetype_docsets['blade'] = ['html', 'php']
 
 " ---------------------------------------------------------------------------
 
