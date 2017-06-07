@@ -106,7 +106,8 @@ set cursorline!                " Highlight line under cursor.
 set textwidth=120              " Gutter position.
 set colorcolumn=+0             " Use an offset from &textwidth.
 
-set listchars=tab:→\ ,eol:¬,extends:❯,precedes:❮  " Display a placeholder character for tabs and newlines.
+set nolist
+set listchars=tab:→\ ,eol:¬,extends:❯,precedes:❮,trail:␣  " Display a placeholder character for tabs and newlines.
 set showbreak=↪
 
 set matchpairs+=<:> " Balance HTML tags.
@@ -153,11 +154,47 @@ let g:omni_sql_no_default_maps = 1
 set grepprg=pt\ --hidden\ --nogroup\ --nocolor\ --column\ --smart-case\ -e
 set grepformat=%f:%l:%c:%m
 
+" Use a custom leader character.
+let mapleader = ','
+
+" Keep the legacy leader around for a while.
+nmap \ <leader>
+vmap \ <leader>
+
 command! -nargs=+ -complete=file -bar Search if len([<f-args>]) |
       \ execute 'lgrep! ' . escape(<q-args>, '#%') |
       \ botright lopen 8 | set nowrap |
       \ redraw! |
       \ endif
+
+function! SearchProject(visual)
+  if a:visual == 1
+    try
+      let z_save = @z
+      normal! gv"zy
+      let s:query = @z
+    finally
+      let @z = z_save
+    endtry
+  else
+    call inputsave()
+    let s:query = input('Search: ', '', 'tag_listfiles')
+    call inputrestore()
+  endif
+
+  if len(s:query)
+    let @/=s:query
+    let s:path = getcwd()
+    if isdirectory(s:path . '/src')
+      let s:path = 'src/'
+    endif
+
+    execute "normal! :Search " . escape(s:query, '<(?!$`''"#% )>|\') . ' ' . escape(s:path, '"'' \') . "\<CR>"
+  endif
+endfunction
+
+nnoremap <leader>S :call SearchProject(0)<CR>
+vnoremap <leader>S :call SearchProject(1)<CR>
 
 " Add useful mappings in quick-fix buffers (:copen, :lopen, etc.)
 if has('autocmd')
@@ -165,13 +202,6 @@ if has('autocmd')
         \ nnoremap <buffer> t ^<C-W>gF |
         \ nnoremap <buffer> <silent> q :cclose<CR>:lclose<CR>
 endif
-
-" Use a custom leader character.
-let mapleader = ','
-
-" Keep the legacy leader around for a while.
-nmap \ <leader>
-vmap \ <leader>
 
 " Keyboard bindings.
 nnoremap <silent> j gj
@@ -560,6 +590,8 @@ Plug 'StanAngeloff/vim-zend55'
 
 Plug 'tpope/vim-sleuth'
 
+let g:sleuth_automatic = 1
+
 " ---------------------------------------------------------------------------
 
 Plug 'juvenn/mustache.vim', { 'for': ['mustache', 'handlebars', 'hbs', 'hogan', 'hulk', 'hjs'] }
@@ -675,6 +707,8 @@ nnoremap <expr> ? FastFingersSearch('mm?')
 let g:xml_syntax_folding=1
 autocmd FileType xml setlocal foldmethod=syntax
 
+autocmd FileType nerdtree setlocal nolist
+
 " ---------------------------------------------------------------------------
 
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
@@ -772,6 +806,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 let g:airline_theme='lucius'
+let g:airline_symbols_ascii=1
 
 let g:airline_left_sep = "\ue0b0"
 let g:airline_left_alt_sep = "\ue0b1"
