@@ -9,6 +9,7 @@ function! NERDTreeSearchInCurrentNode()
   if n != {}
     let query = input('Search: ', '', 'tag_listfiles')
     if len(query)
+      let @/=query
       let path = fnamemodify(n.path.str(), ':.')
       execute "normal! :NERDTreeClose\<CR>:Search " . escape(query, '<(?!$`''"#% )>|\') . ' ' . escape(path, '"'' \') . "\<CR>"
     endif
