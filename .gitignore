@@ -39,6 +39,7 @@
 bin/composer
 !.composer/
 !.composer/composer.json
+!.composer/composer.lock
 !.composer/vendor/
 !.composer/vendor/bin/
 !.composer/vendor/bin/*
