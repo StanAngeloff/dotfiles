@@ -110,6 +110,8 @@ set nolist
 set listchars=tab:→\ ,eol:¬,extends:❯,precedes:❮,trail:␣  " Display a placeholder character for tabs and newlines.
 set showbreak=↪
 
+set display+=uhex
+
 set matchpairs+=<:> " Balance HTML tags.
 
 " Customise the fill characters.
