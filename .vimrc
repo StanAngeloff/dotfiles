@@ -1030,6 +1030,25 @@ let g:dasht_filetype_docsets['blade'] = ['html', 'php']
 
 " ---------------------------------------------------------------------------
 
+Plug 'ledger/vim-ledger'
+
+let g:ledger_maxwidth = 80
+
+au BufNewFile,BufRead *.ldgr set filetype=ledger
+
+let g:ledger_extra_options = '--pedantic --explicit'
+
+au FileType ledger imap <silent> <Tab> <C-R>=ledger#autocomplete_and_align()<CR>
+au FileType ledger vmap <silent> <Tab> :LedgerAlign<CR>
+
+let g:ledger_default_commodity = 'лв.'
+let g:ledger_commodity_before = 0
+let g:ledger_commodity_sep = ''
+
+autocmd FileType ledger nnoremap <buffer> <leader>a :%LedgerAlign<CR>
+autocmd FileType ledger iabbrev <expr> today strftime('%Y/%m/%d')
+
+" ---------------------------------------------------------------------------
 call plug#end()
 
 colorscheme vim-zend55
