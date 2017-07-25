@@ -1049,6 +1049,10 @@ autocmd FileType ledger nnoremap <buffer> <leader>a :%LedgerAlign<CR>
 autocmd FileType ledger iabbrev <expr> today strftime('%Y/%m/%d')
 
 " ---------------------------------------------------------------------------
+
+Plug 'christianrondeau/vim-base64'
+
+" ---------------------------------------------------------------------------
 call plug#end()
 
 colorscheme vim-zend55
