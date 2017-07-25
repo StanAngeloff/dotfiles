@@ -1065,6 +1065,15 @@ let g:hardtime_ignore_buffer_patterns = ['NERD_.*']
 let g:hardtime_allow_different_key = 1
 let g:hardtime_maxcount = 2
 
+
+" ---------------------------------------------------------------------------
+
+if ! &termguicolors
+    Plug 'godlygeek/csapprox'
+endif
+
+" ---------------------------------------------------------------------------
+
 call plug#end()
 
 colorscheme vim-zend55
