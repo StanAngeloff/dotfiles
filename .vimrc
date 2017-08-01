@@ -1070,6 +1070,9 @@ let g:hardtime_ignore_buffer_patterns = ['NERD_.*']
 let g:hardtime_allow_different_key = 1
 let g:hardtime_maxcount = 3
 
+" ---------------------------------------------------------------------------
+
+Plug 'tommcdo/vim-exchange'
 
 " ---------------------------------------------------------------------------
 
