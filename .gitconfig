@@ -1,7 +1,7 @@
 [user]
 	name = ${name}
 	email = ${email}
-	signingkey = 595EA753
+	signingkey = stanimir@angeloff.name
 [company]
 	name = PSP UK Group Ltd.
 	email = hello@psp-group.co.uk
