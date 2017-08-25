@@ -1,4 +1,6 @@
 *
+!.*rc
+
 !bin
 !.aliases
 !.cleanup_profile.sh
@@ -23,7 +25,6 @@
 !.*vimrc*
 !.Xresources
 !.zsh/
-!.zshrc
 
 # Scripts
 !bin/*
