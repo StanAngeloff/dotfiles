@@ -72,8 +72,8 @@
 ### set show-changes        = yes       # Show changes commits in the main view?
 ### set wrap-lines          = no        # Wrap long lines in pager views?
 ### set tab-size            = 8     # Number of spaces to use when expanding tabs
-### set line-graphics       = default   # Enum: ascii, default, utf-8
-### set truncation-delimiter    = ~     # Character drawn for truncations, or "utf-8"
+set line-graphics       = utf-8
+set truncation-delimiter    = utf-8     # Character drawn for truncations, or "utf-8"
 
 ### # Format reference names based on type.
 ### #  - head       : The current HEAD.
@@ -105,9 +105,9 @@ set status-show-untracked-files = yes       # Show untracked files?
 ### #set mailmap            = yes       # Use .mailmap to show canonical name and email address
 
 ### # Misc
-### set refresh-mode        = auto      # Enum: manual, auto, after-command, periodic
-### set refresh-interval        = 10        # Interval in seconds between refreshes
-### set ignore-case         = no        # Enum: no, yes, smart-case
+set refresh-mode        = auto      # Enum: manual, auto, after-command, periodic
+set refresh-interval        = 5        # Interval in seconds between refreshes
+set ignore-case         = smart-case        # Enum: no, yes, smart-case
 ###                         # Ignore case when searching? Smart-case option will
 ### set wrap-search         = yes       # Wrap around to top/bottom of view when searching
 ### set focus-child         = yes       # Move focus to child view when opened?
@@ -166,6 +166,7 @@ set status-show-untracked-files = yes       # Show untracked files?
 ### bind refs   C   ?git checkout %(branch)
 ### bind refs   !   ?git branch -D %(branch)
 bind status A   !git commit --amend
+bind status T   @trash %(file)
 
 ### # Normal commands
 ### # ---------------
