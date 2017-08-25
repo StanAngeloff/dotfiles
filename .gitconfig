@@ -1,6 +1,7 @@
 [user]
 	name = ${name}
 	email = ${email}
+	signingkey = 595EA753
 [company]
 	name = PSP UK Group Ltd.
 	email = hello@psp-group.co.uk
@@ -67,6 +68,11 @@
 [push]
 	default = upstream # ${pushDefault}
 	recurseSubmodules = check
+
+[gpg]
+	program = gpg2
+[commit]
+	gpgsign = true
 
 # See http://git-scm.com/blog/2010/03/08/rerere.html
 [rerere]
