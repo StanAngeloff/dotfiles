@@ -1,12 +1,12 @@
 [user]
-	name = ${name}
-	email = ${email}
-	signingkey = stanimir@angeloff.name
+	name = Stan Angeloff
+	email = stanimir@psp-webtech.co.uk
+	signingkey = stanimir@psp-webtech.co.uk
 [company]
 	name = PSP UK Group Ltd.
 	email = hello@psp-group.co.uk
 [github]
-	user = ${username}
+	user = StanAngeloff
 	token = ${token}
 [gui]
 	fontui = -family \"DejaVu Sans\" -size 8 -weight bold -slant roman -underline 0 -overstrike 0
