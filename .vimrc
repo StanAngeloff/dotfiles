@@ -1076,6 +1076,24 @@ Plug 'tommcdo/vim-exchange'
 
 " ---------------------------------------------------------------------------
 
+Plug 'rhysd/committia.vim'
+
+let g:committia_open_only_vim_starting = 1
+
+let g:committia_hooks = {}
+function! g:committia_hooks.edit_open(info)
+    setlocal spell
+
+    " If no commit message, start with INSERT mode.
+    if a:info.vcs ==# 'git' && getline(1) ==# ''
+        startinsert
+    end
+
+    " Scroll the diff window from INSERT mode.
+    imap <buffer><C-F> <Plug>(committia-scroll-diff-down-page)
+    imap <buffer><C-B> <Plug>(committia-scroll-diff-up-page)
+endfunction
+
 if ! &termguicolors
     Plug 'godlygeek/csapprox'
 endif
