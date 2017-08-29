@@ -84,3 +84,7 @@ bin/composer
 
 # Zsh completions.
 !.zsh/completions
+
+!.config/
+!.config/ranger/
+!.config/ranger/*

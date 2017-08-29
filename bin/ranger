@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+ranger_path=/opt/ranger/usr/local
+ranger_python=python3.4
+
+export PYTHONPATH="${ranger_path}/lib/python2.7/dist-packages:${PYTHONPATH}"
+
+export RANGER_LOAD_DEFAULT_RC=FALSE
+
+exec "$ranger_python" "${ranger_path}/bin/ranger" "$@"
