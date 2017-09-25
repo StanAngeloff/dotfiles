@@ -1002,10 +1002,6 @@ Plug 'wannesm/wmgraphviz.vim'
 
 " ---------------------------------------------------------------------------
 
-Plug 'HerringtonDarkholme/yats.vim'
-
-" ---------------------------------------------------------------------------
-
 Plug 'bfredl/nvim-miniyank'
 
 map p <Plug>(miniyank-autoput)
@@ -1096,6 +1092,11 @@ function! g:committia_hooks.edit_open(info)
     imap <buffer><C-F> <Plug>(committia-scroll-diff-down-page)
     imap <buffer><C-B> <Plug>(committia-scroll-diff-up-page)
 endfunction
+
+" ---------------------------------------------------------------------------
+
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 
 if ! &termguicolors
     Plug 'godlygeek/csapprox'
