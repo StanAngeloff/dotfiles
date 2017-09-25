@@ -761,6 +761,9 @@ let php_var_selector_is_identifier = 1
 " Indent 'case:' and 'default:' statements in switch() blocks:
 let g:PHP_vintage_case_default_indent = 1
 
+autocmd FileType php
+      \ nnoremap <silent> <expr> gz ":silent exec \"!xdg-open 'http://php.net/en/" . expand('<cword>') . "'\"<CR>"
+
 " ---------------------------------------------------------------------------
 
 Plug 'kien/ctrlp.vim', { 'on': 'CtrlPCurWD' }
