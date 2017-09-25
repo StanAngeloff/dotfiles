@@ -26,8 +26,7 @@ function npm-exec() {
 alias v='nvim -p'
 alias vimdiff='nvim -d'
 
-alias ts='tig status'
-alias tigs='tig status'
+alias t='tig status'
 
 # Directory listing.
 alias ll='ls -halF --color=tty'
