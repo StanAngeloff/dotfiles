@@ -1010,23 +1010,23 @@ map P <Plug>(miniyank-autoPut)
 
 map <leader>n <Plug>(miniyank-cycle)
 
-" ---------------------------------------------------------------------------
-
-Plug 'sunaku/vim-dasht'
-
-" search related docsets
-nnoremap <silent> gz :call Dasht([expand('<cWORD>'), expand('<cword>')])<Return>
-" search ALL the docsets
-nnoremap <silent> gZ :call Dasht([expand('<cWORD>'), expand('<cword>')], '!')<Return>
-
-" search related docsets
-vnoremap <silent> gz y:<C-U>call Dasht(getreg(0))<Return>
-" search ALL the docsets
-vnoremap <silent> gZ y:<C-U>call Dasht(getreg(0), '!')<Return>
-
-let g:dasht_filetype_docsets = {}
-
-let g:dasht_filetype_docsets['blade'] = ['html', 'php']
+"" ---------------------------------------------------------------------------
+"
+"Plug 'sunaku/vim-dasht'
+"
+"" search related docsets
+"nnoremap <silent> gz :call Dasht([expand('<cWORD>'), expand('<cword>')])<Return>
+"" search ALL the docsets
+"nnoremap <silent> gZ :call Dasht([expand('<cWORD>'), expand('<cword>')], '!')<Return>
+"
+"" search related docsets
+"vnoremap <silent> gz y:<C-U>call Dasht(getreg(0))<Return>
+"" search ALL the docsets
+"vnoremap <silent> gZ y:<C-U>call Dasht(getreg(0), '!')<Return>
+"
+"let g:dasht_filetype_docsets = {}
+"
+"let g:dasht_filetype_docsets['blade'] = ['html', 'php']
 
 " ---------------------------------------------------------------------------
 

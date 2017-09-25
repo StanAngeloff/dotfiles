@@ -4,7 +4,7 @@
 # to any NPM installed modules.
 export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
 
-export PATH="${PATH}:${HOME}/bin/dasht/bin"
-export MANPATH="${HOME}/bin/dasht/man:${MANPATH}"
-
-source "${HOME}/bin/dasht/etc/zsh/completions.zsh"
+#export PATH="${PATH}:${HOME}/bin/dasht/bin"
+#export MANPATH="${HOME}/bin/dasht/man:${MANPATH}"
+#
+#source "${HOME}/bin/dasht/etc/zsh/completions.zsh"
