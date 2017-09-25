@@ -68,6 +68,7 @@
 [push]
 	default = upstream # ${pushDefault}
 	recurseSubmodules = check
+	gpgSign = if-asked
 
 [gpg]
 	program = gpg2
