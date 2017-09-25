@@ -247,3 +247,10 @@ LOCALRC=$( echo ".localrc_`uname -n`_`uname -o`" | tr '[A-Z]' '[a-z]' | tr '/' '
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+
+# See https://gpgtools.tenderapp.com/kb/faq/enter-passphrase-with-pinentry-in-terminal-via-ssh-connection
+#
+export GPG_TTY=$(tty)
+if [[ -n "$SSH_CONNECTION" ]]; then
+    export PINENTRY_USER_DATA="USE_CURSES=1"
+fi
