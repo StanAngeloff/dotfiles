@@ -1098,6 +1098,26 @@ endfunction
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 
+"" ---------------------------------------------------------------------------
+"
+"Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+"
+"" Automatically start language servers.
+"let g:LanguageClient_autoStart = 1
+"let g:LanguageClient_setLoggingLevel = 'DEBUG'
+"
+"let g:LanguageClient_serverCommands = {
+"      \ 'php': ['php7.1', $HOME . '/.composer/vendor/felixfbecker/language-server/bin/php-language-server.php']
+"      \ }
+"
+"Plug 'roxma/nvim-completion-manager'
+"
+"" don't give |ins-completion-menu| messages.  For example,
+"" '-- YYY completion (ZZZ)', 'match 1 of 2', 'The only match',
+"set shortmess+=c
+"
+"" ---------------------------------------------------------------------------
+
 if ! &termguicolors
     Plug 'godlygeek/csapprox'
 endif
