@@ -639,6 +639,8 @@ inoremap <expr> <C-K> UltiSnipsJump("\<C-P>", 'Backwards', 'O')
 snoremap <C-J> <Esc>:call UltiSnips#JumpForwards()<CR>
 snoremap <C-K> <Esc>:call UltiSnips#JumpBackwards()<CR>
 
+let g:UltiSnipsUsePythonVersion = 3
+
 " ---------------------------------------------------------------------------
 
 Plug 'othree/html5.vim'
