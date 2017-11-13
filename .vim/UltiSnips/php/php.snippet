@@ -7,7 +7,7 @@ snippet php
  * please view the LICENSE file that was distributed with this source code.
  */
 
-namespace `!p snip.rv = re.sub(r'^(apps/[a-z0-9_]+/)?(app|tests)/', lambda p: vim.eval('exists("g:projectNamespace") ? g:projectNamespace . "/" : ""') + ('Tests/' if p.group(1).lower() in ['tests'] else ''), re.sub(r'.*src\/', '', os.path.dirname(path))).replace('/', '\\')`;
+namespace `!p snip.rv = re.sub(r'^(apps/[a-z0-9_]+/)?(app|tests)/', lambda p: vim.eval('exists("g:projectNamespace") ? g:projectNamespace . "/" : ""') + ('Tests/' if p.group(1) is not None and p.group(1).lower() in ['tests'] else ''), re.sub(r'.*src\/', '', os.path.dirname(path))).replace('/', '\\')`;
 
 
 endsnippet
