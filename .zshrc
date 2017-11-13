@@ -12,6 +12,8 @@ HISTFILE="$ZSH/history"
 HISTSIZE=40960
 SAVEHIST=$HISTSIZE
 
+fpath=($ZSH/functions $fpath)
+
 # Turn on 256-colour terminal support.
 export TERM=rxvt-unicode-256color
 
