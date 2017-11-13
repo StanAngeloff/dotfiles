@@ -113,6 +113,8 @@ set showbreak=↪
 set display+=uhex
 
 set matchpairs+=<:> " Balance HTML tags.
+set showmatch
+set matchtime=1
 
 " Customise the fill characters.
 set fillchars+=vert:│,fold:┄
