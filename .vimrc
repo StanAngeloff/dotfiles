@@ -1100,6 +1100,10 @@ endfunction
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 
+" ---------------------------------------------------------------------------
+
+Plug 'wellle/targets.vim'
+
 "" ---------------------------------------------------------------------------
 "
 "Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
