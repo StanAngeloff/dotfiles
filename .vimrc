@@ -1104,6 +1104,10 @@ Plug 'Quramy/tsuquyomi'
 
 Plug 'wellle/targets.vim'
 
+" ---------------------------------------------------------------------------
+
+Plug 'chrisbra/unicode.vim'
+
 "" ---------------------------------------------------------------------------
 "
 "Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
