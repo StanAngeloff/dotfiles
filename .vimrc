@@ -417,8 +417,11 @@ inoremap <leader>time <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 " Copy entire buffer to X clipboard.
 nnoremap <leader>= mZggVG"+yg`Z
 
-" Sort inside a paragraph.
+" Sorting like a pro!
 nnoremap <silent> <leader>sip mZvip:sort u<CR>g`Z:echo (line("'>") - line("'<") + 1) . ' line(s) sorted'<CR>
+nnoremap <silent> <leader>si{ mZvi{:sort u<CR>g`Z:echo (line("'>") - line("'<") + 1) . ' line(s) sorted'<CR>
+nnoremap <silent> <leader>si[ mZvi[:sort u<CR>g`Z:echo (line("'>") - line("'<") + 1) . ' line(s) sorted'<CR>
+
 vnoremap <leader>s :sort u<CR>gv
 
 " XML formatting through `xmllint`.
