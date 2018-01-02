@@ -1,88 +1,42 @@
-*
-!.*rc
+Applications/
+Desktop/
+Documents/
+Downloads/
+Library/
+Movies/
+Music/
+Pictures/
+Public/
 
-!bin
-!.aliases
-!.cleanup_profile.sh
-!.fonts
-!.gemrc
-!.gitconfig
-!.gitignore
-!.gitmodules
-!.gtkrc-2.0
-!.install_profile.sh
-!.localrc_*
-!.profile.*
-!.rbenv
-!.ssh/
-!.ssh/config
-!.tmux.conf
-!.urxvt/
-!.urxvt/ext/
-!.vim/
-!.*vimrc*
-!.Xresources
-!.zsh/
+Creative Cloud*/
 
-# Scripts
-!bin/*
+.*_history
+.config/configstore/update-notifier-npm.json
+.lesshst
+.local/share/nvim/shada
+.ssh/known_hosts
+.zsh/history
 
-!etc/
-!etc/*
+.CFUserTextEncoding
+.DS_Store
+.yarnrc
 
-# rbenv
-!.rbenv-plugins
-!.rbenv-plugins/*
+Dropbox/
+.dropbox
 
-# Fonts
-!.fonts/*.ttf
-!.fonts/*.otf
+.iterm2/
+.iterm2_*
 
-# Composer
-bin/composer
-!.composer/
-!.composer/composer.json
-!.composer/composer.lock
-!.composer/vendor/
-!.composer/vendor/bin/
-!.composer/vendor/bin/*
+.ssh/id_rsa*
 
-# Vim: after/ scripts, e.g., for CSS3 support in HTML/SCSS, Abolish, etc.
-!.vim/after/
-!.vim/after/syntax/
-!.vim/after/syntax/*.vim
-!.vim/after/plugin/
-!.vim/after/plugin/*.vim
+.vim/plugged/
+.viminfo
 
-# Vim: after/ftplugin/ scripts, e.g., abbreviations by file type.
-!.vim/after/ftplugin/
-!.vim/after/ftplugin/*.vim
+.z
+.zcompdump
 
-# Vim: vim-airline colour schemes in ~/.vim/autoload/airline/themes/file.vim
-!.vim/autoload/*/
-!.vim/autoload/*/*/
-!.vim/autoload/*/*/*.vim
-
-# Vim: Plug-ins
-!.vim/plugin/
-!.vim/plugin/*.vim
-
-# Vim: UltiSnips snippets
-!.vim/UltiSnips/
-!.vim/UltiSnips/*/
-!.vim/UltiSnips/*/*.snippet*
-
-# Vim: Spelling dictionaries.
-!.vim/spell/
-!.vim/spell/.gitignore
-
-# Vim: NERDTree
-!.vim/nerdtree_plugin/
-!.vim/nerdtree_plugin/*
-
-# Zsh scripts.
-!.zsh/scripts/
-!.zsh/scripts/*
-
-# Zsh completions.
-!.zsh/completions
+# Miscellaneous & caches
+.docker/
+.expo/
+.node-gyp/
+.npm/
