@@ -4,8 +4,6 @@
 !bin
 !.aliases
 !.cleanup_profile.sh
-!.ctags
-!.danger_history
 !.fonts
 !.gemrc
 !.gitconfig
@@ -13,7 +11,7 @@
 !.gitmodules
 !.gtkrc-2.0
 !.install_profile.sh
-!.localrc_stan-inspiron_gnu_linux
+!.localrc_*
 !.profile.*
 !.rbenv
 !.ssh/
@@ -35,6 +33,7 @@
 
 # Fonts
 !.fonts/*.ttf
+!.fonts/*.otf
 
 # Composer
 bin/composer
@@ -84,7 +83,3 @@ bin/composer
 
 # Zsh completions.
 !.zsh/completions
-
-!.config/
-!.config/ranger/
-!.config/ranger/*
