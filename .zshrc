@@ -15,7 +15,7 @@ SAVEHIST=$HISTSIZE
 fpath=($ZSH/functions $fpath)
 
 # Turn on 256-colour terminal support.
-export TERM=rxvt-unicode-256color
+export TERM=xterm-256color
 
 # Respect tmux wishes.
 [ -n "$TMUX" ] && export TERM=screen-256color
@@ -244,7 +244,7 @@ unset __script
 [[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
 # Source machine-specific local configuration.
-LOCALRC=$( echo ".localrc_`uname -n`_`uname -o`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
+LOCALRC=$( echo ".localrc_`uname -n`_`uname -o 2>/dev/null | echo Darwin`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
 [ -s "$HOME/$LOCALRC" ] && source "$HOME/$LOCALRC"
 
 export NVM_DIR="$HOME/.nvm"

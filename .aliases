@@ -29,7 +29,7 @@ alias vimdiff='nvim -d'
 alias t='tig status'
 
 # Directory listing.
-alias ll='ls -halF --color=tty'
+alias ll='ls -halFG'
 
 # Basic directory operations.
 alias ..='cd ..'
