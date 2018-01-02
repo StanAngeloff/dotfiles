@@ -92,7 +92,7 @@
 [transfer]
 	fsckobjects = true
 [fetch]
-	fsckobjects = true
+	fsckobjects = false
 [receive]
 	fsckObjects = true
 
