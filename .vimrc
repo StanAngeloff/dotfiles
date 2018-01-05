@@ -1030,7 +1030,7 @@ Plug 'StanAngeloff/fizzy.vim'
 
 " ---------------------------------------------------------------------------
 
-Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
+""" Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 
 " ---------------------------------------------------------------------------
 
@@ -1050,34 +1050,36 @@ Plug 'jwalton512/vim-blade'
 
 " ---------------------------------------------------------------------------
 
-Plug 'wannesm/wmgraphviz.vim'
+""" Plug 'wannesm/wmgraphviz.vim'
 
 " ---------------------------------------------------------------------------
 
-Plug 'bfredl/nvim-miniyank'
-
-map p <Plug>(miniyank-autoput)
-map P <Plug>(miniyank-autoPut)
-
-map <leader>n <Plug>(miniyank-cycle)
+""" E685: Internal error: hash_add() since recent NeoVim upgrade to 0.2.0ubuntu1+git201711260918+3780+26~ubuntu14.04.1
+"""
+""" Plug 'bfredl/nvim-miniyank'
+"""
+""" map p <Plug>(miniyank-autoput)
+""" map P <Plug>(miniyank-autoPut)
+"""
+""" map <leader>n <Plug>(miniyank-cycle)
 
 "" ---------------------------------------------------------------------------
-"
-"Plug 'sunaku/vim-dasht'
-"
-"" search related docsets
-"nnoremap <silent> gz :call Dasht([expand('<cWORD>'), expand('<cword>')])<Return>
-"" search ALL the docsets
-"nnoremap <silent> gZ :call Dasht([expand('<cWORD>'), expand('<cword>')], '!')<Return>
-"
-"" search related docsets
-"vnoremap <silent> gz y:<C-U>call Dasht(getreg(0))<Return>
-"" search ALL the docsets
-"vnoremap <silent> gZ y:<C-U>call Dasht(getreg(0), '!')<Return>
-"
-"let g:dasht_filetype_docsets = {}
-"
-"let g:dasht_filetype_docsets['blade'] = ['html', 'php']
+
+""" Plug 'sunaku/vim-dasht'
+"""
+""" " search related docsets
+""" nnoremap <silent> gz :call Dasht([expand('<cWORD>'), expand('<cword>')])<Return>
+""" " search ALL the docsets
+""" nnoremap <silent> gZ :call Dasht([expand('<cWORD>'), expand('<cword>')], '!')<Return>
+"""
+""" " search related docsets
+""" vnoremap <silent> gz y:<C-U>call Dasht(getreg(0))<Return>
+""" " search ALL the docsets
+""" vnoremap <silent> gZ y:<C-U>call Dasht(getreg(0), '!')<Return>
+"""
+""" let g:dasht_filetype_docsets = {}
+"""
+""" let g:dasht_filetype_docsets['blade'] = ['html', 'php']
 
 " ---------------------------------------------------------------------------
 
