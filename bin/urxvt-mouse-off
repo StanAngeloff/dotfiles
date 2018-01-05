@@ -47,10 +47,10 @@ while [[ true ]]; do
         fi
     fi
 
-    sleep 1
+    sleep 0.1
 
     n=$((n+1))
-    if [[ $n -ge 5 ]]; then
+    if [[ $n -ge 50 ]]; then
         refresh
         n=0
     fi
