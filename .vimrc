@@ -492,6 +492,8 @@ if has('autocmd')
   au BufRead,BufNewFile {Gemfile,Guardfile,Rakefile,*.rake,config.ru} set ft=ruby
   au BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
   au BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
+  au BufRead,BufNewFile {.babelrc,.watchmanconfig} set ft=json
+  au BufRead,BufNewFile {.flowconfig} set ft=dosini
 
   " If a local .lvimrc file exists in the current working directory, source it on load (unsafe).
   " When the file is changed, update it by sourcing again.
