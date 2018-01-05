@@ -795,6 +795,24 @@ let php_var_selector_is_identifier = 1
 " Indent 'case:' and 'default:' statements in switch() blocks:
 let g:PHP_vintage_case_default_indent = 1
 
+let php_html_load=0
+let php_html_in_heredoc=0
+let php_html_in_nowdoc=0
+
+let php_sql_query=0
+let php_sql_heredoc=0
+let php_sql_nowdoc=0
+
+function! PhpSyntaxOverride()
+  hi phpUseNamespaceSeparator guifg=#808080 guibg=NONE gui=NONE
+  hi phpClassNamespaceSeparator guifg=#808080 guibg=NONE gui=NONE
+endfunction
+
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
+augroup END
+
 autocmd FileType php
       \ nnoremap <silent> <expr> gz ":silent exec \"!xdg-open 'http://php.net/en/" . expand('<cword>') . "'\"<CR>"
 
