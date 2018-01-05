@@ -1118,10 +1118,12 @@ let g:hardtime_default_on = 0
 let g:hardtime_showmsg = 1
 
 let g:hardtime_ignore_quickfix = 1
-let g:hardtime_ignore_buffer_patterns = ['NERD_.*']
+let g:hardtime_ignore_buffer_patterns = ['NERD_.*', 'COMMIT_EDITMSG']
 
 let g:hardtime_allow_different_key = 1
 let g:hardtime_maxcount = 3
+
+nnoremap <leader>hh :HardTimeToggle<CR>
 
 " ---------------------------------------------------------------------------
 
