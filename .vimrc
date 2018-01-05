@@ -658,6 +658,28 @@ Plug 'othree/html5.vim'
 " ---------------------------------------------------------------------------
 
 Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
+
+function! JavaScriptSyntaxOverride()
+  hi! link jsxTag htmlTag
+  hi! link jsxTagName htmlTagName
+  hi! link jsxString htmlString
+  " hi! link jsxNameSpace Function
+  hi! link jsxComment htmlComment
+  hi! link jsxAttrib htmlArg
+  " hi! link jsxEscapeJs jsxEscapeJs
+  hi! link jsxCloseTag htmlEndTag
+  hi! link jsxCloseString htmlEndTag
+
+  syntax region jsxComment start=+//+ end=/$/ contains=jsCommentTodo,@Spell contained containedin=jsxRegion,jsxTag extend keepend
+
+  hi! link jsxComment jsComment
+endfunction
+
+augroup javascriptSyntaxOverride
+  autocmd!
+  autocmd FileType javascript call JavaScriptSyntaxOverride()
+augroup END
 
 " ---------------------------------------------------------------------------
 
