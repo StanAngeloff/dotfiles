@@ -60,6 +60,7 @@
 
 	freeze = !bash -c '. $HOME/bin/git-freeze.sh && git-freeze'
 	thaw = !bash -c '. $HOME/bin/git-freeze.sh && git-thaw'
+	shame = blame -w -M
 
 [pager]
 	diff = diff-highlight | less -iRS
