@@ -24,9 +24,16 @@ end
 syntax on
 set synmaxcol=2048
 
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set termguicolors
+
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+" See https://github.com/neovim/neovim/wiki/FAQ#how-to-change-cursor-shape-in-the-terminal
+"
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+
+au VimLeave * set guicursor=a:block-blinkon0
 
 " Use UTF-8 and Unix line-endings for new files.
 set encoding=utf-8
