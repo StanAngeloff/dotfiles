@@ -244,7 +244,7 @@ unset __script
 [[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
 # Source machine-specific local configuration.
-LOCALRC=$( echo ".localrc_`uname -n`_`uname -o 2>/dev/null | echo Darwin`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
+LOCALRC=$( echo ".localrc_`uname -n`_`uname -o 2>/dev/null || echo Darwin`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
 [ -s "$HOME/$LOCALRC" ] && source "$HOME/$LOCALRC"
 
 export NVM_DIR="$HOME/.nvm"
