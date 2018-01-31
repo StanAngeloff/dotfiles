@@ -658,7 +658,7 @@ Plug 'othree/html5.vim'
 " ---------------------------------------------------------------------------
 
 Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'maxmellon/vim-jsx-pretty'
 
 function! JavaScriptSyntaxOverride()
   hi! link jsxTag htmlTag
@@ -1030,7 +1030,7 @@ Plug 'StanAngeloff/fizzy.vim'
 
 " ---------------------------------------------------------------------------
 
-""" Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
+Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 
 " ---------------------------------------------------------------------------
 
