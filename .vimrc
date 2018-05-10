@@ -52,6 +52,7 @@ set incsearch  " Do incremental searching.
 set ignorecase " Lowercase matches all.
 set smartcase  " Uppercase matches uppercase only.
 set noinfercase " Adjust case of match/inserted text depending on context.
+set nostartofline " Don't move the cursor to the first non-blank character of a line.
 
 set showtabline=2
 
@@ -85,6 +86,9 @@ set spelllang=en,bg
 
 set scrolloff=120  " Scroll when lots of lines from edge of screen. Bigger numbers work better with ':help rnu'.
 set rnu            " Show the line number relative to the line with the cursor in front of each line.
+
+" This I really DO NOT LIKE being forced to use.
+set updatetime=100
 
 if ! has('nvim') " Neovim? See https://github.com/neovim/neovim/issues/2253
   set lazyredraw   " Do not redraw while running macros (much faster).
@@ -1019,8 +1023,10 @@ endif
 
 Plug 'airblade/vim-gitgutter'
 
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
+" NOTE: The options below apply to an older version of git-gutter.
+"
+" let g:gitgutter_realtime = 0
+" let g:gitgutter_eager = 0
 let g:gitgutter_max_signs = 9999
 
 hi def link GitGutterAdd DiffAdd
@@ -1169,6 +1175,14 @@ Plug 'wellle/targets.vim'
 " ---------------------------------------------------------------------------
 
 Plug 'chrisbra/unicode.vim'
+
+" ---------------------------------------------------------------------------
+
+Plug 'Konfekt/FastFold'
+
+" ---------------------------------------------------------------------------
+
+Plug 'chr4/nginx.vim'
 
 "" ---------------------------------------------------------------------------
 "
