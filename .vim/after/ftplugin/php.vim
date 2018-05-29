@@ -11,7 +11,21 @@ function! PhpBestExpandComment()
         return "\<C-G>u/**\<CR>\<CR>/\<Esc>k==A\<Space>"
     endif
 
-    return "\<C-R>=UltiSnips#Anon('/* $${1:var} = */ $0')\<CR>"
+    let g:PhpBestExpandCommentInsertLeaveOccurrence = 0
+
+    augroup PhpBestExpandCommentCmd
+        autocmd!
+        autocmd InsertLeave *
+                    \ let g:PhpBestExpandCommentInsertLeaveOccurrence = g:PhpBestExpandCommentInsertLeaveOccurrence + 1 |
+                    \ if (g:PhpBestExpandCommentInsertLeaveOccurrence == 2) |
+                    \   exe 'normal 7l' |
+                    \ endif |
+                    \ if (g:PhpBestExpandCommentInsertLeaveOccurrence >= 2) |
+                    \   augroup PhpBestExpandCommentCmd | execute "autocmd!" | augroup END | augroup! PhpBestExpandCommentCmd |
+                    \ endif
+    augroup END
+
+    return "\<C-G>u/* $ = */ \<Esc>6ha"
 endfunction
 
 " Expand C-style comments to multi-line comments.

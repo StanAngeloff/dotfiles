@@ -543,6 +543,13 @@ function! BestComplete()
     endif
   endif
 
+  " If we are expanding an inline comment, leave insert mode to trigger navigation.
+  if exists('g:PhpBestExpandCommentInsertLeaveOccurrence')
+    if g:PhpBestExpandCommentInsertLeaveOccurrence == 1
+      return "\<Esc>i"
+    endif
+  endif
+
   """  If UltiSnips is installed, try to expand as snippet.
   """" UltiSnips will insert a <Tab> for us if no snippet was available.
   """if exists('*UltiSnips#ExpandSnippet')
