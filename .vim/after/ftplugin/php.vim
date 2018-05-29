@@ -1,7 +1,5 @@
-set keywordprg=pman
-
 " Vim, Y U SO BOLD?
-set matchpairs-=<:>
+"set matchpairs-=<:>
 
 " Y U MESSING MY KEYWORD?
 set iskeyword-=-
@@ -18,5 +16,3 @@ endfunction
 
 " Expand C-style comments to multi-line comments.
 inoremap <buffer> <expr> // PhpBestExpandComment()
-
-nnoremap <C-]> :PhpSearch <C-R>=expand("<cword>")<CR><CR>
