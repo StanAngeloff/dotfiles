@@ -345,38 +345,38 @@ nnoremap <leader>v g`[Vg`]o
 " The default behaviour is to jump back to the previous position which is not very intuitive when multiple jumps happen between edits.
 nnoremap `` `m
 
-" Paste/Replace
-" -------------
-"
-" Usage: cp{motion}
-"
-" The contents of the replaced text are placed in the default register '"'.
-"
-" Example: cpiw  " paste over the current word.
-"
-function! PasteReplace(type, ...)
-  if ! exists('g:PasteReplaceRegister')
-    return
-  endif
-
-  let previous_selection = &selection
-  let &selection = 'inclusive'
-
-  if a:type == 'line'
-    silent exe "normal! '[V']"
-  elseif a:type == 'block'
-    silent exe "normal! `[\<C-V>`]"
-  else
-    silent exe "normal! `[v`]"
-  endif
-
-  silent exe "normal \"" . g:PasteReplaceRegister . "P"
-
-  let &selection = previous_selection
-
-endfunction
-
-nnoremap <silent> cp :let g:PasteReplaceRegister=v:register<CR>:setlocal opfunc=PasteReplace<CR>g@
+"""  Paste/Replace
+"""" -------------
+""""
+"""" Usage: cp{motion}
+""""
+"""" The contents of the replaced text are placed in the default register '"'.
+""""
+"""" Example: cpiw  " paste over the current word.
+""""
+"""function! PasteReplace(type, ...)
+"""  if ! exists('g:PasteReplaceRegister')
+"""    return
+"""  endif
+"""
+"""  let previous_selection = &selection
+"""  let &selection = 'inclusive'
+"""
+"""  if a:type == 'line'
+"""    silent exe "normal! '[V']"
+"""  elseif a:type == 'block'
+"""    silent exe "normal! `[\<C-V>`]"
+"""  else
+"""    silent exe "normal! `[v`]"
+"""  endif
+"""
+"""  silent exe "normal \"" . g:PasteReplaceRegister . "P"
+"""
+"""  let &selection = previous_selection
+"""
+"""endfunction
+"""
+"""nnoremap <silent> cp :let g:PasteReplaceRegister=v:register<CR>:setlocal opfunc=PasteReplace<CR>g@
 
 " Erase trailing whitespace function and keyboard binding.
 function! StripTrailingWhitespace()
@@ -422,12 +422,8 @@ nnoremap <leader>w8 :setlocal tabstop=8<CR>:setlocal shiftwidth=8<CR>
 nnoremap <silent> <leader>w<Tab>   :setlocal noexpandtab<CR>:retab<CR>:echo 'expandtab'<CR>
 nnoremap <silent> <leader>w<Space> :setlocal expandtab<CR>:retab<CR>:echo 'noexpandtab'<CR>
 
-" Evaluate block as expression
-vnoremap <C-R> "ac<C-R>=<C-R>a<CR><Esc>vbo
-
-" Snippets keyboard bindings.
-" Unix timestamp.
-inoremap <leader>time <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
+"""  Evaluate block as expression
+"""vnoremap <C-R> "ac<C-R>=<C-R>a<CR><Esc>vbo
 
 " Copy entire buffer to X clipboard.
 nnoremap <leader>= mZggVG"+yg`Z
@@ -438,9 +434,6 @@ nnoremap <silent> <leader>si{ mZvi{:sort u<CR>g`Z:echo (line("'>") - line("'<") 
 nnoremap <silent> <leader>si[ mZvi[:sort u<CR>g`Z:echo (line("'>") - line("'<") + 1) . ' line(s) sorted'<CR>
 
 vnoremap <leader>s :sort u<CR>gv
-
-" XML formatting through `xmllint`.
-cnoreabbrev xmlformat %!xmllint --format --encode UTF-8 -
 
 " Send file to freedesktop.org trashcan, depends on `trash` command.
 function! Trash(path)
@@ -489,13 +482,13 @@ if has('autocmd')
     autocmd BufRead      * if expand('%') != '' && &buftype !~ 'nofile' | silent! loadview | endif
   augroup END
 
-  " Turn on auto-complete for supported file types.
-  autocmd FileType python     set omnifunc=pythoncomplete#Complete
-  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
-  autocmd FileType xml        set omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType c          set omnifunc=ccomplete#Complete
+  """  Turn on auto-complete for supported file types.
+  """autocmd FileType python     set omnifunc=pythoncomplete#Complete
+  """autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+  """autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
+  """autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
+  """autocmd FileType xml        set omnifunc=xmlcomplete#CompleteTags
+  """autocmd FileType c          set omnifunc=ccomplete#Complete
 
   " Turn off beep sounds.
   autocmd VimEnter * set vb t_vb=
@@ -550,27 +543,27 @@ function! BestComplete()
     endif
   endif
 
-  " If UltiSnips is installed, try to expand as snippet.
-  " UltiSnips will insert a <Tab> for us if no snippet was available.
-  if exists('*UltiSnips#ExpandSnippet')
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-      if pumvisible()
-        return "\<C-Y>"
-      else
-        call UltiSnips#JumpForwards()
-        if g:ulti_jump_forwards_res != 0
-          return ''
-        endif
-      endif
-    else
-      return ''
-    endif
-  endif
+  """  If UltiSnips is installed, try to expand as snippet.
+  """" UltiSnips will insert a <Tab> for us if no snippet was available.
+  """if exists('*UltiSnips#ExpandSnippet')
+  """  call UltiSnips#ExpandSnippet()
+  """  if g:ulti_expand_res == 0
+  """    if pumvisible()
+  """      return "\<C-Y>"
+  """    else
+  """      call UltiSnips#JumpForwards()
+  """      if g:ulti_jump_forwards_res != 0
+  """        return ''
+  """      endif
+  """    endif
+  """  else
+  """    return ''
+  """  endif
+  """endif
 
   " If the character immediately before the column is not a whitespace, trigger completion.
-  let l:before = getline('.')[:col('.') - 1]
-  if l:before =~ '\S$'
+  let l:before = getline('.')[:col('.') - 2]
+  if col('.') > 1 && l:before =~ '\S$'
     call feedkeys("\<C-G>u\<C-X>\<C-O>", 'm')
     return ''
   endif
@@ -622,46 +615,46 @@ Plug 'juvenn/mustache.vim', { 'for': ['mustache', 'handlebars', 'hbs', 'hogan', 
 
 " ---------------------------------------------------------------------------
 
-Plug 'SirVer/ultisnips'
-
-let g:UltiSnipsNoPythonWarning=1
-
-let g:UltiSnipsSnippetDirectories=['UltiSnips']
-
-" Don't let UltiSnips handle the <C-J> and <C-K> keys.
-let g:UltiSnipsExpandTrigger='<NOP>'
-let g:UltiSnipsJumpForwardTrigger='<NOP>'
-let g:UltiSnipsJumpBackwardTrigger='<NOP>'
-
-" Use <C-{J,K}> for navigating the popup menu, if visible.
-" Otherwise, delegate to UltiSnips. If that fails, jump lines.
-let g:UltiSnipsPreviousPosition = [0, 0, 0]
-
-function! UltiSnipsDidJump(navigation_mode)
-  let l:position = getpos('.')
-  if g:UltiSnipsPreviousPosition[0] == l:position[0]
-\ && g:UltiSnipsPreviousPosition[1] == l:position[1]
-\ && g:UltiSnipsPreviousPosition[2] == l:position[2]
-    return "\<C-G>u\<C-O>" . a:navigation_mode
-  endif
-  return ''
-endfunction
-
-function! UltiSnipsJump(jump_mode, ultisnips_mode, navigation_mode)
-  if pumvisible()
-    return a:jump_mode
-  endif
-  let g:UltiSnipsPreviousPosition = getpos('.')
-  return "\<C-R>=UltiSnips#Jump" . a:ultisnips_mode . "()\<CR>\<C-R>=UltiSnipsDidJump('" . a:navigation_mode . "')\<CR>"
-endfunction
-
-inoremap <expr> <C-J> UltiSnipsJump("\<C-N>", 'Forwards', 'o')
-inoremap <expr> <C-K> UltiSnipsJump("\<C-P>", 'Backwards', 'O')
-
-snoremap <C-J> <Esc>:call UltiSnips#JumpForwards()<CR>
-snoremap <C-K> <Esc>:call UltiSnips#JumpBackwards()<CR>
-
-let g:UltiSnipsUsePythonVersion = 3
+""" Plug 'SirVer/ultisnips'
+"""
+""" let g:UltiSnipsNoPythonWarning=1
+"""
+""" let g:UltiSnipsSnippetDirectories=['UltiSnips']
+"""
+""" " Don't let UltiSnips handle the <C-J> and <C-K> keys.
+""" let g:UltiSnipsExpandTrigger='<NOP>'
+""" let g:UltiSnipsJumpForwardTrigger='<NOP>'
+""" let g:UltiSnipsJumpBackwardTrigger='<NOP>'
+"""
+""" " Use <C-{J,K}> for navigating the popup menu, if visible.
+""" " Otherwise, delegate to UltiSnips. If that fails, jump lines.
+""" let g:UltiSnipsPreviousPosition = [0, 0, 0]
+"""
+""" function! UltiSnipsDidJump(navigation_mode)
+"""   let l:position = getpos('.')
+"""   if g:UltiSnipsPreviousPosition[0] == l:position[0]
+""" \ && g:UltiSnipsPreviousPosition[1] == l:position[1]
+""" \ && g:UltiSnipsPreviousPosition[2] == l:position[2]
+"""     return "\<C-G>u\<C-O>" . a:navigation_mode
+"""   endif
+"""   return ''
+""" endfunction
+"""
+""" function! UltiSnipsJump(jump_mode, ultisnips_mode, navigation_mode)
+"""   if pumvisible()
+"""     return a:jump_mode
+"""   endif
+"""   let g:UltiSnipsPreviousPosition = getpos('.')
+"""   return "\<C-R>=UltiSnips#Jump" . a:ultisnips_mode . "()\<CR>\<C-R>=UltiSnipsDidJump('" . a:navigation_mode . "')\<CR>"
+""" endfunction
+"""
+""" inoremap <expr> <C-J> UltiSnipsJump("\<C-N>", 'Forwards', 'o')
+""" inoremap <expr> <C-K> UltiSnipsJump("\<C-P>", 'Backwards', 'O')
+"""
+""" snoremap <C-J> <Esc>:call UltiSnips#JumpForwards()<CR>
+""" snoremap <C-K> <Esc>:call UltiSnips#JumpBackwards()<CR>
+"""
+""" let g:UltiSnipsUsePythonVersion = 3
 
 " ---------------------------------------------------------------------------
 
@@ -818,6 +811,7 @@ let php_sql_nowdoc=0
 function! PhpSyntaxOverride()
   hi phpUseNamespaceSeparator guifg=#808080 guibg=NONE gui=NONE
   hi phpClassNamespaceSeparator guifg=#808080 guibg=NONE gui=NONE
+  hi phpNullValue guifg=#00a4ef guibg=NONE gui=NONE
 endfunction
 
 augroup phpSyntaxOverride
@@ -1052,11 +1046,11 @@ Plug 'tpope/vim-cucumber', { 'for': ['feature', 'story'] }
 
 " ---------------------------------------------------------------------------
 
-Plug 'chase/vim-ansible-yaml'
+""" Plug 'chase/vim-ansible-yaml'
 
 " ---------------------------------------------------------------------------
 
-Plug 'hashivim/vim-hashicorp-tools'
+""" Plug 'hashivim/vim-hashicorp-tools'
 
 " ---------------------------------------------------------------------------
 
@@ -1097,23 +1091,22 @@ Plug 'jwalton512/vim-blade'
 
 " ---------------------------------------------------------------------------
 
-Plug 'ledger/vim-ledger'
-
-let g:ledger_maxwidth = 80
-
-au BufNewFile,BufRead *.ldgr set filetype=ledger
-
-let g:ledger_extra_options = '--pedantic --explicit'
-
-au FileType ledger imap <silent> <Tab> <C-R>=ledger#autocomplete_and_align()<CR>
-au FileType ledger vmap <silent> <Tab> :LedgerAlign<CR>
-
-let g:ledger_default_commodity = 'лв.'
-let g:ledger_commodity_before = 0
-let g:ledger_commodity_sep = ''
-
-autocmd FileType ledger nnoremap <buffer> <leader>a :%LedgerAlign<CR>
-autocmd FileType ledger iabbrev <expr> today strftime('%Y/%m/%d')
+""" Plug 'ledger/vim-ledger'
+"""
+""" let g:ledger_maxwidth = 80
+"""
+""" au BufNewFile,BufRead *.ldgr set filetype=ledger
+"""
+""" let g:ledger_extra_options = '--pedantic --explicit'
+"""
+""" au FileType ledger imap <silent> <Tab> <C-R>=ledger#autocomplete_and_align()<CR>
+""" au FileType ledger vmap <silent> <Tab> :LedgerAlign<CR>
+"""
+""" let g:ledger_default_commodity = 'лв.'
+""" let g:ledger_commodity_before = 0
+""" let g:ledger_commodity_sep = ''
+"""
+""" autocmd FileType ledger nnoremap <buffer> <leader>a :%LedgerAlign<CR>
 
 " ---------------------------------------------------------------------------
 
@@ -1121,23 +1114,23 @@ Plug 'christianrondeau/vim-base64'
 
 " ---------------------------------------------------------------------------
 
-Plug 'takac/vim-hardtime'
-
-let g:list_of_visual_keys = ['h', 'j', 'k', 'l', '-', '+', '<UP>', '<DOWN>', '<LEFT>', '<RIGHT>', 'w', 'W', 'e', 'E', 'b', 'B', '<Backspace>']
-let g:list_of_normal_keys = ['h', 'j', 'k', 'l', '-', '+', '<UP>', '<DOWN>', '<LEFT>', '<RIGHT>', 'w', 'W', 'e', 'E', 'b', 'B', '<Backspace>']
-let g:list_of_insert_keys = ['<UP>', '<DOWN>', '<LEFT>', '<RIGHT>']
-let g:list_of_disabled_keys = []
-
-let g:hardtime_default_on = 0
-let g:hardtime_showmsg = 1
-
-let g:hardtime_ignore_quickfix = 1
-let g:hardtime_ignore_buffer_patterns = ['NERD_.*', 'COMMIT_EDITMSG']
-
-let g:hardtime_allow_different_key = 1
-let g:hardtime_maxcount = 3
-
-nnoremap <leader>hh :HardTimeToggle<CR>
+""" Plug 'takac/vim-hardtime'
+"""
+""" let g:list_of_visual_keys = ['h', 'j', 'k', 'l', '-', '+', '<UP>', '<DOWN>', '<LEFT>', '<RIGHT>', 'w', 'W', 'e', 'E', 'b', 'B', '<Backspace>']
+""" let g:list_of_normal_keys = ['h', 'j', 'k', 'l', '-', '+', '<UP>', '<DOWN>', '<LEFT>', '<RIGHT>', 'w', 'W', 'e', 'E', 'b', 'B', '<Backspace>']
+""" let g:list_of_insert_keys = ['<UP>', '<DOWN>', '<LEFT>', '<RIGHT>']
+""" let g:list_of_disabled_keys = []
+"""
+""" let g:hardtime_default_on = 0
+""" let g:hardtime_showmsg = 1
+"""
+""" let g:hardtime_ignore_quickfix = 1
+""" let g:hardtime_ignore_buffer_patterns = ['NERD_.*', 'COMMIT_EDITMSG']
+"""
+""" let g:hardtime_allow_different_key = 1
+""" let g:hardtime_maxcount = 3
+"""
+""" nnoremap <leader>hh :HardTimeToggle<CR>
 
 " ---------------------------------------------------------------------------
 
@@ -1178,31 +1171,31 @@ Plug 'chrisbra/unicode.vim'
 
 " ---------------------------------------------------------------------------
 
-Plug 'Konfekt/FastFold'
+Plug 'chr4/nginx.vim'
 
 " ---------------------------------------------------------------------------
 
-Plug 'chr4/nginx.vim'
+Plug 'jiangmiao/auto-pairs'
 
-"" ---------------------------------------------------------------------------
-"
-"Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-"
-"" Automatically start language servers.
-"let g:LanguageClient_autoStart = 1
-"let g:LanguageClient_setLoggingLevel = 'DEBUG'
-"
-"let g:LanguageClient_serverCommands = {
-"      \ 'php': ['php7.1', $HOME . '/.composer/vendor/felixfbecker/language-server/bin/php-language-server.php']
-"      \ }
-"
-"Plug 'roxma/nvim-completion-manager'
-"
-"" don't give |ins-completion-menu| messages.  For example,
-"" '-- YYY completion (ZZZ)', 'match 1 of 2', 'The only match',
-"set shortmess+=c
-"
-"" ---------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
+
+""" Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+"""
+""" " Automatically start language servers.
+""" let g:LanguageClient_autoStart = 1
+""" let g:LanguageClient_setLoggingLevel = 'DEBUG'
+"""
+""" let g:LanguageClient_serverCommands = {
+"""       \ 'php': ['php7.1', $HOME . '/.composer/vendor/felixfbecker/language-server/bin/php-language-server.php']
+"""       \ }
+"""
+""" Plug 'roxma/nvim-completion-manager'
+"""
+""" " don't give |ins-completion-menu| messages.  For example,
+""" " '-- YYY completion (ZZZ)', 'match 1 of 2', 'The only match',
+""" set shortmess+=c
+
+" ---------------------------------------------------------------------------
 
 if ! &termguicolors
     Plug 'godlygeek/csapprox'
