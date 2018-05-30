@@ -27,12 +27,6 @@ iabbrev srting string
 iabbrev udnefined undefined
 iabbrev vlaue value
 
-" Lazy hands
-iabbrev 2param @param
-iabbrev 2return @return
-iabbrev 2throws @throws
-iabbrev 4this $this
-
 " Snippets keyboard bindings.
 " Unix timestamp.
 inoremap <leader>time <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
@@ -40,14 +34,41 @@ inoremap <leader>time <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
 " XML formatting through `xmllint`.
 cnoreabbrev xmlformat %!xmllint --format --encode UTF-8 -
 
-autocmd FileType ledger iabbrev <expr> today strftime('%Y/%m/%d')
-
 " Automagically insert the correct character without holding down <Shift>
-function PhpMagicFingers()
-  inoremap <expr> . ('-' == getline('.')[col('.') - 2] ? '>' : '.')
+function! PhpMagicFingers()
+  inoremap <expr> . (getline('.')[col('.') - 2] =~ '-\\|='  ? '>' : '.')
 endfunction
 
 augroup phpMagicFingers
   autocmd!
   autocmd FileType php call PhpMagicFingers()
+augroup END
+
+" See :helpgrep Eatchar
+function! Eatchar(pat)
+  let c = nr2char(getchar(0))
+  return (c =~ a:pat) ? '' : c
+endfunction
+
+function! IsInSynStack(name)
+  for name2 in map(synstack(line('.'), col('.') - 1), 'synIDattr(v:val, "name")')
+    if a:name == name2
+      return 1
+    endif
+  endfor
+  return 0
+endfunc
+
+augroup phpAbbreviations
+  autocmd!
+  autocmd FileType php
+        \ :iabbrev <buffer> 2param @param|
+        \ :iabbrev <buffer> 2return @return|
+        \ :iabbrev <buffer> 2see @see|
+        \ :iabbrev <buffer> 2throws @throws|
+        \ :iabbrev <buffer> 4this $this|
+        \ :iabbrev <buffer> inheritdoc /**{@inheritdoc}/|
+        \ :iabbrev <buffer> die die('XXX: Break in ' . __FILE__ . ', line ' . __LINE__ . '.' . PHP_EOL);|
+        \ :iabbrev <buffer> throw throw new Exception('', ,time);<C-O>25h<C-R>=Eatchar('\s')<CR>|
+        \ :inoreabbrev <expr> <buffer> if IsInSynStack('phpKeyword') ? "if () {}\<C-O>k\<C-O>$\<C-O>F)\<C-R>=Eatchar('\\s')\<CR>" : 'if'
 augroup END

@@ -528,26 +528,9 @@ function! BestComplete()
     return "\<C-N>"
   endif
 
-  " If fizzy.vim has results, use 'completefunc' to complete.
-  if exists('g:loaded_fizzy')
-    let fizzy_position = fizzy#Complete(1, '')
-    if fizzy_position != col('.')
-      let fizzy_completions = fizzy#Complete(0, getline('.')[fizzy_position : col('.')])
-      if len(fizzy_completions)
-        if len(fizzy_completions) > 1
-          return "\<C-X>\<C-U>\<C-N>"
-        else
-          return "\<C-X>\<C-U>\<C-N>\<C-Y>"
-        endif
-      endif
-    endif
-  endif
-
   " If we are expanding an inline comment, leave insert mode to trigger navigation.
-  if exists('g:PhpBestExpandCommentInsertLeaveOccurrence')
-    if g:PhpBestExpandCommentInsertLeaveOccurrence == 1
-      return "\<Esc>i"
-    endif
+  if get(g:, 'PhpBestExpandCommentInsertLeaveOccurrence', 0) == 1
+    return "\<Esc>i"
   endif
 
   """  If UltiSnips is installed, try to expand as snippet.
@@ -579,6 +562,10 @@ function! BestComplete()
 endfunction
 
 inoremap <silent> <Tab> <C-R>=BestComplete()<CR>
+
+inoremap <expr> <C-J> pumvisible() ? '<C-N>' :
+            \ (get(g:, 'PhpBestExpandCommentInsertLeaveOccurrence', 0) == 1 ? '<Esc>i' : '<C-O>o')
+inoremap <expr> <C-K> pumvisible() ? '<C-P>' : '<C-O>O'
 
 " }}}
 
@@ -1041,7 +1028,7 @@ Plug 'tommcdo/vim-fugitive-blame-ext'
 
 " ---------------------------------------------------------------------------
 
-Plug 'StanAngeloff/fizzy.vim'
+""" Plug 'StanAngeloff/fizzy.vim'
 
 " ---------------------------------------------------------------------------
 
@@ -1183,6 +1170,8 @@ Plug 'chr4/nginx.vim'
 " ---------------------------------------------------------------------------
 
 Plug 'jiangmiao/auto-pairs'
+
+let g:AutoPairsMapSpace=0
 
 " ---------------------------------------------------------------------------
 
