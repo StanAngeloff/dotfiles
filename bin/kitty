@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+export PATH="${HOME}/.pyenv/bin:$PATH"
+
+export PYENV_VERSION=3.6.4
+export PKG_CONFIG_PATH="/opt/local/harfbuzz/lib/pkgconfig:/opt/local/libxkbcommon/lib/pkgconfig:$PKG_CONFIG_PATH"
+export LD_LIBRARY_PATH="/opt/local/harfbuzz/lib:/opt/local/libxkbcommon/lib:${HOME}/.pyenv/versions/${PYENV_VERSION}/lib:$LD_LIBRARY_PATH"
+
+eval "$( pyenv init - )"
+
+exec optirun /opt/kitty/bin/kitty "$@"

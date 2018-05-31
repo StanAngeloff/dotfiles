@@ -12,14 +12,15 @@ endif
 unlet s:localrc
 
 " Enable 256-colour terminal if no GUI.
-if $TERM =~ '256color'
+if $TERM =~ '256color|kitty'
   " Disable Background Color Erase (BCE) so that color schemes render properly when inside 256-color tmux and GNU screen.
   " See also http://sunaku.github.io/vim-256color-bce.html
-  set t_ut=
+  let &t_ut=''
 endif
 if !has("gui_running")
   set t_Co=256
 end
+
 " Switch syntax on and select a theme.
 syntax on
 set synmaxcol=2048
@@ -1202,6 +1203,12 @@ endif
 call plug#end()
 
 colorscheme vim-zend55
+
+" See https://github.com/kovidgoyal/kitty/issues/108#issuecomment-320492772
+"
+if (has('gui_running') || has('nvim')) && $TERM =~ 'kitty'
+  hi Normal guifg=#ffffff guibg=#000000
+endif
 
 if has('autocmd')
 

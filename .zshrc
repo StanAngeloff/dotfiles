@@ -15,10 +15,7 @@ SAVEHIST=$HISTSIZE
 fpath=($ZSH/functions $fpath)
 
 # Turn on 256-colour terminal support.
-export TERM=xterm-256color
-
-# Respect tmux wishes.
-[ -n "$TMUX" ] && export TERM=screen-256color
+export TERM=xterm-kitty
 
 # Configure preferred applications.
 export EDITOR=nvim

@@ -20,10 +20,10 @@ URxvt.fading: 0
 URxvt.background: rgba:0000/0000/0000/fafa
 URxvt.foreground: 15
 
-URxvt.font: xft:FiraCode Nerd Font Mono:regular:pixelsize=16:antialias=true:hinting=true,xft:Source Code Pro:medium:pixelsize=16:antialias=true:hinting=true,xft:Noto Mono:pixelsize=16:antialias=true:hinting=true,xft:Symbola
-URxvt.boldFont: xft:FiraCode Nerd Font Mono:bold:pixelsize=16:antialias=true:hinting=true,xft:Source Code Pro:semibold:pixelsize=16:antialias=true:hinting=true,xft:Noto Mono:pixelsize=16:antialias=true:hinting=true,xft:Symbola
-URxvt.italicFont: xft:FiraCode Nerd Font Mono:italic:pixelsize=16:antialias=true:hinting=true,xft:Source Code Pro:italic:pixelsize=16:antialias=true:hinting=true,xft:Noto Mono:pixelsize=16:antialias=true:hinting=true,xft:Symbola
-URxvt.boldItalicFont: xft:FiraCode Nerd Font Mono:bold:italic:pixelsize=16:antialias=true:hinting=true,xft:Source Code Pro:semibold:italic:pixelsize=16:antialias=true:hinting=true,xft:Noto Mono:pixelsize=16:antialias=true:hinting=true,xft:Symbola
+URxvt.font: xft:FuraCode Nerd Font:regular:pixelsize=16:antialias=true:hinting=true,xft:Source Code Pro:medium:pixelsize=16:antialias=true:hinting=true,xft:Noto Mono:pixelsize=16:antialias=true:hinting=true,xft:Symbola
+URxvt.boldFont: xft:FuraCode Nerd Font:bold:pixelsize=16:antialias=true:hinting=true,xft:Source Code Pro:semibold:pixelsize=16:antialias=true:hinting=true,xft:Noto Mono:pixelsize=16:antialias=true:hinting=true,xft:Symbola
+URxvt.italicFont: xft:FuraCode Nerd Font:italic:pixelsize=16:antialias=true:hinting=true,xft:Source Code Pro:italic:pixelsize=16:antialias=true:hinting=true,xft:Noto Mono:pixelsize=16:antialias=true:hinting=true,xft:Symbola
+URxvt.boldItalicFont: xft:FuraCode Nerd Font:bold:italic:pixelsize=16:antialias=true:hinting=true,xft:Source Code Pro:semibold:italic:pixelsize=16:antialias=true:hinting=true,xft:Noto Mono:pixelsize=16:antialias=true:hinting=true,xft:Symbola
 
 URxvt.letterSpace: -2
 
