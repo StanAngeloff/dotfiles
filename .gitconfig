@@ -43,7 +43,7 @@
 	br = branch -r
 	c  = commit
 	co = checkout
-	df = diff -U5 --color --minimal --ignore-space-change --ignore-blank-lines --no-ext-diff
+	df = diff -U5 --color --minimal --ignore-space-change --ignore-blank-lines --no-ext-diff --patience
 	eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
 	f  = fetch       --prune --verbose
 	fa = fetch --all --prune --verbose
