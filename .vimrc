@@ -546,10 +546,20 @@ command! -bang -nargs=* Rg call fzf#vim#grep(
       \ <bang>0
       \ )
 
+function! FzfCacheFile()
+  return '/tmp/.fzf_cache__@' . substitute(fnamemodify(getcwd(), ':p:gs?/?@?'), '^@\|@$', '', 'g')
+endfunction
+
 command! -bang -nargs=? -complete=dir FzfFiles call fzf#vim#files(<q-args>, <bang>0)
+
+let g:fzf_cache_file_cmd="\"/tmp/.fzf_cache__`pwd | tr / @`\""
+let $FZF_DEFAULT_COMMAND='[ -f ' . g:fzf_cache_file_cmd . ' ] && cat ' . g:fzf_cache_file_cmd . ' || ' . $FZF_DEFAULT_COMMAND . ' | tee ' . g:fzf_cache_file_cmd
+
+autocmd VimLeave * call delete(FzfCacheFile())
 
 autocmd! FileType fzf
 autocmd  FileType fzf setlocal laststatus=0 nosmd noru nornu
+      \ | tnoremap <silent> <F5> <C-\><C-n>:call delete(FzfCacheFile())<CR>:call feedkeys("a\<lt>Esc>", 'm')<CR>
       \ | autocmd BufLeave <buffer> set laststatus=2 smd ru rnu
 
 nnoremap <silent>        <leader>o  :<C-U>FzfFiles<CR>
