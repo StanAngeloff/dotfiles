@@ -533,6 +533,7 @@ let g:fzf_layout = { 'down': 20 }
 let g:fzf_buffers_jump = 1
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_action = {
+            \ 'enter': 'tabedit',
             \ 'ctrl-t': 'tab split',
             \ 'ctrl-x': 'split',
             \ 'ctrl-v': 'vsplit'
@@ -545,14 +546,16 @@ command! -bang -nargs=* Rg call fzf#vim#grep(
       \ <bang>0
       \ )
 
+command! -bang -nargs=? -complete=dir FzfFiles call fzf#vim#files(<q-args>, <bang>0)
+
 autocmd! FileType fzf
 autocmd  FileType fzf setlocal laststatus=0 nosmd noru nornu
       \ | autocmd BufLeave <buffer> set laststatus=2 smd ru rnu
 
-nnoremap <silent>        <leader>o  :<C-U>Files<CR>
-nnoremap <silent> <expr> <leader>0 ':<C-U>Files<CR>' . expand('<cword>')
+nnoremap <silent>        <leader>o  :<C-U>FzfFiles<CR>
+nnoremap <silent> <expr> <leader>0 ':<C-U>FzfFiles<CR>' . expand('<cword>')
 
-function! FilesFromVisual()
+function! FzfFilesFromVisual()
   try
     let z_save = @z
     normal! gv"zy
@@ -561,12 +564,12 @@ function! FilesFromVisual()
     let @z = z_save
   endtry
 
-  execute "normal! :\<C-U>Files\<CR>"
+  execute "normal! :\<C-U>FzfFiles\<CR>"
   call feedkeys(l:query, 'm')
 endfunction
 
-vnoremap <silent> <leader>o :call FilesFromVisual()<CR>
-vnoremap <silent> <leader>0 :call FilesFromVisual()<CR>
+vnoremap <silent> <leader>o :call FzfFilesFromVisual()<CR>
+vnoremap <silent> <leader>0 :call FzfFilesFromVisual()<CR>
 
 " }}}1 ----------------------------------------------------------------------
 
