@@ -169,9 +169,10 @@ let g:is_posix = 1
 " When editing SQL files, don't add default mappings for sqlcomplete. These mess up <C-C>
 let g:omni_sql_no_default_maps = 1
 
-" Use our customised `grep` script for powerful searches.
-set grepprg=pt\ --hidden\ --nogroup\ --nocolor\ --column\ --smart-case\ -e
-set grepformat=%f:%l:%c:%m
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading\ --hidden\ --no-ignore-vcs\ -g\ \!.git\ -g\ \!node_modules\ -S
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 
 " Use a custom leader character.
 let mapleader = ','
@@ -180,13 +181,7 @@ let mapleader = ','
 nmap \ <leader>
 vmap \ <leader>
 
-command! -nargs=+ -complete=file -bar Search if len([<f-args>]) |
-      \ execute 'lgrep! ' . escape(<q-args>, '#%') |
-      \ botright lopen 8 | set nowrap |
-      \ redraw! |
-      \ endif
-
-function! SearchProject(visual)
+function! RgProject(visual)
   if a:visual == 1
     try
       let z_save = @z
@@ -197,23 +192,17 @@ function! SearchProject(visual)
     endtry
   else
     call inputsave()
-    let s:query = input('Search: ', '', 'tag_listfiles')
+    let s:query = input('Rg: ', '', 'tag_listfiles')
     call inputrestore()
   endif
 
   if len(s:query)
-    let @/=s:query
-    let s:path = getcwd()
-    if isdirectory(s:path . '/src')
-      let s:path = 'src/'
-    endif
-
-    execute "normal! :Search " . escape(s:query, '<(?!$`''"#% )>|\') . ' ' . escape(s:path, '"'' \') . "\<CR>"
+    execute "normal! :Rg " . escape(s:query, ' |') . "\<CR>"
   endif
 endfunction
 
-nnoremap <leader>S :call SearchProject(0)<CR>
-vnoremap <leader>S :call SearchProject(1)<CR>
+nnoremap <leader>S :call RgProject(0)<CR>
+vnoremap <leader>S :call RgProject(1)<CR>
 
 " Add useful mappings in quick-fix buffers (:copen, :lopen, etc.)
 if has('autocmd')
@@ -535,7 +524,51 @@ let $GIT_SSL_NO_VERIFY='true'
 
 Plug 'StanAngeloff/vim-zend55'
 
-" ---------------------------------------------------------------------------
+" FZF {{{1 ------------------------------------------------------------------
+
+Plug '~/.fzf'
+Plug 'junegunn/fzf.vim'
+
+let g:fzf_layout = { 'down': 20 }
+let g:fzf_buffers_jump = 1
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:fzf_action = {
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-x': 'split',
+            \ 'ctrl-v': 'vsplit'
+            \ }
+
+command! -bang -nargs=* Rg call fzf#vim#grep(
+      \ 'rg --column --line-number --no-heading --color=always --hidden --no-ignore-vcs -g \!.git -g \!node_modules -S ' . escape(<q-args>, '#%|<>'),
+      \ 1,
+      \ <bang>0 ? fzf#vim#with_preview({ 'options': '--color=dark' }, 'bottom:20') : fzf#vim#with_preview({ 'options': '--color=dark' }, 'right:50%:hidden', '?'),
+      \ <bang>0
+      \ )
+
+autocmd! FileType fzf
+autocmd  FileType fzf setlocal laststatus=0 nosmd noru nornu
+      \ | autocmd BufLeave <buffer> set laststatus=2 smd ru rnu
+
+nnoremap <silent>        <leader>o  :<C-U>Files<CR>
+nnoremap <silent> <expr> <leader>0 ':<C-U>Files<CR>' . expand('<cword>')
+
+function! FilesFromVisual()
+  try
+    let z_save = @z
+    normal! gv"zy
+    let l:query = @z
+  finally
+    let @z = z_save
+  endtry
+
+  execute "normal! :\<C-U>Files\<CR>"
+  call feedkeys(l:query, 'm')
+endfunction
+
+vnoremap <silent> <leader>o :call FilesFromVisual()<CR>
+vnoremap <silent> <leader>0 :call FilesFromVisual()<CR>
+
+" }}}1 ----------------------------------------------------------------------
 
 Plug 'tpope/vim-sleuth'
 
@@ -710,39 +743,6 @@ augroup END
 
 autocmd FileType php
       \ nnoremap <silent> <expr> gz ":silent exec \"!xdg-open 'http://php.net/en/" . expand('<cword>') . "'\"<CR>"
-
-" ---------------------------------------------------------------------------
-
-Plug 'kien/ctrlp.vim', { 'on': 'CtrlPCurWD' }
-let g:ctrlp_map=''
-let g:ctrlp_cmd='CtrlPCurWD'
-let g:ctrlp_match_window_reversed=0
-let g:ctrlp_max_height=20
-let g:ctrlp_highlight_match=[1, 'Search']
-let g:ctrlp_max_files=64000
-let g:ctrlp_max_depth=24
-let g:ctrlp_cache_dir='/tmp/.ctrlp'
-
-nnoremap <silent> <leader>o :let g:ctrlp_default_input = ''<CR>:<C-U>CtrlPCurWD<CR>
-vnoremap <silent> <leader>o :<C-U>let g:ctrlp_default_input = @*<CR>:<C-U>CtrlPCurWD<CR><C-\>v
-nnoremap <silent> <leader>0 :let g:ctrlp_default_input = expand('<cword>')<CR>:<C-U>CtrlPCurWD<CR>
-
-let g:ctrlp_user_command = {
-      \     'types': {
-      \         1: ['.git', 'cd %s && git ls-files --exclude-standard --cached --others'],
-      \     },
-      \ }
-
-" ---------------------------------------------------------------------------
-
-Plug 'nixprime/cpsm', { 'do': './install.sh' }
-
-if filereadable(expand('~/.vim/plugged/cpsm/autoload/cpsm_py.so'))
-  let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
-  let g:ctrlp_max_files = 0
-else
-  echohl WarningMsg | echom 'You need to compile the CtrlP matching extension.' | echohl None
-endif
 
 " ---------------------------------------------------------------------------
 

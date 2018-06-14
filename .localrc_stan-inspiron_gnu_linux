@@ -19,7 +19,5 @@ export PATH="${HOME}/.pyenv/bin:$PATH"
 eval "$( pyenv init - )"
 eval "$( pyenv virtualenv-init - )"
 
-#export PATH="${PATH}:${HOME}/bin/dasht/bin"
-#export MANPATH="${HOME}/bin/dasht/man:${MANPATH}"
-#
-#source "${HOME}/bin/dasht/etc/zsh/completions.zsh"
+# jump @gsamokovarov
+eval "$(jump shell --bind=z)"

@@ -1,9 +1,6 @@
 [submodule ".urxvt/ext/perls"]
 	path = .urxvt/ext/perls
 	url = git://github.com/muennich/urxvt-perls.git
-[submodule ".zsh/scripts/z"]
-	path = .zsh/scripts/z
-	url = git://github.com/rupa/z.git
 [submodule ".rbenv"]
 	path = .rbenv
 	url = git://github.com/sstephenson/rbenv.git
