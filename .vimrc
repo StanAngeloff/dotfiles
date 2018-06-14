@@ -197,7 +197,7 @@ function! RgProject(visual)
   endif
 
   if len(s:query)
-    execute "normal! :Rg " . escape(s:query, ' |') . "\<CR>"
+    execute "normal! :Rg " . escape(s:query, '"'' |') . "\<CR>"
   endif
 endfunction
 
