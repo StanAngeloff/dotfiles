@@ -254,9 +254,11 @@ if [[ -n "$SSH_CONNECTION" ]]; then
     export PINENTRY_USER_DATA="USE_CURSES=1"
 fi
 
+export RIPGREP_CONFIG_PATH="${HOME}/.rgrc"
+
 if [[ -f ~/.fzf.zsh ]]; then
     source ~/.fzf.zsh
 
-    export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g \!.git -g \!node_modules'
+    export FZF_DEFAULT_COMMAND='rg --files'
     export FZF_DEFAULT_OPTS="--color=bw --layout=reverse --inline-info --bind ctrl-f:page-down,ctrl-b:page-up,ctrl-d:half-page-down,ctrl-u:half-page-up"
 fi

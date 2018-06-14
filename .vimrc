@@ -170,7 +170,7 @@ let g:is_posix = 1
 let g:omni_sql_no_default_maps = 1
 
 if executable("rg")
-    set grepprg=rg\ --vimgrep\ --no-heading\ --hidden\ --no-ignore-vcs\ -g\ \!.git\ -g\ \!node_modules\ -S
+    set grepprg=rg\ --vimgrep\ --no-heading
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
@@ -539,7 +539,7 @@ let g:fzf_action = {
             \ }
 
 command! -bang -nargs=* Rg call fzf#vim#grep(
-      \ 'rg --column --line-number --no-heading --color=always --hidden --no-ignore-vcs -g \!.git -g \!node_modules -S ' . escape(<q-args>, '#%|<>'),
+      \ 'rg --column --line-number --no-heading --color=always ' . escape(<q-args>, '#%|<>'),
       \ 1,
       \ <bang>0 ? fzf#vim#with_preview({ 'options': '--color=dark' }, 'bottom:20') : fzf#vim#with_preview({ 'options': '--color=dark' }, 'right:50%:hidden', '?'),
       \ <bang>0
