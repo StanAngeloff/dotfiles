@@ -498,14 +498,27 @@ inoremap <expr> <C-K> pumvisible() ? '<C-P>' : '<C-O>O'
 
 " See https://vimrcfu.com/snippet/143
 "
-command! Ltabs call s:Ltabs()
+command! Ltabs call OpenAllFromLocationList()
+command! Qtabs call OpenAllFromQuickfix()
 
-function! s:Ltabs()
+function! OpenAllFromLocationList()
+    call s:OpenAllFromList(getloclist(0))
+endfunction
+
+function! OpenAllFromQuickfix()
+    call s:OpenAllFromList(getqflist())
+endfunction
+
+function! s:OpenAllFromList(fromList)
     let files = {}
-    for entry in getloclist(0)
+    for entry in a:fromList
         let filename = bufname(entry.bufnr)
         let files[filename] = 1
     endfor
+
+    if len(files) < 1
+        return
+    endif
 
     for file in keys(files)
         silent exe 'tabedit ' . file
@@ -560,6 +573,7 @@ autocmd VimLeave * call delete(FzfCacheFile())
 autocmd! FileType fzf
 autocmd  FileType fzf setlocal laststatus=0 nosmd noru nornu
       \ | tnoremap <silent> <F5> <C-\><C-n>:call delete(FzfCacheFile())<CR>:call feedkeys("a\<lt>Esc>", 'm')<CR>
+      \ | tnoremap <silent> <F4> <M-a><C-\><C-n>:augroup OnFzfOpenAll \| exe "au BufWinEnter quickfix call OpenAllFromQuickfix() \| tabclose \| augroup OnFzfOpenAll \| autocmd! \| augroup END \| augroup! OnFzfOpenAll" \| augroup END<CR>:call feedkeys("a\<lt>C-T>:Qtabs", 'm')<CR>
       \ | autocmd BufLeave <buffer> set laststatus=2 smd ru rnu
 
 nnoremap <silent>        <leader>o  :<C-U>FzfFiles<CR>
