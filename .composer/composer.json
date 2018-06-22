@@ -4,6 +4,7 @@
     "require": {
         "friendsofphp/php-cs-fixer": "^2.9",
         "phpmd/phpmd": "^2.6",
-        "squizlabs/php_codesniffer": "^3.2"
+        "squizlabs/php_codesniffer": "^3.2",
+        "hirak/prestissimo": "^0.3.7"
     }
 }

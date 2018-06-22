@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "37debb71ca6c464def626ace79722d26",
+    "content-hash": "b4a429f2cec983a8fd781a71e150b7ca",
     "packages": [
         {
             "name": "composer/semver",
@@ -319,6 +319,57 @@
                 "phpunit"
             ],
             "time": "2017-08-23T07:46:41+00:00"
+        },
+        {
+            "name": "hirak/prestissimo",
+            "version": "0.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hirak/prestissimo.git",
+                "reference": "45fcc8a65fb06b29cc5cdd1b0bae7a690aa09496"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hirak/prestissimo/zipball/45fcc8a65fb06b29cc5cdd1b0bae7a690aa09496",
+                "reference": "45fcc8a65fb06b29cc5cdd1b0bae7a690aa09496",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0.0",
+                "ext-curl": "*",
+                "php": "^5.3.2 || ^7.0"
+            },
+            "require-dev": {
+                "composer/composer": "1.0.0",
+                "phpunit/phpunit": "^4.8",
+                "squizlabs/php_codesniffer": "^2.5"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Hirak\\Prestissimo\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hirak\\Prestissimo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hiraku NAKANO",
+                    "email": "hiraku@tojiru.net"
+                }
+            ],
+            "description": "composer parallel install plugin",
+            "keywords": [
+                "install",
+                "parallel",
+                "speedup"
+            ],
+            "time": "2017-05-27T04:45:45+00:00"
         },
         {
             "name": "paragonie/random_compat",
