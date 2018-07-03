@@ -91,9 +91,7 @@ set rnu            " Show the line number relative to the line with the cursor i
 " This I really DO NOT LIKE being forced to use.
 set updatetime=100
 
-if ! has('nvim') " Neovim? See https://github.com/neovim/neovim/issues/2253
-  set lazyredraw   " Do not redraw while running macros (much faster).
-endif
+set lazyredraw     " Do not redraw while running macros (much faster).
 set ttyfast        " Enable fast-terminal.
 if exists('&ttyscroll') " Neovim?
   set ttyscroll=10 " Prefer full redraws for smaller scroll regions.
