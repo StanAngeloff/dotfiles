@@ -997,6 +997,26 @@ let g:AutoPairsMapSpace=0
 
 " ---------------------------------------------------------------------------
 
+Plug 'aperezdc/vim-template'
+
+let g:templates_directory = $HOME . '/.vim/templates'
+
+" ---------------------------------------------------------------------------
+
+Plug 'majutsushi/tagbar'
+
+nnoremap <silent> <F9> :TagbarToggle<CR>
+
+let g:tagbar_autoclose = 1
+let g:tagbar_autofocus = 1
+let g:tagbar_case_insensitive = 1
+let g:tagbar_compact = 1
+let g:tagbar_ctags_bin = '/usr/local/bin/uctags'
+
+let g:airline#extensions#tagbar#enabled = 0
+
+" ---------------------------------------------------------------------------
+
 if ! &termguicolors
     Plug 'godlygeek/csapprox'
 endif

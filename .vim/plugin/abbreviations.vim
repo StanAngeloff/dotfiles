@@ -44,20 +44,20 @@ augroup phpMagicFingers
   autocmd FileType php call PhpMagicFingers()
 augroup END
 
+"function! IsInSynStack(name)
+"  for name2 in map(synstack(line('.'), col('.') - 1), 'synIDattr(v:val, "name")')
+"    if a:name == name2
+"      return 1
+"    endif
+"  endfor
+"  return 0
+"endfunc
+
 " See :helpgrep Eatchar
 function! Eatchar(pat)
   let c = nr2char(getchar(0))
   return (c =~ a:pat) ? '' : c
 endfunction
-
-function! IsInSynStack(name)
-  for name2 in map(synstack(line('.'), col('.') - 1), 'synIDattr(v:val, "name")')
-    if a:name == name2
-      return 1
-    endif
-  endfor
-  return 0
-endfunc
 
 augroup phpAbbreviations
   autocmd!
@@ -69,6 +69,6 @@ augroup phpAbbreviations
         \ :iabbrev <buffer> 4this $this|
         \ :iabbrev <buffer> inheritdoc /**{@inheritdoc}/<C-R>=Eatchar('\s')<CR>|
         \ :iabbrev <buffer> die die('XXX: Break in ' . __FILE__ . ', line ' . __LINE__ . '.' . PHP_EOL);|
-        \ :iabbrev <buffer> throw throw new Exception('', ,time);<C-O>25h<C-R>=Eatchar('\s')<CR>|
-        \ :inoreabbrev <expr> <buffer> if IsInSynStack('phpKeyword') ? "if () {}\<C-O>k\<C-O>$\<C-O>F)\<C-R>=Eatchar('\\s')\<CR>" : 'if'
+        \ :iabbrev <buffer> E_ALL error_reporting(E_ALL); ini_set('display_errors', 'On');|
+        \ :iabbrev <buffer> throw throw new Exception('', ,time);<C-O>25h<C-R>=Eatchar('\s')<CR>
 augroup END
