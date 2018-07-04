@@ -18,6 +18,3 @@ export PATH="${HOME}/.pyenv/bin:$PATH"
 
 eval "$( pyenv init - )"
 eval "$( pyenv virtualenv-init - )"
-
-# jump @gsamokovarov
-eval "$(jump shell --bind=z)"
