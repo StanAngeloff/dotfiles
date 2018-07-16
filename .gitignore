@@ -27,6 +27,9 @@
 # Scripts
 !bin/*
 
+!etc/
+!etc/*
+
 # rbenv
 !.rbenv-plugins
 !.rbenv-plugins/*

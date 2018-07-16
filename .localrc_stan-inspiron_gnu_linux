@@ -2,7 +2,7 @@
 
 alias ll='ls -halFG --color=tty'
 
-export TERM=xterm-kitty
+export TERM=rxvt-unicode-256color
 
 # The Node.js PPA (~chris-lea/+archive/node.js) does not seem to set the path
 # to any NPM installed modules.

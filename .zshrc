@@ -15,7 +15,7 @@ SAVEHIST=$HISTSIZE
 fpath=($ZSH/functions $fpath)
 
 # Turn on 256-colour terminal support.
-export TERM=xterm-kitty
+export TERM=xterm-256color
 
 # Configure preferred applications.
 export EDITOR=nvim

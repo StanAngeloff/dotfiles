@@ -40,7 +40,7 @@ while [[ true ]]; do
     if [[ -z "$window" ]]; then
         enable
     else
-        if xprop -id "$window" | grep WM_CLASS | grep -q kitty; then
+        if xprop -id "$window" | grep WM_CLASS | grep -q 'kitty\|urxvt'; then
             disable
         else
             enable
