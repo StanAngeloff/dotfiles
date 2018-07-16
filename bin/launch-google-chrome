@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -e
+
+if [ -d "$HOME"/.cache/google-chrome ]; then
+	trash "$HOME"/.cache/google-chrome
+fi
+
+mkdir -p /tmp/.cache/google-chrome
+
+if [ ! -e "$HOME"/.cache/google-chrome ]; then
+	ln --force -s /tmp/.cache/google-chrome "$HOME"/.cache/google-chrome
+fi
+
+# --disk-cache-size=2147483648 => 2GB
+#
+exec env \
+	XDG_CACHE_HOME=/tmp/.cache/ \
+		/usr/bin/google-chrome-stable \
+			--ignore-gpu-blacklist \
+			--disk-cache-dir=/tmp/.cache/google-chrome \
+			--disk-cache-size=2147483648 \
+				"$@"
