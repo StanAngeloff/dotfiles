@@ -8,7 +8,11 @@ function! PhpBestExpandComment()
     " If the current line is empty and the one above doesn't end in character which can be a continuation,
     " assume we are starting a new docblock.
     if getline('.') =~ '^\s*$' && getline(line('.') - 1) !~ '[,(]$'
-        return "\<C-G>u/**\<CR>\<CR>/\<Esc>k==A\<Space>"
+        if &lz | " lazyredraw
+            return "\<C-G>u/**\<CR>\<CR>/\<Esc>k$i\<C-D>\<Space>\<Esc>A\<Space>"
+        else
+            return "\<C-G>u/**\<CR>\<CR>/\<Esc>k==A\<Space>"
+        endif
     endif
 
     let g:PhpBestExpandCommentInsertLeaveOccurrence = 0

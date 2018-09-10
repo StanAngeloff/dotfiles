@@ -184,18 +184,18 @@ function! RgProject(visual)
     try
       let z_save = @z
       normal! gv"zy
-      let s:query = @z
+      let l:query = escape(escape(trim(@z), '\'), '^$ ()[]{}?*+\')
     finally
       let @z = z_save
     endtry
   else
     call inputsave()
-    let s:query = input('Rg: ', '', 'tag_listfiles')
+    let l:query = escape(input('Rg: ', '', 'tag_listfiles'), ' \')
     call inputrestore()
   endif
 
-  if len(s:query)
-    execute "normal! :Rg " . escape(s:query, '"'' |') . "\<CR>"
+  if len(l:query)
+    execute "normal! :Rg " . l:query . "\<CR>"
   endif
 endfunction
 
@@ -550,8 +550,12 @@ let g:fzf_action = {
             \ 'ctrl-v': 'vsplit'
             \ }
 
+function! RgShellEscape(...)
+  return join(map(deepcopy(a:000), 'shellescape(v:val)'), ' ')
+endfunction
+
 command! -bang -nargs=* Rg call fzf#vim#grep(
-      \ 'rg --column --line-number --no-heading --color=always ' . escape(<q-args>, '#%|<>'),
+      \ 'rg --column --line-number --no-heading --color=always ' . RgShellEscape(<f-args>),
       \ 1,
       \ <bang>0 ? fzf#vim#with_preview({ 'options': '--color=dark' }, 'bottom:20') : fzf#vim#with_preview({ 'options': '--color=dark' }, 'right:50%:hidden', '?'),
       \ <bang>0
@@ -571,7 +575,7 @@ autocmd VimLeave * call delete(FzfCacheFile())
 autocmd! FileType fzf
 autocmd  FileType fzf setlocal laststatus=0 nosmd noru nornu
       \ | tnoremap <silent> <F5> <C-\><C-n>:call delete(FzfCacheFile())<CR>:call feedkeys("a\<lt>Esc>", 'm')<CR>
-      \ | tnoremap <silent> <F4> <M-a><C-\><C-n>:augroup OnFzfOpenAll \| exe "au BufWinEnter quickfix call OpenAllFromQuickfix() \| tabclose \| augroup OnFzfOpenAll \| autocmd! \| augroup END \| augroup! OnFzfOpenAll" \| augroup END<CR>:call feedkeys("a\<lt>C-T>:Qtabs", 'm')<CR>
+      \ | tnoremap <silent> <F4> <M-a><C-\><C-n>:call feedkeys("a\<lt>C-T>", 'm')<CR>
       \ | autocmd BufLeave <buffer> set laststatus=2 smd ru rnu
 
 nnoremap <silent>        <leader>o  :<C-U>FzfFiles<CR>
@@ -581,7 +585,7 @@ function! FzfFilesFromVisual()
   try
     let z_save = @z
     normal! gv"zy
-    let l:query = @z
+    let l:query = substitute(tolower(trim(trim(@z), ',;')), '\\', '/', 'g')
   finally
     let @z = z_save
   endtry
@@ -700,6 +704,7 @@ autocmd FileType nerdtree setlocal nolist
 " ---------------------------------------------------------------------------
 
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+
 nnoremap <silent> <F6> :UndotreeToggle<CR>
 let g:undotree_SplitWidth=45
 let g:undotree_SetFocusWhenToggle=1

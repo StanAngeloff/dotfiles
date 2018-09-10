@@ -67,7 +67,7 @@ augroup phpAbbreviations
         \ :iabbrev <buffer> 2see @see|
         \ :iabbrev <buffer> 2throws @throws|
         \ :iabbrev <buffer> 4this $this|
-        \ :iabbrev <buffer> inheritdoc /**{@inheritdoc}/<C-R>=Eatchar('\s')<CR>|
+        \ :iabbrev <buffer> inheritdoc {@inheritdoc}<C-R>=Eatchar('\s')<CR>|
         \ :iabbrev <buffer> die die('XXX: Break in ' . __FILE__ . ', line ' . __LINE__ . '.' . PHP_EOL);|
         \ :iabbrev <buffer> E_ALL error_reporting(E_ALL); ini_set('display_errors', 'On');|
         \ :iabbrev <buffer> throw throw new Exception('', ,time);<C-O>25h<C-R>=Eatchar('\s')<CR>

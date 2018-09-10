@@ -11,7 +11,7 @@ function! NERDTreeSearchInCurrentNode()
     if len(query)
       let @/=query
       let path = fnamemodify(n.path.str(), ':.')
-      execute "normal! :NERDTreeClose\<CR>:Rg " . escape(query, '"'' |') . ' ' . escape(path, '"'' \') . "\<CR>"
+      execute "normal! :NERDTreeClose\<CR>:Rg " . escape(query, ' \') . ' ' . escape(path, ' \') . "\<CR>"
     endif
   endif
 endfunction
