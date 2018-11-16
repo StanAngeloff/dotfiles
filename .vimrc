@@ -859,12 +859,11 @@ endif
 "     <C-C> - terminate any foreground processes, such as watchers
 "     <C-U> - clear the command-line prompt
 "     <C-L> - clear the screen
-"     <Space> - don't record the command in history
 "     …command
 "     <Enter> - execute the command
 "
-nnoremap <silent> <F5>      :w<CR>:call system('tmux send-keys -t ' . shellescape(g:tmuxTarget) . ' "q" "^c" "^u" "^l" "Space" ' . shellescape(g:tmuxCommand) . ' "Enter"')<CR>
-inoremap <silent> <F5> <Esc>:w<CR>:call system('tmux send-keys -t ' . shellescape(g:tmuxTarget) . ' "q" "^c" "^u" "^l" "Space" ' . shellescape(g:tmuxCommand) . ' "Enter"')<CR>a
+nnoremap <silent> <F5> :w<CR>:call system('tmux send-keys -t ' . shellescape(g:tmuxTarget) . ' "q"')<CR>:sleep 100m<CR>:call system('tmux send-keys -t ' . shellescape(g:tmuxTarget) . ' "^C"')<CR>:sleep 100m<CR>:call system('tmux send-keys -Rt ' . shellescape(g:tmuxTarget) . ' "^U" "^L" ' . shellescape(g:tmuxCommand) . ' "Enter"')<CR>
+imap <silent> <F5> <Esc><F5>a
 
 " }}}
 
