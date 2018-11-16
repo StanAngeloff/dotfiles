@@ -24,6 +24,7 @@
 	newhighlight = "120 22"
 [core]
 	editor = vim
+	attributesFile = ~/.gitattributes
 [diff]
 	tool = kdiff3
 	compactionHeuristic = true
