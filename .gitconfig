@@ -111,3 +111,5 @@
 	header = bbbbbb
 [credential]
 	helper = cache --timeout=3600
+[protocol]
+	version = 2
