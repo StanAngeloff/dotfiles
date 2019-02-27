@@ -27,7 +27,7 @@
 	attributesFile = ~/.gitattributes
 [diff]
 	tool = kdiff3
-	compactionHeuristic = true
+	#compactionHeuristic = true
 	indentHeuristic = true
 [diff "image"]
 	command = simple-imagediff
@@ -44,13 +44,13 @@
 	br = branch -r
 	c  = commit
 	co = checkout
-	df = diff -U5 --color --minimal --ignore-space-change --ignore-blank-lines --no-ext-diff --patience
+	df = diff -U5 --color --minimal --ignore-space-change --ignore-blank-lines --no-ext-diff --patience --indent-heuristic
 	eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
 	f  = fetch       --prune --verbose
 	fa = fetch --all --prune --verbose
 	ig = !git ls-files -v | grep "^[[:lower:]]"
-	l  = log       --graph        --abbrev-commit --date=relative --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)%cr%C(reset) %C(blue)%an%C(reset)'
-	la = log --all --graph --tags --abbrev-commit --date=relative --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)%cr%C(reset) %C(blue)%an%C(reset)'
+	l  = log       --graph        --abbrev-commit --date=human --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)%cr (%cd) %C(blue)%an%C(reset)'
+	la = log --all --graph --tags --abbrev-commit --date=human --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)%cr (%cd) %C(blue)%an%C(reset)'
 	mf = multidiff
 	ro = !sh -c 'git rebase -i --autostash --autosquash origin/"$( git symbolic-ref --short HEAD )"'
 	s  = status -sb
