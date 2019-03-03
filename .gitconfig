@@ -91,9 +91,9 @@
 
 # See https://groups.google.com/forum/m/#!msg/binary-transparency/f-BI4o8HZW0/MDmnWideAgAJ
 [transfer]
-	fsckobjects = true
+	fsckObjects = true
 [fetch]
-	fsckobjects = true
+	fsckObjects = true
 [receive]
 	fsckObjects = true
 
