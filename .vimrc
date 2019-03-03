@@ -541,7 +541,7 @@ Plug 'StanAngeloff/vim-zend55'
 
 " FZF {{{1 ------------------------------------------------------------------
 
-Plug '~/.fzf'
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 let g:fzf_layout = { 'down': 20 }
