@@ -45,7 +45,7 @@ URxvt.keysym.Control-Right:     \033[1;5C
 URxvt.keysym.Control-Page_Up:   \033[5;5~
 URxvt.keysym.Control-Page_Down: \033[6;5~
 
-URxvt.perl-lib: ${HOME}/.urxvt/ext/perls
+URxvt.perl-lib: /home/stan/.urxvt/ext/perls
 URxvt.perl-ext-common: clipboard,default,matcher,-option-popup,-searchable-scrollback,-selection-popup
 
 URxvt.url-select.button:   1
