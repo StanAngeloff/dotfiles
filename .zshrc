@@ -37,7 +37,7 @@ export LANGUAGE="en_GB:en_US:en"
 export LC_MESSAGES="en_GB.UTF-8"
 
 # Configure applications, e.g., grep, ack, etc.
-export GREP_OPTIONS='--color=auto'
+#export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
 # Enable colour terminal and prompt.
