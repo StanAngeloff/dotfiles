@@ -16,3 +16,6 @@
 [submodule ".zsh/scripts/z"]
 	path = .zsh/scripts/z
 	url = https://github.com/rupa/z.git
+[submodule ".urxvt/ext/font-size"]
+	path = .urxvt/ext/font-size
+	url = https://github.com/majutsushi/urxvt-font-size.git

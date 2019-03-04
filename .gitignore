@@ -19,6 +19,8 @@
 !.tmux.conf
 !.urxvt/
 !.urxvt/ext/
+!.urxvt/ext/font-size
+!.urxvt/ext/perls
 !.vim/
 !.*vimrc*
 !.Xresources
