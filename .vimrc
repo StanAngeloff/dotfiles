@@ -184,7 +184,7 @@ function! RgProject(visual)
     try
       let z_save = @z
       normal! gv"zy
-      let l:query = escape(escape(trim(@z), '\'), '^$ ()[]{}?*+\')
+      let l:query = escape(escape(substitute(@z, '^\s\+\|\s\+$', '', 'g'), '\'), '^$ ()[]{}?*+\')
     finally
       let @z = z_save
     endtry
@@ -589,7 +589,7 @@ function! FzfFilesFromVisual()
   try
     let z_save = @z
     normal! gv"zy
-    let l:query = substitute(tolower(trim(trim(@z), ',;')), '\\', '/', 'g')
+    let l:query = substitute(tolower(substitute(substitute(@z, '^\s\+\|\s\+$', '', 'g'), '^[,;]\+\|[,;]\+$', '', 'g')), '\\', '/', 'g')
   finally
     let @z = z_save
   endtry
