@@ -849,7 +849,7 @@ Plug 'benmills/vimux'
 " {{{ tmux
 
 if ! exists('g:tmuxTarget')
-  let g:tmuxTarget='default.2'
+  let g:tmuxTarget='.2'
 endif
 if ! exists('g:tmuxCommand')
   let g:tmuxCommand='!!'
