@@ -561,7 +561,7 @@ endfunction
 command! -bang -nargs=* Rg call fzf#vim#grep(
       \ 'rg --column --line-number --no-heading --color=always ' . RgShellEscape(<f-args>),
       \ 1,
-      \ <bang>0 ? fzf#vim#with_preview({ 'options': '--color=dark' }, 'bottom:20') : fzf#vim#with_preview({ 'options': '--color=dark' }, 'right:50%:hidden', '?'),
+      \ <bang>0 ? fzf#vim#with_preview({ 'options': '--color=dark' }, 'bottom:20', '?') : fzf#vim#with_preview({ 'options': '--color=dark' }, 'right:50%:hidden', '?'),
       \ <bang>0
       \ )
 
