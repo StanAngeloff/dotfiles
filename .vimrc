@@ -1084,6 +1084,10 @@ vnoremap <silent> <leader>Т :Trans<CR>
 
 " ---------------------------------------------------------------------------
 
+Plug 'will133/vim-dirdiff'
+
+" ---------------------------------------------------------------------------
+
 if ! &termguicolors
     Plug 'godlygeek/csapprox'
 endif
