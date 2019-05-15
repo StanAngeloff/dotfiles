@@ -823,10 +823,10 @@ Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme='lucius'
 let g:airline_symbols_ascii=1
 
-let g:airline_left_sep = "\ue0b0"
-let g:airline_left_alt_sep = "\ue0b1"
-let g:airline_right_sep = "\ue0b2"
-let g:airline_right_alt_sep = "\ue0b3"
+"let g:airline_left_sep = "\ue0b0"
+"let g:airline_left_alt_sep = "\ue0b1"
+"let g:airline_right_sep = "\ue0b2"
+"let g:airline_right_alt_sep = "\ue0b3"
 
 let g:airline_symbols = {
       \ 'branch': "\ue0a0",
