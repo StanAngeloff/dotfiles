@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+### export TERM=rxvt-unicode-256color
+
+alias ll='ls -halFG --color=tty'
+
+alias g='git'
+alias v='nvim -p'
+alias t='tig status'
+
+alias vimdiff='nvim -d'
+
+alias aws='envchain aws aws'
+
+# Tell Git how to complete complex aliases.
+#
+# See https://coderwall.com/p/d2w7oa/auto-completion-within-complex-git-alias
+#
+function _git_df() {
+  _git_log
+}
