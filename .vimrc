@@ -1020,6 +1020,20 @@ Plug 'wellle/targets.vim'
 
 Plug 'chrisbra/unicode.vim'
 
+" modify selected text using combining diacritics
+command! -range -nargs=0 UnicodeOverline        call s:UnicodeCombineSelection(<line1>, <line2>, '0305')
+command! -range -nargs=0 UnicodeUnderline       call s:UnicodeCombineSelection(<line1>, <line2>, '0332')
+command! -range -nargs=0 UnicodeDoubleUnderline call s:UnicodeCombineSelection(<line1>, <line2>, '0333')
+command! -range -nargs=0 UnicodeStrikethrough   call s:UnicodeCombineSelection(<line1>, <line2>, '0336')
+
+function! s:UnicodeCombineSelection(line1, line2, cp)
+  execute 'let char = "\u'.a:cp.'"'
+  execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
+endfunction
+
+vnoremap __ :UnicodeUnderline<CR>
+vnoremap -- :UnicodeStrikethrough<CR>
+
 " ---------------------------------------------------------------------------
 
 Plug 'chr4/nginx.vim'
