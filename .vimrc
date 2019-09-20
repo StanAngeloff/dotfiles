@@ -345,7 +345,7 @@ endfunction
 nnoremap <silent> <leader>W :call StripTrailingWhitespace()<CR>
 
 " Turn off active highlighting, reset signs and plug-ins.
-nnoremap <silent> <leader><Space> :noh<CR>:sign unplace *<CR>
+nnoremap <silent> <leader><Space> :noh<CR>:sign unplace *<CR>:call clearmatches()<CR>
 
 " Toggle spell-checking keyboard binding.
 noremap <silent> <F1> :setlocal nospell! nospell?<CR>
@@ -614,6 +614,14 @@ Plug 'juvenn/mustache.vim', { 'for': ['mustache', 'handlebars', 'hbs', 'hogan', 
 " ---------------------------------------------------------------------------
 
 Plug 'othree/html5.vim'
+Plug 'mattn/emmet-vim'
+
+let g:user_emmet_mode='i'
+let g:user_emmet_install_global=0
+
+let g:user_emmet_leader_key=','
+
+autocmd FileType html EmmetInstall
 
 " ---------------------------------------------------------------------------
 
@@ -622,7 +630,7 @@ Plug 'posva/vim-vue'
 " ---------------------------------------------------------------------------
 
 Plug 'pangloss/vim-javascript'
-" Plug 'maxmellon/vim-jsx-pretty'
+Plug 'mxw/vim-jsx'
 
 function! JavaScriptSyntaxOverride()
   hi! link jsxTag htmlTag
@@ -647,7 +655,7 @@ augroup END
 
 " ---------------------------------------------------------------------------
 
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'commit': '63c59208c1f9' }
 
 let NERDTreeChDirMode=1
 let NERDTreeMinimalUI=1
@@ -701,6 +709,23 @@ endfunction
 
 nnoremap <expr> / FastFingersSearch('mm/')
 nnoremap <expr> ? FastFingersSearch('mm?')
+
+function! HighlightSearchTerms()
+  let l:pairs = split(@/, '\\|\||')
+
+  highlight! Highlight1 guibg=#ff527b guifg=#ffffff
+  highlight! Highlight2 guibg=#6bb805 guifg=#ffffff
+  highlight! Highlight3 guibg=#00c1ff guifg=#ffffff
+
+  call clearmatches()
+  let l:index = 1
+  for l:pair in l:pairs
+    call matchadd('Highlight' . l:index, '\c' . l:pair, 10, 100 + l:index)
+    let l:index = l:index + 1
+  endfor
+endfunction
+
+nnoremap <Leader>s :call HighlightSearchTerms()<CR>
 
 " XML folding via syntax
 " See http://www.jroller.com/lmchung/entry/xml_folding_with_vim
@@ -952,11 +977,25 @@ endif
 
 Plug 'airblade/vim-gitgutter'
 
+let g:gitgutter_max_signs = 9999
+let g:gitgutter_map_keys = 0
+
+nmap <leader>hp <Plug>(GitGutterPreviewHunk)
+nmap <leader>hs <Plug>(GitGutterStageHunk)
+nmap <leader>hu <Plug>(GitGutterUndoHunk)
+
+nmap [c <Plug>(GitGutterPrevHunk)
+nmap ]c <Plug>(GitGutterNextHunk)
+
+omap ic <Plug>(GitGutterTextObjectInnerPending)
+omap ac <Plug>(GitGutterTextObjectOuterPending)
+xmap ic <Plug>(GitGutterTextObjectInnerVisual)
+xmap ac <Plug>(GitGutterTextObjectOuterVisual)
+
 " NOTE: The options below apply to an older version of git-gutter.
 "
 " let g:gitgutter_realtime = 0
 " let g:gitgutter_eager = 0
-let g:gitgutter_max_signs = 9999
 
 hi def link GitGutterAdd DiffAdd
 hi def link GitGutterChange DiffChange
@@ -1099,6 +1138,10 @@ vnoremap <silent> <leader>Т :Trans<CR>
 " ---------------------------------------------------------------------------
 
 Plug 'will133/vim-dirdiff'
+
+" ---------------------------------------------------------------------------
+
+Plug 'hashivim/vim-terraform'
 
 " ---------------------------------------------------------------------------
 
