@@ -655,7 +655,7 @@ augroup END
 
 " ---------------------------------------------------------------------------
 
-Plug 'scrooloose/nerdtree', { 'commit': '63c59208c1f9' }
+Plug 'scrooloose/nerdtree' " , { 'commit': '63c59208c1f9' }
 
 let NERDTreeChDirMode=1
 let NERDTreeMinimalUI=1
