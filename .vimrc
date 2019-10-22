@@ -1145,6 +1145,10 @@ Plug 'hashivim/vim-terraform'
 
 " ---------------------------------------------------------------------------
 
+Plug 'machakann/vim-swap'
+
+" ---------------------------------------------------------------------------
+
 if ! &termguicolors
     Plug 'godlygeek/csapprox'
 endif
