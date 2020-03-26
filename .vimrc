@@ -913,6 +913,7 @@ hi def link NeomakeWarningSign WarningMsg
 " ---------------------------------------------------------------------------
 
 Plug 'elzr/vim-json'
+Plug 'GutenYe/json5.vim'
 
 " Set this variable as vim-json barfs if it's not defined.
 let g:vim_json_warnings=1
