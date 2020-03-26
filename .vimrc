@@ -630,7 +630,7 @@ Plug 'posva/vim-vue'
 " ---------------------------------------------------------------------------
 
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'MaxMEllon/vim-jsx-pretty'
 
 function! JavaScriptSyntaxOverride()
   hi! link jsxTag htmlTag
