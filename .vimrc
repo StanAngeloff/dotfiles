@@ -235,8 +235,8 @@ nnoremap <Return> :w<CR>
 vnoremap <Return> :<C-U>w<CR>gv
 
 " Don't jump on search.
-nnoremap * *<C-O>
-nnoremap # #<C-O>
+nnoremap * mZ*`Z
+nnoremap # mZ#`Z
 
 " IDE goodness.
 
