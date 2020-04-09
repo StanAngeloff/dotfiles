@@ -63,7 +63,7 @@ precmd() {
   psvar=( "$jobs" )
 }
 
-export PROMPT="$(_user_hostname_prompt)%{$fg[white]%}%{$reset_color%}%{$fg[yellow]%}%(!.%1~.%~)%{$reset_color%}$(_root_prompt)%{$fg[white]%}%1v%{$reset_color%} %(?:➜:×) " # format is 'login-name@machine-name ➜ cwd #'
+export PROMPT="$(_user_hostname_prompt)%{$fg[white]%}%{$reset_color%}%{$fg[yellow]%}%(!.%1~.%~)%{$reset_color%}$(_root_prompt)%{$fg[white]%}%1v%{$reset_color%} %(?:→:×) " # format is 'login-name@machine-name → cwd #'
 
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
