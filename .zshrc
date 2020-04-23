@@ -262,3 +262,17 @@ if [[ -f ~/.fzf.zsh ]]; then
     export FZF_DEFAULT_COMMAND='rg --files'
     export FZF_DEFAULT_OPTS="--color=bw --layout=reverse --inline-info --bind ctrl-f:page-down,ctrl-b:page-up,ctrl-d:half-page-down,ctrl-u:half-page-up"
 fi
+
+# # bat {{{1
+#
+
+export BAT_CONFIG_PATH="${HOME}/.bat.conf"
+
+# ## man
+#
+# `bat` can be used as a colorizing pager for `man`, by setting the `MANPAGER` environment variable:
+if _bat_path="$(type -p bat)" && [[ -n "$_bat_path" ]]; then
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
+
+# }}}1
