@@ -66,6 +66,8 @@
 [pager]
 	diff = diff-highlight | less -iRS
 	show = diff-highlight | less -iRS
+	# diff = delta --dark --24-bit-color=always --color-only --highlight-removed --minus-color=88 --minus-emph-color=160 --plus-color=22 --plus-emph-color=34 --width=100
+	# show = delta --dark --24-bit-color=always --color-only --highlight-removed --minus-color=88 --minus-emph-color=160 --plus-color=22 --plus-emph-color=34 --width=100
 
 [push]
 	default = upstream # ${pushDefault}
