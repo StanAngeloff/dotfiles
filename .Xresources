@@ -25,7 +25,7 @@ URxvt.boldFont: xft:Input:bold:pixelsize=16:antialias=true:hinting=true,xft:Noto
 URxvt.italicFont: xft:Input:italic:pixelsize=16:antialias=true:hinting=true,xft:Noto Mono:pixelsize=16:antialias=true:hinting=true,xft:Symbola
 URxvt.boldItalicFont: xft:Input:bold:italic:pixelsize=16:antialias=true:hinting=true,xft:Noto Mono:pixelsize=16:antialias=true:hinting=true,xft:Symbola
 
-URxvt.letterSpace: -2
+URxvt.letterSpace: -1
 
 ! Disable screen printing by overriding the default print pipe.
 URxvt.print-pipe: "cat >/dev/null"
