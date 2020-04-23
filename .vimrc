@@ -782,7 +782,13 @@ Plug 'tpope/vim-haml', { 'for': ['haml', 'hamlbars', 'hamlc', 'sass', 'scss'] }
 
 " ---------------------------------------------------------------------------
 
-Plug 'tpope/vim-markdown', { 'for': ['markdown', 'md', 'mdown', 'mkd', 'mkdn'] }
+Plug 'plasticboy/vim-markdown'
+
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_strikethrough = 1
+
+" let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
 
 " ---------------------------------------------------------------------------
 
