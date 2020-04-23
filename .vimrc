@@ -118,6 +118,7 @@ set cursorline!                " Highlight line under cursor.
 
 set textwidth=120              " Gutter position.
 set colorcolumn=+0             " Use an offset from &textwidth.
+set signcolumn=auto:2          " Allow up to two signs per line.
 
 set nolist
 set listchars=tab:→\ ,eol:¬,extends:❯,precedes:❮,trail:␣  " Display a placeholder character for tabs and newlines.
