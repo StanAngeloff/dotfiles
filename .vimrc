@@ -983,7 +983,7 @@ endif
 
 " ---------------------------------------------------------------------------
 
-Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter', { 'commit': 'dab840b15310f1b2bfb44d1db6150d7c38f9e27b' }
 
 let g:gitgutter_max_signs = 9999
 let g:gitgutter_map_keys = 0
