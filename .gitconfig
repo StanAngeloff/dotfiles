@@ -45,7 +45,7 @@
 	c  = commit
 	co = checkout
 	df = diff -U5 --color --minimal --ignore-space-change --ignore-blank-lines --no-ext-diff --patience --indent-heuristic
-	eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+	eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim -p `f`"
 	f  = fetch       --prune --verbose
 	fa = fetch --all --prune --verbose
 	ig = !git ls-files -v | grep "^[[:lower:]]"
