@@ -1091,6 +1091,10 @@ Plug 'chr4/nginx.vim'
 
 " ---------------------------------------------------------------------------
 
+Plug 'stefandtw/quickfix-reflector.vim'
+
+" ---------------------------------------------------------------------------
+
 "Plug 'jiangmiao/auto-pairs'
 "
 "let g:AutoPairsMapSpace=0
