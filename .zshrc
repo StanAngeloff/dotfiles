@@ -63,7 +63,37 @@ precmd() {
   psvar=( "$jobs" )
 }
 
-export PROMPT="$(_user_hostname_prompt)%{$fg[white]%}%{$reset_color%}%{$fg[yellow]%}%(!.%1~.%~)%{$reset_color%}$(_root_prompt)%{$fg[white]%}%1v%{$reset_color%} %(?:→:×) " # format is 'login-name@machine-name → cwd #'
+# Outputs the name of the current branch
+# Usage example: git pull origin $(_git_branch)
+# Using '--quiet' with 'symbolic-ref' will not cause a fatal error (128) if
+# it's not a symbolic ref, but in a Git repo.
+function _git_branch() {
+  local ref
+  ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
+  local ret=$?
+  if [[ $ret != 0 ]]; then
+    [[ $ret == 128 ]] && return  # no git repo.
+    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+  fi
+  echo ${ref#refs/heads/}
+}
+
+function _git_branch_prompt() {
+  local branch=$(_git_branch)
+  if [ -n "$branch" ]; then
+    # See http://zsh.sourceforge.net/FAQ/zshfaq03.html#l42 for colour sequences.
+    echo " %8F git:%B$branch%b%f"
+  fi
+}
+
+function _docker_machine_prompt() {
+  if [ -n "$DOCKER_MACHINE_NAME" ]; then
+    # See http://zsh.sourceforge.net/FAQ/zshfaq03.html#l42 for colour sequences.
+    echo " %4F🐋 machine:%B$DOCKER_MACHINE_NAME%b%f"
+  fi
+}
+
+export PROMPT="$(_user_hostname_prompt)%{$fg[white]%}%{$reset_color%}%{$fg[yellow]%}%(!.%1~.%~)%{$reset_color%}$(_root_prompt)%{$fg[white]%}%1v%{$reset_color%}\$(_docker_machine_prompt)\$(_git_branch_prompt) %(?:→:×) " # format is 'login-name@machine-name → cwd #'
 
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
