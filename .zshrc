@@ -81,15 +81,15 @@ function _git_branch() {
 function _git_branch_prompt() {
   local branch=$(_git_branch)
   if [ -n "$branch" ]; then
-    # See http://zsh.sourceforge.net/FAQ/zshfaq03.html#l42 for colour sequences.
-    echo " %8F git:%B$branch%b%f"
+    # See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+    echo " %8F git⋯$branch%f"
   fi
 }
 
 function _docker_machine_prompt() {
   if [ -n "$DOCKER_MACHINE_NAME" ]; then
-    # See http://zsh.sourceforge.net/FAQ/zshfaq03.html#l42 for colour sequences.
-    echo " %4F🐋 machine:%B$DOCKER_MACHINE_NAME%b%f"
+    # See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+    echo " %4F🐋 machine⋯$DOCKER_MACHINE_NAME%f"
   fi
 }
 
