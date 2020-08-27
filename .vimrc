@@ -782,6 +782,10 @@ Plug 'tpope/vim-haml', { 'for': ['haml', 'hamlbars', 'hamlc', 'sass', 'scss'] }
 
 " ---------------------------------------------------------------------------
 
+Plug 'tpope/vim-liquid', { 'for': ['liquid'] }
+
+" ---------------------------------------------------------------------------
+
 Plug 'plasticboy/vim-markdown'
 
 let g:vim_markdown_folding_disabled = 1
