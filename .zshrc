@@ -289,3 +289,6 @@ if [[ -d "${HOME}/.rbenv/bin" ]]; then
     # Add rbenv to shell for shims and auto-completion.
     which rbenv &>/dev/null && eval "$( rbenv init - )"
 fi
+
+# jump by @gsamokovarov needs to be integrated with the shell.
+which jump &>/dev/null && eval "$(jump shell --bind=z)"
