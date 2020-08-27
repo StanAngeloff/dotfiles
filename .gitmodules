@@ -1,21 +1,9 @@
-[submodule ".urxvt/ext/perls"]
-	path = .urxvt/ext/perls
-	url = git://github.com/muennich/urxvt-perls.git
-[submodule ".rbenv"]
-	path = .rbenv
-	url = git://github.com/sstephenson/rbenv.git
-[submodule ".rbenv-plugins/ruby-build"]
-	path = .rbenv-plugins/ruby-build
-	url = git://github.com/sstephenson/ruby-build.git
-[submodule ".rbenv-plugins/rbenv-gemset"]
-	path = .rbenv-plugins/rbenv-gemset
-	url = git://github.com/jamis/rbenv-gemset.git
-[submodule ".zsh/completions"]
-	path = .zsh/completions
-	url = git://github.com/zsh-users/zsh-completions.git
-[submodule ".zsh/scripts/z"]
-	path = .zsh/scripts/z
-	url = https://github.com/rupa/z.git
 [submodule ".urxvt/ext/font-size"]
 	path = .urxvt/ext/font-size
 	url = https://github.com/majutsushi/urxvt-font-size.git
+[submodule ".urxvt/ext/perls"]
+	path = .urxvt/ext/perls
+	url = git://github.com/muennich/urxvt-perls.git
+[submodule ".zsh/completions"]
+	path = .zsh/completions
+	url = git://github.com/zsh-users/zsh-completions.git

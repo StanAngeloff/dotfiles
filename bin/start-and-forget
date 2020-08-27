@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-# Run a program in the background (suppressing any output)
-# and don't kill if the current process dies or exits gracefully.
-
-nohup "$@" 1>/dev/null 2>&1 & disown

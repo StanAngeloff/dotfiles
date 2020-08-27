@@ -232,31 +232,6 @@ bindkey ' '       magic-space
 
 bindkey "^[m"     copy-prev-shell-word
 
-# Expand PATH and include User binaries and rbenv, if installed.
-for __path in \
-  /opt/terraform/bin \
-  "${HOME}/bin" \
-  "${HOME}/.composer/vendor/bin" \
-  "${HOME}/.rbenv/bin" \
-; do
-  [ -d "$__path" ] && export PATH="$__path:$PATH"
-done
-
-# Extend rbenv with plug-ins from non-standard location.
-for __path in "$HOME/.rbenv-plugins/"; do
-  if [ -d "$__path" ]; then
-    for __script in "$__path"*/bin(N); do
-      export PATH="$__script:$PATH"
-    done
-    for __script in "$__path"*/etc/rbenv.d(N); do
-      export RBENV_HOOK_PATH="$__script:$RBENV_HOOK_PATH"
-    done
-  fi
-done
-
-# Add rbenv to shell for shims and auto-completion.
-which rbenv &>/dev/null && eval "$( rbenv init - )"
-
 # Load Zsh scripts in no particular order.
 for __script in "$ZSH/scripts/"**/*.*sh(N); do
   if [ -f "$__script" ]; then
@@ -307,3 +282,10 @@ if _bat_path="$(type -p bat)" && [[ -n "$_bat_path" ]]; then
 fi
 
 # }}}1
+
+if [[ -d "${HOME}/.rbenv/bin" ]]; then
+    export PATH="${HOME}/.rbenv/bin:${PATH}"
+
+    # Add rbenv to shell for shims and auto-completion.
+    which rbenv &>/dev/null && eval "$( rbenv init - )"
+fi

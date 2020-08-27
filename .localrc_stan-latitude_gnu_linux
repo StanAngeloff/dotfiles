@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-### export TERM=rxvt-unicode-256color
-
 alias ll='ls -halFG --color=tty'
 
 alias g='git'
@@ -12,6 +10,8 @@ alias vimdiff='nvim -d'
 
 alias aws='envchain aws aws'
 
+alias http='http --verify=no'
+
 # Tell Git how to complete complex aliases.
 #
 # See https://coderwall.com/p/d2w7oa/auto-completion-within-complex-git-alias
@@ -19,3 +19,23 @@ alias aws='envchain aws aws'
 function _git_df() {
   _git_log
 }
+
+### ANDROID STUDIO BEGIN AUTOMATICALLY GENERATED
+###
+### DO NOT EDIT BY HAND, YOUR CHANGES WILL BE LOST!
+###
+export ANDROID_HOME="${ANDROID_HOME-/opt/android/sdk}"
+export PATH="${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools"
+### ANDROID STUDIO END AUTOMATICALLY GENERATED
+
+### PHP COMPOSER BEGIN AUTOMATICALLY GENERATED
+###
+### DO NOT EDIT BY HAND, YOUR CHANGES WILL BE LOST!
+###
+alias composer='/usr/bin/php7.2 /usr/local/bin/composer'
+alias composer5.6='/usr/bin/php5.6 /usr/local/bin/composer'
+alias composer7.1='/usr/bin/php7.1 /usr/local/bin/composer'
+alias composer7.2='/usr/bin/php7.2 /usr/local/bin/composer'
+alias composer7.3='/usr/bin/php7.3 /usr/local/bin/composer'
+alias composer7.4='/usr/bin/php7.4 /usr/local/bin/composer'
+### PHP COMPOSER END AUTOMATICALLY GENERATED

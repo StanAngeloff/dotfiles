@@ -1,1 +1,0 @@
-launch /usr/bin/zsh -c 'tmux attach-session -t default 2>/dev/null || tmux new-session -s default -n default'

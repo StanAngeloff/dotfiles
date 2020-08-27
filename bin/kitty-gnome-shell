@@ -1,4 +1,0 @@
-#!/bin/sh
-
-xdotool search --class kitty windowactivate || \
-    /home/stan/bin/kitty -1 --instance-group gnome-shell --session /home/stan/.config/kitty/tmux.session

@@ -1,6 +1,6 @@
 # git-freeze: take the current index and working tree state and "freeze" them
 #   by creating a commit for each as necessary
-# 
+#
 # git-thaw: look for commits created by git-freeze and restore them to
 #   working tree or index as appropriate
 
