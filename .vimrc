@@ -924,7 +924,7 @@ hi def link NeomakeWarningSign WarningMsg
 " ---------------------------------------------------------------------------
 
 Plug 'elzr/vim-json'
-Plug 'GutenYe/json5.vim'
+Plug 'GutenYe/json5.vim', { 'for': ['json5'] }
 
 " Set this variable as vim-json barfs if it's not defined.
 let g:vim_json_warnings=1
@@ -1065,7 +1065,6 @@ endfunction
 " ---------------------------------------------------------------------------
 
 Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
 
 " ---------------------------------------------------------------------------
 
@@ -1112,48 +1111,48 @@ let g:templates_directory = $HOME . '/.vim/templates'
 
 " ---------------------------------------------------------------------------
 
-Plug 'majutsushi/tagbar'
-
-nnoremap <silent> <F9> :TagbarToggle<CR>
-
-let g:tagbar_autoclose = 1
-let g:tagbar_autofocus = 1
-let g:tagbar_case_insensitive = 1
-let g:tagbar_compact = 1
-let g:tagbar_ctags_bin = '/usr/local/bin/uctags'
-
-let g:airline#extensions#tagbar#enabled = 0
+"Plug 'majutsushi/tagbar'
+"
+"nnoremap <silent> <F9> :TagbarToggle<CR>
+"
+"let g:tagbar_autoclose = 1
+"let g:tagbar_autofocus = 1
+"let g:tagbar_case_insensitive = 1
+"let g:tagbar_compact = 1
+"let g:tagbar_ctags_bin = '/usr/local/bin/uctags'
+"
+"let g:airline#extensions#tagbar#enabled = 0
 
 " ---------------------------------------------------------------------------
 
-Plug 'echuraev/translate-shell.vim'
-
-let g:trans_join_lines = 1
-
-function! InsertSelectedTranslation()
-  " Get and trim selected line.
-  let translation = substitute(getline('.'), '^\s*\(.\{-}\)\s*$', '\1', '')
-  if strlen(translation) == 0
-    execute "normal! gj"
-    redraw | echohl WarningMsg | echo "Cannot insert translation for empty line." | echohl None
-    return
-  endif
-
-  try
-    let z_save = @z
-    execute "normal! ^v$\"zy"
-    execute "normal! :q\<CR>gv"
-    execute "normal! \"zp"
-  finally
-    let @z = z_save
-  endtry
-endfunction
-
-autocmd FileType trans nnoremap <silent> <buffer> <CR> :call InsertSelectedTranslation()<CR> |
-      \ execute "normal! G^"
-
-vnoremap <silent> <leader>T :Trans<CR>
-vnoremap <silent> <leader>Т :Trans<CR>
+"Plug 'echuraev/translate-shell.vim'
+"
+"let g:trans_join_lines = 1
+"
+"function! InsertSelectedTranslation()
+"  " Get and trim selected line.
+"  let translation = substitute(getline('.'), '^\s*\(.\{-}\)\s*$', '\1', '')
+"  if strlen(translation) == 0
+"    execute "normal! gj"
+"    redraw | echohl WarningMsg | echo "Cannot insert translation for empty line." | echohl None
+"    return
+"  endif
+"
+"  try
+"    let z_save = @z
+"    execute "normal! ^v$\"zy"
+"    execute "normal! :q\<CR>gv"
+"    execute "normal! \"zp"
+"  finally
+"    let @z = z_save
+"  endtry
+"endfunction
+"
+"autocmd FileType trans nnoremap <silent> <buffer> <CR> :call InsertSelectedTranslation()<CR> |
+"      \ execute "normal! G^"
+"
+"vnoremap <silent> <leader>T :Trans<CR>
+"vnoremap <silent> <leader>Т :Trans<CR>
 
 " ---------------------------------------------------------------------------
 
