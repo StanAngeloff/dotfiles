@@ -292,3 +292,9 @@ fi
 
 # jump by @gsamokovarov needs to be integrated with the shell.
 which jump &>/dev/null && eval "$(jump shell --bind=z)"
+
+# git-subrepo
+if [[ -d "$HOME"/bin/git-subrepo ]]; then
+  source "$HOME"/bin/git-subrepo/.rc
+  fpath=( "$HOME"/bin/git-subrepo/share/zsh-completion $fpath )
+fi
