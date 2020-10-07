@@ -3,5 +3,5 @@
 function server() {
   local port="${1:-3030}"
   x-www-browser "http://127.0.0.1:${port}/"
-  python2 -m 'SimpleHTTPServer' "$port"
+  python3.8 -m http.server "$port"
 }
