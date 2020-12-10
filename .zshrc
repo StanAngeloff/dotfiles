@@ -100,6 +100,11 @@ export LSCOLORS="Gxfxcxdxbxegedabagacad"
 # Allow variable substitution to take place in the prompt.
 setopt prompt_subst
 
+if [[ -e "${HOME}/.asdf/asdf.sh" ]]; then
+    source "${HOME}/.asdf/asdf.sh"
+    fpath=(${ASDF_DIR}/completions $fpath)
+fi
+
 # Add user-completion directory to the array of Zsh sources (e.g., for improved Git).
 fpath=( "${HOME}/.zsh/completions/src" $fpath )
 
