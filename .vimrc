@@ -853,8 +853,10 @@ Plug 'tpope/vim-abolish'
 
 " ---------------------------------------------------------------------------
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" NOTE: Commit https://github.com/vim-airline/vim-airline/commit/c8c0e7d9ff05e1fb4d2076b583bca2abd8dddd2e breaks the `licius' theme badly!
+"
+Plug 'vim-airline/vim-airline',           { 'commit': '38c9f9ca3d1960d38d4d283cf62863ba9be8a6b7' }
+Plug 'vim-airline/vim-airline-themes' " , { 'commit': '03a4c491dfa53e9d2619de8759eccd073367b0fd' }
 
 let g:airline_theme='lucius'
 let g:airline_symbols_ascii=1
