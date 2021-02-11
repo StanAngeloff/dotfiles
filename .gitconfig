@@ -22,6 +22,8 @@
 	oldhighlight = "210 52"
 	newnormal = "2 0"
 	newhighlight = "120 22"
+[init]
+	defaultBranch = master
 [core]
 	editor = vim
 	attributesFile = ~/.gitattributes
