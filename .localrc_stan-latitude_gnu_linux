@@ -39,3 +39,13 @@ alias composer7.2='/usr/bin/php7.2 /usr/local/bin/composer'
 alias composer7.3='/usr/bin/php7.3 /usr/local/bin/composer'
 alias composer7.4='/usr/bin/php7.4 /usr/local/bin/composer'
 ### PHP COMPOSER END AUTOMATICALLY GENERATED
+
+### RUST BEGIN AUTOMATICALLY GENERATED
+###
+### DO NOT EDIT BY HAND, YOUR CHANGES WILL BE LOST!
+###
+export CARGO_HOME="${HOME}/.cargo"
+export RUSTUP_HOME="${HOME}/.rustup"
+export PATH="${PATH}:${CARGO_HOME}/bin"
+### RUST END AUTOMATICALLY GENERATED
+
