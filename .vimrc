@@ -1148,8 +1148,11 @@ endif
 if has('autocmd')
 
   " Highlight trailing whitespace in red after the colour scheme has loaded.
-  autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
-        \ | highlight        ExtraWhitespace ctermbg=red guibg=red
+  autocmd Syntax *
+        \   syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
+        \ | highlight ExtraWhitespace ctermbg=red guibg=red
+        \ | syn match NonBreakingSpace /\%xA0\+/ containedin=ALL
+        \ | highlight NonBreakingSpace ctermbg=cyan guibg=#6666aa
 
 endif
 
