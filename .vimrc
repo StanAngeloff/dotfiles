@@ -23,7 +23,9 @@ end
 
 " Switch syntax on and select a theme.
 syntax on
-set synmaxcol=2048
+
+set synmaxcol=20480
+syntax sync minlines=2048
 
 set termguicolors
 
