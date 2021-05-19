@@ -12,6 +12,8 @@ alias aws='envchain aws aws'
 
 alias http='http --verify=no'
 
+alias ee='eval "$(make env)"'
+
 # Tell Git how to complete complex aliases.
 #
 # See https://coderwall.com/p/d2w7oa/auto-completion-within-complex-git-alias
