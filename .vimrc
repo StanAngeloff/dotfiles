@@ -657,7 +657,7 @@ augroup END
 
 " ---------------------------------------------------------------------------
 
-Plug 'scrooloose/nerdtree' " , { 'commit': '63c59208c1f9' }
+Plug 'preservim/nerdtree'
 
 let NERDTreeChDirMode=1
 let NERDTreeMinimalUI=1
@@ -888,7 +888,7 @@ Plug 'tpope/vim-eunuch'
 
 " ---------------------------------------------------------------------------
 
-Plug 'benmills/vimux'
+Plug 'preservim/vimux'
 
 " {{{ tmux
 
