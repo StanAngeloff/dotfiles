@@ -363,8 +363,7 @@ nnoremap <silent> <F4> :setlocal list! list?<CR>
 
 " Show the stack of syntax highlighting classes affecting whatever is under the cursor.
 function! SynStack()
-  execute 'silent! TSHighlightCapturesUnderCursor'
-  "echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), " > ")
+  echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), " > ")
 endfunc
 
 nnoremap <F7> :call SynStack()<CR>
@@ -611,51 +610,51 @@ Plug 'tpope/vim-sleuth'
 let g:sleuth_automatic = 1
 
 " ---------------------------------------------------------------------------
-"
-"Plug 'juvenn/mustache.vim', { 'for': ['mustache', 'handlebars', 'hbs', 'hogan', 'hulk', 'hjs'] }
-"
+
+Plug 'juvenn/mustache.vim', { 'for': ['mustache', 'handlebars', 'hbs', 'hogan', 'hulk', 'hjs'] }
+
 " ---------------------------------------------------------------------------
-"
-"Plug 'othree/html5.vim'
-"Plug 'mattn/emmet-vim'
-"
-"let g:user_emmet_mode='iv'
-"let g:user_emmet_install_global=0
-"
-"let g:user_emmet_leader_key=','
-"
-"autocmd FileType html,blade,liquid EmmetInstall
-"
+
+Plug 'othree/html5.vim'
+Plug 'mattn/emmet-vim'
+
+let g:user_emmet_mode='iv'
+let g:user_emmet_install_global=0
+
+let g:user_emmet_leader_key=','
+
+autocmd FileType html,blade,liquid EmmetInstall
+
 " ---------------------------------------------------------------------------
-"
-"Plug 'posva/vim-vue'
-"
+
+Plug 'posva/vim-vue'
+
 " ---------------------------------------------------------------------------
-"
-"Plug 'pangloss/vim-javascript'
-"Plug 'MaxMEllon/vim-jsx-pretty'
-"
-"function! JavaScriptSyntaxOverride()
-"  hi! link jsxTag htmlTag
-"  hi! link jsxTagName htmlTagName
-"  hi! link jsxString htmlString
-"  " hi! link jsxNameSpace Function
-"  hi! link jsxComment htmlComment
-"  hi! link jsxAttrib htmlArg
-"  " hi! link jsxEscapeJs jsxEscapeJs
-"  hi! link jsxCloseTag htmlEndTag
-"  hi! link jsxCloseString htmlEndTag
-"
-"  syntax region jsxComment start=+//+ end=/$/ contains=jsCommentTodo,@Spell contained containedin=jsxRegion,jsxTag extend keepend
-"
-"  hi! link jsxComment jsComment
-"endfunction
-"
-"augroup javascriptSyntaxOverride
-"  autocmd!
-"  autocmd FileType javascript call JavaScriptSyntaxOverride()
-"augroup END
-"
+
+Plug 'pangloss/vim-javascript'
+Plug 'MaxMEllon/vim-jsx-pretty'
+
+function! JavaScriptSyntaxOverride()
+  hi! link jsxTag htmlTag
+  hi! link jsxTagName htmlTagName
+  hi! link jsxString htmlString
+  " hi! link jsxNameSpace Function
+  hi! link jsxComment htmlComment
+  hi! link jsxAttrib htmlArg
+  " hi! link jsxEscapeJs jsxEscapeJs
+  hi! link jsxCloseTag htmlEndTag
+  hi! link jsxCloseString htmlEndTag
+
+  syntax region jsxComment start=+//+ end=/$/ contains=jsCommentTodo,@Spell contained containedin=jsxRegion,jsxTag extend keepend
+
+  hi! link jsxComment jsComment
+endfunction
+
+augroup javascriptSyntaxOverride
+  autocmd!
+  autocmd FileType javascript call JavaScriptSyntaxOverride()
+augroup END
+
 " ---------------------------------------------------------------------------
 
 Plug 'scrooloose/nerdtree' " , { 'commit': '63c59208c1f9' }
@@ -779,9 +778,9 @@ nnoremap <leader>ha :silent! Git add %<CR>
 Plug 'tpope/vim-git'
 
 " ---------------------------------------------------------------------------
-"
-"Plug 'tpope/vim-haml', { 'for': ['haml', 'hamlbars', 'hamlc', 'sass', 'scss'] }
-"
+
+Plug 'tpope/vim-haml', { 'for': ['haml', 'hamlbars', 'hamlc', 'sass', 'scss'] }
+
 " ---------------------------------------------------------------------------
 
 Plug 'tpope/vim-liquid', { 'for': ['liquid'] }
@@ -809,42 +808,42 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
 " ---------------------------------------------------------------------------
-"
-"Plug 'StanAngeloff/php.vim'
-"Plug 'rayburgemeestre/phpfolding.vim'
-"Plug '2072/PHP-Indenting-for-VIm'
-"
-"" Don't use the PHP syntax folding.
-"let g:DisableAutoPHPFolding = 1
-"" Include the '$' as part of identifiers.
-"let php_var_selector_is_identifier = 1
-"" Indent 'case:' and 'default:' statements in switch() blocks:
-"let g:PHP_vintage_case_default_indent = 1
-"
-"let php_html_load=0
-"let php_html_in_heredoc=0
-"let php_html_in_nowdoc=0
-"
-"let php_sql_query=0
-"let php_sql_heredoc=0
-"let php_sql_nowdoc=0
-"
-"let PHP_noArrowMatching=1
-"
-"function! PhpSyntaxOverride()
-"  hi phpUseNamespaceSeparator guifg=#808080 guibg=NONE gui=NONE
-"  hi phpClassNamespaceSeparator guifg=#808080 guibg=NONE gui=NONE
-"  hi phpNullValue guifg=#00a4ef guibg=NONE gui=NONE
-"endfunction
-"
-"augroup phpSyntaxOverride
-"  autocmd!
-"  autocmd FileType php call PhpSyntaxOverride()
-"augroup END
-"
-"autocmd FileType php
-"      \ nnoremap <silent> <expr> gz ":silent exec \"!xdg-open 'http://php.net/en/" . expand('<cword>') . "'\"<CR>"
-"
+
+Plug 'StanAngeloff/php.vim'
+Plug 'rayburgemeestre/phpfolding.vim'
+Plug '2072/PHP-Indenting-for-VIm'
+
+" Don't use the PHP syntax folding.
+let g:DisableAutoPHPFolding = 1
+" Include the '$' as part of identifiers.
+let php_var_selector_is_identifier = 1
+" Indent 'case:' and 'default:' statements in switch() blocks:
+let g:PHP_vintage_case_default_indent = 1
+
+let php_html_load=0
+let php_html_in_heredoc=0
+let php_html_in_nowdoc=0
+
+let php_sql_query=0
+let php_sql_heredoc=0
+let php_sql_nowdoc=0
+
+let PHP_noArrowMatching=1
+
+function! PhpSyntaxOverride()
+  hi phpUseNamespaceSeparator guifg=#808080 guibg=NONE gui=NONE
+  hi phpClassNamespaceSeparator guifg=#808080 guibg=NONE gui=NONE
+  hi phpNullValue guifg=#00a4ef guibg=NONE gui=NONE
+endfunction
+
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
+augroup END
+
+autocmd FileType php
+      \ nnoremap <silent> <expr> gz ":silent exec \"!xdg-open 'http://php.net/en/" . expand('<cword>') . "'\"<CR>"
+
 " ---------------------------------------------------------------------------
 
 Plug 'thinca/vim-visualstar'
@@ -880,9 +879,9 @@ let g:airline_symbols = {
 let g:loaded_airline_themes = 0
 
 " ---------------------------------------------------------------------------
-"
-"Plug 'hail2u/vim-css3-syntax'
-"
+
+Plug 'hail2u/vim-css3-syntax'
+
 " ---------------------------------------------------------------------------
 
 Plug 'tpope/vim-eunuch'
@@ -1068,9 +1067,9 @@ function! g:committia_hooks.edit_open(info)
 endfunction
 
 " ---------------------------------------------------------------------------
-"
-"Plug 'leafgarland/typescript-vim'
-"
+
+Plug 'leafgarland/typescript-vim'
+
 " ---------------------------------------------------------------------------
 
 Plug 'wellle/targets.vim'
@@ -1106,11 +1105,11 @@ Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'Absolight/vim-bind'
 
 " ---------------------------------------------------------------------------
-"
-"Plug 'aperezdc/vim-template'
-"
-"let g:templates_directory = $HOME . '/.vim/templates'
-"
+
+Plug 'aperezdc/vim-template'
+
+let g:templates_directory = $HOME . '/.vim/templates'
+
 " ---------------------------------------------------------------------------
 
 Plug 'will133/vim-dirdiff'
@@ -1128,17 +1127,12 @@ Plug 'machakann/vim-swap'
 Plug 'ap/vim-css-color'
 
 " ---------------------------------------------------------------------------
-"
-"Plug 'jparise/vim-graphql'
-"
-" ---------------------------------------------------------------------------
-"
-"Plug 'cespare/vim-toml'
-"
+
+Plug 'jparise/vim-graphql'
+
 " ---------------------------------------------------------------------------
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
+Plug 'cespare/vim-toml'
 
 Plug 'neovim/nvim-lspconfig'
 
@@ -1173,7 +1167,6 @@ endif
 
 lua <<EOF
 local nvim_lsp = require('lspconfig')
-local nvim_treesitter = require('nvim-treesitter.configs');
 
 nvim_lsp.tsserver.setup{}
 
@@ -1208,28 +1201,6 @@ local servers = { 'tsserver' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
-
-nvim_treesitter.setup {
-  ensure_installed = {
-	  'css',
-	  'graphql',
-	  'html',
-	  'javascript',
-	  'php',
-	  'scss',
-	  'toml',
-	  'typescript',
-	  'vue',
-	}, -- one of 'all', 'maintained' (parsers with maintainers), or a list of languages
-  ignore_install = { }, -- List of parsers to ignore installing
-  highlight = {
-    enable = true, -- false will disable the whole extension
-    disable = {  }, -- list of language that will be disabled
-  },
-  indent = {
-	enable = true,
-  },
-}
 EOF
 
 " Cheatsheet
