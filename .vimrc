@@ -230,8 +230,7 @@ nnoremap <Leader>P "+P
 vnoremap <Leader>p "+p
 vnoremap <Leader>P "+P
 
-" OMG! This is sooo much better.
-" nnoremap <Space> :
+" Frantic <C-S> are now hectic <Return>s
 nnoremap <Return> :w<CR>
 
 " vnoremap <Space> :
@@ -739,22 +738,22 @@ autocmd FileType nerdtree setlocal nolist
 
 " ---------------------------------------------------------------------------
 
-""" Plug 'Xuyuanp/nerdtree-git-plugin'
-"""
-""" let g:NERDTreeIndicatorMapCustom = {
-"""             \ "Modified"  : "✹",
-"""             \ "Staged"    : "✚",
-"""             \ "Untracked" : "?",
-"""             \ "Renamed"   : "➜",
-"""             \ "Unmerged"  : "═",
-"""             \ "Deleted"   : "✖",
-"""             \
-"""             \ "Dirty"     : "✹",
-"""             \ "Clean"     : "✚",
-"""             \
-"""             \ 'Ignored'   : '⍉',
-"""             \ "Unknown"   : "⍰"
-"""             \ }
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+let g:NERDTreeIndicatorMapCustom = {
+            \ "Modified"  : "✹",
+            \ "Staged"    : "✚",
+            \ "Untracked" : "?",
+            \ "Renamed"   : "➜",
+            \ "Unmerged"  : "═",
+            \ "Deleted"   : "✖",
+            \
+            \ "Dirty"     : "✹",
+            \ "Clean"     : "✚",
+            \
+            \ 'Ignored'   : '⍉',
+            \ "Unknown"   : "⍰"
+            \ }
 
 " ---------------------------------------------------------------------------
 
@@ -1126,6 +1125,14 @@ Plug 'machakann/vim-swap'
 " ---------------------------------------------------------------------------
 
 Plug 'ap/vim-css-color'
+
+" ---------------------------------------------------------------------------
+
+Plug 'jparise/vim-graphql'
+
+" ---------------------------------------------------------------------------
+
+Plug 'cespare/vim-toml'
 
 " ---------------------------------------------------------------------------
 
