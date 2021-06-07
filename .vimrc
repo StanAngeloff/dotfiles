@@ -740,20 +740,19 @@ autocmd FileType nerdtree setlocal nolist
 
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-let g:NERDTreeIndicatorMapCustom = {
-            \ "Modified"  : "✹",
-            \ "Staged"    : "✚",
-            \ "Untracked" : "?",
-            \ "Renamed"   : "➜",
-            \ "Unmerged"  : "═",
-            \ "Deleted"   : "✖",
-            \
-            \ "Dirty"     : "✹",
-            \ "Clean"     : "✚",
-            \
-            \ 'Ignored'   : '⍉',
-            \ "Unknown"   : "⍰"
-            \ }
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+      \ 'Modified'  :'*',
+      \ 'Staged'    :'+',
+      \ 'Untracked' :'?',
+      \ 'Renamed'   :'R',
+      \ 'Unmerged'  :'!',
+      \ 'Deleted'   :'-',
+      \ 'Dirty'     :'*',
+      \
+      \ 'Ignored'   :'I',
+      \ 'Clean'     :'C',
+      \ 'Unknown'   :'U'
+      \ }
 
 " ---------------------------------------------------------------------------
 
