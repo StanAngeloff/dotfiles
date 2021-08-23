@@ -634,6 +634,8 @@ Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 
+Plug 'rajasegar/vim-astro', { 'branch': 'main' }
+
 function! JavaScriptSyntaxOverride()
   hi! link jsxTag htmlTag
   hi! link jsxTagName htmlTagName
