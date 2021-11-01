@@ -935,7 +935,9 @@ Plug 'GutenYe/json5.vim', { 'for': ['json5'] }
 let g:vim_json_warnings=1
 let g:vim_json_syntax_conceal=0
 
-autocmd FileType json setlocal foldmethod=syntax
+autocmd BufRead,BufNewFile {totem.config.json} set ft=json5
+
+autocmd FileType json,totem.config.json setlocal foldmethod=syntax
 
 " ---------------------------------------------------------------------------
 
