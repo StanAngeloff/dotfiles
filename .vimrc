@@ -739,23 +739,23 @@ autocmd FileType xml setlocal foldmethod=syntax
 autocmd FileType nerdtree setlocal nolist
 
 " ---------------------------------------------------------------------------
-
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-      \ 'Modified'  :'*',
-      \ 'Staged'    :'+',
-      \ 'Untracked' :'?',
-      \ 'Renamed'   :'R',
-      \ 'Unmerged'  :'!',
-      \ 'Deleted'   :'-',
-      \ 'Dirty'     :'*',
-      \
-      \ 'Ignored'   :'I',
-      \ 'Clean'     :'C',
-      \ 'Unknown'   :'U'
-      \ }
-
+"
+"Plug 'Xuyuanp/nerdtree-git-plugin'
+"
+"let g:NERDTreeGitStatusIndicatorMapCustom = {
+"      \ 'Modified'  :'*',
+"      \ 'Staged'    :'+',
+"      \ 'Untracked' :'?',
+"      \ 'Renamed'   :'R',
+"      \ 'Unmerged'  :'!',
+"      \ 'Deleted'   :'-',
+"      \ 'Dirty'     :'*',
+"      \
+"      \ 'Ignored'   :'I',
+"      \ 'Clean'     :'C',
+"      \ 'Unknown'   :'U'
+"      \ }
+"
 " ---------------------------------------------------------------------------
 
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
