@@ -1001,6 +1001,7 @@ let g:gitgutter_map_keys = 0
 
 nmap <leader>hp <Plug>(GitGutterPreviewHunk)
 nmap <leader>hs <Plug>(GitGutterStageHunk)
+vmap <leader>hs <Plug>(GitGutterStageHunk)
 nmap <leader>hu <Plug>(GitGutterUndoHunk)
 
 nmap [c <Plug>(GitGutterPrevHunk)
@@ -1136,6 +1137,8 @@ Plug 'jparise/vim-graphql'
 " ---------------------------------------------------------------------------
 
 Plug 'cespare/vim-toml'
+
+" ---------------------------------------------------------------------------
 
 Plug 'neovim/nvim-lspconfig'
 
