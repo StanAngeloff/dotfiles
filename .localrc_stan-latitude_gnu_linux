@@ -15,8 +15,9 @@ alias https='https --verify=no'
 
 alias ee='eval "$(make env)"'
 
-alias npm='envchain gh.registry npm'
-alias npx='envchain gh.registry npx'
+## This was a bad idea…
+#alias npm='envchain gh.registry npm'
+#alias npx='envchain gh.registry npx'
 
 # Tell Git how to complete complex aliases.
 #
