@@ -940,7 +940,7 @@ let g:vim_json_syntax_conceal=0
 
 autocmd BufRead,BufNewFile {totem.config.json} set ft=json5
 
-autocmd FileType json,totem.config.json setlocal foldmethod=syntax
+autocmd FileType json,totem.config.json setlocal foldlevel=9 foldmethod=syntax
 
 " ---------------------------------------------------------------------------
 
