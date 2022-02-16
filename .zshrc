@@ -162,6 +162,9 @@ setopt pushd_ignore_dups
 
 setopt long_list_jobs
 
+# https://zsh.sourceforge.io/Intro/intro_16.html#IDX223
+setopt interactivecomments
+
 # See http://stackoverflow.com/a/1438523
 # Stop on '/' character when deleting words using ^H.
 autoload -U select-word-style
