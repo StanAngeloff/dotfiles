@@ -39,13 +39,14 @@ export PATH="${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools"
 ###
 ### DO NOT EDIT BY HAND, YOUR CHANGES WILL BE LOST!
 ###
-alias composer='/usr/bin/php8.0 /usr/local/bin/composer'
+alias composer='/usr/bin/php8.1 /usr/local/bin/composer'
 alias composer5.6='/usr/bin/php5.6 /usr/local/bin/composer'
 alias composer7.1='/usr/bin/php7.1 /usr/local/bin/composer'
 alias composer7.2='/usr/bin/php7.2 /usr/local/bin/composer'
 alias composer7.3='/usr/bin/php7.3 /usr/local/bin/composer'
 alias composer7.4='/usr/bin/php7.4 /usr/local/bin/composer'
 alias composer8.0='/usr/bin/php8.0 /usr/local/bin/composer'
+alias composer8.1='/usr/bin/php8.1 /usr/local/bin/composer'
 ### PHP COMPOSER END AUTOMATICALLY GENERATED
 
 ### RUST BEGIN AUTOMATICALLY GENERATED
