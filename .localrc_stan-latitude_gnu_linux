@@ -11,6 +11,7 @@ alias vimdiff='nvim -d'
 alias aws='envchain aws aws'
 
 alias http='http --verify=no'
+alias https='https --verify=no'
 
 alias ee='eval "$(make env)"'
 
