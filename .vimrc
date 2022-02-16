@@ -231,10 +231,13 @@ vnoremap <Leader>p "+p
 vnoremap <Leader>P "+P
 
 " Frantic <C-S> are now hectic <Return>s
-nnoremap <Return> :w<CR>
-
-" vnoremap <Space> :
-vnoremap <Return> :<C-U>w<CR>gv
+if exists('g:vscode')
+  nnoremap <Return> :Write<CR>
+  vnoremap <Return> :<C-U>Write<CR>gv
+else
+  nnoremap <Return> :w<CR>
+  vnoremap <Return> :<C-U>w<CR>gv
+endif
 
 " Don't jump on search.
 nnoremap * mZ*`Z
@@ -1152,7 +1155,9 @@ endif
 
 call plug#end()
 
-colorscheme vim-zend55
+if ! exists('g:vscode')
+  colorscheme vim-zend55
+endif
 
 " See https://github.com/kovidgoyal/kitty/issues/108#issuecomment-320492772
 "
