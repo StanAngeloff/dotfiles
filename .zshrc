@@ -291,12 +291,12 @@ fi
 
 # }}}1
 
-if [[ -d "${HOME}/.rbenv/bin" ]]; then
-    export PATH="${HOME}/.rbenv/bin:${PATH}"
-
-    # Add rbenv to shell for shims and auto-completion.
-    which rbenv &>/dev/null && eval "$( rbenv init - )"
-fi
+#if [[ -d "${HOME}/.rbenv/bin" ]]; then
+#    export PATH="${HOME}/.rbenv/bin:${PATH}"
+#
+#    # Add rbenv to shell for shims and auto-completion.
+#    which rbenv &>/dev/null && eval "$( rbenv init - )"
+#fi
 
 # jump by @gsamokovarov needs to be integrated with the shell.
 which jump &>/dev/null && eval "$(jump shell --bind=z)"
