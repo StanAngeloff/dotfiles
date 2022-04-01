@@ -166,7 +166,7 @@ bind stash  !   ?git stash drop %(stash)
 bind refs   C   ?git checkout %(branch)
 bind refs   !   ?git branch -D %(branch)
 # See https://github.com/jonas/tig/issues/199#issuecomment-36841759
-bind status P !git push origin
+bind status P !git push
 
 bind status A   !git commit --amend
 bind status T   @trash %(file)
