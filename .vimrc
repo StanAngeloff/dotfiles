@@ -124,7 +124,7 @@ set signcolumn=auto:2          " Allow up to two signs per line.
 
 set nolist
 set listchars=tab:→\ ,eol:¬,extends:❯,precedes:❮,trail:␣  " Display a placeholder character for tabs and newlines.
-set showbreak=↪
+set showbreak=┅
 
 set display+=uhex
 
