@@ -3,7 +3,7 @@
 	url = https://github.com/majutsushi/urxvt-font-size.git
 [submodule ".urxvt/ext/perls"]
 	path = .urxvt/ext/perls
-	url = git://github.com/muennich/urxvt-perls.git
+	url = https://github.com/muennich/urxvt-perls.git
 [submodule ".zsh/completions"]
 	path = .zsh/completions
-	url = git://github.com/zsh-users/zsh-completions.git
+	url = https://github.com/zsh-users/zsh-completions.git
