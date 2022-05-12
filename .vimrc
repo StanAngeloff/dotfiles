@@ -366,7 +366,8 @@ nnoremap <silent> <F4> :setlocal list! list?<CR>
 
 " Show the stack of syntax highlighting classes affecting whatever is under the cursor.
 function! SynStack()
-  echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), " > ")
+  execute "normal! :TSHighlightCapturesUnderCursor\<CR>"
+  "echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), " > ")
 endfunc
 
 nnoremap <F7> :call SynStack()<CR>
@@ -1135,7 +1136,7 @@ Plug 'machakann/vim-swap'
 
 " ---------------------------------------------------------------------------
 
-Plug 'ap/vim-css-color'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " ---------------------------------------------------------------------------
 
@@ -1148,6 +1149,17 @@ Plug 'cespare/vim-toml'
 " ---------------------------------------------------------------------------
 
 Plug 'neovim/nvim-lspconfig'
+
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'tami5/lspsaga.nvim'
+"Plug 'folke/lsp-colors.nvim'
+
+nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
+
+" ---------------------------------------------------------------------------
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 
 " ---------------------------------------------------------------------------
 
@@ -1181,43 +1193,110 @@ if has('autocmd')
 endif
 
 lua <<EOF
-local nvim_lsp = require('lspconfig')
+local lsp_installer = require("nvim-lsp-installer")
 
-nvim_lsp.tsserver.setup{}
+-- Register a handler that will be called for each installed server when it's ready
+-- (i.e. when installation is finished or if the server is already installed).
+lsp_installer.on_server_ready(function(server)
+  local opts = {}
 
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  -- (optional) Customize the options passed to the server
+  -- if server.name == "tsserver" then
+  --   opts.root_dir = function() ... end
+  -- end
 
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- This setup() function will take the provided server configuration and decorate it with the necessary properties
+  -- before passing it onwards to lspconfig.
+  -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+  server:setup(opts)
+end)
+EOF
 
-  local opts = { noremap = true, silent = true }
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {
+    "bash",
+    "css",
+    "dockerfile",
+    "graphql",
+    "html",
+    "javascript",
+    "jsdoc",
+    "json",
+    "json5",
+    "jsonc",
+    "lua",
+    "make",
+    "markdown",
+    "php",
+    -- "phpdoc",
+    "tsx",
+    "typescript",
+    "vim",
+  },
+  sync_install = false,
+  ignore_install = { },
 
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  -- buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  -- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  -- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  -- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-end
+  highlight = {
+    enable = true,
+    disable = {
+      "css",
+    },
+    additional_vim_regex_highlighting = false,
+  },
 
-local servers = { 'tsserver' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+
+  indent = {
+    enable = true
   }
-end
+}
+
+-- local nvim_lsp = require('lspconfig')
+-- 
+-- nvim_lsp.tsserver.setup{}
+-- 
+-- local on_attach = function(client, bufnr)
+--   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+--   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+-- 
+--   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+-- 
+--   local opts = { noremap = true, silent = true }
+-- 
+--   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+--   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+--   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+--   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+--   -- buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+--   -- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+--   -- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+--   -- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+--   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+--   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+--   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+--   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+--   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+--   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+--   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+--   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+--   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+-- end
+-- 
+-- local servers = { 'tsserver' }
+-- for _, lsp in ipairs(servers) do
+--   nvim_lsp[lsp].setup {
+--     on_attach = on_attach,
+--   }
+-- end
 EOF
 
 " Cheatsheet
