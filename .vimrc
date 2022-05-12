@@ -45,7 +45,7 @@ set fileformats=unix,mac,dos
 set history=1024
 set undolevels=2048
 
-set maxmempattern=10240
+set maxmempattern=81920
 
 set hidden     " Don't dispose buffers, hide them.
 set ruler      " Show the cursor position all the time.
