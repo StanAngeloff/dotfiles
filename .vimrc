@@ -107,7 +107,7 @@ set wildmenu                   " Show possible matches when <Tab> is pressed.
 set wildmode=list:longest,full " Include possible matches from these groups.
 set novisualbell               " Disable annoying sounds and use visual feedback instead.
 set noerrorbells               " Disable more annoying noise.
-set laststatus=2               " Always display a status line.
+set laststatus=3               " Always display a status line.
 set formatoptions=qrn1lo       " Format comments, numbered-lists, one-letter words.
 set shortmess=aoOtTAI          " Keep UI notices to a minimum.
 set nojoinspaces               " Don't be clever when joining lines.
