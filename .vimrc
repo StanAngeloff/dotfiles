@@ -531,6 +531,28 @@ function! s:OpenAllFromList(fromList)
     silent exe 'tabprevious' . len(files)
 endfunction
 
+function! HighlightSearchTerms()
+  let l:pairs = split(@/, '\\|\||')
+
+  highlight! Highlight1 guibg=#ff527b guifg=#ffffff
+  highlight! Highlight2 guibg=#6bb805 guifg=#ffffff
+  highlight! Highlight3 guibg=#00c1ff guifg=#ffffff
+
+  call clearmatches()
+  let l:index = 1
+  for l:pair in l:pairs
+    call matchadd('Highlight' . l:index, '\c' . l:pair, 10, 100 + l:index)
+    let l:index = l:index + 1
+  endfor
+endfunction
+
+nnoremap <Leader>s :call HighlightSearchTerms()<CR>
+
+" XML folding via syntax
+" See http://www.jroller.com/lmchung/entry/xml_folding_with_vim
+let g:xml_syntax_folding=1
+autocmd FileType xml setlocal foldmethod=syntax
+
 " vim-plug: Minimalist Vim Plugin Manager.
 call plug#begin('~/.vim/plugged')
 
@@ -669,7 +691,7 @@ let NERDTreeChDirMode=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeWinSize=48
-let NERDTreeIgnore=['\~$', '\.pyc$', '^\.sass-cache$', '^node_modules$', '^\.bundle$', '^\.vagrant$']
+let NERDTreeIgnore=['\~$', '\.pyc$', '^node_modules$']
 let NERDTreeMapJumpNextSibling=''
 let NERDTreeMapJumpPrevSibling=''
 let NERDTreeShowHidden=1
@@ -718,33 +740,28 @@ endfunction
 nnoremap <expr> / FastFingersSearch('mm/')
 nnoremap <expr> ? FastFingersSearch('mm?')
 
-function! HighlightSearchTerms()
-  let l:pairs = split(@/, '\\|\||')
-
-  highlight! Highlight1 guibg=#ff527b guifg=#ffffff
-  highlight! Highlight2 guibg=#6bb805 guifg=#ffffff
-  highlight! Highlight3 guibg=#00c1ff guifg=#ffffff
-
-  call clearmatches()
-  let l:index = 1
-  for l:pair in l:pairs
-    call matchadd('Highlight' . l:index, '\c' . l:pair, 10, 100 + l:index)
-    let l:index = l:index + 1
-  endfor
-endfunction
-
-nnoremap <Leader>s :call HighlightSearchTerms()<CR>
-
-" XML folding via syntax
-" See http://www.jroller.com/lmchung/entry/xml_folding_with_vim
-let g:xml_syntax_folding=1
-autocmd FileType xml setlocal foldmethod=syntax
-
 autocmd FileType nerdtree setlocal nolist
+      \ | syntax match hideBracketsInNerdTreeL "\]" contained containedin=NERDTreeFlags
+      \ | syntax match hideBracketsInNerdTreeR "\[" contained containedin=NERDTreeFlags
+      \ | hi! hideBracketsInNerdTreeL guifg=#000000
+      \ | hi! hideBracketsInNerdTreeR guifg=#000000
+      \ | hi! def link NERDTreeGitStatusStaged String
+      \ | hi! def link NERDTreeGitStatusDirty PreProc
+
+        " ['Unmerged',  'Function']
+        " ['Modified',  'Special']
+        " ['Renamed',   'Title']
+        " ['Unmerged',  'Label']
+        " ['Untracked', 'Comment']
+        " ['Deleted',   'Operator']
+        " ['Ignored',   'SpecialKey']
+        " ['Clean',     'Method']
 
 " ---------------------------------------------------------------------------
 "
 "Plug 'Xuyuanp/nerdtree-git-plugin'
+"
+""let g:NERDTreeGitStatusConcealBrackets = 1
 "
 "let g:NERDTreeGitStatusIndicatorMapCustom = {
 "      \ 'Modified'  :'*',
@@ -760,6 +777,59 @@ autocmd FileType nerdtree setlocal nolist
 "      \ 'Unknown'   :'U'
 "      \ }
 "
+" ---------------------------------------------------------------------------
+
+Plug 'jistr/vim-nerdtree-tabs'
+
+let g:nerdtree_tabs_open_on_new_tab=0
+let g:nerdtree_tabs_focus_on_files=1
+
+function! CloseNERDTreeInTab(i)
+  let l:me = tabpagenr()
+  let l:previous_ei = &ei
+  set ei=all
+
+  exec 'tabnext ' . a:i
+  if g:NERDTree.IsOpen()
+    call g:NERDTree.Close()
+  endif
+  exec 'tabnext ' . l:me
+
+  let &ei = l:previous_ei
+endfunction
+
+function! ToggleNERDTree()
+  let l:me = tabpagenr()
+  for i in range(1, tabpagenr('$'))
+    if i != l:me
+      call CloseNERDTreeInTab(i)
+    endif
+  endfor
+
+  " If NERDTree is visible and inactive in the current tab, focus.
+  if (g:NERDTree.ExistsForTab() && g:NERDTree.GetWinNum() != -1) && ! g:NERDTree.ExistsForBuf()
+    execute 'silent! NERDTreeFocus'
+  else
+    execute 'silent! NERDTreeMirrorToggle'
+  endif
+endfunction
+
+nnoremap <silent> <Tab> :call ToggleNERDTree()<CR>
+
+" Make sure a NERDTree instance is mirrored for all tabs.
+" This is needed as if the buffer with the only NERDTree instance is closed,
+" the state is reset for the next mirror.
+if has('autocmd')
+
+  " Silently open and immediately close a NERDTree.
+  au TabEnter * if !exists('t:hasNERDTree')
+          \ | let t:hasNERDTree=1
+          \ | execute 'silent! NERDTreeMirrorOpen'
+          \ | execute 'silent! NERDTreeMirrorToggle'
+        \ | endif
+
+endif
+
 " ---------------------------------------------------------------------------
 
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
@@ -942,59 +1012,6 @@ let g:vim_json_syntax_conceal=0
 autocmd BufRead,BufNewFile {totem.config.json} set ft=json5
 
 "autocmd FileType json,totem.config.json setlocal foldlevel=9 foldmethod=syntax
-
-" ---------------------------------------------------------------------------
-
-Plug 'jistr/vim-nerdtree-tabs'
-
-let g:nerdtree_tabs_open_on_new_tab=0
-let g:nerdtree_tabs_focus_on_files=1
-
-function! CloseNERDTreeInTab(i)
-  let l:me = tabpagenr()
-  let l:previous_ei = &ei
-  set ei=all
-
-  exec 'tabnext ' . a:i
-  if g:NERDTree.IsOpen()
-    call g:NERDTree.Close()
-  endif
-  exec 'tabnext ' . l:me
-
-  let &ei = l:previous_ei
-endfunction
-
-function! ToggleNERDTree()
-  let l:me = tabpagenr()
-  for i in range(1, tabpagenr('$'))
-    if i != l:me
-      call CloseNERDTreeInTab(i)
-    endif
-  endfor
-
-  " If NERDTree is visible and inactive in the current tab, focus.
-  if (g:NERDTree.ExistsForTab() && g:NERDTree.GetWinNum() != -1) && ! g:NERDTree.ExistsForBuf()
-    execute 'silent! NERDTreeFocus'
-  else
-    execute 'silent! NERDTreeMirrorToggle'
-  endif
-endfunction
-
-nnoremap <silent> <Tab> :call ToggleNERDTree()<CR>
-
-" Make sure a NERDTree instance is mirrored for all tabs.
-" This is needed as if the buffer with the only NERDTree instance is closed,
-" the state is reset for the next mirror.
-if has('autocmd')
-
-  " Silently open and immediately close a NERDTree.
-  au TabEnter * if !exists('t:hasNERDTree')
-          \ | let t:hasNERDTree=1
-          \ | execute 'silent! NERDTreeMirrorOpen'
-          \ | execute 'silent! NERDTreeMirrorToggle'
-        \ | endif
-
-endif
 
 " ---------------------------------------------------------------------------
 
@@ -1210,9 +1227,7 @@ lsp_installer.on_server_ready(function(server)
   -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
   server:setup(opts)
 end)
-EOF
 
-lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
     "bash",
@@ -1259,44 +1274,6 @@ require'nvim-treesitter.configs'.setup {
     enable = true
   }
 }
-
--- local nvim_lsp = require('lspconfig')
--- 
--- nvim_lsp.tsserver.setup{}
--- 
--- local on_attach = function(client, bufnr)
---   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
---   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
--- 
---   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
--- 
---   local opts = { noremap = true, silent = true }
--- 
---   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
---   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
---   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
---   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
---   -- buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
---   -- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
---   -- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
---   -- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
---   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
---   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
---   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
---   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
---   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
---   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
---   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
---   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
---   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
--- end
--- 
--- local servers = { 'tsserver' }
--- for _, lsp in ipairs(servers) do
---   nvim_lsp[lsp].setup {
---     on_attach = on_attach,
---   }
--- end
 EOF
 
 " Cheatsheet
