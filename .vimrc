@@ -1155,6 +1155,8 @@ Plug 'machakann/vim-swap'
 
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
+let g:Hexokinase_highlighters = ['backgroundfull']
+
 " ---------------------------------------------------------------------------
 
 Plug 'jparise/vim-graphql'
