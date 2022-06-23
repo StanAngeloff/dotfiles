@@ -105,8 +105,8 @@ set diff-highlight      = true      # String (or bool): Path to diff-highlight s
 #set mailmap            = yes       # Use .mailmap to show canonical name and email address
 
 # Misc
-set refresh-mode        = auto      # Enum: manual, auto, after-command, periodic
-set refresh-interval        = 5        # Interval in seconds between refreshes
+set refresh-mode        = periodic      # Enum: manual, auto, after-command, periodic
+set refresh-interval        = 2        # Interval in seconds between refreshes
 set ignore-case         = smart-case        # Enum: no, yes, smart-case
                         # Ignore case when searching? Smart-case option will
 set wrap-search         = yes       # Wrap around to top/bottom of view when searching
