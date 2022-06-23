@@ -1175,6 +1175,18 @@ Plug 'tami5/lspsaga.nvim'
 
 nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
 
+let g:coq_settings = {
+      \ 'auto_start': 'shut-up',
+      \ 'clients.snippets.warn': [],
+      \ 'display.preview.border': 'single',
+      \ 'keymap.bigger_preview': '',
+      \ }
+
+Plug 'ms-jpq/coq_nvim', { 'branch': 'coq' }
+
+Plug 'kevinhwang91/promise-async'
+Plug 'kevinhwang91/nvim-ufo'
+
 " ---------------------------------------------------------------------------
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -1276,6 +1288,18 @@ require'nvim-treesitter.configs'.setup {
     enable = true
   }
 }
+
+-- vim.wo.foldcolumn = '1'
+-- vim.wo.foldlevel = 99
+-- vim.wo.foldenable = true
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
+
+require'ufo'.setup()
 EOF
 
 " Cheatsheet
