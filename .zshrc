@@ -294,6 +294,9 @@ fi
 if [[ -d "${HOME}/bin" ]]; then
   export PATH="${HOME}/bin:${PATH}"
 fi
+if [[ -d "${HOME}/.local/bin" ]]; then
+  export PATH="${HOME}/.local/bin:${PATH}"
+fi
 
 # jump by @gsamokovarov needs to be integrated with the shell.
 which jump &>/dev/null && eval "$(jump shell --bind=z)"
