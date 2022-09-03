@@ -2,3 +2,4 @@
 .vim/init.vim
 .vim/plugged/
 .zsh/history
+.zsh/plugins

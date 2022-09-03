@@ -31,6 +31,8 @@ function _git_df() {
   _git_log
 }
 
+export TESSDATA_PREFIX="${HOME}/.local/share/tesseract-ocr/4.00/tessdata"
+
 ### ANDROID STUDIO BEGIN AUTOMATICALLY GENERATED
 ###
 ### DO NOT EDIT BY HAND, YOUR CHANGES WILL BE LOST!
@@ -69,3 +71,16 @@ export PATH="${PATH}:${CARGO_HOME}/bin"
 export WASMTIME_HOME="${HOME}/.wasmtime"
 export PATH="${PATH}:${WASMTIME_HOME}/bin"
 ### WASMTIME END AUTOMATICALLY GENERATED
+
+function zvm_config() {
+  ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BEAM
+  ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
+  ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_UNDERLINE
+}
+
+### ZSH PLUG-IN zsh-vi-mode BEGIN AUTOMATICALLY GENERATED
+###
+### DO NOT EDIT BY HAND, YOUR CHANGES WILL BE LOST!
+###
+#source "/home/stan/.zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+### ZSH PLUG-IN zsh-vi-mode END AUTOMATICALLY GENERATED
