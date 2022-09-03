@@ -17,6 +17,8 @@ alias aws='envchain aws aws'
 alias http='http --verify=no'
 alias https='https --verify=no'
 
+alias code='code --enable-features=UseOzonePlatform --ozone-platform=wayland'
+
 alias ee='eval "$(make env)"'
 
 ## This was a bad idea…
