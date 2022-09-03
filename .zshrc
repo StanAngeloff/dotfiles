@@ -253,10 +253,6 @@ unset __script
 # Use a separate file to configure command aliases.
 [[ -s "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
-# Source machine-specific local configuration.
-LOCALRC=$( echo ".localrc_`uname -n`_`uname -o 2>/dev/null || echo Darwin`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
-[ -s "$HOME/$LOCALRC" ] && source "$HOME/$LOCALRC"
-
 # See https://gpgtools.tenderapp.com/kb/faq/enter-passphrase-with-pinentry-in-terminal-via-ssh-connection
 #
 export GPG_TTY=$(tty)
@@ -303,3 +299,7 @@ if [[ -d "$HOME"/bin/git-subrepo ]]; then
   source "$HOME"/bin/git-subrepo/.rc
   fpath=( "$HOME"/bin/git-subrepo/share/zsh-completion $fpath )
 fi
+
+# Source machine-specific local configuration.
+LOCALRC=$( echo ".localrc_`uname -n`_`uname -o 2>/dev/null || echo Darwin`" | tr '[A-Z]' '[a-z]' | tr '/' '_' )
+[ -s "$HOME/$LOCALRC" ] && source "$HOME/$LOCALRC"
