@@ -701,7 +701,7 @@ let NERDTreeMapHelp = 'H'
 " Don't ask if buffers should be deleted on rename.
 let NERDTreeAutoDeleteBuffer=1
 
-let g:NERDTreeDirArrowExpandable = '►'
+let g:NERDTreeDirArrowExpandable = '▶'
 let g:NERDTreeDirArrowCollapsible = '▼'
 
 " Be safe!
@@ -740,43 +740,41 @@ endfunction
 nnoremap <expr> / FastFingersSearch('mm/')
 nnoremap <expr> ? FastFingersSearch('mm?')
 
-autocmd FileType nerdtree setlocal nolist
-      \ | syntax match hideBracketsInNerdTreeL "\]" contained containedin=NERDTreeFlags
-      \ | syntax match hideBracketsInNerdTreeR "\[" contained containedin=NERDTreeFlags
-      \ | hi! hideBracketsInNerdTreeL guifg=#000000
-      \ | hi! hideBracketsInNerdTreeR guifg=#000000
-      \ | hi! def link NERDTreeGitStatusStaged String
-      \ | hi! def link NERDTreeGitStatusDirty PreProc
-
-        " ['Unmerged',  'Function']
-        " ['Modified',  'Special']
-        " ['Renamed',   'Title']
-        " ['Unmerged',  'Label']
-        " ['Untracked', 'Comment']
-        " ['Deleted',   'Operator']
-        " ['Ignored',   'SpecialKey']
-        " ['Clean',     'Method']
-
 " ---------------------------------------------------------------------------
-"
-"Plug 'Xuyuanp/nerdtree-git-plugin'
-"
-""let g:NERDTreeGitStatusConcealBrackets = 1
-"
-"let g:NERDTreeGitStatusIndicatorMapCustom = {
-"      \ 'Modified'  :'*',
-"      \ 'Staged'    :'+',
-"      \ 'Untracked' :'?',
-"      \ 'Renamed'   :'R',
-"      \ 'Unmerged'  :'!',
-"      \ 'Deleted'   :'-',
-"      \ 'Dirty'     :'*',
-"      \
-"      \ 'Ignored'   :'I',
-"      \ 'Clean'     :'C',
-"      \ 'Unknown'   :'U'
-"      \ }
-"
+
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+let g:NERDTreeGitStatusShowClean = 1
+let g:NERDTreeGitStatusShowIgnored = 1
+let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
+
+let g:NERDTreeGitStatusConcealBrackets = 1
+
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+      \ 'Untracked' :'⁇',
+      \ 'Staged'    :'⊕',
+      \ 'Dirty'     :'•',
+      \ 'Modified'  :'•',
+      \ 'Unmerged'  :'⊜',
+      \ 'Renamed'   :'⎊',
+      \ 'Deleted'   :'⊗',
+      \
+      \ 'Clean'     :'·',
+      \ 'Ignored'   :'☒',
+      \ 'Unknown'   :'U'
+      \ }
+
+autocmd FileType nerdtree setlocal nolist
+      \ | hi NERDTreeGitStatusUntracked guifg=#666666
+      \ | hi NERDTreeGitStatusStaged guifg=#00c400
+      \ | hi NERDTreeGitStatusModified guifg=#aaaaaa
+      \ | hi NERDTreeGitStatusUnmerged guifg=#ffcc00
+      \ | hi NERDTreeGitStatusRenamed guifg=#ff0000
+      \ | hi NERDTreeGitStatusDeleted guifg=#d30000
+      \ | hi NERDTreeGitStatusIgnored guifg=#8800ff
+      \ | hi NERDTreeGitStatusClean guifg=#333333
+      \ | hi! def link NERDTreeGitStatusDirty NERDTreeGitStatusModified
+
 " ---------------------------------------------------------------------------
 
 Plug 'jistr/vim-nerdtree-tabs'
