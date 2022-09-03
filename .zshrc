@@ -82,7 +82,7 @@ function _git_branch_prompt() {
   local branch=$(_git_branch)
   if [ -n "$branch" ]; then
     # See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
-    echo " %8F git⋯$branch%f"
+    echo " %8F‹ $branch›%f"
   fi
 }
 
