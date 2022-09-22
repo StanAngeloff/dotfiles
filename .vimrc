@@ -745,8 +745,8 @@ nnoremap <expr> ? FastFingersSearch('mm?')
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 let g:NERDTreeGitStatusShowClean = 1
-let g:NERDTreeGitStatusShowIgnored = 1
-let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
+"let g:NERDTreeGitStatusShowIgnored = 1
+"let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
 
 let g:NERDTreeGitStatusConcealBrackets = 1
 
@@ -766,11 +766,11 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 
 autocmd FileType nerdtree setlocal nolist
       \ | hi NERDTreeGitStatusUntracked guifg=#666666
-      \ | hi NERDTreeGitStatusStaged guifg=#00c400
-      \ | hi NERDTreeGitStatusModified guifg=#aaaaaa
-      \ | hi NERDTreeGitStatusUnmerged guifg=#ffcc00
-      \ | hi NERDTreeGitStatusRenamed guifg=#ff0000
-      \ | hi NERDTreeGitStatusDeleted guifg=#d30000
+      \ | hi NERDTreeGitStatusStaged guifg=#74ff74
+      \ | hi NERDTreeGitStatusModified guifg=#ccaa00
+      \ | hi NERDTreeGitStatusUnmerged guifg=#ff0000
+      \ | hi NERDTreeGitStatusRenamed guifg=#ffcc00
+      \ | hi NERDTreeGitStatusDeleted guifg=#ff7474
       \ | hi NERDTreeGitStatusIgnored guifg=#8800ff
       \ | hi NERDTreeGitStatusClean guifg=#333333
       \ | hi! def link NERDTreeGitStatusDirty NERDTreeGitStatusModified
