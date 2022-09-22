@@ -642,14 +642,15 @@ Plug 'juvenn/mustache.vim', { 'for': ['mustache', 'handlebars', 'hbs', 'hogan', 
 " ---------------------------------------------------------------------------
 
 Plug 'othree/html5.vim'
-Plug 'mattn/emmet-vim'
 
-let g:user_emmet_mode='iv'
-let g:user_emmet_install_global=0
-
-let g:user_emmet_leader_key=','
-
-autocmd FileType html,blade,liquid EmmetInstall
+"Plug 'mattn/emmet-vim'
+"
+"let g:user_emmet_mode='iv'
+"let g:user_emmet_install_global=0
+"
+"let g:user_emmet_leader_key=','
+"
+"autocmd FileType html,blade,liquid EmmetInstall
 
 " ---------------------------------------------------------------------------
 
