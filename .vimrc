@@ -641,6 +641,13 @@ Plug 'juvenn/mustache.vim', { 'for': ['mustache', 'handlebars', 'hbs', 'hogan', 
 
 " ---------------------------------------------------------------------------
 
+Plug 'chrisbra/csv.vim'
+
+let g:csv_nomap_bs = 1
+let g:csv_nomap_cr = 1
+
+" ---------------------------------------------------------------------------
+
 Plug 'othree/html5.vim'
 
 "Plug 'mattn/emmet-vim'
