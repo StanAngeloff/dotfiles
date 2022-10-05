@@ -940,9 +940,35 @@ Plug 'tpope/vim-abolish'
 Plug 'vim-airline/vim-airline'        " , { 'commit': '38c9f9ca3d1960d38d4d283cf62863ba9be8a6b7' }
 Plug 'vim-airline/vim-airline-themes' " , { 'commit': '03a4c491dfa53e9d2619de8759eccd073367b0fd' }
 
-"let g:airline_theme='lucius'
-let g:airline_theme='minimalist'
-let g:airline_symbols_ascii=1
+let g:airline_theme = 'minimalist'
+"let g:airline_symbols_ascii = 1
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#show_tab_count = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#show_tabs = 1
+
+function! AirlineTablineFormattersTabnrFormat(tab_nr_type, nr)
+  let space = g:airline_symbols.space
+  let len = len(tabpagebuflist(a:nr))
+  if len > 1
+    return space . len
+  endif
+  return ''
+endfunction
+
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#tab_nr_type = 0 " Number of splits
+let g:airline#extensions#tabline#tabnr_formatter = 'AirlineTablineFormattersTabnrFormat'
+
+let g:airline#extensions#bufferline#enabled = 0
 
 "let g:airline_left_sep = "\ue0b0"
 "let g:airline_left_alt_sep = "\ue0b1"
@@ -950,10 +976,13 @@ let g:airline_symbols_ascii=1
 "let g:airline_right_alt_sep = "\ue0b3"
 
 let g:airline_symbols = {
+      \ 'spell': '🅂',
+      \ 'paste': '🄿',
+      \ 'modified': '∗',
+      \ 'ellipsis': '…',
       \ 'branch': "\ue0a0",
       \ 'linenr': "\ue0a1",
       \ 'readonly': "\ue0a2",
-      \ 'paste': 'ρ'
       \ }
 
 " Suppress deprecation warning about themes.
