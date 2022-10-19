@@ -1002,11 +1002,11 @@ Plug 'preservim/vimux'
 
 " {{{ tmux
 
-if ! exists('g:tmuxTarget')
-  let g:tmuxTarget='.2'
+if ! exists('g:tmux_target')
+  let g:tmux_target='.2'
 endif
-if ! exists('g:tmuxCommand')
-  let g:tmuxCommand='!!'
+if ! exists('g:tmux_command')
+  let g:tmux_command='!!'
 endif
 
 " Send the following key combinations on <F5> after writing the buffer to disk:
@@ -1018,7 +1018,7 @@ endif
 "     …command
 "     <Enter> - execute the command
 "
-nnoremap <silent> <F5> :w<CR>:call system('tmux send-keys -t ' . shellescape(g:tmuxTarget) . ' "q"')<CR>:sleep 100m<CR>:call system('tmux send-keys -t ' . shellescape(g:tmuxTarget) . ' "^C"')<CR>:sleep 100m<CR>:call system('tmux send-keys -Rt ' . shellescape(g:tmuxTarget) . ' "^U" "^L" ' . shellescape(g:tmuxCommand) . ' "Enter"')<CR>
+nnoremap <silent> <F5> :w<CR>:call system('tmux send-keys -t ' . shellescape(g:tmux_target) . ' "q"')<CR>:sleep 100m<CR>:call system('tmux send-keys -t ' . shellescape(g:tmux_target) . ' "^C"')<CR>:sleep 100m<CR>:call system('tmux send-keys -Rt ' . shellescape(g:tmux_target) . ' "^U" "^L" ' . shellescape(g:tmux_command) . ' "Enter"')<CR>
 imap <silent> <F5> <Esc><F5>a
 
 " }}}
