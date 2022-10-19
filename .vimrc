@@ -239,9 +239,9 @@ else
   vnoremap <Return> :<C-U>w<CR>gv
 endif
 
-" Don't jump on search.
-nnoremap * mZ*`Z
-nnoremap # mZ#`Z
+" Don't jump on search and don' add \< and \> making it possible to look for non-word matches.
+nnoremap * mZ<Plug>(visualstar-g*)`Z
+nnoremap # mZ<Plug>(visualstar-g#)`Z
 
 " IDE goodness.
 
