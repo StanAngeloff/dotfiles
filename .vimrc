@@ -1202,13 +1202,14 @@ Plug 'cespare/vim-toml'
 
 " ---------------------------------------------------------------------------
 
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+
 Plug 'neovim/nvim-lspconfig'
 
-Plug 'williamboman/nvim-lsp-installer'
-Plug 'tami5/lspsaga.nvim'
-"Plug 'folke/lsp-colors.nvim'
+Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 
-nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
+Plug 'folke/lsp-colors.nvim'
 
 let g:coq_settings = {
       \ 'auto_start': 'shut-up',
@@ -1260,24 +1261,6 @@ if has('autocmd')
 endif
 
 lua <<EOF
-local lsp_installer = require("nvim-lsp-installer")
-
--- Register a handler that will be called for each installed server when it's ready
--- (i.e. when installation is finished or if the server is already installed).
-lsp_installer.on_server_ready(function(server)
-  local opts = {}
-
-  -- (optional) Customize the options passed to the server
-  -- if server.name == "tsserver" then
-  --   opts.root_dir = function() ... end
-  -- end
-
-  -- This setup() function will take the provided server configuration and decorate it with the necessary properties
-  -- before passing it onwards to lspconfig.
-  -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-  server:setup(opts)
-end)
-
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
     "bash",
@@ -1325,17 +1308,49 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
--- vim.wo.foldcolumn = '1'
--- vim.wo.foldlevel = 99
--- vim.wo.foldenable = true
+require('mason').setup { }
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true
+require('mason-lspconfig').setup {
+  ensure_installed = { },
 }
 
-require'ufo'.setup()
+local lspconfig = require('lspconfig')
+
+-- See https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
+lspconfig.bashls.setup { }
+lspconfig.cucumber_language_server.setup { }
+lspconfig.dockerls.setup { }
+lspconfig.graphql.setup { }
+lspconfig.html.setup { }
+lspconfig.jsonls.setup { }
+lspconfig.sumneko_lua.setup { }
+lspconfig.ruby_ls.setup { }
+lspconfig.theme_check.setup {
+  root_dir = lspconfig.util.find_git_ancestor,
+}
+lspconfig.tailwindcss.setup { }
+lspconfig.tsserver.setup { }
+lspconfig.vimls.setup { }
+lspconfig.yamlls.setup { }
+
+require('lspsaga').init_lsp_saga()
+
+vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<CR>', { silent = true })
+
+-- See https://github.com/kevinhwang91/nvim-ufo#minimal-configuration
+vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+require('ufo').setup({
+  provider_selector = function(bufnr, filetype, buftype)
+    return {'treesitter', 'indent'}
+  end
+})
 EOF
 
 " Cheatsheet
