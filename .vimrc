@@ -668,7 +668,7 @@ Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 
-Plug 'rajasegar/vim-astro', { 'branch': 'main' }
+Plug 'wuelnerdotexe/vim-astro', { 'for': ['astro'] }
 
 function! JavaScriptSyntaxOverride()
   hi! link jsxTag htmlTag
