@@ -1228,6 +1228,10 @@ Plug 'kevinhwang91/nvim-ufo'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
+"---------------------------------------------------------------------------
+
+" Plug 'stonelasley/flare.nvim'
+
 " ---------------------------------------------------------------------------
 
 "if !&termguicolors
