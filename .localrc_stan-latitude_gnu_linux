@@ -8,6 +8,7 @@ alias ll='ls -halFG --color=tty'
 
 alias g='git'
 alias v='nvim -p'
+alias vim='nvim -p'
 alias t='tig status'
 
 alias vimdiff='nvim -d'
