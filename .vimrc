@@ -1230,9 +1230,9 @@ Plug 'nvim-treesitter/playground'
 
 " ---------------------------------------------------------------------------
 
-if ! &termguicolors
-    Plug 'godlygeek/csapprox'
-endif
+"if !&termguicolors
+"    Plug 'godlygeek/csapprox'
+"endif
 
 " ---------------------------------------------------------------------------
 
