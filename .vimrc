@@ -1346,21 +1346,24 @@ local on_attach = function(client, bufnr)
 end
 
 -- See https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
-lspconfig.bashls.setup { }
-lspconfig.cucumber_language_server.setup { }
-lspconfig.dockerls.setup { }
-lspconfig.graphql.setup { }
-lspconfig.html.setup { }
-lspconfig.jsonls.setup { }
-lspconfig.sumneko_lua.setup { }
-lspconfig.ruby_ls.setup { }
+lspconfig.bashls.setup { on_attach = on_attach }
+lspconfig.cssls.setup { on_attach = on_attach }
+lspconfig.cucumber_language_server.setup { on_attach = on_attach }
+lspconfig.dockerls.setup { on_attach = on_attach }
+lspconfig.graphql.setup { on_attach = on_attach }
+-- lspconfig.denols.setup { on_attach = on_attach }
+lspconfig.html.setup { on_attach = on_attach }
+lspconfig.jsonls.setup { on_attach = on_attach }
+lspconfig.sumneko_lua.setup { on_attach = on_attach }
+lspconfig.ruby_ls.setup { on_attach = on_attach }
 lspconfig.theme_check.setup {
+  on_attach = on_attach,
   root_dir = lspconfig.util.find_git_ancestor,
 }
-lspconfig.tailwindcss.setup { }
-lspconfig.tsserver.setup { }
-lspconfig.vimls.setup { }
-lspconfig.yamlls.setup { }
+lspconfig.tailwindcss.setup { on_attach = on_attach }
+lspconfig.tsserver.setup { on_attach = on_attach }
+lspconfig.vimls.setup { on_attach = on_attach }
+lspconfig.yamlls.setup { on_attach = on_attach }
 
 require('lspsaga').init_lsp_saga()
 
