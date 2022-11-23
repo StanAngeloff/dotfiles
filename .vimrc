@@ -1367,22 +1367,20 @@ lspconfig.yamlls.setup { on_attach = on_attach }
 
 require('lspsaga').init_lsp_saga()
 
-vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<CR>', { silent = true })
-
--- See https://github.com/kevinhwang91/nvim-ufo#minimal-configuration
-vim.o.foldcolumn = '1' -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-
-vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-
-require('ufo').setup({
-  provider_selector = function(bufnr, filetype, buftype)
-    return {'treesitter', 'indent'}
-  end
-})
+-- -- See https://github.com/kevinhwang91/nvim-ufo#minimal-configuration
+-- vim.o.foldcolumn = '0' -- '0' is not bad
+-- vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+-- vim.o.foldlevelstart = 99
+-- vim.o.foldenable = true
+--
+-- vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+-- vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+--
+-- require('ufo').setup({
+--   provider_selector = function(bufnr, filetype, buftype)
+--     return {'treesitter', 'indent'}
+--   end
+-- })
 EOF
 
 " Cheatsheet
