@@ -239,10 +239,6 @@ else
   vnoremap <Return> :<C-U>w<CR>gv
 endif
 
-" Don't jump on search and don' add \< and \> making it possible to look for non-word matches.
-nnoremap * mZ<Plug>(visualstar-g*)`Z
-nnoremap # mZ<Plug>(visualstar-g#)`Z
-
 " IDE goodness.
 
 " When using <C-{N,P}>, always select the {first,last} item in the pop-up menu.
@@ -927,7 +923,20 @@ autocmd FileType php
 
 " ---------------------------------------------------------------------------
 
-Plug 'thinca/vim-visualstar'
+Plug 'linjiX/vim-star'
+
+vnoremap <silent> * <Plug>(star-*)
+vnoremap <silent> # <Plug>(star-#)
+nnoremap <silent> * <Plug>(star-*)
+nnoremap <silent> # <Plug>(star-#)
+nnoremap <silent> g* <Plug>(star-g*)
+nnoremap <silent> g# <Plug>(star-g#)
+
+"Plug 'thinca/vim-visualstar'
+"
+"" Don't jump on search and don' add \< and \> making it possible to look for non-word matches.
+"nnoremap * mZ<Plug>(visualstar-g*)`Z
+"nnoremap # mZ<Plug>(visualstar-g#)`Z
 
 " ---------------------------------------------------------------------------
 
