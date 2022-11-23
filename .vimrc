@@ -416,8 +416,8 @@ if has("gui_running")
   set guifont=Inconsolata\ for\ Powerline\ 14
 endif
 
-" Preferred fold method is marker, e.g., manual.
-set foldmethod=marker
+set foldmethod=indent
+set foldlevelstart=99
 
 " View settings to preserve for buffers.
 set viewdir=$HOME/.vim/view
