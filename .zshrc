@@ -266,7 +266,7 @@ if [[ -f ~/.fzf.zsh ]]; then
     source ~/.fzf.zsh
 
     export FZF_DEFAULT_COMMAND='rg --files'
-    export FZF_DEFAULT_OPTS="--color=bw --layout=reverse --inline-info --bind ctrl-f:page-down,ctrl-b:page-up,ctrl-d:half-page-down,ctrl-u:half-page-up"
+    export FZF_DEFAULT_OPTS="--color=bw --layout=reverse --info=inline --no-separator --prompt='→ ' --marker='×' --pointer='▶' --ellipsis='…' --bind 'ctrl-f:page-down,ctrl-b:page-up,ctrl-d:half-page-down,ctrl-u:half-page-up' --color='prompt:244,pointer:244,marker:201'"
 fi
 
 # # bat {{{1
