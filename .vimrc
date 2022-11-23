@@ -1211,17 +1211,17 @@ Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 
 Plug 'folke/lsp-colors.nvim'
 
-let g:coq_settings = {
-      \ 'auto_start': 'shut-up',
-      \ 'clients.snippets.warn': [],
-      \ 'display.preview.border': 'single',
-      \ 'keymap.bigger_preview': '',
-      \ }
-
-Plug 'ms-jpq/coq_nvim', { 'branch': 'coq' }
+"let g:coq_settings = {
+"      \ 'auto_start': 'shut-up',
+"      \ 'clients.snippets.warn': [],
+"      \ 'display.preview.border': 'single',
+"      \ 'keymap.bigger_preview': '',
+"      \ }
+"
+"Plug 'ms-jpq/coq_nvim', { 'branch': 'coq' }
 
 Plug 'kevinhwang91/promise-async'
-Plug 'kevinhwang91/nvim-ufo'
+"Plug 'kevinhwang91/nvim-ufo'
 
 " ---------------------------------------------------------------------------
 
