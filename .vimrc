@@ -1242,6 +1242,10 @@ Plug 'nvim-treesitter/playground'
 "Plug 'stonelasley/flare.nvim'
 
 "---------------------------------------------------------------------------
+
+Plug 'cohama/lexima.vim'
+Plug 'deathlyfrantic/lexima-template-rules'
+
 " ---------------------------------------------------------------------------
 
 "if !&termguicolors
