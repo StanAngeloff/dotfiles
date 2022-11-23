@@ -1334,6 +1334,11 @@ require('mason-lspconfig').setup {
 
 local lspconfig = require('lspconfig')
 
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <C-X><C-O>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+end
+
 -- See https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
 lspconfig.bashls.setup { }
 lspconfig.cucumber_language_server.setup { }
