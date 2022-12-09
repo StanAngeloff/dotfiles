@@ -1349,6 +1349,7 @@ local on_attach = function(client, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
   vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<CR>', bufopts)
+  vim.keymap.set('n', 'L', '<cmd>Lspsaga lsp_finder<CR>', bufopts)
 end
 
 -- See https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
