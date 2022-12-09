@@ -41,7 +41,7 @@ export TESSDATA_PREFIX="${HOME}/.local/share/tesseract-ocr/4.00/tessdata"
 ### DO NOT EDIT BY HAND, YOUR CHANGES WILL BE LOST!
 ###
 export ANDROID_HOME="${ANDROID_HOME-/opt/android/sdk}"
-export PATH="${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools"
+export PATH="${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/cmdline-tools/latest/bin"
 ### ANDROID STUDIO END AUTOMATICALLY GENERATED
 
 ### PHP COMPOSER BEGIN AUTOMATICALLY GENERATED
