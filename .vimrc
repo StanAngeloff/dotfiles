@@ -944,6 +944,12 @@ Plug 'tpope/vim-abolish'
 
 " ---------------------------------------------------------------------------
 
+Plug 'arthurxavierx/vim-caser'
+
+let g:caser_prefix = 'cr'
+
+" ---------------------------------------------------------------------------
+
 " NOTE: Commit https://github.com/vim-airline/vim-airline/commit/c8c0e7d9ff05e1fb4d2076b583bca2abd8dddd2e breaks the `licius' theme badly!
 "
 Plug 'vim-airline/vim-airline'        " , { 'commit': '38c9f9ca3d1960d38d4d283cf62863ba9be8a6b7' }
