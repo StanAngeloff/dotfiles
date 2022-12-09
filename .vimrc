@@ -149,7 +149,7 @@ set wildignorecase " Case is ignored when completing file names and directories.
 
 set sessionoptions=blank,buffers,curdir,folds,tabpages,slash,unix " Session Handling.
 
-set tags=.tags,./.tags,~/.vim/tags " Tags can be stored against a project, next to a file or globally.
+set tags=~/.vim/tags " Tags can be stored against a project, next to a file or globally.
 
 set switchbuf=usetab,newtab
 
