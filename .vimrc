@@ -1252,6 +1252,19 @@ Plug 'nvim-treesitter/playground'
 Plug 'cohama/lexima.vim'
 Plug 'deathlyfrantic/lexima-template-rules'
 
+"---------------------------------------------------------------------------
+
+Plug 'lukas-reineke/indent-blankline.nvim'
+
+let g:indent_blankline_show_current_context = v:true
+let g:indent_blankline_show_current_context_start = v:false
+
+let g:indent_blankline_use_treesitter = v:true
+let g:indent_blankline_use_treesitter_scope = v:true
+
+let g:indent_blankline_char = ''
+let g:indent_blankline_context_char = '│'
+
 " ---------------------------------------------------------------------------
 
 "if !&termguicolors
@@ -1374,6 +1387,10 @@ lspconfig.yamlls.setup { on_attach = on_attach }
 
 require('lspsaga').init_lsp_saga()
 
+vim.cmd [[highlight IndentBlanklineChar guifg=#111111 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineContextChar guifg=#444444 gui=nocombine]]
+
+require("indent_blankline").setup { }
 -- -- See https://github.com/kevinhwang91/nvim-ufo#minimal-configuration
 -- vim.o.foldcolumn = '0' -- '0' is not bad
 -- vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
