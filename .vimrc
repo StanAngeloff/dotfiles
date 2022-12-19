@@ -346,7 +346,7 @@ endfunction
 nnoremap <silent> <leader>W :call StripTrailingWhitespace()<CR>
 
 " Turn off active highlighting, reset signs and plug-ins.
-nnoremap <silent> <leader><Space> :noh<CR>:sign unplace *<CR>:call clearmatches()<CR>
+nnoremap <silent> <leader><Space> :noh<CR>:sign unplace *<CR>:call clearmatches()<CR>::Gitsigns refresh<CR>
 
 " Toggle spell-checking keyboard binding.
 noremap <silent> <F1> :setlocal nospell! nospell?<CR>
@@ -1065,33 +1065,35 @@ autocmd BufRead,BufNewFile {totem.config.json} set ft=json5
 
 " ---------------------------------------------------------------------------
 
-Plug 'airblade/vim-gitgutter' " , { 'commit': 'dab840b15310f1b2bfb44d1db6150d7c38f9e27b' }
+Plug 'lewis6991/gitsigns.nvim'
 
-let g:gitgutter_max_signs = 9999
-let g:gitgutter_map_keys = 0
-
-nmap <leader>hp <Plug>(GitGutterPreviewHunk)
-nmap <leader>hs <Plug>(GitGutterStageHunk)
-vmap <leader>hs <Plug>(GitGutterStageHunk)
-nmap <leader>hu <Plug>(GitGutterUndoHunk)
-
-nmap [c <Plug>(GitGutterPrevHunk)
-nmap ]c <Plug>(GitGutterNextHunk)
-
-omap ic <Plug>(GitGutterTextObjectInnerPending)
-omap ac <Plug>(GitGutterTextObjectOuterPending)
-xmap ic <Plug>(GitGutterTextObjectInnerVisual)
-xmap ac <Plug>(GitGutterTextObjectOuterVisual)
-
-" NOTE: The options below apply to an older version of git-gutter.
+"Plug 'airblade/vim-gitgutter' " , { 'commit': 'dab840b15310f1b2bfb44d1db6150d7c38f9e27b' }
 "
-" let g:gitgutter_realtime = 0
-" let g:gitgutter_eager = 0
-
-hi def link GitGutterAdd DiffAdd
-hi def link GitGutterChange DiffChange
-hi def link GitGutterDelete DiffDelete
-hi def link GitGutterChangeDelete DiffChange
+"let g:gitgutter_max_signs = 9999
+"let g:gitgutter_map_keys = 0
+"
+"nmap <leader>hp <Plug>(GitGutterPreviewHunk)
+"nmap <leader>hs <Plug>(GitGutterStageHunk)
+"vmap <leader>hs <Plug>(GitGutterStageHunk)
+"nmap <leader>hu <Plug>(GitGutterUndoHunk)
+"
+"nmap [c <Plug>(GitGutterPrevHunk)
+"nmap ]c <Plug>(GitGutterNextHunk)
+"
+"omap ic <Plug>(GitGutterTextObjectInnerPending)
+"omap ac <Plug>(GitGutterTextObjectOuterPending)
+"xmap ic <Plug>(GitGutterTextObjectInnerVisual)
+"xmap ac <Plug>(GitGutterTextObjectOuterVisual)
+"
+"" NOTE: The options below apply to an older version of git-gutter.
+""
+"" let g:gitgutter_realtime = 0
+"" let g:gitgutter_eager = 0
+"
+"hi def link GitGutterAdd DiffAdd
+"hi def link GitGutterChange DiffChange
+"hi def link GitGutterDelete DiffDelete
+"hi def link GitGutterChangeDelete DiffChange
 
 " ---------------------------------------------------------------------------
 
@@ -1391,6 +1393,48 @@ vim.cmd [[highlight IndentBlanklineChar guifg=#111111 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineContextChar guifg=#444444 gui=nocombine]]
 
 require("indent_blankline").setup { }
+
+require('gitsigns').setup {
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Navigation
+    map('n', ']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    map('n', '[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    -- Actions
+    map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
+    map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
+    map('n', '<leader>hS', gs.stage_buffer)
+    map('n', '<leader>hu', gs.undo_stage_hunk)
+    map('n', '<leader>hR', gs.reset_buffer)
+    map('n', '<leader>hp', gs.preview_hunk)
+    map('n', '<leader>hb', function() gs.blame_line{full=true} end)
+    map('n', '<leader>tb', gs.toggle_current_line_blame)
+    map('n', '<leader>hd', gs.diffthis)
+    map('n', '<leader>hD', function() gs.diffthis('~') end)
+    map('n', '<leader>td', gs.toggle_deleted)
+
+    -- Text object
+    map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+  end
+}
+
 -- -- See https://github.com/kevinhwang91/nvim-ufo#minimal-configuration
 -- vim.o.foldcolumn = '0' -- '0' is not bad
 -- vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
