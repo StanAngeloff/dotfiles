@@ -27,10 +27,6 @@ iabbrev srting string
 iabbrev udnefined undefined
 iabbrev vlaue value
 
-" Snippets keyboard bindings.
-" Unix timestamp.
-inoremap <leader>time <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>
-
 " XML formatting through `xmllint`.
 cnoreabbrev xmlformat %!xmllint --format --encode UTF-8 -
 
@@ -44,31 +40,22 @@ augroup phpMagicFingers
   autocmd FileType php call PhpMagicFingers()
 augroup END
 
-"function! IsInSynStack(name)
-"  for name2 in map(synstack(line('.'), col('.') - 1), 'synIDattr(v:val, "name")')
-"    if a:name == name2
-"      return 1
-"    endif
-"  endfor
-"  return 0
-"endfunc
-
 " See :helpgrep Eatchar
-function! Eatchar(pat)
+function! Eatchar(pattern)
   let c = nr2char(getchar(0))
-  return (c =~ a:pat) ? '' : c
+  return (c =~ a:pattern) ? '' : c
 endfunction
 
 augroup phpAbbreviations
   autocmd!
   autocmd FileType php
-        \ :iabbrev <buffer> 2param @param|
-        \ :iabbrev <buffer> 2return @return|
-        \ :iabbrev <buffer> 2see @see|
-        \ :iabbrev <buffer> 2throws @throws|
-        \ :iabbrev <buffer> 4this $this|
-        \ :iabbrev <buffer> inheritdoc {@inheritdoc}<C-R>=Eatchar('\s')<CR>|
-        \ :iabbrev <buffer> die die('XXX: Break in ' . __FILE__ . ', line ' . __LINE__ . '.' . PHP_EOL);|
-        \ :iabbrev <buffer> E_ALL error_reporting(E_ALL); ini_set('display_errors', 'On');|
-        \ :iabbrev <buffer> throw throw new Exception('', ,time);<C-O>25h<C-R>=Eatchar('\s')<CR>
+        \   :iabbrev <buffer> 2param @param
+        \ | :iabbrev <buffer> 2return @return
+        \ | :iabbrev <buffer> 2see @see
+        \ | :iabbrev <buffer> 2throws @throws
+        \ | :iabbrev <buffer> 4this $this
+        \ | :iabbrev <buffer> inheritdoc {@inheritdoc}<C-R>=Eatchar('\s')<CR>
+        \ | :iabbrev <buffer> die die('XXX: Break in ' . __FILE__ . ', line ' . __LINE__ . '.' . PHP_EOL);
+        \ | :iabbrev <buffer> E_ALL error_reporting(E_ALL); ini_set('display_errors', 'On');
+        \ | :iabbrev <buffer> throw throw new Exception('', <C-R>=substitute(system('date +%s'), '\n', '', 'g')<CR>);<C-O>14h<C-R>=Eatchar('\s')<CR>
 augroup END
