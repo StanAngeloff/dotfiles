@@ -4,13 +4,6 @@ scriptencoding utf-8 " Help Vim use the correct character encoding for this scri
 
 filetype off
 
-" Source machine-specific local configuration.
-let s:localrc=$HOME . '/.vimrc_' . hostname()
-if filereadable(s:localrc)
-  execute 'source ' . s:localrc
-endif
-unlet s:localrc
-
 " Enable 256-colour terminal if no GUI.
 if $TERM =~ '256color'
   " Disable Background Color Erase (BCE) so that color schemes render properly when inside 256-color tmux and GNU screen.
@@ -28,13 +21,14 @@ syntax sync minlines=2048
 
 set termguicolors
 
+" Make broken SSL happy again
+let $GIT_SSL_NO_VERIFY='true'
+
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
 " See https://github.com/neovim/neovim/wiki/FAQ#how-to-change-cursor-shape-in-the-terminal
-"
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 au VimLeave * set guicursor=a:block-blinkon0
 
 " Use UTF-8 and Unix line-endings for new files.
@@ -72,10 +66,8 @@ set autoindent                 " Auto-indent new lines.
 set timeoutlen=325             " Time to wait after ESC (default causes an annoying delay).
 set ttimeoutlen=10
 
-" set clipboard+=unnamed         " Yank to clipboard.
-
 " 'i' is avoided as it can be extremely slow on large trees.
-set complete-=i
+"set complete-=i
 " Only complete the common part and display a menu if more than one choice.
 set completeopt=longest,menuone
 
@@ -95,13 +87,8 @@ set updatetime=1000
 
 set lazyredraw     " Do not redraw while running macros (much faster).
 set ttyfast        " Enable fast-terminal.
-if exists('&ttyscroll') " Neovim?
-  set ttyscroll=10 " Prefer full redraws for smaller scroll regions.
-endif
 
-if exists('&regexpengine')
-  set regexpengine=0 " Using automatic selection enables Vim to switch the engine […]
-endif
+set regexpengine=0 " Using automatic selection enables Vim to switch the engine […]
 
 set wildmenu                   " Show possible matches when <Tab> is pressed.
 set wildmode=list:longest,full " Include possible matches from these groups.
@@ -319,12 +306,6 @@ nnoremap <leader>q gqip
 " Restore last implicit selection (e.g., on paste) in VISUAL mode.
 nnoremap <leader>v g`[Vg`]o
 
-" Quick bookmarking and jumping.
-" When in NORMAL mode, 'mm' can be used to toggle a bookmark.
-" Editing can continue on a new line, etc. and then `` can be used to jump back to the original line/column.
-" The default behaviour is to jump back to the previous position which is not very intuitive when multiple jumps happen between edits.
-nnoremap `` `m
-
 " Erase trailing whitespace function and keyboard binding.
 function! StripTrailingWhitespace()
   let l:previousPosition = getpos('.')
@@ -349,16 +330,12 @@ nnoremap <silent> <F3> :setlocal wrap! wrap?<CR>
 " Toggle display of placeholder characters for tabs and newlines.
 nnoremap <silent> <F4> :setlocal list! list?<CR>
 
-" Synstack {{{
-
 " Show the stack of syntax highlighting classes affecting whatever is under the cursor.
 function! SynStack()
   execute "normal! :TSHighlightCapturesUnderCursor\<CR>"
 endfunc
 
 nnoremap <F7> :call SynStack()<CR>
-
-" }}}
 
 " Adjust the tab/shift width keyboard bindings.
 nnoremap <leader>w2 :setlocal tabstop=2<CR>:setlocal shiftwidth=2<CR>
@@ -448,13 +425,11 @@ if has('autocmd')
   " Open help windows on the right in a vertical split, credits @EvanPurkhiser.
   autocmd FileType help nnoremap <buffer> <silent> q :bwipeout<CR> |
         \ wincmd L
-
 endif
 
 " Tab completion
 
 function! BestComplete()
-
   if pumvisible()
     return "\<C-N>"
   endif
@@ -518,9 +493,6 @@ autocmd FileType xml setlocal foldmethod=syntax
 
 " vim-plug: Minimalist Vim Plugin Manager.
 call plug#begin('~/.vim/plugged')
-
-" Make broken SSL happy again
-let $GIT_SSL_NO_VERIFY='true'
 
 " ---------------------------------------------------------------------------
 
@@ -1329,5 +1301,12 @@ require('gitsigns').setup {
   end
 }
 EOF
+
+" Source machine-specific local configuration.
+let s:localrc=$HOME . '/.vimrc_' . hostname()
+if filereadable(s:localrc)
+  execute 'source ' . s:localrc
+endif
+unlet s:localrc
 
 " Fin.
