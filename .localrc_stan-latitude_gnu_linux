@@ -13,8 +13,6 @@ alias t='tig status'
 
 alias vimdiff='nvim -d'
 
-alias aws='envchain aws aws'
-
 alias http='http --verify=no'
 alias https='https --verify=no'
 
@@ -27,6 +25,7 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 ## This was a bad idea…
 #alias npm='envchain gh.registry npm'
 #alias npx='envchain gh.registry npx'
+#alias aws='envchain aws aws'
 
 # Tell Git how to complete complex aliases.
 #
