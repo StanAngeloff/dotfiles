@@ -12,14 +12,13 @@ endif
 unlet s:localrc
 
 " Enable 256-colour terminal if no GUI.
-if $TERM =~ '256color|kitty'
+if $TERM =~ '256color'
   " Disable Background Color Erase (BCE) so that color schemes render properly when inside 256-color tmux and GNU screen.
   " See also http://sunaku.github.io/vim-256color-bce.html
   let &t_ut=''
 endif
-if !has("gui_running")
-  set t_Co=256
-end
+
+set t_Co=256
 
 " Switch syntax on and select a theme.
 syntax on
@@ -91,7 +90,8 @@ set scrolloff=120  " Scroll when lots of lines from edge of screen. Bigger numbe
 set rnu            " Show the line number relative to the line with the cursor in front of each line.
 
 " This I really DO NOT LIKE being forced to use.
-set updatetime=100
+"set updatetime=100
+set updatetime=1000
 
 set lazyredraw     " Do not redraw while running macros (much faster).
 set ttyfast        " Enable fast-terminal.
@@ -100,7 +100,7 @@ if exists('&ttyscroll') " Neovim?
 endif
 
 if exists('&regexpengine')
-  set regexpengine=1 " Use the old engine which seems faster in most cases.
+  set regexpengine=0 " Using automatic selection enables Vim to switch the engine […]
 endif
 
 set wildmenu                   " Show possible matches when <Tab> is pressed.
@@ -126,7 +126,7 @@ set nolist
 set listchars=tab:→\ ,eol:↵,extends:❯,precedes:❮,trail:␣  " Display a placeholder character for tabs and newlines.
 set showbreak=┅
 
-set display+=uhex
+set display+=uhex,lastline
 
 set matchpairs+=<:> " Balance HTML tags.
 set showmatch
@@ -157,6 +157,9 @@ set shell=/bin/bash
 
 set title
 set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)
+
+" https://github.com/neovim/neovim/pull/14537
+" set diffopt+=linematch:50
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
@@ -231,13 +234,8 @@ vnoremap <Leader>p "+p
 vnoremap <Leader>P "+P
 
 " Frantic <C-S> are now hectic <Return>s
-if exists('g:vscode')
-  nnoremap <Return> :Write<CR>
-  vnoremap <Return> :<C-U>Write<CR>gv
-else
-  nnoremap <Return> :w<CR>
-  vnoremap <Return> :<C-U>w<CR>gv
-endif
+nnoremap <Return> :w<CR>
+vnoremap <Return> :<C-U>w<CR>gv
 
 " IDE goodness.
 
@@ -249,13 +247,6 @@ inoremap <expr> <C-P> pumvisible() ? '<C-P>' : '<C-P><C-R>=pumvisible() ? "\<lt>
 for s:CompleteCloseKey in ['(', ')', '[', ']', '{', '}', "'", '"', ',', '.', ':', ';', '-', '\', '<Space>']
   exe 'imap  <expr> ' . s:CompleteCloseKey . " pumvisible() ? '<C-Y>" . (s:CompleteCloseKey == "'" ? "''" : s:CompleteCloseKey)  . "' : '" . (s:CompleteCloseKey == "'" ? "''" : s:CompleteCloseKey) . "'"
 endfor
-
-" Alias <C-Space> to <C-N> in GUI/terminal.
-if has("gui_running")
-  imap <C-Space> <C-X><C-O>
-else
-  imap <Nul> <C-X><C-O>
-endif
 
 " Use omni-completion (if available) then keyword completion, if the former fails.
 inoremap <expr> <C-X><C-O> '<C-R>=exists("+omnifunc") && &omnifunc != "" ? "\<C-X>\<C-O>" : ""<CR><C-R>=pumvisible() ? "" : "\<lt>Esc>a\<lt>C-N>"<CR><C-R>=pumvisible() ? "\<lt>Down>" : ""<CR>'
@@ -363,7 +354,6 @@ nnoremap <silent> <F4> :setlocal list! list?<CR>
 " Show the stack of syntax highlighting classes affecting whatever is under the cursor.
 function! SynStack()
   execute "normal! :TSHighlightCapturesUnderCursor\<CR>"
-  "echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), " > ")
 endfunc
 
 nnoremap <F7> :call SynStack()<CR>
@@ -404,13 +394,9 @@ function! Trash(path)
   if buflisted(bufnum)
     execute 'bwipeout! ' . bufnum
   endif
-endfunction!
+endfunction
 
 command! -bar -bang Trash call Trash(fnamemodify(bufname(<q-args>), ':p'))
-
-if has("gui_running")
-  set guifont=Inconsolata\ for\ Powerline\ 14
-endif
 
 set foldmethod=indent
 set foldlevelstart=99
@@ -465,7 +451,7 @@ if has('autocmd')
 
 endif
 
-" {{{ Tab completion
+" Tab completion
 
 function! BestComplete()
 
@@ -493,8 +479,6 @@ inoremap <silent> <Tab> <C-R>=BestComplete()<CR>
 inoremap <expr> <C-J> pumvisible() ? '<C-N>' :
             \ (get(g:, 'PhpBestExpandCommentInsertLeaveOccurrence', 0) == 1 ? '<Esc>i' : '<C-O>o')
 inoremap <expr> <C-K> pumvisible() ? '<C-P>' : '<C-O>O'
-
-" }}}
 
 " See https://vimrcfu.com/snippet/143
 "
@@ -527,23 +511,6 @@ function! s:OpenAllFromList(fromList)
     silent exe 'tabprevious' . len(files)
 endfunction
 
-function! HighlightSearchTerms()
-  let l:pairs = split(@/, '\\|\||')
-
-  highlight! Highlight1 guibg=#ff527b guifg=#ffffff
-  highlight! Highlight2 guibg=#6bb805 guifg=#ffffff
-  highlight! Highlight3 guibg=#00c1ff guifg=#ffffff
-
-  call clearmatches()
-  let l:index = 1
-  for l:pair in l:pairs
-    call matchadd('Highlight' . l:index, '\c' . l:pair, 10, 100 + l:index)
-    let l:index = l:index + 1
-  endfor
-endfunction
-
-nnoremap <Leader>s :call HighlightSearchTerms()<CR>
-
 " XML folding via syntax
 " See http://www.jroller.com/lmchung/entry/xml_folding_with_vim
 let g:xml_syntax_folding=1
@@ -563,7 +530,7 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'StanAngeloff/vim-zend55'
 
-" FZF {{{1 ------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -625,7 +592,7 @@ endfunction
 vnoremap <silent> <leader>o :call FzfFilesFromVisual()<CR>
 vnoremap <silent> <leader>0 :call FzfFilesFromVisual()<CR>
 
-" }}}1 ----------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 
 Plug 'tpope/vim-sleuth'
 
@@ -646,15 +613,6 @@ let g:csv_nomap_cr = 1
 
 Plug 'othree/html5.vim'
 
-"Plug 'mattn/emmet-vim'
-"
-"let g:user_emmet_mode='iv'
-"let g:user_emmet_install_global=0
-"
-"let g:user_emmet_leader_key=','
-"
-"autocmd FileType html,blade,liquid EmmetInstall
-
 " ---------------------------------------------------------------------------
 
 Plug 'posva/vim-vue'
@@ -670,10 +628,8 @@ function! JavaScriptSyntaxOverride()
   hi! link jsxTag htmlTag
   hi! link jsxTagName htmlTagName
   hi! link jsxString htmlString
-  " hi! link jsxNameSpace Function
   hi! link jsxComment htmlComment
   hi! link jsxAttrib htmlArg
-  " hi! link jsxEscapeJs jsxEscapeJs
   hi! link jsxCloseTag htmlEndTag
   hi! link jsxCloseString htmlEndTag
 
@@ -822,14 +778,12 @@ nnoremap <silent> <Tab> :call ToggleNERDTree()<CR>
 " This is needed as if the buffer with the only NERDTree instance is closed,
 " the state is reset for the next mirror.
 if has('autocmd')
-
   " Silently open and immediately close a NERDTree.
   au TabEnter * if !exists('t:hasNERDTree')
           \ | let t:hasNERDTree=1
           \ | execute 'silent! NERDTreeMirrorOpen'
           \ | execute 'silent! NERDTreeMirrorToggle'
-        \ | endif
-
+          \ | endif
 endif
 
 " ---------------------------------------------------------------------------
@@ -932,12 +886,6 @@ nnoremap <silent> # <Plug>(star-#)
 nnoremap <silent> g* <Plug>(star-g*)
 nnoremap <silent> g# <Plug>(star-g#)
 
-"Plug 'thinca/vim-visualstar'
-"
-"" Don't jump on search and don' add \< and \> making it possible to look for non-word matches.
-"nnoremap * mZ<Plug>(visualstar-g*)`Z
-"nnoremap # mZ<Plug>(visualstar-g#)`Z
-
 " ---------------------------------------------------------------------------
 
 Plug 'tpope/vim-abolish'
@@ -950,10 +898,8 @@ let g:caser_prefix = 'cr'
 
 " ---------------------------------------------------------------------------
 
-" NOTE: Commit https://github.com/vim-airline/vim-airline/commit/c8c0e7d9ff05e1fb4d2076b583bca2abd8dddd2e breaks the `licius' theme badly!
-"
-Plug 'vim-airline/vim-airline'        " , { 'commit': '38c9f9ca3d1960d38d4d283cf62863ba9be8a6b7' }
-Plug 'vim-airline/vim-airline-themes' " , { 'commit': '03a4c491dfa53e9d2619de8759eccd073367b0fd' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 let g:airline_theme = 'minimalist'
 "let g:airline_symbols_ascii = 1
@@ -984,11 +930,6 @@ let g:airline#extensions#tabline#tab_nr_type = 0 " Number of splits
 let g:airline#extensions#tabline#tabnr_formatter = 'AirlineTablineFormattersTabnrFormat'
 
 let g:airline#extensions#bufferline#enabled = 0
-
-"let g:airline_left_sep = "\ue0b0"
-"let g:airline_left_alt_sep = "\ue0b1"
-"let g:airline_right_sep = "\ue0b2"
-"let g:airline_right_alt_sep = "\ue0b3"
 
 let g:airline_symbols = {
       \ 'spell': '🅂',
@@ -1040,18 +981,6 @@ imap <silent> <F5> <Esc><F5>a
 
 " ---------------------------------------------------------------------------
 
-"Plug 'neomake/neomake'
-"
-"let g:neomake_error_sign = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
-"let g:neomake_warning_sign = {'text': '!', 'texthl': 'NeomakeWarningSign'}
-"let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
-"let g:neomake_info_sign = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
-"
-"hi def link NeomakeErrorSign ErrorMsg
-"hi def link NeomakeWarningSign WarningMsg
-
-" ---------------------------------------------------------------------------
-
 Plug 'elzr/vim-json'
 Plug 'GutenYe/json5.vim', { 'for': ['json5'] }
 
@@ -1061,39 +990,9 @@ let g:vim_json_syntax_conceal=0
 
 autocmd BufRead,BufNewFile {totem.config.json} set ft=json5
 
-"autocmd FileType json,totem.config.json setlocal foldlevel=9 foldmethod=syntax
-
 " ---------------------------------------------------------------------------
 
 Plug 'lewis6991/gitsigns.nvim'
-
-"Plug 'airblade/vim-gitgutter' " , { 'commit': 'dab840b15310f1b2bfb44d1db6150d7c38f9e27b' }
-"
-"let g:gitgutter_max_signs = 9999
-"let g:gitgutter_map_keys = 0
-"
-"nmap <leader>hp <Plug>(GitGutterPreviewHunk)
-"nmap <leader>hs <Plug>(GitGutterStageHunk)
-"vmap <leader>hs <Plug>(GitGutterStageHunk)
-"nmap <leader>hu <Plug>(GitGutterUndoHunk)
-"
-"nmap [c <Plug>(GitGutterPrevHunk)
-"nmap ]c <Plug>(GitGutterNextHunk)
-"
-"omap ic <Plug>(GitGutterTextObjectInnerPending)
-"omap ac <Plug>(GitGutterTextObjectOuterPending)
-"xmap ic <Plug>(GitGutterTextObjectInnerVisual)
-"xmap ac <Plug>(GitGutterTextObjectOuterVisual)
-"
-"" NOTE: The options below apply to an older version of git-gutter.
-""
-"" let g:gitgutter_realtime = 0
-"" let g:gitgutter_eager = 0
-"
-"hi def link GitGutterAdd DiffAdd
-"hi def link GitGutterChange DiffChange
-"hi def link GitGutterDelete DiffDelete
-"hi def link GitGutterChangeDelete DiffChange
 
 " ---------------------------------------------------------------------------
 
@@ -1183,12 +1082,6 @@ Plug 'Absolight/vim-bind'
 
 " ---------------------------------------------------------------------------
 
-"Plug 'aperezdc/vim-template'
-"
-"let g:templates_directory = $HOME . '/.vim/templates'
-
-" ---------------------------------------------------------------------------
-
 Plug 'will133/vim-dirdiff'
 
 " ---------------------------------------------------------------------------
@@ -1228,26 +1121,13 @@ Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 
 Plug 'folke/lsp-colors.nvim'
 
-"let g:coq_settings = {
-"      \ 'auto_start': 'shut-up',
-"      \ 'clients.snippets.warn': [],
-"      \ 'display.preview.border': 'single',
-"      \ 'keymap.bigger_preview': '',
-"      \ }
-"
-"Plug 'ms-jpq/coq_nvim', { 'branch': 'coq' }
-
 Plug 'kevinhwang91/promise-async'
-"Plug 'kevinhwang91/nvim-ufo'
 
 " ---------------------------------------------------------------------------
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
-
-"---------------------------------------------------------------------------
-
-"Plug 'stonelasley/flare.nvim'
 
 "---------------------------------------------------------------------------
 
@@ -1269,23 +1149,9 @@ let g:indent_blankline_context_char = '│'
 
 " ---------------------------------------------------------------------------
 
-"if !&termguicolors
-"    Plug 'godlygeek/csapprox'
-"endif
-
-" ---------------------------------------------------------------------------
-
 call plug#end()
 
-if ! exists('g:vscode')
-  colorscheme vim-zend55
-endif
-
-" See https://github.com/kovidgoyal/kitty/issues/108#issuecomment-320492772
-"
-if (has('gui_running') || has('nvim')) && $TERM =~ 'kitty'
-  hi Normal guifg=#ffffff guibg=#000000
-endif
+colorscheme vim-zend55
 
 if has('autocmd')
   " Highlight trailing whitespace after the colour scheme has loaded.
@@ -1300,26 +1166,38 @@ if has('autocmd')
 endif
 
 lua <<EOF
+local parsers = require 'nvim-treesitter.parsers'.get_parser_configs()
+
+parsers.liquid = {
+  filetype = 'liquid',
+  install_info = {
+    url = 'https://github.com/Shopify/tree-sitter-liquid-ii.git',
+    files = { 'src/parser.c' },
+    branch = 'main',
+  },
+}
+
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
-    "bash",
-    "css",
-    "dockerfile",
-    "graphql",
-    "html",
-    "javascript",
-    "jsdoc",
-    "json",
-    "json5",
-    "jsonc",
-    "lua",
-    "make",
-    "markdown",
-    "php",
-    -- "phpdoc",
-    "tsx",
-    "typescript",
-    "vim",
+    'bash',
+    'css',
+    'dockerfile',
+    'graphql',
+    'html',
+    'javascript',
+    'jsdoc',
+    'json',
+    'json5',
+    'jsonc',
+    'liquid',
+    'lua',
+    'make',
+    'markdown',
+    'php',
+    -- 'phpdoc',
+    'tsx',
+    'typescript',
+    'vim',
   },
   sync_install = false,
   ignore_install = { },
@@ -1327,7 +1205,7 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
     disable = {
-      "css",
+      'css',
     },
     additional_vim_regex_highlighting = false,
   },
@@ -1335,17 +1213,33 @@ require'nvim-treesitter.configs'.setup {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
+      init_selection = 'gnn',
+      node_incremental = 'grn',
+      scope_incremental = 'grc',
+      node_decremental = 'grm',
     },
   },
 
   indent = {
     enable = true
-  }
+  },
+
+  textobjects = {
+    select = {
+      enable = true,
+
+      lookahead = true,
+      include_surrounding_whitespace = false,
+
+      keymaps = {
+        ['ic'] = '@comment.outer',
+      },
+    },
+  },
 }
+
+local ft_to_parser = require'nvim-treesitter.parsers'.filetype_to_parsername
+ft_to_parser.liquid = 'liquid'
 
 require('mason').setup { }
 
@@ -1434,28 +1328,6 @@ require('gitsigns').setup {
     map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end
 }
-
--- -- See https://github.com/kevinhwang91/nvim-ufo#minimal-configuration
--- vim.o.foldcolumn = '0' -- '0' is not bad
--- vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
--- vim.o.foldlevelstart = 99
--- vim.o.foldenable = true
---
--- vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
--- vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
---
--- require('ufo').setup({
---   provider_selector = function(bufnr, filetype, buftype)
---     return {'treesitter', 'indent'}
---   end
--- })
 EOF
 
-" Cheatsheet
-"
-" List of commands that I tend to forget, but need to learn:
-"
-" gi    Insert text in the same position as where Insert mode
-"       was stopped last time in the current buffer.
-"       This uses the |'^| mark. [..]
-"
+" Fin.
