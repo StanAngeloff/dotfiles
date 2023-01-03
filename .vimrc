@@ -29,7 +29,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
-au VimLeave * set guicursor=a:block-blinkon0
+autocmd VimLeave * set guicursor=a:block-blinkon0
 
 " Use UTF-8 and Unix line-endings for new files.
 set encoding=utf-8
@@ -161,8 +161,8 @@ let g:is_posix = 1
 let g:omni_sql_no_default_maps = 1
 
 if executable("rg")
-    set grepprg=rg\ --vimgrep\ --no-heading
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
+  set grepprg=rg\ --vimgrep\ --no-heading
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
 " Use a custom leader character.
@@ -393,7 +393,7 @@ filetype plugin indent on
 if has('autocmd')
   " Auto-save and load views for existing files. See 'viewoptions'.
   augroup session
-    au!
+    autocmd!
     autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile' |           mkview | endif
     autocmd BufRead      * if expand('%') != '' && &buftype !~ 'nofile' | silent! loadview | endif
   augroup END
@@ -402,24 +402,24 @@ if has('autocmd')
   autocmd VimEnter * set vb t_vb=
 
   " Recognise additional types.
-  au BufRead,BufNewFile {Gemfile,Guardfile,Rakefile,*.rake,config.ru} set ft=ruby
-  au BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
-  au BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
-  au BufRead,BufNewFile {.babelrc,.watchmanconfig} set ft=json
-  au BufRead,BufNewFile {.flowconfig} set ft=dosini
+  autocmd BufRead,BufNewFile {Gemfile,Guardfile,Rakefile,*.rake,config.ru} set ft=ruby
+  autocmd BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
+  autocmd BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
+  autocmd BufRead,BufNewFile {.babelrc,.watchmanconfig} set ft=json
+  autocmd BufRead,BufNewFile {.flowconfig} set ft=dosini
 
   " If a local .lvimrc file exists in the current working directory, source it on load (unsafe).
   " When the file is changed, update it by sourcing again.
-  au VimEnter * let s:LocalConfigurationPaths = ['.lvimrc', 'attic/.lvimrc']
+  autocmd VimEnter * let s:LocalConfigurationPaths = ['.lvimrc', 'attic/.lvimrc']
         \ | let s:LocalConfigurationBase = getcwd() . '/'
         \ | for s:LocalConfigurationFile in s:LocalConfigurationPaths
-          \ | if filereadable(s:LocalConfigurationBase . s:LocalConfigurationFile)
-            \ | echohl WarningMsg | echom 'Loading local configuration from file "' . s:LocalConfigurationFile . '".' | echohl None
-            \ | execute 'source' s:LocalConfigurationBase . s:LocalConfigurationFile
-            \ | augroup LocalConfigurationUpdate
-              \ | execute 'au! BufWritePost' s:LocalConfigurationBase . s:LocalConfigurationFile 'source %'
-            \ | augroup END
-          \ | endif
+        \ |   if filereadable(s:LocalConfigurationBase . s:LocalConfigurationFile)
+        \ |     echohl WarningMsg | echom 'Loading local configuration from file "' . s:LocalConfigurationFile . '".' | echohl None
+        \ |     execute 'source' s:LocalConfigurationBase . s:LocalConfigurationFile
+        \ |     augroup LocalConfigurationUpdate
+        \ |       execute 'autocmd! BufWritePost' s:LocalConfigurationBase . s:LocalConfigurationFile 'source %'
+        \ |     augroup END
+        \ |   endif
         \ | endfor
 
   " Open help windows on the right in a vertical split, credits @EvanPurkhiser.
@@ -452,7 +452,7 @@ endfunction
 inoremap <silent> <Tab> <C-R>=BestComplete()<CR>
 
 inoremap <expr> <C-J> pumvisible() ? '<C-N>' :
-            \ (get(g:, 'PhpBestExpandCommentInsertLeaveOccurrence', 0) == 1 ? '<Esc>i' : '<C-O>o')
+      \ (get(g:, 'PhpBestExpandCommentInsertLeaveOccurrence', 0) == 1 ? '<Esc>i' : '<C-O>o')
 inoremap <expr> <C-K> pumvisible() ? '<C-P>' : '<C-O>O'
 
 " See https://vimrcfu.com/snippet/143
@@ -461,29 +461,29 @@ command! Ltabs call OpenAllFromLocationList()
 command! Qtabs call OpenAllFromQuickfix()
 
 function! OpenAllFromLocationList()
-    call s:OpenAllFromList(getloclist(0))
+  call s:OpenAllFromList(getloclist(0))
 endfunction
 
 function! OpenAllFromQuickfix()
-    call s:OpenAllFromList(getqflist())
+  call s:OpenAllFromList(getqflist())
 endfunction
 
 function! s:OpenAllFromList(fromList)
-    let files = {}
-    for entry in a:fromList
-        let filename = bufname(entry.bufnr)
-        let files[filename] = 1
-    endfor
+  let files = {}
+  for entry in a:fromList
+    let filename = bufname(entry.bufnr)
+    let files[filename] = 1
+  endfor
 
-    if len(files) < 1
-        return
-    endif
+  if len(files) < 1
+    return
+  endif
 
-    for file in keys(files)
-        silent exe 'tabedit ' . file
-    endfor
+  for file in keys(files)
+    silent exe 'tabedit ' . file
+  endfor
 
-    silent exe 'tabprevious' . len(files)
+  silent exe 'tabprevious' . len(files)
 endfunction
 
 " XML folding via syntax
@@ -511,11 +511,11 @@ let g:fzf_layout = { 'down': 20 }
 let g:fzf_buffers_jump = 1
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_action = {
-            \ 'enter': 'tabedit',
-            \ 'ctrl-t': 'tab split',
-            \ 'ctrl-x': 'split',
-            \ 'ctrl-v': 'vsplit'
-            \ }
+      \ 'enter': 'tabedit',
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-x': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
 
 function! RgShellEscape(...)
   return join(map(deepcopy(a:000), 'shellescape(v:val)'), ' ')
@@ -751,11 +751,12 @@ nnoremap <silent> <Tab> :call ToggleNERDTree()<CR>
 " the state is reset for the next mirror.
 if has('autocmd')
   " Silently open and immediately close a NERDTree.
-  au TabEnter * if !exists('t:hasNERDTree')
-          \ | let t:hasNERDTree=1
-          \ | execute 'silent! NERDTreeMirrorOpen'
-          \ | execute 'silent! NERDTreeMirrorToggle'
-          \ | endif
+  autocmd TabEnter *
+        \   if !exists('t:hasNERDTree')
+        \ |   let t:hasNERDTree=1
+        \ |   execute 'silent! NERDTreeMirrorOpen'
+        \ |   execute 'silent! NERDTreeMirrorToggle'
+        \ | endif
 endif
 
 " ---------------------------------------------------------------------------
@@ -1002,16 +1003,16 @@ let g:committia_open_only_vim_starting = 1
 
 let g:committia_hooks = {}
 function! g:committia_hooks.edit_open(info)
-    setlocal spell
+  setlocal spell
 
-    " If no commit message, start with INSERT mode.
-    if a:info.vcs ==# 'git' && getline(1) ==# ''
-        startinsert
-    end
+  " If no commit message, start with INSERT mode.
+  if a:info.vcs ==# 'git' && getline(1) ==# ''
+    startinsert
+  end
 
-    " Scroll the diff window from INSERT mode.
-    imap <buffer><C-F> <Plug>(committia-scroll-diff-down-page)
-    imap <buffer><C-B> <Plug>(committia-scroll-diff-up-page)
+  " Scroll the diff window from INSERT mode.
+  imap <buffer><C-F> <Plug>(committia-scroll-diff-down-page)
+  imap <buffer><C-B> <Plug>(committia-scroll-diff-up-page)
 endfunction
 
 " ---------------------------------------------------------------------------
