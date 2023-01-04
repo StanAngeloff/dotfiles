@@ -20,10 +20,10 @@ URxvt.fading: 0
 URxvt.background: rgba:0000/0000/0000/fafa
 URxvt.foreground: 15
 
-URxvt.font: xft:Input:regular:pixelsize=24:antialias=true:hinting=true,xft:Noto Mono:pixelsize=24:antialias=true:hinting=true,xft:Symbola
-URxvt.boldFont: xft:Input:bold:pixelsize=24:antialias=true:hinting=true,xft:Noto Mono:pixelsize=24:antialias=true:hinting=true,xft:Symbola
-URxvt.italicFont: xft:Input:italic:pixelsize=24:antialias=true:hinting=true,xft:Noto Mono:pixelsize=24:antialias=true:hinting=true,xft:Symbola
-URxvt.boldItalicFont: xft:Input:bold:italic:pixelsize=24:antialias=true:hinting=true,xft:Noto Mono:pixelsize=24:antialias=true:hinting=true,xft:Symbola
+URxvt.font: xft:Berkeley Mono:regular:pixelsize=24:antialias=true:hinting=true,xft:Noto Mono:pixelsize=24:antialias=true:hinting=true,xft:Symbola
+URxvt.boldFont: xft:Berkeley Mono:bold:pixelsize=24:antialias=true:hinting=true,xft:Noto Mono:pixelsize=24:antialias=true:hinting=true,xft:Symbola
+URxvt.italicFont: xft:Berkeley Mono:italic:pixelsize=24:antialias=true:hinting=true,xft:Noto Mono:pixelsize=24:antialias=true:hinting=true,xft:Symbola
+URxvt.boldItalicFont: xft:Berkeley Mono:bold:italic:pixelsize=24:antialias=true:hinting=true,xft:Noto Mono:pixelsize=24:antialias=true:hinting=true,xft:Symbola
 
 URxvt.letterSpace: -1
 

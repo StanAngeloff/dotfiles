@@ -9,8 +9,8 @@
 	user = StanAngeloff
 	token = ${token}
 [gui]
-	fontui = -family \"DejaVu Sans\" -size 8 -weight bold -slant roman -underline 0 -overstrike 0
-	fontdiff = -family Inconsolata -size 13 -weight normal -slant roman -underline 0 -overstrike 0
+	fontui = -family \"IBM Plex Sans\" -size 14 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"Berkeley Mono\" -size 14 -weight normal -slant roman -underline 0 -overstrike 0
 	commitmsgwidth = 78
 	encoding = utf-8
 	diffcontext = 4
