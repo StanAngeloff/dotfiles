@@ -1,6 +1,4 @@
 .vim/autoload/plug.vim*
-.vim/init.vim
 .vim/plugged/
-.vim/tags
 .zsh/history
 .zsh/plugins
