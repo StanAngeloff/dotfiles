@@ -2,12 +2,15 @@
 	name = Stan Angeloff
 	email = stanimir@psp-webtech.co.uk
 	signingkey = stanimir@psp-webtech.co.uk
+
 [company]
 	name = PSP UK Group Ltd.
 	email = hello@psp-group.co.uk
+
 [github]
 	user = StanAngeloff
 	token = ${token}
+
 [gui]
 	fontui = -family \"IBM Plex Sans\" -size 14 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family \"Berkeley Mono\" -size 14 -weight normal -slant roman -underline 0 -overstrike 0
@@ -15,6 +18,7 @@
 	encoding = utf-8
 	diffcontext = 4
 	historybrowser = gitk
+
 [color]
 	ui = auto
 [color.diff-highlight]
@@ -22,23 +26,29 @@
 	oldhighlight = "210 52"
 	newnormal = "2 0"
 	newhighlight = "120 22"
+[color.diff]
+	oldMoved = "251 0"
+	newMoved = "251 0"
+
 [init]
 	defaultBranch = master
+
 [core]
-	editor = vim
+	editor = nvim
 	attributesFile = ~/.gitattributes
+
+[pager]
+	diff = diff-highlight | less -iRS
+	show = diff-highlight | less -iRS
+
 [diff]
-	tool = kdiff3
-	#compactionHeuristic = true
+	colorMoved = default
+	compactionHeuristic = true
 	indentHeuristic = true
-[diff "image"]
-	command = simple-imagediff
-[multidiff]
-	tool = vimmultidiff -f
-[merge]
-	tool = kdiff3
+
 [branch]
 	autoSetupRebase = always
+
 [alias]
 	a  = add
 	au = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
@@ -46,38 +56,31 @@
 	br = branch -r
 	c  = commit
 	co = checkout
-	df = diff -U5 --color --minimal --ignore-space-change --ignore-blank-lines --no-ext-diff --patience --indent-heuristic
+	df  = diff -U5 --minimal --histogram --indent-heuristic --ignore-space-change --ignore-blank-lines --no-ext-diff --color-moved=zebra --color-moved-ws=ignore-space-change
+	dfa = diff -U5 --minimal --histogram --indent-heuristic --ignore-all-space    --ignore-blank-lines --no-ext-diff --color-moved=zebra --color-moved-ws=ignore-all-space
 	eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim -p `f`"
 	f  = fetch       --prune --verbose
 	fa = fetch --all --prune --verbose
 	ig = !git ls-files -v | grep "^[[:lower:]]"
 	l  = log       --graph        --abbrev-commit --date=human --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)%cr (%cd) %C(blue)%an%C(reset)'
 	la = log --all --graph --tags --abbrev-commit --date=human --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)%cr (%cd) %C(blue)%an%C(reset)'
-	mf = multidiff
 	ro = !sh -c 'git rebase -i --autostash --autosquash origin/"$( git symbolic-ref --short HEAD )"'
 	s  = status -sb
-	sf = !sh -c 'git show --pretty="format:" --name-only "$@" | grep -v "^$" | sort -u' -
 	su = submodule update --init --recursive
 
 	try = !sh -c 'git clone --depth "${2-1}" --branch "${1-master}" --single-branch "$0"'
 
 	freeze = !bash -c '. $HOME/bin/git-freeze.sh && git-freeze'
-	thaw = !bash -c '. $HOME/bin/git-freeze.sh && git-thaw'
-	shame = blame -w -M
-
-[pager]
-	diff = diff-highlight | less -iRS
-	show = diff-highlight | less -iRS
-	# diff = delta --dark --24-bit-color=always --color-only --highlight-removed --minus-color=88 --minus-emph-color=160 --plus-color=22 --plus-emph-color=34 --width=100
-	# show = delta --dark --24-bit-color=always --color-only --highlight-removed --minus-color=88 --minus-emph-color=160 --plus-color=22 --plus-emph-color=34 --width=100
+	thaw   = !bash -c '. $HOME/bin/git-freeze.sh && git-thaw'
 
 [push]
-	default = upstream # ${pushDefault}
+	default = upstream
 	recurseSubmodules = check
 	gpgSign = if-asked
 
 [gpg]
 	program = gpg2
+
 [commit]
 	gpgsign = true
 
@@ -93,6 +96,9 @@
 [stash]
 	showPatch = true
 
+[merge]
+	#conflictstyle = diff3
+
 # See https://groups.google.com/forum/m/#!msg/binary-transparency/f-BI4o8HZW0/MDmnWideAgAJ
 [transfer]
 	fsckObjects = true
@@ -101,20 +107,8 @@
 [receive]
 	fsckObjects = true
 
-[cola]
-	# format: font family, pointSizeF, pixelSize, QFont::StyleHint, QFont::Weight, QFont::Style, underline, strikeOut, fixedPitch, rawMode
-	fontdiff = Fira Code,11,-1,5,50,0,0,0,0,0
-	tabwidth = 4
-	boldheaders = true
-	spellcheck = true
-
-# See https://github.com/git-cola/git-cola/blob/b6715fea/share/doc/git-cola/git-cola.rst#configuration-variables
-[cola.color]
-	text = 000000
-	add = cdffe0
-	remove = ffd0d0
-	header = bbbbbb
 [credential]
 	helper = cache --timeout=3600
+
 [protocol]
 	version = 2
