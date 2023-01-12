@@ -77,7 +77,7 @@ set spelllang=en,bg
 set scrolloff=120 " Scroll when lots of lines from edge of screen. Bigger numbers work better with ':help rnu'.
 set rnu           " Show the line number relative to the line with the cursor in front of each line.
 
-set updatetime=1000
+set updatetime=100
 
 set lazyredraw " Do not redraw while running macros (much faster).
 set ttyfast    " Enable fast-terminal.
