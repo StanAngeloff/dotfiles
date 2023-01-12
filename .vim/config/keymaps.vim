@@ -1,3 +1,7 @@
+nnoremap <C-C> <Esc><Esc>
+inoremap <C-C> <Esc><Esc>
+vnoremap <C-C> <Esc><Esc>
+
 " Use a custom leader character.
 let mapleader = ','
 
