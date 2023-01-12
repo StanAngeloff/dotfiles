@@ -138,8 +138,8 @@ set shell=/bin/bash
 set title
 set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)
 
-" https://github.com/neovim/neovim/pull/14537
-" set diffopt+=linematch:50
+" See https://github.com/neovim/neovim/pull/14537
+set diffopt+=linematch:50
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
