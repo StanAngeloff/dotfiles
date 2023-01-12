@@ -102,7 +102,7 @@ nnoremap <leader>v g`[Vg`]o
 nnoremap <silent> <leader>W :call StripTrailingWhitespace()<CR>
 
 " Turn off active highlighting, reset signs and plug-ins.
-nnoremap <silent> <leader><Space> :noh<CR>:sign unplace *<CR>:call clearmatches()<CR>::Gitsigns refresh<CR>
+nnoremap <silent> <leader><Space> :noh<CR>:sign unplace *<CR>:call clearmatches()<CR>:GitGutter<CR>
 
 " Toggle spell-checking keyboard binding.
 noremap <silent> <F1> :setlocal nospell! nospell?<CR>

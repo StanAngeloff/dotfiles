@@ -705,7 +705,42 @@ autocmd BufRead,BufNewFile {totem.config.json} set ft=json5
 
 " ---------------------------------------------------------------------------
 
-Plug 'lewis6991/gitsigns.nvim'
+"Plug 'lewis6991/gitsigns.nvim'
+
+Plug 'airblade/vim-gitgutter'
+
+let g:gitgutter_max_signs = 9999
+let g:gitgutter_map_keys = 0
+
+nmap <leader>hp <Plug>(GitGutterPreviewHunk)
+nmap <leader>hs <Plug>(GitGutterStageHunk)
+vmap <leader>hs <Plug>(GitGutterStageHunk)
+nmap <leader>hu <Plug>(GitGutterUndoHunk)
+
+nmap [c <Plug>(GitGutterPrevHunk)
+nmap ]c <Plug>(GitGutterNextHunk)
+
+omap ic <Plug>(GitGutterTextObjectInnerPending)
+omap ac <Plug>(GitGutterTextObjectOuterPending)
+xmap ic <Plug>(GitGutterTextObjectInnerVisual)
+xmap ac <Plug>(GitGutterTextObjectOuterVisual)
+
+let g:gitgutter_sign_added                   = '│'
+let g:gitgutter_sign_modified                = '│'
+let g:gitgutter_sign_removed                 = '_'
+let g:gitgutter_sign_removed_first_line      = '‾'
+let g:gitgutter_sign_removed_above_and_below = '-'
+let g:gitgutter_sign_modified_removed        = '-'
+
+" NOTE: The options below apply to an older version of git-gutter.
+"
+" let g:gitgutter_realtime = 0
+" let g:gitgutter_eager = 0
+
+hi def link GitGutterAdd DiffAdd
+hi def link GitGutterChange DiffChange
+hi def link GitGutterDelete DiffDelete
+hi def link GitGutterChangeDelete DiffChange
 
 " ---------------------------------------------------------------------------
 
