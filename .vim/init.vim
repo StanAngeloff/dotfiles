@@ -113,7 +113,7 @@ set matchpairs+=<:> " Balance HTML tags.
 set showmatch
 set matchtime=1
 
-set fillchars+=vert:│,fold:┄ " Customise the fill characters.
+set fillchars+=vert:│,fold:- " Customise the fill characters.
 
 set backup " Keep backups of files in case we mess up.
 set backupcopy=yes
@@ -645,8 +645,8 @@ let g:airline#extensions#tabline#tabnr_formatter = 'AirlineTablineFormattersTabn
 let g:airline#extensions#bufferline#enabled = 0
 
 let g:airline_symbols = {
-      \ 'spell': '🅂',
-      \ 'paste': '🄿',
+      \ 'spell': '✏',
+      \ 'paste': '📋',
       \ 'modified': '∗',
       \ 'ellipsis': '…',
       \ 'branch': "\ue0a0",
