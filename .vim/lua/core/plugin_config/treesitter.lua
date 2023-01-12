@@ -39,7 +39,8 @@ require('nvim-treesitter.configs').setup({
     disable = {
       'css',
     },
-    additional_vim_regex_highlighting = false,
+    -- See https://github.com/lewis6991/spellsitter.nvim#usage
+    -- additional_vim_regex_highlighting = false,
   },
 
   incremental_selection = {
