@@ -629,11 +629,11 @@ let g:airline#extensions#tabline#show_tab_count = 0
 let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#show_tabs = 1
 
-function! AirlineTablineFormattersTabnrFormat(tab_nr_type, nr)
-  let space = g:airline_symbols.space
-  let len = len(tabpagebuflist(a:nr))
+function! AirlineTablineFormattersTabnrFormat(tab_nr, buflist)
+  let spc = g:airline_symbols.space
+  let len = len(tabpagebuflist(a:buflist[0]))
   if len > 1
-    return space . len
+    return spc . len
   endif
   return ''
 endfunction
