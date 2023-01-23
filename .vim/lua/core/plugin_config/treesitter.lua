@@ -26,7 +26,6 @@ require('nvim-treesitter.configs').setup({
     'make',
     'markdown',
     'php',
-    -- 'phpdoc',
     'tsx',
     'typescript',
     'vim',
@@ -37,7 +36,6 @@ require('nvim-treesitter.configs').setup({
   highlight = {
     enable = true,
     disable = {
-      'css',
     },
     -- See https://github.com/lewis6991/spellsitter.nvim#usage
     -- additional_vim_regex_highlighting = false,
