@@ -35,4 +35,8 @@ lspconfig.tsserver.setup({ on_attach = on_attach })
 lspconfig.vimls.setup({ on_attach = on_attach })
 lspconfig.yamlls.setup({ on_attach = on_attach })
 
-require('lspsaga').init_lsp_saga()
+require('lspsaga').setup({
+  symbol_in_winbar = {
+    enable = false
+  }
+})
