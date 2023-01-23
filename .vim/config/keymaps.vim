@@ -1,3 +1,6 @@
+"nnoremap <C-C> <Esc>:echohl WarningMsg \| echom '⚠️ Hey, avoid using <Ctrl-C> as this causes NeoVim to interrupt any running Lua code.' \| echohl None<CR>
+"inoremap <C-C> <Esc>:echohl WarningMsg \| echom '⚠️ Hey, avoid using <Ctrl-C> as this causes NeoVim to interrupt any running Lua code.' \| echohl None<CR>
+
 nnoremap <C-C> <Esc><Esc>
 inoremap <C-C> <Esc><Esc>
 vnoremap <C-C> <Esc><Esc>
