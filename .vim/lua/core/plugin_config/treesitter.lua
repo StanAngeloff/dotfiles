@@ -1,9 +1,9 @@
-local parsers = require('nvim-treesitter.parsers').get_parser_configs()
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 
-parsers.liquid = {
+parser_config.liquid = {
   filetype = 'liquid',
   install_info = {
-    url = 'https://github.com/Shopify/tree-sitter-liquid-ii.git',
+    url = 'https://github.com/Shopify/tree-sitter-liquid.git',
     files = { 'src/parser.c' },
     branch = 'main',
   },
@@ -68,6 +68,8 @@ require('nvim-treesitter.configs').setup({
     },
   },
 })
+
+-- vim.treesitter.language.register('liquid', 'liquid')
 
 local ft_to_parser = require('nvim-treesitter.parsers').filetype_to_parsername
 

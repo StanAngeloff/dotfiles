@@ -27,7 +27,7 @@ lspconfig.graphql.setup({ on_attach = on_attach })
 -- lspconfig.denols.setup { on_attach = on_attach }
 lspconfig.html.setup({ on_attach = on_attach })
 lspconfig.jsonls.setup({ on_attach = on_attach })
-lspconfig.sumneko_lua.setup({ on_attach = on_attach })
+lspconfig.lua_ls.setup({ on_attach = on_attach })
 lspconfig.ruby_ls.setup({ on_attach = on_attach })
 lspconfig.theme_check.setup({ on_attach = on_attach, root_dir = lspconfig.util.find_git_ancestor })
 lspconfig.tailwindcss.setup({ on_attach = on_attach })

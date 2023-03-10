@@ -138,8 +138,8 @@ set shell=/bin/bash
 set title
 set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)
 
-" See https://github.com/neovim/neovim/pull/14537
-set diffopt+=linematch:50
+"" See https://github.com/neovim/neovim/pull/14537
+"set diffopt+=linematch:50
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
@@ -186,8 +186,8 @@ if has('autocmd')
   autocmd BufRead,BufNewFile {Gemfile,Guardfile,Rakefile,*.rake,config.ru} set ft=ruby
   autocmd BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
   autocmd BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
-  autocmd BufRead,BufNewFile {.babelrc,.watchmanconfig} set ft=json
-  autocmd BufRead,BufNewFile {.flowconfig} set ft=dosini
+  autocmd BufRead,BufNewFile {.babelrc} set ft=json
+  autocmd BufRead,BufNewFile {.env,.env.*} set ft=sh
 
   " If a local .lvimrc file exists in the current working directory, source it on load (unsafe).
   " When the file is changed, update it by sourcing again.
@@ -212,8 +212,6 @@ if has('autocmd')
         \   if &buftype !~ 'terminal'
         \ |   syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
         \ |   highlight ExtraWhitespace guibg=#ff0000
-        \ |   syn match NonBreakingSpace /\%xA0\+/ containedin=ALL
-        \ |   highlight NonBreakingSpace guibg=#6666aa
         \ | endif
 endif
 
@@ -527,7 +525,7 @@ Plug 'tpope/vim-haml', { 'for': ['haml', 'hamlbars', 'hamlc', 'sass', 'scss'] }
 
 " ---------------------------------------------------------------------------
 
-Plug 'tpope/vim-liquid', { 'for': ['liquid'] }
+Plug 'eloyesp/vim-liquid', { 'for': ['liquid'], 'branch': 'patch-1' }
 
 " ---------------------------------------------------------------------------
 
@@ -631,9 +629,9 @@ let g:airline#extensions#tabline#show_tabs = 1
 
 function! AirlineTablineFormattersTabnrFormat(tab_nr, buflist)
   let spc = g:airline_symbols.space
-  let len = len(tabpagebuflist(a:buflist[0]))
-  if len > 1
-    return spc . len
+  let len_buflist = len(tabpagebuflist(a:buflist[0]))
+  if len_buflist > 1
+    return spc . '❲' . len_buflist . '❳'
   endif
   return ''
 endfunction
@@ -894,6 +892,10 @@ let g:indent_blankline_use_treesitter_scope = v:true
 
 let g:indent_blankline_char = ''
 let g:indent_blankline_context_char = '│'
+
+"---------------------------------------------------------------------------
+
+Plug 'vim-utils/vim-troll-stopper'
 
 " ---------------------------------------------------------------------------
 

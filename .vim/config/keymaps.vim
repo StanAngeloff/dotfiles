@@ -47,8 +47,8 @@ for s:key in ['(', ')', '[', ']', '{', '}', "'", '"', ',', '.', ':', ';', '-', '
   execute 'imap <expr> ' . s:key . " pumvisible() ? '<C-Y>" . (s:key == "'" ? "''" : s:key)  . "' : '" . (s:key == "'" ? "''" : s:key) . "'"
 endfor
 
-" Use omni-completion (if available) then keyword completion, if the former fails.
-inoremap <expr> <C-X><C-O> '<C-R>=exists("+omnifunc") && &omnifunc != "" ? "\<C-X>\<C-O>" : ""<CR><C-R>=pumvisible() ? "" : "\<lt>Esc>a\<lt>C-N>"<CR><C-R>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+"" Use omni-completion (if available) then keyword completion, if the former fails.
+"inoremap <expr> <C-X><C-O> '<C-R>=exists("+omnifunc") && &omnifunc != "" ? "\<C-X>\<C-O>" : ""<CR><C-R>=pumvisible() ? "" : "\<lt>Esc>a\<lt>C-N>"<CR><C-R>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 " If the pop-up menu is visible, close it without inserting a new line.
 inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<C-G>u\<CR>"
