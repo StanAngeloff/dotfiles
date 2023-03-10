@@ -35,7 +35,7 @@ function _git_df() {
   _git_log
 }
 
-export TESSDATA_PREFIX="${HOME}/.local/share/tesseract-ocr/4.00/tessdata"
+export TESSDATA_PREFIX="${HOME}/.local/share/tesseract-ocr/5/tessdata"
 
 ### ANDROID STUDIO BEGIN AUTOMATICALLY GENERATED
 ###
