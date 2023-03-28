@@ -898,6 +898,10 @@ let g:indent_blankline_context_char = '│'
 
 Plug 'vim-utils/vim-troll-stopper'
 
+"---------------------------------------------------------------------------
+
+Plug 'github/copilot.vim'
+
 " ---------------------------------------------------------------------------
 
 call plug#end()
