@@ -858,6 +858,9 @@ Plug 'cespare/vim-toml'
 
 " ---------------------------------------------------------------------------
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'kevinhwang91/promise-async'
+
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 
@@ -866,8 +869,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 
 Plug 'folke/lsp-colors.nvim'
-
-Plug 'kevinhwang91/promise-async'
 
 " ---------------------------------------------------------------------------
 
