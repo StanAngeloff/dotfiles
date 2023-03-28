@@ -343,7 +343,7 @@ function! JavaScriptSyntaxOverride()
   hi! link jsxCloseTag htmlEndTag
   hi! link jsxCloseString htmlEndTag
 
-  syntax region jsxComment start=+//+ end=/$/ contains=jsCommentTodo,@Spell contained containedin=jsxRegion,jsxTag extend keepend
+  " syntax region jsxComment start=+//+ end=/$/ contains=jsCommentTodo,@Spell contained containedin=jsxRegion,jsxTag extend keepend
 
   hi! link jsxComment jsComment
 endfunction
