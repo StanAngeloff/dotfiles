@@ -37,6 +37,6 @@ lspconfig.yamlls.setup({ on_attach = on_attach })
 
 require('lspsaga').setup({
   symbol_in_winbar = {
-    enable = false
-  }
+    enable = false,
+  },
 })

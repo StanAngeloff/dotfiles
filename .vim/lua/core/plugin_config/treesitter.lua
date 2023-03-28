@@ -1,4 +1,4 @@
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
 
 parser_config.liquid = {
   filetype = 'liquid',
@@ -35,8 +35,7 @@ require('nvim-treesitter.configs').setup({
 
   highlight = {
     enable = true,
-    disable = {
-    },
+    disable = {},
     -- See https://github.com/lewis6991/spellsitter.nvim#usage
     -- additional_vim_regex_highlighting = false,
   },
