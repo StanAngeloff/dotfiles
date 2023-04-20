@@ -333,29 +333,29 @@ Plug 'posva/vim-vue'
 
 " ---------------------------------------------------------------------------
 
-Plug 'pangloss/vim-javascript'
-Plug 'MaxMEllon/vim-jsx-pretty'
-
-Plug 'wuelnerdotexe/vim-astro', { 'for': ['astro'] }
-
-function! JavaScriptSyntaxOverride()
-  hi! link jsxTag htmlTag
-  hi! link jsxTagName htmlTagName
-  hi! link jsxString htmlString
-  hi! link jsxComment htmlComment
-  hi! link jsxAttrib htmlArg
-  hi! link jsxCloseTag htmlEndTag
-  hi! link jsxCloseString htmlEndTag
-
-  " syntax region jsxComment start=+//+ end=/$/ contains=jsCommentTodo,@Spell contained containedin=jsxRegion,jsxTag extend keepend
-
-  hi! link jsxComment jsComment
-endfunction
-
-augroup javascriptSyntaxOverride
-  autocmd!
-  autocmd FileType javascript call JavaScriptSyntaxOverride()
-augroup END
+"Plug 'pangloss/vim-javascript'
+"Plug 'MaxMEllon/vim-jsx-pretty'
+"
+"Plug 'wuelnerdotexe/vim-astro', { 'for': ['astro'] }
+"
+"function! JavaScriptSyntaxOverride()
+"  hi! link jsxTag htmlTag
+"  hi! link jsxTagName htmlTagName
+"  hi! link jsxString htmlString
+"  hi! link jsxComment htmlComment
+"  hi! link jsxAttrib htmlArg
+"  hi! link jsxCloseTag htmlEndTag
+"  hi! link jsxCloseString htmlEndTag
+"
+"  " syntax region jsxComment start=+//+ end=/$/ contains=jsCommentTodo,@Spell contained containedin=jsxRegion,jsxTag extend keepend
+"
+"  hi! link jsxComment jsComment
+"endfunction
+"
+"augroup javascriptSyntaxOverride
+"  autocmd!
+"  autocmd FileType javascript call JavaScriptSyntaxOverride()
+"augroup END
 
 " ---------------------------------------------------------------------------
 
@@ -696,14 +696,14 @@ imap <silent> <F5> <Esc><F5>a
 
 " ---------------------------------------------------------------------------
 
-Plug 'elzr/vim-json'
+"Plug 'elzr/vim-json'
 Plug 'GutenYe/json5.vim', { 'for': ['json5'] }
 
-" Set this variable as vim-json barfs if it's not defined.
-let g:vim_json_warnings=1
-let g:vim_json_syntax_conceal=0
-
-autocmd BufRead,BufNewFile {totem.config.json} set ft=json5
+"" Set this variable as vim-json barfs if it's not defined.
+"let g:vim_json_warnings=1
+"let g:vim_json_syntax_conceal=0
+"
+"autocmd BufRead,BufNewFile {totem.config.json} set ft=json5
 
 " ---------------------------------------------------------------------------
 
@@ -794,7 +794,7 @@ endfunction
 
 " ---------------------------------------------------------------------------
 
-Plug 'leafgarland/typescript-vim'
+" Plug 'leafgarland/typescript-vim'
 
 " ---------------------------------------------------------------------------
 
