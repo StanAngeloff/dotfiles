@@ -21,6 +21,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- See https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
+lspconfig.astro.setup({ on_attach = on_attach })
 lspconfig.bashls.setup({ on_attach = on_attach })
 lspconfig.cssls.setup({ on_attach = on_attach })
 lspconfig.cucumber_language_server.setup({ on_attach = on_attach })
