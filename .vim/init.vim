@@ -632,24 +632,24 @@ let g:airline#extensions#tabline#show_tab_count = 0
 let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#show_tabs = 1
 
-function! AirlineTablineFormattersTabnrFormat(tab_nr, buflist)
-  let spc = g:airline_symbols.space
-  let len_buflist = len(tabpagebuflist(a:buflist[0]))
-  if len_buflist > 1
-    return spc . '❲' . len_buflist . '❳'
-  endif
-  return ''
-endfunction
-
-let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline#extensions#tabline#tab_nr_type = 0 " Number of splits
-let g:airline#extensions#tabline#tabnr_formatter = 'AirlineTablineFormattersTabnrFormat'
+let g:airline#extensions#tabline#show_tab_nr = 0
+"let g:airline#extensions#tabline#tab_nr_type = 0 " Number of splits
+"let g:airline#extensions#tabline#tabnr_formatter = 'AirlineTablineFormattersTabnrFormat'
+"
+"function! AirlineTablineFormattersTabnrFormat(tab_nr, buflist)
+"  let spc = g:airline_symbols.space
+"  let len_buflist = len(tabpagebuflist(a:buflist[0]))
+"  if len_buflist > 1
+"    return spc . '❲' . len_buflist . '❳'
+"  endif
+"  return ''
+"endfunction
 
 let g:airline#extensions#bufferline#enabled = 0
 
 let g:airline_symbols = {
-      \ 'spell': '✏',
-      \ 'paste': '📋',
+      \ 'spell': '[Spell]',
+      \ 'paste': '[Paste]',
       \ 'modified': '∗',
       \ 'ellipsis': '…',
       \ 'branch': "\ue0a0",
