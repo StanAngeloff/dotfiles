@@ -38,7 +38,7 @@ require('nvim-treesitter.configs').setup({
     enable = true,
     disable = {},
     -- See https://github.com/lewis6991/spellsitter.nvim#usage
-    -- additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = false,
   },
 
   incremental_selection = {
@@ -75,6 +75,11 @@ vim.filetype.add({
   },
 })
 
-local ft_to_parser = require('nvim-treesitter.parsers').filetype_to_parsername
+vim.treesitter.language.register('liquid', 'liquid')
 
-ft_to_parser.liquid = 'liquid'
+vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+  -- Turn on regex syntax highlighting for these extensions.
+  -- This eliminates issues with spell checking.
+  pattern = { '*.js', '*.jsx', '*.mjs', '*.cjs', '*.ts', '*.tsx' },
+  callback = function() vim.cmd('syntax on') end,
+})
