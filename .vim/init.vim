@@ -374,6 +374,7 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeMapHelp = 'H'
 " Don't ask if buffers should be deleted on rename.
 let NERDTreeAutoDeleteBuffer=1
+let NERDTreeNaturalSort=1
 
 let g:NERDTreeDirArrowExpandable = '▶'
 let g:NERDTreeDirArrowCollapsible = '▼'
