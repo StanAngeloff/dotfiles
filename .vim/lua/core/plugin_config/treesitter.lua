@@ -11,6 +11,7 @@ parser_config.liquid = {
 
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
+    'astro',
     'bash',
     'css',
     'dockerfile',
@@ -68,7 +69,11 @@ require('nvim-treesitter.configs').setup({
   },
 })
 
--- vim.treesitter.language.register('liquid', 'liquid')
+vim.filetype.add({
+  extension = {
+    astro = 'astro',
+  },
+})
 
 local ft_to_parser = require('nvim-treesitter.parsers').filetype_to_parsername
 
