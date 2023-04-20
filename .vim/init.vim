@@ -12,6 +12,11 @@ endif
 
 set t_Co=256
 
+" See https://neovim.io/doc/user/options.html#'exrc'
+" Automatically execute .nvim.lua, .nvimrc, and .exrc files in the current directory, if the file is in the trust list.
+set exrc
+set secure
+
 " Switch syntax on and select a theme.
 syntax on
 
