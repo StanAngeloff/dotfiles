@@ -69,8 +69,7 @@ set autoindent                 " Auto-indent new lines.
 set timeoutlen=325             " Time to wait after ESC (default causes an annoying delay).
 set ttimeoutlen=10
 
-
-set completeopt=longest,menuone " Only complete the common part and display a menu if more than one choice.
+set completeopt=longest,menu " Only complete the common part and display a menu if more than one choice.
 
 set modeline
 set modelines=5 " Default numbers of lines to read for modeline instructions.
@@ -106,7 +105,7 @@ set cursorline!                " Highlight line under cursor.
 
 set textwidth=120              " Gutter position.
 set colorcolumn=+0             " Use an offset from &textwidth.
-set signcolumn=auto:2          " Allow up to two signs per line.
+set signcolumn=auto:2          " Allow up to X signs per line.
 
 set nolist
 set listchars=tab:→\ ,eol:↵,extends:❯,precedes:❮,trail:␣ " Display a placeholder character for tabs and newlines.
@@ -114,8 +113,8 @@ set showbreak=┅
 
 set display+=uhex,lastline
 
+set noshowmatch
 set matchpairs+=<:> " Balance HTML tags.
-set showmatch
 set matchtime=1
 
 set fillchars+=vert:│,fold:- " Customise the fill characters.
@@ -143,8 +142,8 @@ set shell=/bin/bash
 set title
 set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)
 
-"" See https://github.com/neovim/neovim/pull/14537
-"set diffopt+=linematch:50
+" See https://github.com/neovim/neovim/pull/14537
+set diffopt+=linematch:50
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
