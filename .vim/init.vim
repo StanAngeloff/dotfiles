@@ -873,7 +873,7 @@ Plug 'neovim/nvim-lspconfig'
 
 Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 
-Plug 'folke/lsp-colors.nvim'
+"Plug 'folke/lsp-colors.nvim'
 
 " ---------------------------------------------------------------------------
 
@@ -881,23 +881,30 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
 
-"---------------------------------------------------------------------------
-
-Plug 'cohama/lexima.vim'
-Plug 'deathlyfrantic/lexima-template-rules'
+"Plug 'lewis6991/spellsitter.nvim'
 
 "---------------------------------------------------------------------------
 
-Plug 'lukas-reineke/indent-blankline.nvim'
+"Plug 'cohama/lexima.vim'
+"Plug 'deathlyfrantic/lexima-template-rules'
+Plug 'windwp/nvim-autopairs'
 
-let g:indent_blankline_show_current_context = v:true
-let g:indent_blankline_show_current_context_start = v:false
+"---------------------------------------------------------------------------
 
-let g:indent_blankline_use_treesitter = v:true
-let g:indent_blankline_use_treesitter_scope = v:true
+Plug 'delphinus/vim-firestore'
 
-let g:indent_blankline_char = ''
-let g:indent_blankline_context_char = '│'
+"---------------------------------------------------------------------------
+
+"Plug 'lukas-reineke/indent-blankline.nvim'
+"
+"let g:indent_blankline_show_current_context = v:true
+"let g:indent_blankline_show_current_context_start = v:false
+"
+"let g:indent_blankline_use_treesitter = v:true
+"let g:indent_blankline_use_treesitter_scope = v:true
+"
+"let g:indent_blankline_char = ''
+"let g:indent_blankline_context_char = '│'
 
 "---------------------------------------------------------------------------
 
