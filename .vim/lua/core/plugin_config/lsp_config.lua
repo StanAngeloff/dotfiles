@@ -14,8 +14,10 @@ local on_attach = function(client, bufnr)
   --
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<CR>', bufopts)
+  vim.keymap.set('n', 'H', '<cmd>Lspsaga hover_doc<CR>', bufopts)
+  vim.keymap.set('n', 'K', '<cmd>Lspsaga peek_definition<CR>', bufopts)
   vim.keymap.set('n', 'L', '<cmd>Lspsaga lsp_finder<CR>', bufopts)
+  vim.keymap.set('n', '<Space>', '<cmd>Lspsaga code_action<CR>', bufopts)
 end
 
 -- See https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
@@ -38,5 +40,11 @@ lspconfig.yamlls.setup({ on_attach = on_attach })
 require('lspsaga').setup({
   symbol_in_winbar = {
     enable = false,
+  },
+  lightbulb = {
+    enable = false,
+    enable_in_insert = false,
+    sign = false,
+    virtual_text = true,
   },
 })
