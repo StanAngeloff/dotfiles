@@ -36,7 +36,16 @@ lspconfig.theme_check.setup({ on_attach = on_attach, root_dir = lspconfig.util.f
 lspconfig.tailwindcss.setup({ on_attach = on_attach })
 lspconfig.tsserver.setup({ on_attach = on_attach })
 lspconfig.vimls.setup({ on_attach = on_attach })
-lspconfig.yamlls.setup({ on_attach = on_attach })
+lspconfig.yamlls.setup {
+  on_attach = on_attach,
+  settings = {
+    yaml = {
+      schemas = {
+        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+      },
+    },
+  }
+}
 
 require('lspsaga').setup({
   symbol_in_winbar = {
