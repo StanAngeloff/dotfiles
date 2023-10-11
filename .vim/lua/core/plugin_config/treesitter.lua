@@ -1,13 +1,13 @@
-local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-
-parser_config.liquid = {
-  filetype = 'liquid',
-  install_info = {
-    url = 'https://github.com/Shopify/tree-sitter-liquid.git',
-    files = { 'src/parser.c' },
-    branch = 'main',
-  },
-}
+-- local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+--
+-- parser_config.liquid = {
+--   filetype = 'liquid',
+--   install_info = {
+--     url = 'https://github.com/Shopify/tree-sitter-liquid.git',
+--     files = { 'src/parser.c' },
+--     branch = 'main',
+--   },
+-- }
 
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
@@ -42,13 +42,13 @@ require('nvim-treesitter.configs').setup({
   },
 
   incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = 'gnn',
-      node_incremental = 'grn',
-      scope_incremental = 'grc',
-      node_decremental = 'grm',
-    },
+    enable = false,
+    -- keymaps = {
+    --   init_selection = 'gnn',
+    --   node_incremental = 'grn',
+    --   scope_incremental = 'grc',
+    --   node_decremental = 'grm',
+    -- },
   },
 
   indent = {
@@ -75,7 +75,7 @@ vim.filetype.add({
   },
 })
 
-vim.treesitter.language.register('liquid', 'liquid')
+-- vim.treesitter.language.register('liquid', 'liquid')
 
 vim.api.nvim_create_autocmd({ 'BufEnter' }, {
   -- Turn on regex syntax highlighting for these extensions.

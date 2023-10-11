@@ -15,8 +15,8 @@ local on_attach = function(client, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'H', '<cmd>Lspsaga hover_doc<CR>', bufopts)
-  vim.keymap.set('n', 'K', '<cmd>Lspsaga peek_definition<CR>', bufopts)
-  vim.keymap.set('n', 'L', '<cmd>Lspsaga lsp_finder<CR>', bufopts)
+  vim.keymap.set('n', 'K', '<cmd>Lspsaga finder<CR>', bufopts)
+  vim.keymap.set('n', 'L', '<cmd>Lspsaga peek_definition<CR>', bufopts)
   vim.keymap.set('n', '<Space>', '<cmd>Lspsaga code_action<CR>', bufopts)
 end
 
@@ -25,16 +25,25 @@ lspconfig.astro.setup({ on_attach = on_attach })
 lspconfig.bashls.setup({ on_attach = on_attach })
 lspconfig.cssls.setup({ on_attach = on_attach })
 lspconfig.cucumber_language_server.setup({ on_attach = on_attach })
+-- lspconfig.curlylint.setup({ on_attach = on_attach })
 lspconfig.dockerls.setup({ on_attach = on_attach })
 lspconfig.graphql.setup({ on_attach = on_attach })
--- lspconfig.denols.setup { on_attach = on_attach }
+lspconfig.denols.setup({
+  on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+  single_file_support = false
+})
 lspconfig.html.setup({ on_attach = on_attach })
 lspconfig.jsonls.setup({ on_attach = on_attach })
 lspconfig.lua_ls.setup({ on_attach = on_attach })
 lspconfig.ruby_ls.setup({ on_attach = on_attach })
 lspconfig.theme_check.setup({ on_attach = on_attach, root_dir = lspconfig.util.find_git_ancestor })
 lspconfig.tailwindcss.setup({ on_attach = on_attach })
-lspconfig.tsserver.setup({ on_attach = on_attach })
+lspconfig.tsserver.setup({
+  on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern("package.json"),
+  single_file_support = false
+})
 lspconfig.vimls.setup({ on_attach = on_attach })
 lspconfig.yamlls.setup {
   on_attach = on_attach,

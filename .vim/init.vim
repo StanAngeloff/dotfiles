@@ -326,6 +326,7 @@ let g:csv_nomap_cr = 1
 " ---------------------------------------------------------------------------
 
 Plug 'othree/html5.vim'
+Plug 'amadeus/vim-mjml'
 
 " ---------------------------------------------------------------------------
 
@@ -535,6 +536,7 @@ Plug 'eloyesp/vim-liquid', { 'for': ['liquid'], 'branch': 'patch-1' }
 " ---------------------------------------------------------------------------
 
 Plug 'plasticboy/vim-markdown'
+Plug 'riceissa/vim-markdown-paste'
 
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
@@ -885,8 +887,6 @@ Plug 'nvim-treesitter/playground'
 
 "---------------------------------------------------------------------------
 
-"Plug 'cohama/lexima.vim'
-"Plug 'deathlyfrantic/lexima-template-rules'
 Plug 'windwp/nvim-autopairs'
 
 "---------------------------------------------------------------------------
@@ -913,6 +913,10 @@ Plug 'vim-utils/vim-troll-stopper'
 "---------------------------------------------------------------------------
 
 Plug 'github/copilot.vim'
+
+" ---------------------------------------------------------------------------
+
+Plug 'ryanoasis/vim-devicons'
 
 " ---------------------------------------------------------------------------
 
