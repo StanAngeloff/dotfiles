@@ -56,14 +56,15 @@
 	br = branch -r
 	c  = commit
 	co = checkout
-	df  = diff -U5 --minimal --histogram --indent-heuristic --ignore-space-change --ignore-blank-lines --no-ext-diff --color-moved=zebra --color-moved-ws=ignore-space-change
-	dfa = diff -U5 --minimal --histogram --indent-heuristic --ignore-all-space    --ignore-blank-lines --no-ext-diff --color-moved=zebra --color-moved-ws=ignore-all-space
+	copu = "!sh -c 'git checkout \"$1\" && git pull \"$(git config --get remote.upstream.url || git config --get remote.origin.url)\" \"$1\"' -"
+	df  =  diff -U5 --minimal --histogram --indent-heuristic --ignore-space-change --ignore-blank-lines --no-ext-diff --color-moved=zebra --color-moved-ws=ignore-space-change
+	dfa = "diff -U5 --minimal --histogram --indent-heuristic --ignore-all-space    --ignore-blank-lines --no-ext-diff --color-moved=zebra --color-moved-ws=ignore-all-space    --color-words='[^ 	\\n;,]+'"
 	eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim -p `f`"
 	f  = fetch       --prune --verbose
 	fa = fetch --all --prune --verbose
 	ig = !git ls-files -v | grep "^[[:lower:]]"
-	l  = log       --graph        --abbrev-commit --date=human --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)%cr (%cd) %C(blue)%an%C(reset)'
-	la = log --all --graph --tags --abbrev-commit --date=human --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)%cr (%cd) %C(blue)%an%C(reset)'
+	l  = log       --graph        --abbrev-commit --date=human --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)%cr (%cd) %C(blue)%an%C(reset) ▸ %C(cyan)%cn%C(reset)'
+	la = log --all --graph --tags --abbrev-commit --date=human --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)%cr (%cd) %C(blue)%an%C(reset) ▸ %C(cyan)%cn%C(reset)'
 	ro = !sh -c 'git rebase -i --autostash --autosquash origin/"$( git symbolic-ref --short HEAD )"'
 	s  = status -sb
 	su = submodule update --init --recursive
