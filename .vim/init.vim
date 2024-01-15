@@ -246,7 +246,7 @@ Plug 'StanAngeloff/vim-zend55'
 
 " ---------------------------------------------------------------------------
 
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 let g:fzf_layout = { 'down': 20 }
@@ -308,17 +308,40 @@ vnoremap <silent> <leader>0 :call FzfFilesFromVisual()<CR>
 
 " ---------------------------------------------------------------------------
 
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-characterize', { 'on': ['<Plug>(characterize)'] }
+Plug 'tpope/vim-commentary', { 'on': ['<Plug>Commentary', '<Plug>CommentaryLine', '<Plug>ChangeCommentary'] }
+Plug 'tpope/vim-cucumber', { 'for': ['feature', 'story'] }
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-haml', { 'for': ['haml', 'hamlbars', 'hamlc', 'sass', 'scss'] }
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 
 let g:sleuth_automatic = 1
 
+" vim-characterize
+nmap ga <Plug>(characterize)
+
+" vim-commentary
+xmap gc  <Plug>Commentary
+nmap gc  <Plug>Commentary
+omap gc  <Plug>Commentary
+nmap gcc <Plug>CommentaryLine
+nmap gcu <Plug>Commentary<Plug>Commentary
+
+nnoremap <leader>ha :silent! Git add %<CR>
+
 " ---------------------------------------------------------------------------
 
-Plug 'juvenn/mustache.vim', { 'for': ['mustache', 'handlebars', 'hbs', 'hogan', 'hulk', 'hjs'] }
+Plug 'mustache/vim-mustache-handlebars', { 'for': ['mustache', 'handlebars', 'hbs', 'hogan', 'hulk', 'hjs'] }
 
 " ---------------------------------------------------------------------------
 
-Plug 'chrisbra/csv.vim'
+Plug 'chrisbra/csv.vim', { 'for': ['csv'] }
 
 let g:csv_nomap_bs = 1
 let g:csv_nomap_cr = 1
@@ -326,37 +349,17 @@ let g:csv_nomap_cr = 1
 " ---------------------------------------------------------------------------
 
 Plug 'othree/html5.vim'
-Plug 'amadeus/vim-mjml'
+Plug 'amadeus/vim-mjml', { 'for': ['mjml'] }
 
 " ---------------------------------------------------------------------------
 
-Plug 'posva/vim-vue'
+Plug 'posva/vim-vue', { 'for': ['vue'] }
 
 " ---------------------------------------------------------------------------
 
-"Plug 'pangloss/vim-javascript'
-"Plug 'MaxMEllon/vim-jsx-pretty'
-"
-"Plug 'wuelnerdotexe/vim-astro', { 'for': ['astro'] }
-"
-"function! JavaScriptSyntaxOverride()
-"  hi! link jsxTag htmlTag
-"  hi! link jsxTagName htmlTagName
-"  hi! link jsxString htmlString
-"  hi! link jsxComment htmlComment
-"  hi! link jsxAttrib htmlArg
-"  hi! link jsxCloseTag htmlEndTag
-"  hi! link jsxCloseString htmlEndTag
-"
-"  " syntax region jsxComment start=+//+ end=/$/ contains=jsCommentTodo,@Spell contained containedin=jsxRegion,jsxTag extend keepend
-"
-"  hi! link jsxComment jsComment
-"endfunction
-"
-"augroup javascriptSyntaxOverride
-"  autocmd!
-"  autocmd FileType javascript call JavaScriptSyntaxOverride()
-"augroup END
+Plug 'wuelnerdotexe/vim-astro', { 'for': ['astro'] }
+
+let g:astro_typescript = 'enable'
 
 " ---------------------------------------------------------------------------
 
@@ -390,7 +393,6 @@ let g:FastFingersUpdateTime = &ut
 let g:FastFingersNERDTreeClosed = '^\s*►.*\/$'
 
 function! FastFingersSearch(mode)
-
   let b:FastFingersPreviousPosition = getpos('.')
 
   " Lower the update time so our 'CursorHold' code fires immediately after the search.
@@ -513,30 +515,13 @@ let g:undotree_SetFocusWhenToggle=1
 
 " ---------------------------------------------------------------------------
 
-Plug 'tpope/vim-characterize'
+" NOTE: Superseded by Tree-sitter.
+"Plug 'eloyesp/vim-liquid', { 'for': ['liquid'], 'branch': 'patch-1' }
 
 " ---------------------------------------------------------------------------
 
-Plug 'tpope/vim-fugitive'
-
-nnoremap <leader>ha :silent! Git add %<CR>
-
-" ---------------------------------------------------------------------------
-
-Plug 'tpope/vim-git'
-
-" ---------------------------------------------------------------------------
-
-Plug 'tpope/vim-haml', { 'for': ['haml', 'hamlbars', 'hamlc', 'sass', 'scss'] }
-
-" ---------------------------------------------------------------------------
-
-Plug 'eloyesp/vim-liquid', { 'for': ['liquid'], 'branch': 'patch-1' }
-
-" ---------------------------------------------------------------------------
-
-Plug 'plasticboy/vim-markdown'
-Plug 'riceissa/vim-markdown-paste'
+Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
+Plug 'riceissa/vim-markdown-paste', { 'on': ['MarkdownPaste', 'MarkdownPasteClean'] }
 
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
@@ -546,21 +531,9 @@ let g:vim_markdown_strikethrough = 1
 
 " ---------------------------------------------------------------------------
 
-Plug 'tpope/vim-repeat'
-
-" ---------------------------------------------------------------------------
-
-Plug 'tpope/vim-surround'
-
-" ---------------------------------------------------------------------------
-
-Plug 'tpope/vim-unimpaired'
-
-" ---------------------------------------------------------------------------
-
-Plug 'StanAngeloff/php.vim'
-Plug 'rayburgemeestre/phpfolding.vim'
-Plug '2072/PHP-Indenting-for-VIm'
+Plug 'StanAngeloff/php.vim', { 'for': ['php'] }
+Plug 'rayburgemeestre/phpfolding.vim', { 'for': ['php'] }
+Plug '2072/PHP-Indenting-for-VIm', { 'for': ['php'] }
 
 " Don't use the PHP syntax folding.
 let g:DisableAutoPHPFolding = 1
@@ -603,10 +576,6 @@ nnoremap <silent> * <Plug>(star-*)
 nnoremap <silent> # <Plug>(star-#)
 nnoremap <silent> g* <Plug>(star-g*)
 nnoremap <silent> g# <Plug>(star-g#)
-
-" ---------------------------------------------------------------------------
-
-Plug 'tpope/vim-abolish'
 
 " ---------------------------------------------------------------------------
 
@@ -668,11 +637,8 @@ Plug 'hail2u/vim-css3-syntax'
 
 " ---------------------------------------------------------------------------
 
-Plug 'tpope/vim-eunuch'
-
-" ---------------------------------------------------------------------------
-
-Plug 'preservim/vimux'
+" NOTE: We hand-roll our own tmux integration.
+"Plug 'preservim/vimux'
 
 " {{{ tmux
 
@@ -699,18 +665,9 @@ imap <silent> <F5> <Esc><F5>a
 
 " ---------------------------------------------------------------------------
 
-"Plug 'elzr/vim-json'
 Plug 'GutenYe/json5.vim', { 'for': ['json5'] }
 
-"" Set this variable as vim-json barfs if it's not defined.
-"let g:vim_json_warnings=1
-"let g:vim_json_syntax_conceal=0
-"
-"autocmd BufRead,BufNewFile {totem.config.json} set ft=json5
-
 " ---------------------------------------------------------------------------
-
-"Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'airblade/vim-gitgutter'
 
@@ -757,15 +714,7 @@ Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 
 " ---------------------------------------------------------------------------
 
-Plug 'tpope/vim-cucumber', { 'for': ['feature', 'story'] }
-
-" ---------------------------------------------------------------------------
-
-Plug 'tpope/vim-commentary'
-
-" ---------------------------------------------------------------------------
-
-Plug 'jwalton512/vim-blade'
+Plug 'jwalton512/vim-blade', { 'for': ['blade'] }
 
 " ---------------------------------------------------------------------------
 
@@ -773,7 +722,11 @@ Plug 'christianrondeau/vim-base64'
 
 " ---------------------------------------------------------------------------
 
-Plug 'tommcdo/vim-exchange'
+Plug 'tommcdo/vim-exchange', { 'on': ['<Plug>(Exchange)' ] }
+
+let g:exchange_no_mappings = 1
+
+xmap <silent> X <Plug>(Exchange)
 
 " ---------------------------------------------------------------------------
 
@@ -797,15 +750,12 @@ endfunction
 
 " ---------------------------------------------------------------------------
 
-" Plug 'leafgarland/typescript-vim'
-
-" ---------------------------------------------------------------------------
-
 Plug 'wellle/targets.vim'
 
 " ---------------------------------------------------------------------------
 
-Plug 'chrisbra/unicode.vim'
+" NOTE: I rely on `uninames` to get the Unicode names for characters.
+"Plug 'chrisbra/unicode.vim'
 
 " modify selected text using combining diacritics
 command! -range -nargs=0 UnicodeOverline        call s:UnicodeCombineSelection(<line1>, <line2>, '0305')
@@ -827,7 +777,7 @@ Plug 'chr4/nginx.vim'
 
 " ---------------------------------------------------------------------------
 
-Plug 'stefandtw/quickfix-reflector.vim'
+Plug 'stefandtw/quickfix-reflector.vim', { 'for': ['qf', 'quickfix'] }
 
 " ---------------------------------------------------------------------------
 
@@ -835,19 +785,16 @@ Plug 'Absolight/vim-bind'
 
 " ---------------------------------------------------------------------------
 
-Plug 'will133/vim-dirdiff'
+Plug 'will133/vim-dirdiff', { 'on': ['DirDiff'] }
 
 " ---------------------------------------------------------------------------
 
-Plug 'AndrewRadev/diffurcate.vim'
+Plug 'AndrewRadev/diffurcate.vim', { 'on': ['Diffurcate'] }
 
 " ---------------------------------------------------------------------------
 
-Plug 'hashivim/vim-terraform'
-
-" ---------------------------------------------------------------------------
-
-Plug 'machakann/vim-swap'
+" NOTE: I rarely use Terraform these days. If I do, there's better Tree-sitter support.
+"Plug 'hashivim/vim-terraform'
 
 " ---------------------------------------------------------------------------
 
@@ -873,17 +820,13 @@ Plug 'williamboman/mason-lspconfig.nvim'
 
 Plug 'neovim/nvim-lspconfig'
 
-Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
-
-"Plug 'folke/lsp-colors.nvim'
+Plug 'nvimdev/lspsaga.nvim', { 'branch': 'main' }
 
 " ---------------------------------------------------------------------------
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
-
-"Plug 'lewis6991/spellsitter.nvim'
 
 "---------------------------------------------------------------------------
 
@@ -892,19 +835,6 @@ Plug 'windwp/nvim-autopairs'
 "---------------------------------------------------------------------------
 
 Plug 'delphinus/vim-firestore'
-
-"---------------------------------------------------------------------------
-
-"Plug 'lukas-reineke/indent-blankline.nvim'
-"
-"let g:indent_blankline_show_current_context = v:true
-"let g:indent_blankline_show_current_context_start = v:false
-"
-"let g:indent_blankline_use_treesitter = v:true
-"let g:indent_blankline_use_treesitter_scope = v:true
-"
-"let g:indent_blankline_char = ''
-"let g:indent_blankline_context_char = '│'
 
 "---------------------------------------------------------------------------
 
