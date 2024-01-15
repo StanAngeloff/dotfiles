@@ -23,7 +23,16 @@ end
 -- See https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
 lspconfig.astro.setup({ on_attach = on_attach })
 lspconfig.bashls.setup({ on_attach = on_attach })
-lspconfig.cssls.setup({ on_attach = on_attach })
+lspconfig.cssls.setup({
+  on_attach = on_attach,
+  settings = {
+    css = {
+      lint = {
+        unknownAtRules = 'ignore',
+      },
+    },
+  },
+})
 lspconfig.cucumber_language_server.setup({ on_attach = on_attach })
 -- lspconfig.curlylint.setup({ on_attach = on_attach })
 lspconfig.dockerls.setup({ on_attach = on_attach })
