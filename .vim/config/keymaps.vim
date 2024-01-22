@@ -145,5 +145,5 @@ nnoremap <silent> Я ZZ
 
 inoremap <silent> <Tab> <C-R>=BestComplete()<CR>
 
-inoremap <expr> <C-J> pumvisible() ? '<C-N>' : (get(g:, 'PhpBestExpandCommentInsertLeaveOccurrence', 0) == 1 ? '<Esc>i' : '<C-O>o')
+inoremap <expr> <C-J> pumvisible() ? '<C-N>' : '<C-O>o'
 inoremap <expr> <C-K> pumvisible() ? '<C-P>' : '<C-O>O'

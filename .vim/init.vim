@@ -534,9 +534,10 @@ let g:vim_markdown_strikethrough = 1
 
 " ---------------------------------------------------------------------------
 
-Plug 'StanAngeloff/php.vim', { 'for': ['php'] }
-Plug 'rayburgemeestre/phpfolding.vim', { 'for': ['php'] }
-Plug '2072/PHP-Indenting-for-VIm', { 'for': ['php'] }
+" NOTE: Superseded by Tree-sitter.
+"Plug 'StanAngeloff/php.vim', { 'for': ['php'] }
+"Plug 'rayburgemeestre/phpfolding.vim', { 'for': ['php'] }
+"Plug '2072/PHP-Indenting-for-VIm', { 'for': ['php'] }
 
 " Don't use the PHP syntax folding.
 let g:DisableAutoPHPFolding = 1
