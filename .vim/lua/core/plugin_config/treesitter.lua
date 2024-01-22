@@ -83,3 +83,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, {
   pattern = { '*.js', '*.jsx', '*.mjs', '*.cjs', '*.ts', '*.tsx' },
   callback = function() vim.cmd('syntax on') end,
 })
+
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldenable = false
