@@ -357,9 +357,10 @@ Plug 'posva/vim-vue', { 'for': ['vue'] }
 
 " ---------------------------------------------------------------------------
 
-Plug 'wuelnerdotexe/vim-astro', { 'for': ['astro'] }
-
-let g:astro_typescript = 'enable'
+" NOTE: Superseded by Tree-sitter.
+"Plug 'wuelnerdotexe/vim-astro', { 'for': ['astro'] }
+"
+"let g:astro_typescript = 'enable'
 
 " ---------------------------------------------------------------------------
 
