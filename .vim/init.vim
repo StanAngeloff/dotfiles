@@ -350,7 +350,8 @@ let g:csv_nomap_cr = 1
 
 " ---------------------------------------------------------------------------
 
-Plug 'othree/html5.vim'
+" NOTE: Superseded by Tree-sitter.
+"Plug 'othree/html5.vim'
 Plug 'amadeus/vim-mjml', { 'for': ['mjml'] }
 
 " ---------------------------------------------------------------------------
@@ -523,7 +524,8 @@ let g:undotree_SetFocusWhenToggle=1
 
 " ---------------------------------------------------------------------------
 
-Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
+" NOTE: Superseded by Tree-sitter.
+"Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
 Plug 'riceissa/vim-markdown-paste', { 'on': ['MarkdownPaste', 'MarkdownPasteClean'] }
 
 let g:vim_markdown_folding_disabled = 1
@@ -634,7 +636,8 @@ let g:loaded_airline_themes = 0
 
 " ---------------------------------------------------------------------------
 
-Plug 'hail2u/vim-css3-syntax'
+" NOTE: Superseded by Tree-sitter.
+"Plug 'hail2u/vim-css3-syntax'
 
 " ---------------------------------------------------------------------------
 
@@ -666,7 +669,8 @@ imap <silent> <F5> <Esc><F5>a
 
 " ---------------------------------------------------------------------------
 
-Plug 'GutenYe/json5.vim', { 'for': ['json5'] }
+" NOTE: Superseded by Tree-sitter.
+"Plug 'GutenYe/json5.vim', { 'for': ['json5'] }
 
 " ---------------------------------------------------------------------------
 
@@ -805,7 +809,8 @@ let g:Hexokinase_highlighters = ['backgroundfull']
 
 " ---------------------------------------------------------------------------
 
-Plug 'jparise/vim-graphql'
+" NOTE: Superseded by Tree-sitter.
+"Plug 'jparise/vim-graphql'
 
 " ---------------------------------------------------------------------------
 
