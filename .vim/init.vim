@@ -588,51 +588,8 @@ let g:caser_prefix = 'cr'
 
 " ---------------------------------------------------------------------------
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-let g:airline_theme = 'minimalist'
-"let g:airline_symbols_ascii = 1
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#right_alt_sep = ''
-let g:airline#extensions#tabline#right_sep = ''
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_close_button = 0
-let g:airline#extensions#tabline#show_tab_count = 0
-let g:airline#extensions#tabline#show_tab_type = 0
-let g:airline#extensions#tabline#show_tabs = 1
-
-let g:airline#extensions#tabline#show_tab_nr = 0
-"let g:airline#extensions#tabline#tab_nr_type = 0 " Number of splits
-"let g:airline#extensions#tabline#tabnr_formatter = 'AirlineTablineFormattersTabnrFormat'
-"
-"function! AirlineTablineFormattersTabnrFormat(tab_nr, buflist)
-"  let spc = g:airline_symbols.space
-"  let len_buflist = len(tabpagebuflist(a:buflist[0]))
-"  if len_buflist > 1
-"    return spc . '❲' . len_buflist . '❳'
-"  endif
-"  return ''
-"endfunction
-
-let g:airline#extensions#bufferline#enabled = 0
-
-let g:airline_symbols = {
-      \ 'spell': '[Spell]',
-      \ 'paste': '[Paste]',
-      \ 'modified': '∗',
-      \ 'ellipsis': '…',
-      \ 'branch': "\ue0a0",
-      \ 'linenr': "\ue0a1",
-      \ 'readonly': "\ue0a2",
-      \ }
-
-" Suppress deprecation warning about themes.
-let g:loaded_airline_themes = 0
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 
 " ---------------------------------------------------------------------------
 
