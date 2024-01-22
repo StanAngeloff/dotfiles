@@ -43,9 +43,9 @@ inoremap <expr> <C-N> pumvisible() ? '<C-N>' : '<C-N><C-R>=pumvisible() ? "\<lt>
 inoremap <expr> <C-P> pumvisible() ? '<C-P>' : '<C-P><C-R>=pumvisible() ? "\<lt>Up>" : ""<CR>'
 
 " When a special key is typed, if the pop-up menu is visible, complete the selected item first.
-for s:key in ['(', ')', '[', ']', '{', '}', "'", '"', ',', '.', ':', ';', '-', '\', '<Space>']
-  execute 'imap <expr> ' . s:key . " pumvisible() ? '<C-Y>" . (s:key == "'" ? "''" : s:key)  . "' : '" . (s:key == "'" ? "''" : s:key) . "'"
-endfor
+"for s:key in ['(', ')', '[', ']', '{', '}', "'", '"', ',', '.', ':', ';', '-', '\', '<Space>']
+"  execute 'imap <expr> ' . s:key . " pumvisible() ? '<C-Y>" . (s:key == "'" ? "''" : s:key)  . "' : '" . (s:key == "'" ? "''" : s:key) . "'"
+"endfor
 
 "" Use omni-completion (if available) then keyword completion, if the former fails.
 "inoremap <expr> <C-X><C-O> '<C-R>=exists("+omnifunc") && &omnifunc != "" ? "\<C-X>\<C-O>" : ""<CR><C-R>=pumvisible() ? "" : "\<lt>Esc>a\<lt>C-N>"<CR><C-R>=pumvisible() ? "\<lt>Down>" : ""<CR>'

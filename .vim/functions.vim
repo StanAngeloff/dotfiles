@@ -64,11 +64,6 @@ function! BestComplete()
     return "\<C-N>"
   endif
 
-  " If we are expanding an inline comment, leave insert mode to trigger navigation.
-  if get(g:, 'PhpBestExpandCommentInsertLeaveOccurrence', 0) == 1
-    return "\<Esc>i"
-  endif
-
   " If the character immediately before the column is not a whitespace, trigger completion.
   let l:before = getline('.')[:col('.') - 2]
   if col('.') > 1 && l:before =~ '\S$'

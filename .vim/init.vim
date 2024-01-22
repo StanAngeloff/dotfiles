@@ -187,25 +187,26 @@ if has('autocmd')
   autocmd VimEnter * set vb t_vb=
 
   " Recognise additional types.
-  autocmd BufRead,BufNewFile {Gemfile,Guardfile,Rakefile,*.rake,config.ru} set ft=ruby
-  autocmd BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
-  autocmd BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
-  autocmd BufRead,BufNewFile {.babelrc} set ft=json
-  autocmd BufRead,BufNewFile {.env,.env.*} set ft=sh
+  "autocmd BufRead,BufNewFile {Gemfile,Guardfile,Rakefile,*.rake,config.ru} set ft=ruby
+  "autocmd BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
+  "autocmd BufRead,BufNewFile {COMMIT_EDITMSG} set ft=gitcommit
+  "autocmd BufRead,BufNewFile {.babelrc} set ft=json
+  "autocmd BufRead,BufNewFile {.env,.env.*} set ft=sh
 
-  " If a local .lvimrc file exists in the current working directory, source it on load (unsafe).
-  " When the file is changed, update it by sourcing again.
-  autocmd VimEnter * let s:LocalConfigurationPaths = ['.lvimrc', 'attic/.lvimrc']
-        \ | let s:LocalConfigurationBase = getcwd() . '/'
-        \ | for s:LocalConfigurationFile in s:LocalConfigurationPaths
-        \ |   if filereadable(s:LocalConfigurationBase . s:LocalConfigurationFile)
-        \ |     echohl WarningMsg | echom 'Loading local configuration from file "' . s:LocalConfigurationFile . '".' | echohl None
-        \ |     execute 'source' s:LocalConfigurationBase . s:LocalConfigurationFile
-        \ |     augroup LocalConfigurationUpdate
-        \ |       execute 'autocmd! BufWritePost' s:LocalConfigurationBase . s:LocalConfigurationFile 'source %'
-        \ |     augroup END
-        \ |   endif
-        \ | endfor
+  " NOTE: We have NeoVim automatically execute .nvim.lua, .nvimrc, and .exrc files in the current directory, if the file is in the trust list.
+  "" If a local .lvimrc file exists in the current working directory, source it on load (unsafe).
+  "" When the file is changed, update it by sourcing again.
+  "autocmd VimEnter * let s:LocalConfigurationPaths = ['.lvimrc', 'attic/.lvimrc']
+  "      \ | let s:LocalConfigurationBase = getcwd() . '/'
+  "      \ | for s:LocalConfigurationFile in s:LocalConfigurationPaths
+  "      \ |   if filereadable(s:LocalConfigurationBase . s:LocalConfigurationFile)
+  "      \ |     echohl WarningMsg | echom 'Loading local configuration from file "' . s:LocalConfigurationFile . '".' | echohl None
+  "      \ |     execute 'source' s:LocalConfigurationBase . s:LocalConfigurationFile
+  "      \ |     augroup LocalConfigurationUpdate
+  "      \ |       execute 'autocmd! BufWritePost' s:LocalConfigurationBase . s:LocalConfigurationFile 'source %'
+  "      \ |     augroup END
+  "      \ |   endif
+  "      \ | endfor
 
   " Open help windows on the right in a vertical split, credits @EvanPurkhiser.
   autocmd FileType help nnoremap <buffer> <silent> q :bwipeout<CR> |
@@ -563,9 +564,6 @@ augroup phpSyntaxOverride
   autocmd!
   autocmd FileType php call PhpSyntaxOverride()
 augroup END
-
-autocmd FileType php
-      \ nnoremap <silent> <expr> gz ":silent exec \"!xdg-open 'http://php.net/en/" . expand('<cword>') . "'\"<CR>"
 
 " ---------------------------------------------------------------------------
 
