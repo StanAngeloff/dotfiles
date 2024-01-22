@@ -22,15 +22,17 @@ require('lualine').setup({
     section_separators = { left = '', right = '' },
   },
   sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = { {
-      'filename',
-      path = 1, -- 1: Relative path
-    } },
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_c = {
+      {
+        'filename',
+        path = 1, -- 1: Relative path
+      },
+    },
+    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' },
   },
 })
 
@@ -38,8 +40,8 @@ local bufferline = require('bufferline')
 
 bufferline.setup({
   options = {
-    mode = "tabs",
-    numbers = "none",
+    mode = 'tabs',
+    numbers = 'none',
     style_preset = {
       bufferline.style_preset.minimal,
       bufferline.style_preset.no_italic,
@@ -106,6 +108,6 @@ bufferline.setup({
     trunc_marker = {
       fg = '#888888',
       bg = '#262626',
-    }
+    },
   },
 })

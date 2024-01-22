@@ -48,8 +48,8 @@ lspconfig.dockerls.setup({ on_attach = on_attach })
 lspconfig.graphql.setup({ on_attach = on_attach })
 lspconfig.denols.setup({
   on_attach = on_attach,
-  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-  single_file_support = false
+  root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
+  single_file_support = false,
 })
 lspconfig.html.setup({ on_attach = on_attach })
 lspconfig.jsonls.setup({ on_attach = on_attach })
@@ -59,20 +59,20 @@ lspconfig.theme_check.setup({ on_attach = on_attach, root_dir = lspconfig.util.f
 lspconfig.tailwindcss.setup({ on_attach = on_attach })
 lspconfig.tsserver.setup({
   on_attach = on_attach,
-  root_dir = lspconfig.util.root_pattern("package.json"),
-  single_file_support = false
+  root_dir = lspconfig.util.root_pattern('package.json'),
+  single_file_support = false,
 })
 lspconfig.vimls.setup({ on_attach = on_attach })
-lspconfig.yamlls.setup {
+lspconfig.yamlls.setup({
   on_attach = on_attach,
   settings = {
     yaml = {
       schemas = {
-        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+        ['https://json.schemastore.org/github-workflow.json'] = '/.github/workflows/*',
       },
     },
-  }
-}
+  },
+})
 
 require('lspsaga').setup({
   definition = {
