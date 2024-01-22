@@ -20,8 +20,9 @@ set secure
 " Switch syntax on and select a theme.
 syntax on
 
-set synmaxcol=20480
-syntax sync minlines=2048
+"set synmaxcol=20480
+"syntax sync minlines=2048
+set synmaxcol=2048
 
 set termguicolors
 
@@ -58,9 +59,9 @@ set showtabline=2
 set inccommand=nosplit
 
 set backspace=indent,eol,start " Backspace wraps at start- and end-of-line.
-set tabstop=4                  " Default number of spaces per tab character.
-set softtabstop=4              " Tab size during editing operation.
-set shiftwidth=4               " Default tab size.
+set tabstop=2                  " Default number of spaces per tab character.
+set softtabstop=2              " Tab size during editing operation.
+set shiftwidth=2               " Default tab size.
 set shiftround                 " Round indent to multiple of 'shiftwidth'. Applies to > and < commands.
 set expandtab                  " Expand tab into spaces.
 set wrap linebreak             " OK, let's try and wrap long lines for a change?
@@ -81,7 +82,7 @@ set spelllang=en,bg
 set scrolloff=120 " Scroll when lots of lines from edge of screen. Bigger numbers work better with ':help rnu'.
 set rnu           " Show the line number relative to the line with the cursor in front of each line.
 
-set updatetime=100
+set updatetime=300
 
 set lazyredraw " Do not redraw while running macros (much faster).
 set ttyfast    " Enable fast-terminal.
