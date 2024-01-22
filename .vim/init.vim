@@ -394,7 +394,7 @@ let NERDTreeRemoveDirCmd='trash '
 " Quickly open up NERDTree nodes after completing a search.
 let g:FastFingersSpeed = 100
 let g:FastFingersUpdateTime = &ut
-let g:FastFingersNERDTreeClosed = '^\s*►.*\/$'
+let g:FastFingersNERDTreeClosed = '^\s*▶.*\/$'
 
 function! FastFingersSearch(mode)
   let b:FastFingersPreviousPosition = getpos('.')
