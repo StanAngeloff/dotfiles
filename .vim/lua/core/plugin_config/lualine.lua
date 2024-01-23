@@ -22,8 +22,22 @@ require('lualine').setup({
     section_separators = { left = '', right = '' },
   },
   sections = {
-    lualine_a = { 'mode' },
-    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_a = {
+      'mode',
+      { "%{&spell ? '󰓆  ' : ''}", draw_empty = false, padding = 0 },
+      { "%{&paste ? '󰆒  ' : ''}", draw_empty = false, padding = 0 },
+    },
+    lualine_b = {
+      {
+        'branch',
+      },
+      {
+        'diff',
+      },
+      {
+        'diagnostics',
+      },
+    },
     lualine_c = {
       {
         'filename',
