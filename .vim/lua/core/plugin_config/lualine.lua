@@ -33,9 +33,20 @@ require('lualine').setup({
       },
       {
         'diff',
+        diff_color = {
+          added = 'LuaLineDiffAdd',
+          modified = 'LuaLineDiffChange',
+          removed = 'LuaLineDiffDelete',
+        },
       },
       {
         'diagnostics',
+        diagnostics_color = {
+          error = 'LuaLineDiagnosticError',
+          warn = 'LuaLineDiagnosticWarn',
+          info = 'LuaLineDiagnosticInfo',
+          hint = 'LuaLineDiagnosticHint',
+        },
       },
     },
     lualine_c = {
@@ -49,6 +60,17 @@ require('lualine').setup({
     lualine_z = { 'location' },
   },
 })
+
+vim.cmd([[
+  hi LuaLineDiffAdd     guifg=#74ff74 guibg=#4e4e4e
+  hi LuaLineDiffDelete  guifg=#ff7474 guibg=#4e4e4e
+  hi LuaLineDiffChange  guifg=#ccaa00 guibg=#4e4e4e
+
+  hi LuaLineDiagnosticError  guifg=#c01020 guibg=#4e4e4e
+  hi LuaLineDiagnosticWarn   guifg=#ffcc00 guibg=#4e4e4e
+  hi LuaLineDiagnosticInfo   guifg=#ff00ff guibg=#4e4e4e
+  hi LuaLineDiagnosticHint   guifg=#66777f guibg=#4e4e4e
+]])
 
 local bufferline = require('bufferline')
 
