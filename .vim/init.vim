@@ -784,6 +784,7 @@ Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 
 Plug 'nvimdev/lspsaga.nvim', { 'branch': 'main' }
+Plug 'b0o/schemastore.nvim'
 
 " ---------------------------------------------------------------------------
 

@@ -4,6 +4,10 @@ require('mason-lspconfig').setup({
   ensure_installed = {},
 })
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local lspconfig = require('lspconfig')
 
 local on_attach = function(client, bufnr)
@@ -52,7 +56,16 @@ lspconfig.denols.setup({
   single_file_support = false,
 })
 lspconfig.html.setup({ on_attach = on_attach })
-lspconfig.jsonls.setup({ on_attach = on_attach })
+lspconfig.jsonls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+      validate = { enable = true },
+    },
+  },
+})
 lspconfig.lua_ls.setup({ on_attach = on_attach })
 lspconfig.ruby_ls.setup({ on_attach = on_attach })
 lspconfig.theme_check.setup({ on_attach = on_attach, root_dir = lspconfig.util.find_git_ancestor })
@@ -67,9 +80,13 @@ lspconfig.yamlls.setup({
   on_attach = on_attach,
   settings = {
     yaml = {
-      schemas = {
-        ['https://json.schemastore.org/github-workflow.json'] = '/.github/workflows/*',
+      schemaStore = {
+        -- You must disable built-in schemaStore support if you want to use SchemaStore.nvim and its advanced options like `ignore`.
+        enable = false,
+        -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+        url = '',
       },
+      schemas = require('schemastore').yaml.schemas(),
     },
   },
 })
