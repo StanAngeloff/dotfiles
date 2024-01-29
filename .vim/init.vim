@@ -682,6 +682,11 @@ Plug 'jwalton512/vim-blade', { 'for': ['blade'] }
 
 Plug 'christianrondeau/vim-base64'
 
+let g:vim_base64_disable_default_key_mappings = 1
+
+vnoremap <silent> [b :<C-U>call base64#v_atob()<CR>
+vnoremap <silent> ]b :<C-U>call base64#v_btoa()<CR>
+
 " ---------------------------------------------------------------------------
 
 Plug 'tommcdo/vim-exchange', { 'on': ['<Plug>(Exchange)' ] }
