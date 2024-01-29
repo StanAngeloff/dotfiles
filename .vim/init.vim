@@ -540,34 +540,34 @@ let g:vim_markdown_strikethrough = 1
 "Plug 'StanAngeloff/php.vim', { 'for': ['php'] }
 "Plug 'rayburgemeestre/phpfolding.vim', { 'for': ['php'] }
 "Plug '2072/PHP-Indenting-for-VIm', { 'for': ['php'] }
-
-" Don't use the PHP syntax folding.
-let g:DisableAutoPHPFolding = 1
-" Include the '$' as part of identifiers.
-let php_var_selector_is_identifier = 1
-" Indent 'case:' and 'default:' statements in switch() blocks:
-let g:PHP_vintage_case_default_indent = 1
-
-let php_html_load=0
-let php_html_in_heredoc=0
-let php_html_in_nowdoc=0
-
-let php_sql_query=0
-let php_sql_heredoc=0
-let php_sql_nowdoc=0
-
-let PHP_noArrowMatching=1
-
-function! PhpSyntaxOverride()
-  hi phpUseNamespaceSeparator guifg=#808080 guibg=NONE gui=NONE
-  hi phpClassNamespaceSeparator guifg=#808080 guibg=NONE gui=NONE
-  hi phpNullValue guifg=#00a4ef guibg=NONE gui=NONE
-endfunction
-
-augroup phpSyntaxOverride
-  autocmd!
-  autocmd FileType php call PhpSyntaxOverride()
-augroup END
+"
+"" Don't use the PHP syntax folding.
+"let g:DisableAutoPHPFolding = 1
+"" Include the '$' as part of identifiers.
+"let php_var_selector_is_identifier = 1
+"" Indent 'case:' and 'default:' statements in switch() blocks:
+"let g:PHP_vintage_case_default_indent = 1
+"
+"let php_html_load=0
+"let php_html_in_heredoc=0
+"let php_html_in_nowdoc=0
+"
+"let php_sql_query=0
+"let php_sql_heredoc=0
+"let php_sql_nowdoc=0
+"
+"let PHP_noArrowMatching=1
+"
+"function! PhpSyntaxOverride()
+"  hi phpUseNamespaceSeparator guifg=#808080 guibg=NONE gui=NONE
+"  hi phpClassNamespaceSeparator guifg=#808080 guibg=NONE gui=NONE
+"  hi phpNullValue guifg=#00a4ef guibg=NONE gui=NONE
+"endfunction
+"
+"augroup phpSyntaxOverride
+"  autocmd!
+"  autocmd FileType php call PhpSyntaxOverride()
+"augroup END
 
 " ---------------------------------------------------------------------------
 
