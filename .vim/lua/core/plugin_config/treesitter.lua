@@ -27,6 +27,7 @@ require('nvim-treesitter.configs').setup({
     'make',
     'markdown',
     'php',
+    'toml',
     'tsx',
     'typescript',
     'vim',

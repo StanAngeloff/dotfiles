@@ -776,7 +776,8 @@ let g:Hexokinase_highlighters = ['backgroundfull']
 
 " ---------------------------------------------------------------------------
 
-Plug 'cespare/vim-toml'
+" NOTE: Superseded by Tree-sitter.
+"Plug 'cespare/vim-toml'
 
 " ---------------------------------------------------------------------------
 
