@@ -72,7 +72,13 @@ lspconfig.theme_check.setup({ on_attach = on_attach, root_dir = lspconfig.util.f
 lspconfig.tailwindcss.setup({ on_attach = on_attach })
 lspconfig.ts_ls.setup({
   on_attach = on_attach,
-  root_dir = lspconfig.util.root_pattern('package.json'),
+  root_dir = function (filename)
+    local denolsFiles = lspconfig.util.root_pattern('deno.json', 'deno.jsonc')(filename);
+    if denolsFiles then
+      return nil;
+    end
+    return lspconfig.util.root_pattern('package.json')(filename);
+  end,
   single_file_support = false,
 })
 lspconfig.vimls.setup({ on_attach = on_attach })
