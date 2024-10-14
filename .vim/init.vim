@@ -520,7 +520,7 @@ let g:undotree_SetFocusWhenToggle=1
 " ---------------------------------------------------------------------------
 
 " NOTE: Superseded by Tree-sitter.
-"Plug 'eloyesp/vim-liquid', { 'for': ['liquid'], 'branch': 'patch-1' }
+Plug 'eloyesp/vim-liquid', { 'for': ['liquid'], 'branch': 'patch-1' }
 
 " ---------------------------------------------------------------------------
 
