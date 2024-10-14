@@ -526,13 +526,10 @@ Plug 'eloyesp/vim-liquid', { 'for': ['liquid'], 'branch': 'patch-1' }
 
 " NOTE: Superseded by Tree-sitter.
 "Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
-Plug 'riceissa/vim-markdown-paste', { 'on': ['MarkdownPaste', 'MarkdownPasteClean'] }
-
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_strikethrough = 1
 
 " let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
+
+command! MarkdownPaste :r !xclip -sel clip -t text/html -o | pandoc -f html -t gfm-raw_html --wrap=none
 
 " ---------------------------------------------------------------------------
 
