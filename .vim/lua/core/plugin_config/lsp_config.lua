@@ -67,10 +67,10 @@ lspconfig.jsonls.setup({
   },
 })
 lspconfig.lua_ls.setup({ on_attach = on_attach })
-lspconfig.ruby_ls.setup({ on_attach = on_attach })
+lspconfig.ruby_lsp.setup({ on_attach = on_attach })
 lspconfig.theme_check.setup({ on_attach = on_attach, root_dir = lspconfig.util.find_git_ancestor })
 lspconfig.tailwindcss.setup({ on_attach = on_attach })
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
   on_attach = on_attach,
   root_dir = lspconfig.util.root_pattern('package.json'),
   single_file_support = false,
