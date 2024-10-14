@@ -6,7 +6,8 @@ alias ssh='TERM=xterm-256color ssh'
 
 alias open='xdg-open'
 
-alias ll='ls -halFG --color=tty'
+#alias ll='ls -halFG --color=tty'
+alias ll='eza --long --all --git --icons --mounts'
 
 alias g='git'
 alias v='nvim -p'
