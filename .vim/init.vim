@@ -290,7 +290,7 @@ autocmd  FileType fzf setlocal laststatus=0 nosmd noru nornu
       \ | autocmd BufLeave <buffer> set laststatus=2 smd ru rnu
 
 nnoremap <silent>        <leader>o  :<C-U>FzfFiles<CR>
-nnoremap <silent> <expr> <leader>0 ':<C-U>FzfFiles<CR>' . expand('<cword>')
+nnoremap <silent> <expr> <leader>0 ':<C-U>FzfFiles<CR>' . tolower(expand('<cword>'))
 
 function! FzfFilesFromVisual()
   try
