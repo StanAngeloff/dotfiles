@@ -29,8 +29,14 @@ require('lualine').setup({
     },
     lualine_b = {
       {
-        'branch',
+        'filename',
+        path = 1, -- 1: Relative path
+        symbols = {
+          modified = '∗',
+        },
       },
+    },
+    lualine_c = {
       {
         'diff',
         diff_color = {
@@ -49,13 +55,10 @@ require('lualine').setup({
         },
       },
     },
-    lualine_c = {
-      {
-        'filename',
-        path = 1, -- 1: Relative path
-      },
+    lualine_x = {
+      'encoding',
+      'fileformat',
     },
-    lualine_x = { 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' },
   },
