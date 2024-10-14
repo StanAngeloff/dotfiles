@@ -60,6 +60,19 @@ require('nvim-treesitter.configs').setup({
   },
 })
 
+require('treesitter-context').setup({
+  enable = true,
+  max_lines = 10,
+  min_window_height = 0,
+  line_numbers = false,
+  multiline_threshold = 20,
+  trim_scope = 'outer',
+  mode = 'cursor',
+  separator = nil,
+  zindex = 20,
+  on_attach = nil,
+})
+
 vim.filetype.add({
   extension = {
     astro = 'astro',
