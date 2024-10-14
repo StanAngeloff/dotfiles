@@ -586,7 +586,7 @@ let g:caser_prefix = 'cr'
 " ---------------------------------------------------------------------------
 
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
+Plug 'akinsho/bufferline.nvim'
 
 " ---------------------------------------------------------------------------
 
