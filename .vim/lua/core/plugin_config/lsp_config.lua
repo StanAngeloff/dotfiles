@@ -20,7 +20,7 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
   vim.keymap.set('n', 'H', '<cmd>Lspsaga hover_doc<CR>', bufopts)
-  vim.keymap.set('n', 'K', '<cmd>Lspsaga finder<CR>', bufopts)
+  vim.keymap.set('n', 'K', '<cmd>Lspsaga peek_type_definition<CR>', bufopts)
   vim.keymap.set('n', 'L', '<cmd>Lspsaga peek_definition<CR>', bufopts)
   vim.keymap.set('n', '<Space>', '<cmd>Lspsaga code_action<CR>', bufopts)
 
