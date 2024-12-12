@@ -117,3 +117,5 @@ require('lspsaga').setup({
     virtual_text = true,
   },
 })
+
+require('ts-error-translator').setup()

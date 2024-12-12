@@ -367,6 +367,10 @@ Plug 'posva/vim-vue', { 'for': ['vue'] }
 
 " ---------------------------------------------------------------------------
 
+Plug 'dmmulroy/ts-error-translator.nvim'
+
+" ---------------------------------------------------------------------------
+
 Plug 'preservim/nerdtree'
 
 let NERDTreeChDirMode=1
