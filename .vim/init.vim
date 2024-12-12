@@ -823,6 +823,31 @@ Plug 'pasky/claude.vim'
 
 " ---------------------------------------------------------------------------
 
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+let g:mkdp_browser = 'google-chrome'
+let g:mkdp_theme = 'light'
+let g:mkdp_refresh_slow = 1
+
+let g:mkdp_preview_options = {
+      \ 'mkit': {
+      \   'breaks': 1,
+      \ },
+      \ 'katex': {},
+      \ 'uml': {},
+      \ 'maid': {},
+      \ 'disable_sync_scroll': 0,
+      \ 'sync_scroll_type': 'middle',
+      \ 'hide_yaml_meta': 1,
+      \ 'sequence_diagrams': {},
+      \ 'flowchart_diagrams': {},
+      \ 'content_editable': v:false,
+      \ 'disable_filename': 0,
+      \ 'toc': {}
+      \ }
+
+" ---------------------------------------------------------------------------
+
 call plug#end()
 
 colorscheme vim-zend55
